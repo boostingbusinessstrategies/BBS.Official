@@ -106,32 +106,3 @@ window.onload = () => {
     displayFeedback();
     checkCaptchaRedirect(); // Check if coming back from CAPTCHA
 };
-
-// --- Sidebar functionality ---
-// Get references to sidebar elements
-const sidebar = document.getElementById('sidebar');
-const menuToggle = document.getElementById('menu-toggle');
-
-// Add event listener to menu button
-menuToggle.addEventListener('click', () => {
-    sidebar.classList.toggle('active');
-});
-
-// Detect clicks outside the sidebar
-document.addEventListener('click', (event) => {
-    if (sidebar.classList.contains('active') && !sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
-        sidebar.classList.remove('active');
-    }
-});
-
-// Close the sidebar when a link is clicked
-const sidebarLinks = sidebar.querySelectorAll('ul li a');
-sidebarLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        sidebar.classList.remove('active');
-    });
-});
-
-
-
-
