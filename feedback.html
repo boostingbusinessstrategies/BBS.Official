@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Share your experience with BBS's custom database solutions">
+    <meta name="keywords" content="customer feedback, database solutions review, BBS testimonials">
+    <title>Customer Feedback - BBS</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="C:\Users\Alvaro\OneDrive\Documentos\BBS Website\css\feedback.css"> <!-- Add a separate CSS file for feedback -->
+</head>
+<body>
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <button id="menu-toggle" class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h3 class="menu-title">BBS Menu</h3> <!-- Ajuste realizado aquí -->
+        </div>
+        <ul class="components">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="services.html"><i class="fas fa-database"></i> Services</a></li>
+            <li><a href="order.html"><i class="fas fa-shopping-cart"></i> Order Database</a></li>
+            <li><a href="feedback.html"><i class="fas fa-comments"></i> Feedback</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+        </ul>
+    </nav>
+    <div id="content">
+        <header>
+            <h1>Customer Feedback</h1>
+        </header>
+
+        <section id="feedback-section" class="feedback-section">
+            <h2>Share Your Experience</h2>
+            <form id="feedback-form" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST" onsubmit="submitFeedback(event)">
+                <label for="feedback-first-name">First Name</label>
+                <input type="text" id="feedback-first-name" name="feedback-first-name" required aria-label="Feedback First Name">
+
+                <label for="feedback-last-name">Last Name</label>
+                <input type="text" id="feedback-last-name" name="feedback-last-name" required aria-label="Feedback Last Name">
+
+                <label for="feedback-rating">Rate our services:</label>
+                <select id="feedback-rating" name="feedback-rating" required aria-label="Feedback Rating">
+                    <option value="" disabled selected>Select your rating</option>
+                    <option value="5">⭐️⭐️⭐️⭐️⭐️ (5 stars)</option>
+                    <option value="4">⭐️⭐️⭐️⭐️ (4 stars)</option>
+                    <option value="3">⭐️⭐️⭐️ (3 stars)</option>
+                    <option value="2">⭐️⭐️ (2 stars)</option>
+                    <option value="1">⭐️ (1 star)</option>
+                </select>
+
+                <label for="feedback-comment">Leave a comment:</label>
+                <textarea id="feedback-comment" name="feedback-comment" rows="4" placeholder="Leave your feedback here..." required aria-label="Feedback Comment"></textarea>
+
+                <input type="submit" value="Submit Feedback">
+            </form>
+
+            <div id="feedback-display" style="margin-top: 30px;">
+                <h3>Recent Feedback:</h3>
+                <ul id="feedback-list"></ul>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 Boosting Business Strategies (BBS). All rights reserved.</p>
+                <p>Follow us on social media for the latest updates:</p>
+                <ul class="social-media">
+                    <li><a href="https://www.facebook.com/profile.php?id=61559129535705&mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.linkedin.com/in/aaron-obando-55a098308?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li><a href="https://www.instagram.com/boostingbusiness_strategies?igsh=MXJhOGd0emgydTlhdQ=="><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <script src="C:\Users\Alvaro\OneDrive\Documentos\BBS Website\Javascript\feedback.js"></script>
+</body>
+</html>

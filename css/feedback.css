@@ -1,0 +1,379 @@
+/* Variables Globales */ 
+:root {
+    --primary-color: #ee4d4d;
+    --secondary-color: #ffc44d;
+    --background-color: #f0f4f8;
+    --text-color: #333333;
+    --border-radius: 16px;
+    --transition-speed: 0.3s;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --content-background: #ffffff;
+    --input-background: #f9f9f9;
+    --focus-color: rgba(255, 196, 77, 0.2); /* Color al hacer focus */
+}
+
+/* Estilo del cuerpo y general */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+#content {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--content-background);
+    border-radius: var(--border-radius);
+    box-shadow: 0 6px 24px var(--shadow-color);
+    transition: box-shadow var(--transition-speed);
+    min-height: 600px; /* Aumenta la altura mínima para más espacio */
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+    border-radius: var(--border-radius);
+    animation: fadeIn 0.6s; /* Añadir animación al cargar */
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Sidebar Styles */
+#sidebar {
+    width: 280px;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* Agrega gradient */
+    color: #fff;
+    position: fixed;
+    left: -300px;
+    top: 0;
+    padding: 20px;
+    transition: left var(--transition-speed) ease;
+    box-shadow: 2px 0 10px var(--shadow-color);
+    z-index: 1000;
+    overflow-y: auto; /* Permite desplazamiento */
+}
+
+/* Cambia la animación al abrir */
+#sidebar.active {
+    left: 0;
+    animation: slideIn 0.3s forwards; /* Efecto de deslizamiento al abrir */
+}
+
+/* Animaciones */
+@keyframes slideIn {
+    from {
+        left: -300px;
+    }
+    to {
+        left: 0;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        left: 0;
+    }
+    to {
+        left: -300px;
+    }
+}
+
+/* Mantener la clase inactive para cierre de sidebar */
+#sidebar.inactive {
+    animation: slideOut 0.3s forwards; /* Efecto de deslizamiento al cerrar */
+}
+
+.blur-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(8px);
+    opacity: 0.5;
+    z-index: 500;
+}
+
+/* Sidebar Header */
+#sidebar .sidebar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px var(--shadow-color);
+    animation: fadeIn 0.4s; /* Fade in effect for sidebar header */
+}
+
+#sidebar .sidebar-header h3 {
+    margin: 0;
+    font-size: 1.8em;
+    text-transform: uppercase; /* Mayúsculas */
+    letter-spacing: 1px; /* Espaciado de letras */
+}
+
+/* Sidebar Navigation */
+#sidebar ul {
+    padding: 0;
+    margin: 20px 0;
+    list-style: none;
+}
+
+#sidebar ul li {
+    position: relative; /* Para efecto de subrayado */
+    padding: 10px 0;
+}
+
+#sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+    display: block;
+    transition: background var(--transition-speed), transform var(--transition-speed), color var(--transition-speed);
+    padding: 10px 15px;
+    border-radius: var(--border-radius);
+}
+
+#sidebar ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background: var(--secondary-color);
+    transition: width var(--transition-speed), left var(--transition-speed);
+}
+
+#sidebar ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+    color: var(--secondary-color); /* Cambia el color del texto al pasar el ratón */
+}
+
+#sidebar ul li a:hover::after {
+    width: 100%; /* Efecto de subrayado al pasar el ratón */
+    left: 0;
+}
+
+/* Toggle Button */
+#menu-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: rgba(226, 16, 16, 0.63);
+    border: none;
+    color: #fff;
+    padding: 12px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background var(--transition-speed), transform var(--transition-speed);
+    z-index: 1100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    opacity: 0.8;
+    animation: fadeIn 0.4s; /* Fade in effect for toggle button */
+}
+
+#menu-toggle:hover {
+    background-color: rgba(196, 62, 62, 0.75);
+    transform: scale(1.05);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #sidebar {
+        width: 70%; /* Sidebar más ancho en dispositivos pequeños */
+        left: -70%; /* Inicia fuera de la vista */
+    }
+
+    #sidebar.active {
+        left: 0; /* Desliza hacia adentro */
+    }
+
+    #menu-toggle {
+        left: 10px; /* Posiciona el botón más cerca en móviles */
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Sección de Feedback */
+.feedback-section {
+    padding: 30px;
+    background-color: var(--content-background);
+    border-radius: var(--border-radius);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+    margin-top: 20px; /* Espaciado superior para la sección de feedback */
+}
+
+.feedback-section h2 {
+    color: var(--primary-color);
+    font-size: 2.2em;
+}
+
+/* Formularios */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+input[type="text"],
+textarea,
+select {
+    padding: 15px;
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    font-size: 1.1em;
+    background-color: var(--input-background);
+    transition: border-color var(--transition-speed), background-color var(--transition-speed);
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--secondary-color);
+    background-color: var(--focus-color);
+    outline: none;
+}
+
+/* Botón de Envío */
+input[type="submit"] {
+    padding: 14px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+
+input[type="submit"]:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    #content {
+        padding: 15px;
+    }
+
+    header {
+        padding: 40px 10px;
+    }
+    
+    header h1 {
+        font-size: 2em;
+    }
+
+    #sidebar {
+        width: 250px; /* Mantener el ancho */
+    }
+
+    .feedback-section h2 {
+        font-size: 1.5em; /* Disminuir tamaño en móviles */
+    }
+
+    input[type="text"],
+    textarea,
+    select {
+        font-size: 1em;
+    }
+
+    input[type="submit"] {
+        font-size: 1em;
+    }
+}
+
+/* Media Queries para Ajustes Específicos */
+@media (max-width: 480px) {
+    #sidebar {
+        width: 80%; /* Aumentar ancho del sidebar en pantallas pequeñas */
+    }
+}
+
+.rating {
+    font-size: 20px; /* Ajustar tamaño según sea necesario */
+    margin: 5px 0;
+}
+
+button {
+    background-color: #f44336; /* Fondo rojo para botón de eliminar */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+button:hover {
+    background-color: #d32f2f; /* Rojo más oscuro al pasar el ratón */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: var(--border-radius);
+}
+
+footer p {
+    margin: 0;
+}
+
+.social-media {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+}
+
+.social-media li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.social-media a {
+    color: #fcf9f9;
+    font-size: 1.5em;
+    transition: color var(--transition-speed);
+}
+
+.social-media a:hover {
+    color: var(--secondary-color);
+}
