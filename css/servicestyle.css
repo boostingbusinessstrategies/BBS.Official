@@ -1,4 +1,3 @@
-/* CSS Variables for Easy Maintenance */ 
 :root {
     --primary-color: #ee4d4d;
     --secondary-color: #ffc44d;
@@ -176,7 +175,7 @@ body {
 #content {
     margin: 0 auto; 
     padding: 20px;
-    max-width: 800px; 
+    max-width: 90%; /* Aumentar el ancho máximo */
     background-color: white;
     box-shadow: var(--box-shadow);
     border-radius: var(--border-radius);
@@ -211,7 +210,7 @@ h1, h2 {
     box-shadow: var(--box-shadow);
     transition: transform var(--transition-speed), box-shadow var(--transition-speed);
     position: relative; 
-    flex: 1 1 30%; 
+    flex: 1 1 48%; /* Aumentar el ancho de las tarjetas */
     margin: 10px; 
 }
 
@@ -278,11 +277,11 @@ h1, h2 {
     #content {
         margin-left: 0; 
         padding: 10px; 
-        max-width: 95%; /* Adjust for mobile */
+        max-width: 95%; /* Ajustar para móvil */
     }
 
     .service-card {
-        flex: 1 1 100%; 
+        flex: 1 1 100%; /* Mantener el 100% para móviles */
     }
 
     h1, h2 {
