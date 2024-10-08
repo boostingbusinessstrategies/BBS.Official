@@ -5,12 +5,12 @@ const reviewsToShow = 8;
 function showMoreReviews() {
     const feedbackListElement = document.getElementById("feedback-list");
     const feedbackItems = feedbackListElement.querySelectorAll("li");
-    
+
     // Mostrar las reseñas adicionales
     for (let i = reviewsToShow; i < feedbackItems.length; i++) {
         feedbackItems[i].style.display = "list-item";
     }
-    
+
     // Ocultar el botón de "Show More Reviews" después de mostrar más reseñas
     document.getElementById("show-more-reviews").style.display = "none";
 }
@@ -23,9 +23,6 @@ function displayFeedback() {
     // Limpiar la lista de reseñas
     feedbackListElement.innerHTML = "";
 
-    // Limitar las reseñas visibles inicialmente
-    const limit = Math.min(feedbackList.length, reviewsToShow);
-
     // Crear el elemento de reseña y añadirlo a la lista
     feedbackList.forEach((feedback, index) => {
         const feedbackItem = document.createElement("li");
@@ -34,7 +31,7 @@ function displayFeedback() {
             <div>${feedback.firstName} ${feedback.lastName}</div>
             <div class="rating">${'⭐'.repeat(feedback.rating)}${'☆'.repeat(5 - feedback.rating)}</div>
             <div>${feedback.comment}</div>
-            ${feedback.email === 'contact.aaronobando@gmail.com' ? `<button onclick="deleteFeedback(${index})">Delete</button>` : ''}
+            <button onclick="deleteFeedback(${index})">Delete</button>  <!-- Botón de eliminar para todas las reseñas -->
         `;
         feedbackListElement.appendChild(feedbackItem);
     });
@@ -49,6 +46,7 @@ function displayFeedback() {
 
 // Función para enviar feedback
 function submitFeedback(event) {
+    // Llamamos a preventDefault solo para evitar que se envíe el formulario antes de que validemos
     event.preventDefault();
 
     // Obtener valores del formulario
@@ -86,8 +84,11 @@ function submitFeedback(event) {
         feedbackList.push(feedback);
         localStorage.setItem("feedbackList", JSON.stringify(feedbackList));
 
-        // Eliminar el formulario si deseas
+        // Limpiar el formulario
         clearFeedbackForm();
+
+        // Enviar el formulario usando el método POST
+        document.getElementById("feedback-form").submit();
 
     } catch (error) {
         console.error("Error saving feedback to local storage:", error);
@@ -99,16 +100,9 @@ function submitFeedback(event) {
 function deleteFeedback(index) {
     try {
         let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
-        const feedback = feedbackList[index];
-
-        // Verificar si el email coincide con el superuser
-        if (feedback.email === 'contact.aaronobando@gmail.com') {
-            feedbackList.splice(index, 1); // Eliminar la reseña
-            localStorage.setItem("feedbackList", JSON.stringify(feedbackList)); // Actualizar localStorage
-            displayFeedback(); // Actualizar la lista de feedback
-        } else {
-            alert("You are not authorized to delete this feedback.");
-        }
+        feedbackList.splice(index, 1); // Eliminar la reseña
+        localStorage.setItem("feedbackList", JSON.stringify(feedbackList)); // Actualizar localStorage
+        displayFeedback(); // Actualizar la lista de feedback
     } catch (error) {
         console.error("Error deleting feedback:", error);
         alert("There was an error deleting the feedback. Please try again.");
