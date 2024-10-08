@@ -2,7 +2,7 @@
 const reviewsToShow = 8;
 
 // Variable to determine if the user is an admin
-let isAdmin = true; // Change to false if you do not want full access
+let isAdmin = false; // Change to false if you do not want full access
 
 // Variable to determine if the delete feature is enabled
 let canDelete = false; // Change to true to enable the delete feature
