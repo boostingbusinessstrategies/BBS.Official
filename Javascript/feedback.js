@@ -2,10 +2,10 @@
 const reviewsToShow = 8;
 
 // Variable to determine if the user is an admin
-const isAdmin = true; // Change to false if you do not want full access
+const isAdmin = false; // Change to false if you do not want full access
 
 // Variable to determine if the delete feature is enabled
-const canDelete = true; // Change to false to disable the delete feature
+const canDelete = false; // Change to false to disable the delete feature
 
 let feedbackCounter = 0; // Counter for unique feedback IDs
 
