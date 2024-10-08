@@ -1,67 +1,35 @@
-// Function to submit feedback
-function submitFeedback(event) {
-    event.preventDefault();
+// Número de reseñas visibles inicialmente
+const reviewsToShow = 8;
 
-    // Get form values
-    const firstName = document.getElementById("feedback-first-name").value.trim();
-    const lastName = document.getElementById("feedback-last-name").value.trim();
-    const email = document.getElementById("feedback-email").value.trim(); // Get the email
-    const rating = document.getElementById("feedback-rating").value;
-    const comment = document.getElementById("feedback-comment").value.trim();
-
-    // Validate feedback fields
-    if (!firstName || !lastName || !email || !rating || !comment) {
-        alert("Please fill in all fields before submitting your feedback.");
-        return;
+// Función para cargar más reseñas
+function showMoreReviews() {
+    const feedbackListElement = document.getElementById("feedback-list");
+    const feedbackItems = feedbackListElement.querySelectorAll("li");
+    
+    // Mostrar las reseñas adicionales
+    for (let i = reviewsToShow; i < feedbackItems.length; i++) {
+        feedbackItems[i].style.display = "list-item";
     }
-
-    // Validate email format
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-        alert("Please enter a valid email address.");
-        return;
-    }
-
-    // Create feedback object
-    const feedback = {
-        firstName: firstName,
-        lastName: lastName,
-        email: email, // Include email in the feedback object
-        rating: parseInt(rating, 10),
-        comment: comment
-    };
-
-    try {
-        // Save feedback to local storage
-        let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
-        feedbackList.push(feedback);
-        localStorage.setItem("feedbackList", JSON.stringify(feedbackList));
-
-        // Show success message
-        showSuccessMessage();
-
-        // Redirect to CAPTCHA (Sumform)
-        redirectToCaptcha();
-
-        // After the captcha validation, redirect to the specific link
-        window.location.href = "https://boostingbusinessstrategies.github.io/BBS.Official/feedback.html"; // Add this line
-    } catch (error) {
-        console.error("Error saving feedback to local storage:", error);
-        alert("There was an error saving your feedback. Please try again.");
-    }
+    
+    // Ocultar el botón de "Show More Reviews" después de mostrar más reseñas
+    document.getElementById("show-more-reviews").style.display = "none";
 }
 
-// Function to display feedback
+// Función para mostrar feedback, limitada a las primeras reseñas visibles
 function displayFeedback() {
     const feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
     const feedbackListElement = document.getElementById("feedback-list");
 
-    // Clear the feedback display
+    // Limpiar la lista de reseñas
     feedbackListElement.innerHTML = "";
 
-    // Add each feedback to the list
+    // Limitar las reseñas visibles inicialmente
+    const limit = Math.min(feedbackList.length, reviewsToShow);
+
+    // Crear el elemento de reseña y añadirlo a la lista
     feedbackList.forEach((feedback, index) => {
         const feedbackItem = document.createElement("li");
+        feedbackItem.style.display = index < reviewsToShow ? "list-item" : "none"; // Mostrar solo las primeras reseñas
         feedbackItem.innerHTML = `
             <div>${feedback.firstName} ${feedback.lastName}</div>
             <div class="rating">${'⭐'.repeat(feedback.rating)}${'☆'.repeat(5 - feedback.rating)}</div>
@@ -70,19 +38,77 @@ function displayFeedback() {
         `;
         feedbackListElement.appendChild(feedbackItem);
     });
+
+    // Mostrar el botón de "Show More Reviews" solo si hay más reseñas que el límite
+    if (feedbackList.length > reviewsToShow) {
+        document.getElementById("show-more-reviews").style.display = "block";
+    } else {
+        document.getElementById("show-more-reviews").style.display = "none";
+    }
 }
 
-// Function to delete feedback (only superuser can delete)
+// Función para enviar feedback
+function submitFeedback(event) {
+    event.preventDefault();
+
+    // Obtener valores del formulario
+    const firstName = document.getElementById("feedback-first-name").value.trim();
+    const lastName = document.getElementById("feedback-last-name").value.trim();
+    const email = document.getElementById("feedback-email").value.trim(); // Obtener el email
+    const rating = document.getElementById("feedback-rating").value;
+    const comment = document.getElementById("feedback-comment").value.trim();
+
+    // Validar campos
+    if (!firstName || !lastName || !email || !rating || !comment) {
+        alert("Please fill in all fields before submitting your feedback.");
+        return;
+    }
+
+    // Validar formato del email
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+
+    // Crear el objeto feedback
+    const feedback = {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        rating: parseInt(rating, 10),
+        comment: comment
+    };
+
+    try {
+        // Guardar feedback en localStorage
+        let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
+        feedbackList.push(feedback);
+        localStorage.setItem("feedbackList", JSON.stringify(feedbackList));
+
+        // Mostrar mensaje de éxito
+        showSuccessMessage();
+
+        // Eliminar el formulario si deseas
+        clearFeedbackForm();
+
+    } catch (error) {
+        console.error("Error saving feedback to local storage:", error);
+        alert("There was an error saving your feedback. Please try again.");
+    }
+}
+
+// Función para eliminar feedback
 function deleteFeedback(index) {
     try {
         let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
         const feedback = feedbackList[index];
 
-        // Check if the email matches the superuser's email
+        // Verificar si el email coincide con el superuser
         if (feedback.email === 'contact.aaronobando@gmail.com') {
-            feedbackList.splice(index, 1); // Remove the feedback at the specified index
-            localStorage.setItem("feedbackList", JSON.stringify(feedbackList)); // Update local storage
-            displayFeedback(); // Refresh the displayed feedback list
+            feedbackList.splice(index, 1); // Eliminar la reseña
+            localStorage.setItem("feedbackList", JSON.stringify(feedbackList)); // Actualizar localStorage
+            displayFeedback(); // Actualizar la lista de feedback
         } else {
             alert("You are not authorized to delete this feedback.");
         }
@@ -92,7 +118,7 @@ function deleteFeedback(index) {
     }
 }
 
-// Function to show success message
+// Función para mostrar mensaje de éxito
 function showSuccessMessage() {
     const successMessage = document.createElement("div");
     successMessage.classList.add("feedback-success", "active");
@@ -108,42 +134,47 @@ function showSuccessMessage() {
 
     document.body.appendChild(successMessage);
 
-    // Remove the success message after 3 seconds
+    // Eliminar el mensaje después de 3 segundos
     setTimeout(() => {
         successMessage.classList.remove("active");
         document.body.removeChild(successMessage);
     }, 3000);
 }
 
-// Load feedback when the page loads
+// Función para limpiar el formulario de feedback (opcional)
+function clearFeedbackForm() {
+    document.getElementById("feedback-first-name").value = '';
+    document.getElementById("feedback-last-name").value = '';
+    document.getElementById("feedback-email").value = '';
+    document.getElementById("feedback-rating").value = '';
+    document.getElementById("feedback-comment").value = '';
+}
+
+// Cargar feedback al cargar la página
 window.onload = () => {
     displayFeedback();
-    checkCaptchaRedirect(); // Check if coming back from CAPTCHA
 };
 
-// Obtén referencias a los elementos
+// Sidebar functionality
 const sidebar = document.getElementById('sidebar');
 const menuToggle = document.getElementById('menu-toggle');
 
-// Añade un event listener al botón del menú
+// Añadir un event listener al botón del menú
 menuToggle.addEventListener('click', () => {
-    // Alterna la clase 'active' en el sidebar
     sidebar.classList.toggle('active');
 });
 
-// Añade un event listener al documento para detectar clics fuera del sidebar
+// Detectar clics fuera del sidebar para cerrarlo
 document.addEventListener('click', (event) => {
-    // Si el sidebar está activo y el clic ocurre fuera del sidebar y del menú toggle
     if (sidebar.classList.contains('active') && !sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
-        // Elimina la clase 'active' para cerrar el sidebar
         sidebar.classList.remove('active');
     }
 });
 
-// Añadir un event listener a los enlaces del sidebar para cerrarlo al hacer clic
+// Cerrar el sidebar al hacer clic en los enlaces
 const sidebarLinks = sidebar.querySelectorAll('ul li a');
 sidebarLinks.forEach(link => {
     link.addEventListener('click', () => {
-        sidebar.classList.remove('active'); // Cierra el sidebar al hacer clic en un enlace
+        sidebar.classList.remove('active');
     });
 });
