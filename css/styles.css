@@ -36,13 +36,6 @@ body {
     }
 }
 
-/* Main Content Container */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
 /* Sidebar Styles */
 #sidebar {
     width: 280px;
@@ -207,6 +200,13 @@ body {
     }
 }
 
+/* Main Content Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
 /* Header Section */
 header.hero-section {
     display: flex;
@@ -253,6 +253,7 @@ header.hero-section .cta-button {
     font-weight: 600;
     transition: background var(--transition-speed), transform var(--transition-speed);
     box-shadow: 0 2px 5px var(--shadow-color);
+    display: inline-block; /* Ensure it behaves as a block for spacing */
 }
 
 header.hero-section .cta-button:hover {
@@ -297,6 +298,10 @@ header.hero-section .cta-button:hover {
     font-weight: 600;
     transition: background var(--transition-speed), transform var(--transition-speed);
     box-shadow: 0 2px 5px var(--shadow-color);
+    display: inline-block; /* Ensure it behaves as a block for spacing */
+    width: 100%; /* Full width on mobile */
+    max-width: 300px; /* Limit width on larger screens */
+    margin: 10px auto; /* Centering */
 }
 
 .section .cta-button:hover {
@@ -347,8 +352,17 @@ footer p {
     .section h2 {
         font-size: 2em; /* Reduce size on mobile */
     }
-}
 
+    /* Make buttons stack vertically on mobile */
+    .section .cta-button {
+        width: 90%; /* Make buttons smaller on mobile */
+        padding: 12px; /* Adjust padding for better touch target */
+    }
+
+    .section {
+        padding: 20px; /* Reduce padding on sections for mobile */
+    }
+}
 
 .social-media {
     list-style: none;
@@ -370,3 +384,4 @@ footer p {
 .social-media a:hover {
     color: var(--secondary-color);
 }
+
