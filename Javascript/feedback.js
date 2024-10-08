@@ -5,12 +5,20 @@ function submitFeedback(event) {
     // Get form values
     const firstName = document.getElementById("feedback-first-name").value.trim();
     const lastName = document.getElementById("feedback-last-name").value.trim();
+    const email = document.getElementById("feedback-email").value.trim(); // Get the email
     const rating = document.getElementById("feedback-rating").value;
     const comment = document.getElementById("feedback-comment").value.trim();
 
     // Validate feedback fields
-    if (!firstName || !lastName || !rating || !comment) {
+    if (!firstName || !lastName || !email || !rating || !comment) {
         alert("Please fill in all fields before submitting your feedback.");
+        return;
+    }
+
+    // Validate email format
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
         return;
     }
 
@@ -18,34 +26,28 @@ function submitFeedback(event) {
     const feedback = {
         firstName: firstName,
         lastName: lastName,
-        rating: parseInt(rating, 10), // Ensure rating is an integer
+        email: email, // Include email in the feedback object
+        rating: parseInt(rating, 10),
         comment: comment
     };
 
-    // Save feedback to local storage
-    let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
-    feedbackList.push(feedback);
-    localStorage.setItem("feedbackList", JSON.stringify(feedbackList));
+    try {
+        // Save feedback to local storage
+        let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
+        feedbackList.push(feedback);
+        localStorage.setItem("feedbackList", JSON.stringify(feedbackList));
 
-    // Show success message
-    showSuccessMessage();
+        // Show success message
+        showSuccessMessage();
 
-    // Redirect to CAPTCHA (Sumform)
-    redirectToCaptcha();
-}
+        // Redirect to CAPTCHA (Sumform)
+        redirectToCaptcha();
 
-// Function to handle redirection to CAPTCHA
-function redirectToCaptcha() {
-    sessionStorage.setItem('redirectAfterCaptcha', window.location.pathname);
-    window.location.href = "https://www.sumform.com/captcha";
-}
-
-// Function to check if coming back from CAPTCHA and redirect to the main page
-function checkCaptchaRedirect() {
-    const redirectPath = sessionStorage.getItem('redirectAfterCaptcha');
-    if (redirectPath) {
-        sessionStorage.removeItem('redirectAfterCaptcha');
-        window.location.href = "/main"; // Adjust this to your actual main page route
+        // After the captcha validation, redirect to the specific link
+        window.location.href = "https://boostingbusinessstrategies.github.io/BBS.Official/feedback.html"; // Add this line
+    } catch (error) {
+        console.error("Error saving feedback to local storage:", error);
+        alert("There was an error saving your feedback. Please try again.");
     }
 }
 
@@ -64,18 +66,30 @@ function displayFeedback() {
             <div>${feedback.firstName} ${feedback.lastName}</div>
             <div class="rating">${'⭐'.repeat(feedback.rating)}${'☆'.repeat(5 - feedback.rating)}</div>
             <div>${feedback.comment}</div>
-            <button onclick="deleteFeedback(${index})">Delete</button>
+            ${feedback.email === 'contact.aaronobando@gmail.com' ? `<button onclick="deleteFeedback(${index})">Delete</button>` : ''}
         `;
         feedbackListElement.appendChild(feedbackItem);
     });
 }
 
-// Function to delete feedback
+// Function to delete feedback (only superuser can delete)
 function deleteFeedback(index) {
-    let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
-    feedbackList.splice(index, 1); // Remove the feedback at the specified index
-    localStorage.setItem("feedbackList", JSON.stringify(feedbackList)); // Update local storage
-    displayFeedback(); // Refresh the displayed feedback list
+    try {
+        let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
+        const feedback = feedbackList[index];
+
+        // Check if the email matches the superuser's email
+        if (feedback.email === 'contact.aaronobando@gmail.com') {
+            feedbackList.splice(index, 1); // Remove the feedback at the specified index
+            localStorage.setItem("feedbackList", JSON.stringify(feedbackList)); // Update local storage
+            displayFeedback(); // Refresh the displayed feedback list
+        } else {
+            alert("You are not authorized to delete this feedback.");
+        }
+    } catch (error) {
+        console.error("Error deleting feedback:", error);
+        alert("There was an error deleting the feedback. Please try again.");
+    }
 }
 
 // Function to show success message
@@ -105,8 +119,9 @@ function showSuccessMessage() {
 window.onload = () => {
     displayFeedback();
     checkCaptchaRedirect(); // Check if coming back from CAPTCHA
+};
 
-    // Obtén referencias a los elementos
+// Obtén referencias a los elementos
 const sidebar = document.getElementById('sidebar');
 const menuToggle = document.getElementById('menu-toggle');
 
@@ -132,4 +147,3 @@ sidebarLinks.forEach(link => {
         sidebar.classList.remove('active'); // Cierra el sidebar al hacer clic en un enlace
     });
 });
-};
