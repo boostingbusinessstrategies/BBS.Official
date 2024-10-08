@@ -379,10 +379,20 @@ header h1 {
 .admin-toggle-button {
     position: fixed; /* Fijo en la esquina */
     top: 25px; /* Espacio desde el borde superior */
-    botton: 25px; /* Espacio desde el borde inferior */
     right: 25px; /* Espacio desde el borde derecho */
     background-color: var(--primary-color); /* Color primario */
     color: white;
+    border: none;
+    border-radius: 50%; /* Redondeado */
+    width: 45px; /* Tamaño más grande */
+    height: 45px; /* Tamaño más grande */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones más suaves */
+    z-index: 1000;
+}
 
 .admin-toggle-button:hover {
     background-color: darken(var(--primary-color), 10%); /* Efecto en hover */
@@ -518,6 +528,7 @@ header h1 {
     font-weight: 600; /* Negrita */
     color: var(--text-color); /* Color de texto */
 }
+
 
 /* Footer */
 footer {
