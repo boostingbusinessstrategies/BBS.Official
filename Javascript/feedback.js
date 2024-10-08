@@ -27,14 +27,14 @@ function displayFeedback() {
     feedbackListElement.innerHTML = "";
 
     // Create feedback elements and add them to the list
-    feedbackList.forEach((feedback, index) => {
+    feedbackList.forEach((feedback) => {
         const feedbackItem = document.createElement("li");
-        feedbackItem.style.display = index < reviewsToShow ? "list-item" : "none"; // Show only the first reviews
+        feedbackItem.style.display = feedbackListElement.childElementCount < reviewsToShow ? "list-item" : "none"; // Show only the first reviews
         feedbackItem.innerHTML = `
             <div>${feedback.firstName} ${feedback.lastName}</div>
             <div class="rating">${'⭐'.repeat(feedback.rating)}${'☆'.repeat(5 - feedback.rating)}</div>
             <div>${feedback.comment}</div>
-            ${isAdmin ? `<button onclick="deleteFeedback(${index})">Delete</button>` : ''} <!-- Delete button only if admin -->
+            ${isAdmin ? `<button onclick="deleteFeedback('${feedback.id}')">Delete</button>` : ''} <!-- Delete button only if admin -->
         `;
         feedbackListElement.appendChild(feedbackItem);
     });
@@ -49,7 +49,6 @@ function displayFeedback() {
 
 // Function to submit feedback
 function submitFeedback(event) {
-    // Call preventDefault only to avoid submitting the form before validation
     event.preventDefault();
 
     // Get values from the form
@@ -74,6 +73,7 @@ function submitFeedback(event) {
 
     // Create the feedback object
     const feedback = {
+        id: Date.now(), // Unique ID based on the current timestamp
         firstName: firstName,
         lastName: lastName,
         email: email,
@@ -103,7 +103,7 @@ function submitFeedback(event) {
 }
 
 // Function to delete feedback
-function deleteFeedback(index) {
+function deleteFeedback(id) {
     if (!isAdmin) {
         alert("You do not have permission to delete this review.");
         return;
@@ -111,7 +111,7 @@ function deleteFeedback(index) {
     
     try {
         let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
-        feedbackList.splice(index, 1); // Remove the review
+        feedbackList = feedbackList.filter(feedback => feedback.id !== parseInt(id)); // Remove the review by ID
         localStorage.setItem("feedbackList", JSON.stringify(feedbackList)); // Update localStorage
         displayFeedback(); // Update the feedback list
     } catch (error) {
@@ -148,4 +148,3 @@ sidebarLinks.forEach(link => {
         sidebar.classList.remove('active');
     });
 });
-
