@@ -39,7 +39,7 @@ function displayFeedback() {
             <div>${feedback.firstName} ${feedback.lastName}</div>
             <div class="rating">${'⭐'.repeat(feedback.rating)}${'☆'.repeat(5 - feedback.rating)}</div>
             <div>${feedback.comment}</div>
-            ${canDelete && isAdmin ? `<button onclick="deleteFeedback(${feedback.id})">Delete</button>` : ''} <!-- Delete button only if admin and canDelete is true -->
+            ${isAdmin && canDelete ? `<button onclick="deleteFeedback(${feedback.id})">Delete</button>` : ''} <!-- Delete button only if admin and canDelete is true -->
         `;
         feedbackListElement.appendChild(feedbackItem);
     });
