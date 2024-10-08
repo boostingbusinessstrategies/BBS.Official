@@ -1,4 +1,4 @@
-/* CSS Variables for Easy Maintenance */
+/* Variables para fácil mantenimiento */
 :root {
     --primary-color: #ee4d4d;
     --secondary-color: #ffc44d;
@@ -22,7 +22,6 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
-    overflow-x: hidden;
     animation: fadeIn 0.5s ease;
 }
 
@@ -70,7 +69,18 @@ header h1 {
     border-radius: var(--border-radius);
     box-shadow: 0 4px 30px var(--shadow-color);
     transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-    animation: fadeIn 0.5s ease; /* Animation for section */
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .section:hover {
@@ -88,65 +98,64 @@ header h1 {
     margin-bottom: 15px;
 }
 
-/* Submit Button Styling */
+/* Estilo del botón de envío */
 .submit-button {
     background-color: var(--primary-color);
-    color: #fff;
-    border: none;
+    color: white;
     padding: 12px 24px;
+    border: none;
     border-radius: var(--border-radius);
-    font-weight: 600;
     cursor: pointer;
-    transition: background-color var(--transition-speed), transform var(--transition-speed);
     box-shadow: 0 2px 5px var(--shadow-color);
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+    font-weight: 600;
 }
 
 .submit-button:hover {
-    background-color: darken(var(--primary-color), 10%);
-    transform: scale(1.05);
+    background-color: #d43c3c;
+    transform: translateY(-3px);
 }
 
-/* Admin Section Styling */
+/* Ajustes Admin */
 .admin-controls {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
     margin: 20px 0;
     padding: 15px;
     background: #f8f9fa;
-    border-radius: var(--border-radius);
+    border-radius: 8px;
     box-shadow: 0 2px 10px var(--shadow-color);
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .admin-button {
     padding: 10px 20px;
-    background-color: #34495e;
+    background-color: #2c3e50;
     color: white;
     border: none;
     border-radius: var(--border-radius);
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease;
 }
 
 .admin-button:hover {
-    background-color: #2c3e50;
-    transform: translateY(-2px);
+    background-color: #34495e;
 }
 
-/* Form Styling */
-.feedback-form-container form {
-    display: flex;
-    flex-direction: column;
-}
-
+/* Inputs y Textareas */
 .feedback-form-container input,
 .feedback-form-container select,
 .feedback-form-container textarea {
-    padding: 12px;
+    padding: 10px;
     margin-bottom: 15px;
     border-radius: var(--border-radius);
     border: 1px solid #ccc;
     transition: border-color var(--transition-speed);
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .feedback-form-container input:focus,
@@ -156,32 +165,33 @@ header h1 {
     outline: none;
 }
 
-/* Feedback Display */
-.feedback-display-container {
-    background: #fff;
-    border-radius: var(--border-radius);
-    box-shadow: 0 2px 10px var(--shadow-color);
+/* Contenedores */
+.feedback-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    margin: 20px auto;
     padding: 20px;
+}
+
+.feedback-form-container,
+.feedback-display-container {
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 30px var(--shadow-color);
     margin: 20px 0;
+    padding: 20px;
+    width: 100%;
+}
+
+.feedback-display-container {
     animation: fadeInUp 0.5s ease;
 }
 
-@keyframes fadeInUp {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* Mobile Friendly Layout */
 @media (min-width: 768px) {
     .feedback-section {
         flex-direction: row;
-        justify-content: space-between;
     }
 
     .feedback-form-container,
@@ -201,18 +211,11 @@ header h1 {
     }
 }
 
-/* Additional Button Styling */
-.show-more-btn {
-    background-color: var(--primary-color);
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background: var(--primary-color);
     color: #fff;
-    border: none;
-    padding: 12px 20px;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    transition: background-color var(--transition-speed), transform var(--transition-speed);
-}
-
-.show-more-btn:hover {
-    background-color: darken(var(--primary-color), 10%);
-    transform: translateY(-2px);
+    margin-top: 20px;
 }
