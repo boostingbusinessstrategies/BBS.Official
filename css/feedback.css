@@ -382,8 +382,10 @@ footer {
     background: var(--primary-color);
     color: #fff;
     margin-top: 20px;
+    position: relative; /* Asegura que el footer actúe como referencia para el posicionamiento absoluto */
 }
 
+/* Ajustes para el botón de alternancia de administrador */
 .admin-toggle-button {
     position: absolute; /* Hace que el botón se posicione de manera absoluta dentro del footer */
     bottom: 20px; /* Distancia desde la parte inferior del footer */
@@ -394,10 +396,11 @@ footer {
     border-radius: 5px; /* Bordes redondeados */
     padding: 10px 15px; /* Espaciado interno */
     cursor: pointer; /* Cursor de puntero al pasar el mouse */
+    z-index: 1100; /* Asegura que esté por encima de otros elementos */
 }
 
 .admin-toggle-button:hover {
-    background-color: #0056b3; /* Color de fondo al pasar el mouse */
+    background-color: #d43c3c; /* Color de fondo al pasar el mouse */
 }
 
 /* Responsividad para pantallas pequeñas */
