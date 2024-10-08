@@ -529,6 +529,15 @@ header h1 {
     color: var(--text-color); /* Color de texto */
 }
 
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background: var(--primary-color);
+    color: #fff;
+    margin-top: 20px;
+}
+
 .social-media {
     list-style: none;
     padding: 0;
