@@ -33,13 +33,17 @@
     <div id="content">
         <header>
             <h1>Customer Feedback</h1>
+            <!-- New Admin Toggle Button -->
+            <button id="admin-toggle" class="admin-toggle-button" onclick="toggleAdminControls()">
+                <i class="fas fa-lock"></i>
+            </button>
         </header>
 
         <section id="feedback-section" class="feedback-section">
             <h2>Share Your Experience</h2>
 
-            <!-- Admin Controls -->
-            <div id="admin-controls" class="admin-controls">
+            <!-- Updated Admin Controls with display:none -->
+            <div id="admin-controls" class="admin-controls" style="display: none;">
                 <button id="toggle-delete-button" class="admin-button" onclick="toggleDeleteFeature()">
                     <i class="fas fa-trash"></i> Enable Delete Feature
                 </button>
