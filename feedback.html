@@ -7,10 +7,10 @@
     <meta name="keywords" content="customer feedback, database solutions review, BBS testimonials">
     <title>Customer Feedback - BBS</title>
 
-    <!-- Fuentes y estilos -->
+    <!-- Fonts and styles -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="css/feedback.css"> <!-- Asegúrate de que la ruta sea correcta -->
+    <link rel="stylesheet" href="css/feedback.css">
 </head>
 <body>
     <nav id="sidebar">
@@ -38,47 +38,68 @@
         <section id="feedback-section" class="feedback-section">
             <h2>Share Your Experience</h2>
 
-            <!-- Contenedor para el formulario de feedback -->
-           <div class="feedback-form-container">
-               <form id="feedback-form" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST" onsubmit="submitFeedback(event)">
-                   <input type="hidden" name="_honey" style="display:none">
-                   <input type="hidden" name="_token" value="your_token_here"> <!-- Make sure to replace this with your actual token -->
-                   <input type="hidden" name="_next" value="https://boostingbusinessstrategies.github.io/BBS.Official/feedback.html">
+            <!-- Admin Controls -->
+            <div id="admin-controls" class="admin-controls">
+                <button id="toggle-delete-button" class="admin-button" onclick="toggleDeleteFeature()">
+                    <i class="fas fa-trash"></i> Enable Delete Feature
+                </button>
+                <button id="reset-feedback-button" class="admin-button" onclick="resetFeedbackList()">
+                    <i class="fas fa-redo"></i> Reset Feedback List
+                </button>
+            </div>
 
-                    <label for="feedback-first-name">First Name</label>
-                    <input type="text" id="feedback-first-name" name="feedback-first-name" required aria-label="First Name">
+            <!-- Feedback Form Container -->
+            <div class="feedback-form-container">
+                <form id="feedback-form" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST" onsubmit="submitFeedback(event)">
+                    <input type="hidden" name="_honey" style="display:none">
+                    <input type="hidden" name="_token" value="your_token_here">
+                    <input type="hidden" name="_next" value="https://boostingbusinessstrategies.github.io/BBS.Official/feedback.html">
 
-                    <label for="feedback-last-name">Last Name</label>
-                    <input type="text" id="feedback-last-name" name="feedback-last-name" required aria-label="Last Name">
+                    <div class="form-group">
+                        <label for="feedback-first-name">First Name</label>
+                        <input type="text" id="feedback-first-name" name="feedback-first-name" required aria-label="First Name">
+                    </div>
 
-                    <label for="feedback-email">Email</label>
-                    <input type="email" id="feedback-email" name="feedback-email" required aria-label="Email">
+                    <div class="form-group">
+                        <label for="feedback-last-name">Last Name</label>
+                        <input type="text" id="feedback-last-name" name="feedback-last-name" required aria-label="Last Name">
+                    </div>
 
-                    <label for="feedback-rating">Rate our services:</label>
-                    <select id="feedback-rating" name="feedback-rating" required aria-label="Rating">
-                        <option value="" disabled selected>Select your rating</option>
-                        <option value="5">⭐️⭐️⭐️⭐️⭐️ (5 stars)</option>
-                        <option value="4">⭐️⭐️⭐️⭐️ (4 stars)</option>
-                        <option value="3">⭐️⭐️⭐️ (3 stars)</option>
-                        <option value="2">⭐️⭐️ (2 stars)</option>
-                        <option value="1">⭐️ (1 star)</option>
-                    </select>
+                    <div class="form-group">
+                        <label for="feedback-email">Email</label>
+                        <input type="email" id="feedback-email" name="feedback-email" required aria-label="Email">
+                    </div>
 
-                    <label for="feedback-comment">Leave a comment:</label>
-                    <textarea id="feedback-comment" name="feedback-comment" rows="4" placeholder="Leave your feedback here..." required aria-label="Comment"></textarea>
+                    <div class="form-group">
+                        <label for="feedback-rating">Rate our services:</label>
+                        <select id="feedback-rating" name="feedback-rating" required aria-label="Rating">
+                            <option value="" disabled selected>Select your rating</option>
+                            <option value="5">⭐️⭐️⭐️⭐️⭐️ (5 stars)</option>
+                            <option value="4">⭐️⭐️⭐️⭐️ (4 stars)</option>
+                            <option value="3">⭐️⭐️⭐️ (3 stars)</option>
+                            <option value="2">⭐️⭐️ (2 stars)</option>
+                            <option value="1">⭐️ (1 star)</option>
+                        </select>
+                    </div>
 
-                    <input type="submit" value="Submit Feedback">
+                    <div class="form-group">
+                        <label for="feedback-comment">Leave a comment:</label>
+                        <textarea id="feedback-comment" name="feedback-comment" rows="4" placeholder="Leave your feedback here..." required aria-label="Comment"></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">
+                        <i class="fas fa-paper-plane"></i> Submit Feedback
+                    </button>
                 </form>
             </div>
-            <!-- Botón para habilitar/deshabilitar la función de eliminación -->
-        <button id="toggle-delete-button" style="display:none;" onclick="toggleDeleteFeature()">Enable Delete Feature</button>
-        <!-- Botón para reiniciar la lista de feedback -->
-        <button id="reset-feedback-button" style="display:none;" onclick="resetFeedbackList()">Reset Feedback List</button>
-            <!-- Contenedor para mostrar feedbacks -->
+
+            <!-- Feedback Display Container -->
             <div id="feedback-display" class="feedback-display-container">
                 <h3>Recent Feedback:</h3>
-                <ul id="feedback-list"></ul>
-                <button id="show-more-reviews" class="show-more-btn" style="display:none;" onclick="showMoreReviews()">Show More Reviews</button>
+                <ul id="feedback-list" class="feedback-list"></ul>
+                <button id="show-more-reviews" class="show-more-btn" onclick="showMoreReviews()">
+                    <i class="fas fa-chevron-down"></i> Show More Reviews
+                </button>
             </div>
         </section>
 
@@ -95,7 +116,6 @@
         </footer>
     </div>
 
-    <script src="Javascript/feedback.js"></script> <!-- Asegúrate de que la ruta sea correcta -->
+    <script src="Javascript/feedback.js"></script>
 </body>
 </html>
-
