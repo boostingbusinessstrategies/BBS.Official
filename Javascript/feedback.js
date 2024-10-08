@@ -86,9 +86,6 @@ function submitFeedback(event) {
         feedbackList.push(feedback);
         localStorage.setItem("feedbackList", JSON.stringify(feedbackList));
 
-        // Mostrar mensaje de éxito
-        showSuccessMessage();
-
         // Eliminar el formulario si deseas
         clearFeedbackForm();
 
@@ -116,38 +113,6 @@ function deleteFeedback(index) {
         console.error("Error deleting feedback:", error);
         alert("There was an error deleting the feedback. Please try again.");
     }
-}
-
-// Función para mostrar mensaje de éxito
-function showSuccessMessage() {
-    const successMessage = document.createElement("div");
-    successMessage.classList.add("feedback-success", "active");
-
-    const checkIcon = document.createElement("i");
-    checkIcon.classList.add("fas", "fa-check-circle", "feedback-check");
-
-    const messageText = document.createElement("p");
-    messageText.textContent = "Thank you for your feedback!";
-
-    successMessage.appendChild(checkIcon);
-    successMessage.appendChild(messageText);
-
-    document.body.appendChild(successMessage);
-
-    // Eliminar el mensaje después de 3 segundos
-    setTimeout(() => {
-        successMessage.classList.remove("active");
-        document.body.removeChild(successMessage);
-    }, 3000);
-}
-
-// Función para limpiar el formulario de feedback (opcional)
-function clearFeedbackForm() {
-    document.getElementById("feedback-first-name").value = '';
-    document.getElementById("feedback-last-name").value = '';
-    document.getElementById("feedback-email").value = '';
-    document.getElementById("feedback-rating").value = '';
-    document.getElementById("feedback-comment").value = '';
 }
 
 // Cargar feedback al cargar la página
