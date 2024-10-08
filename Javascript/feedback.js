@@ -1,76 +1,104 @@
-// Número de comentarios a mostrar inicialmente
+// Initial number of reviews to show
 const reviewsToShow = 8;
 
-// Variables para controlar el estado del administrador y la capacidad de eliminar
-let isAdmin = true; // Cambia a true si el usuario es administrador
-let canDelete = true; // Cambia a true si se habilita la función de eliminar
+// Variables to control admin status and delete capability
+let isAdmin = true; // Change to true if user is admin
+let canDelete = true; // Change to true if delete function is enabled
 
-// Función para cargar más comentarios
+// Function to show/hide buttons based on state
+function updateButtonVisibility() {
+    const deleteButtons = document.querySelectorAll('.delete-feedback-button');
+    const toggleDeleteButton = document.getElementById('toggle-delete-button');
+    const resetButton = document.getElementById('reset-feedback-button');
+
+    // Ensure elements exist before modifying them
+    if (toggleDeleteButton) {
+        toggleDeleteButton.style.display = isAdmin ? 'inline-block' : 'none';
+        toggleDeleteButton.textContent = canDelete ? 'Disable delete function' : 'Enable delete function';
+    }
+
+    if (resetButton) {
+        resetButton.style.display = isAdmin ? 'inline-block' : 'none';
+    }
+
+    // Update visibility of delete buttons in each review
+    deleteButtons.forEach(button => {
+        button.style.display = (isAdmin && canDelete) ? 'inline-block' : 'none';
+    });
+}
+
+// Function to show more reviews
 function showMoreReviews() {
     const feedbackListElement = document.getElementById("feedback-list");
     const feedbackItems = feedbackListElement.querySelectorAll("li");
 
-    // Mostrar comentarios adicionales
     for (let i = reviewsToShow; i < feedbackItems.length; i++) {
         feedbackItems[i].style.display = "list-item";
     }
 
-    // Ocultar el botón de "Mostrar más comentarios"
-    document.getElementById("show-more-reviews").style.display = "none";
+    const showMoreButton = document.getElementById("show-more-reviews");
+    if (showMoreButton) {
+        showMoreButton.style.display = "none";
+    }
 }
 
-// Función para mostrar los comentarios limitados inicialmente
+// Function to display feedback
 function displayFeedback() {
     const feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
     const feedbackListElement = document.getElementById("feedback-list");
 
-    // Limpiar la lista de comentarios
+    if (!feedbackListElement) {
+        console.error("Feedback list element not found");
+        return;
+    }
+
     feedbackListElement.innerHTML = "";
 
-    // Crear elementos de comentario y añadirlos a la lista
     feedbackList.forEach((feedback) => {
         const feedbackItem = document.createElement("li");
-        feedbackItem.style.display = feedbackListElement.childElementCount < reviewsToShow ? "list-item" : "none"; // Mostrar solo los primeros comentarios
+        feedbackItem.style.display = feedbackListElement.childElementCount < reviewsToShow ? "list-item" : "none";
         feedbackItem.innerHTML = `
             <div>${feedback.firstName} ${feedback.lastName}</div>
             <div class="rating">${'⭐'.repeat(feedback.rating)}${'☆'.repeat(5 - feedback.rating)}</div>
             <div>${feedback.comment}</div>
-            ${isAdmin && canDelete ? `<button onclick="deleteFeedback('${feedback.id}')">Eliminar</button>` : ''}
+            ${isAdmin ? `<button class="delete-feedback-button" onclick="deleteFeedback('${feedback.id}')">Delete</button>` : ''}
         `;
         feedbackListElement.appendChild(feedbackItem);
     });
 
-    // Mostrar el botón "Mostrar más comentarios" solo si hay más comentarios que el límite
-    document.getElementById("show-more-reviews").style.display = feedbackList.length > reviewsToShow ? "block" : "none";
+    const showMoreButton = document.getElementById("show-more-reviews");
+    if (showMoreButton) {
+        showMoreButton.style.display = feedbackList.length > reviewsToShow ? "block" : "none";
+    }
 
-    updateButtonVisibility(); // Actualizar visibilidad de botones
+    updateButtonVisibility();
 }
 
-// Función para enviar un nuevo comentario
+// Function to submit new feedback
 function submitFeedback(event) {
     event.preventDefault();
 
-    // Obtener valores del formulario
+    // Get form values
     const firstName = document.getElementById("feedback-first-name").value.trim();
     const lastName = document.getElementById("feedback-last-name").value.trim();
     const email = document.getElementById("feedback-email").value.trim();
     const rating = document.getElementById("feedback-rating").value;
     const comment = document.getElementById("feedback-comment").value.trim();
 
-    // Validar campos
+    // Validate fields
     if (!firstName || !lastName || !email || !rating || !comment) {
-        alert("Por favor, completa todos los campos antes de enviar el comentario.");
+        alert("Please complete all fields before submitting the review.");
         return;
     }
 
-    // Validar formato de correo electrónico
+    // Validate email format
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
-        alert("Por favor, introduce una dirección de correo válida.");
+        alert("Please enter a valid email address.");
         return;
     }
 
-    // Crear el objeto de comentario
+    // Create feedback object
     const feedback = {
         id: Date.now().toString(),
         firstName: firstName,
@@ -81,47 +109,47 @@ function submitFeedback(event) {
     };
 
     try {
-        // Guardar comentario en localStorage
+        // Save feedback to localStorage
         let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
         feedbackList.push(feedback);
         localStorage.setItem("feedbackList", JSON.stringify(feedbackList));
 
-        // Limpiar el formulario
+        // Clear the form
         clearFeedbackForm();
 
-        // Actualizar la lista de comentarios
+        // Update the feedback list
         displayFeedback();
 
     } catch (error) {
-        console.error("Error al guardar el comentario:", error);
-        alert("Hubo un error al guardar tu comentario. Por favor, intenta de nuevo.");
+        console.error("Error saving feedback:", error);
+        alert("There was an error saving your feedback. Please try again.");
     }
 }
 
-// Función para eliminar un comentario
+// Function to delete feedback
 function deleteFeedback(id) {
     if (!isAdmin) {
-        alert("No tienes permiso para eliminar este comentario.");
+        alert("You don't have permission to delete this review.");
         return;
     }
 
     if (!canDelete) {
-        alert("La función de eliminación está deshabilitada.");
+        alert("Delete function is disabled.");
         return;
     }
 
     try {
         let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
-        feedbackList = feedbackList.filter(feedback => feedback.id !== id); // Eliminar el comentario por ID
-        localStorage.setItem("feedbackList", JSON.stringify(feedbackList)); // Actualizar localStorage
-        displayFeedback(); // Actualizar la lista de comentarios
+        feedbackList = feedbackList.filter(feedback => feedback.id !== id);
+        localStorage.setItem("feedbackList", JSON.stringify(feedbackList));
+        displayFeedback();
     } catch (error) {
-        console.error("Error al eliminar el comentario:", error);
-        alert("Hubo un error al eliminar el comentario. Por favor, intenta de nuevo.");
+        console.error("Error deleting feedback:", error);
+        alert("There was an error deleting the feedback. Please try again.");
     }
 }
 
-// Función para limpiar el formulario de comentarios
+// Function to clear feedback form
 function clearFeedbackForm() {
     document.getElementById("feedback-first-name").value = '';
     document.getElementById("feedback-last-name").value = '';
@@ -130,51 +158,30 @@ function clearFeedbackForm() {
     document.getElementById("feedback-comment").value = '';
 }
 
-// Función para mostrar/ocultar los botones según el estado
-function updateButtonVisibility() {
-    const deleteButton = document.getElementById('toggle-delete-button');
-    const resetButton = document.getElementById('reset-feedback-button');
-
-    // Mostrar/ocultar el botón de eliminar
-    deleteButton.style.display = canDelete ? 'inline-block' : 'none';
-
-    // Mostrar/ocultar el botón de reinicio solo si es administrador
-    resetButton.style.display = isAdmin ? 'inline-block' : 'none';
-
-    // Actualizar la visibilidad de los botones de eliminar en cada comentario
-    const feedbackListElement = document.getElementById("feedback-list");
-    const deleteButtons = feedbackListElement.querySelectorAll("button");
-    deleteButtons.forEach(button => {
-        button.style.display = isAdmin && canDelete ? "inline" : "none";
-    });
-}
-
-// Función para habilitar/deshabilitar la capacidad de eliminar
+// Function to toggle delete capability
 function toggleDeleteFeature() {
-    canDelete = !canDelete; // Cambiar el estado de canDelete
-    updateButtonVisibility(); // Actualizar la visibilidad de los botones
+    canDelete = !canDelete;
+    updateButtonVisibility();
+    console.log('Delete capability state:', canDelete); // For debugging
 }
 
-// Función para resetear la lista de comentarios
+// Function to reset feedback list
 function resetFeedbackList() {
-    if (confirm("¿Estás seguro de que deseas reiniciar la lista de comentarios? Esta acción no se puede deshacer.")) {
+    if (!isAdmin) {
+        console.log('Attempted reset without admin permissions');
+        return;
+    }
+
+    if (confirm("Are you sure you want to reset the feedback list? This action cannot be undone.")) {
         localStorage.removeItem("feedbackList");
-        document.getElementById('feedback-list').innerHTML = "";
-        displayFeedback(); // Mostrar la lista de comentarios actualizada
-        alert("La lista de comentarios ha sido reiniciada.");
+        displayFeedback();
+        alert("The feedback list has been reset.");
     }
 }
 
-// Cargar los comentarios cuando la página se carga
-window.onload = () => {
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Initial state - isAdmin:', isAdmin, 'canDelete:', canDelete); // For debugging
     displayFeedback();
-
-    // Inicializar estado de botones
-    const toggleButton = document.getElementById("toggle-delete-button");
-    toggleButton.innerText = canDelete ? "Deshabilitar función de eliminar" : "Habilitar función de eliminar";
-};
-
-// Función para iniciar los botones al cargar la página
-document.addEventListener('DOMContentLoaded', function () {
-    updateButtonVisibility(); // Asegurar que los botones se muestren correctamente
+    updateButtonVisibility();
 });
