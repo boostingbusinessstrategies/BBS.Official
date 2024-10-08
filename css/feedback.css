@@ -211,6 +211,161 @@ header h1 {
     }
 }
 
+/* Botón de alternancia de administrador */
+.admin-toggle-button {
+    position: fixed; /* Fijo en la esquina */
+    top: 25px; /* Espacio desde el borde superior */
+    right: 25px; /* Espacio desde el borde derecho */
+    background-color: var(--primary-color); /* Color primario */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Redondeado */
+    width: 45px; /* Tamaño más grande */
+    height: 45px; /* Tamaño más grande */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones más suaves */
+    z-index: 1000;
+}
+
+.admin-toggle-button:hover {
+    background-color: darken(var(--primary-color), 10%); /* Efecto en hover */
+    transform: scale(1.05); /* Aumento al pasar el ratón */
+}
+
+.admin-toggle-button i {
+    font-size: 18px; /* Tamaño del icono aumentado */
+}
+
+/* Animación de aparición */
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Botón "Mostrar más" */
+.show-more-btn {
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 12px 25px; /* Espaciado aumentado */
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background var(--transition-speed), transform 0.3s ease; /* Transiciones suaves */
+    margin-top: 20px; /* Margen superior aumentado */
+}
+
+.show-more-btn:hover {
+    background: darken(var(--primary-color), 10%); /* Efecto en hover */
+    transform: scale(1.05); /* Aumento al pasar el ratón */
+}
+
+/* Controles de administrador */
+.admin-controls {
+    margin: 25px 0; /* Margen aumentado */
+    padding: 20px; /* Padding aumentado */
+    background: #f8f9fa; /* Color de fondo claro */
+    border-radius: 10px; /* Bordes más redondeados */
+    display: flex;
+    gap: 15px; /* Espacio entre los botones */
+    flex-wrap: wrap;
+}
+
+.admin-button {
+    padding: 12px 25px; /* Espaciado aumentado */
+    background-color: var(--secondary-color); /* Color secundario */
+    color: white;
+    border: none;
+    border-radius: 8px; /* Bordes más redondeados */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre el texto y el icono */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+}
+
+.admin-button:hover {
+    background-color: darken(var(--secondary-color), 10%); /* Efecto en hover */
+    transform: scale(1.05); /* Aumento al pasar el ratón */
+}
+
+.admin-button i {
+    font-size: 18px; /* Tamaño del icono aumentado */
+}
+
+/* Estilos de la lista de retroalimentación */
+.feedback-list {
+    list-style: none;
+    padding: 0;
+}
+
+.feedback-list li {
+    background: white;
+    padding: 25px; /* Padding aumentado */
+    margin: 12px 0; /* Margen aumentado */
+    border-radius: 10px; /* Bordes más redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+}
+
+/* Botón de eliminar retroalimentación */
+.delete-feedback-button {
+    background-color: #e74c3c; /* Color de advertencia */
+    color: white;
+    border: none;
+    padding: 8px 15px; /* Espaciado aumentado */
+    border-radius: 5px; /* Bordes más redondeados */
+    cursor: pointer;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.delete-feedback-button:hover {
+    background-color: #c0392b; /* Efecto en hover */
+}
+
+/* Botón "Mostrar más" */
+.show-more-btn {
+    background-color: var(--primary-color); /* Color primario */
+    color: white;
+    border: none;
+    padding: 12px 25px; /* Espaciado aumentado */
+    border-radius: 8px; /* Bordes más redondeados */
+    cursor: pointer;
+    margin-top: 25px; /* Margen superior aumentado */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre el texto y el icono */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+}
+
+.show-more-btn:hover {
+    background-color: darken(var(--primary-color), 10%); /* Efecto en hover */
+    transform: scale(1.05); /* Aumento al pasar el ratón */
+}
+
+/* Mejoras del grupo de formularios */
+.form-group {
+    margin-bottom: 25px; /* Margen inferior aumentado */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px; /* Margen inferior aumentado */
+    font-weight: 600; /* Negrita */
+    color: var(--text-color); /* Color de texto */
+}
+
+
 /* Footer */
 footer {
     text-align: center;
