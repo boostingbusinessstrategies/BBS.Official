@@ -5,7 +5,7 @@ const reviewsToShow = 8;
 let isAdmin = true; // Change to false if you do not want full access
 
 // Variable to determine if the delete feature is enabled
-let canDelete = true; // Change to true to enable the delete feature
+let canDelete = false; // Change to true to enable the delete feature
 
 let feedbackCounter = 0; // Counter for unique feedback IDs
 
