@@ -375,46 +375,29 @@ header h1 {
     }
 }
 
-/* Botón de alternancia de administrador */
+/* Footer */
+footer {
+    text-align: relative;
+    padding: 20px 0;
+    background: var(--primary-color);
+    color: #fff;
+    margin-top: 20px;
+}
+
 .admin-toggle-button {
-    position: absolute; /* Cambiado a absoluto para estar dentro del footer */
-    bottom: 15px; /* Espacio desde el borde inferior del footer */
-    right: 15px; /* Espacio desde el borde derecho del footer */
-    background-color: var(--primary-color); /* Color primario */
-    color: white;
-    border: none;
-    border-radius: 50%; /* Redondeado */
-    width: 45px; /* Tamaño más grande */
-    height: 45px; /* Tamaño más grande */
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones más suaves */
-    z-index: 1000;
+    position: absolute; /* Hace que el botón se posicione de manera absoluta dentro del footer */
+    bottom: 20px; /* Distancia desde la parte inferior del footer */
+    right: 20px; /* Distancia desde el lado derecho del footer */
+    background-color: #ee4d4d; /* Color de fondo del botón */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 15px; /* Espaciado interno */
+    cursor: pointer; /* Cursor de puntero al pasar el mouse */
 }
 
-/* Efecto hover para el botón */
 .admin-toggle-button:hover {
-    background-color: darken(var(--primary-color), 10%); /* Efecto en hover */
-    transform: scale(1.05); /* Aumento al pasar el ratón */
-}
-
-/* Estilo del icono dentro del botón */
-.admin-toggle-button i {
-    font-size: 18px; /* Tamaño del icono aumentado */
-}
-
-/* Animación de aparición */
-@keyframes fadeInUp {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+    background-color: #0056b3; /* Color de fondo al pasar el mouse */
 }
 
 /* Responsividad para pantallas pequeñas */
@@ -542,16 +525,6 @@ header h1 {
     margin-bottom: 8px; /* Margen inferior aumentado */
     font-weight: 600; /* Negrita */
     color: var(--text-color); /* Color de texto */
-}
-
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 20px 0;
-    background: var(--primary-color);
-    color: #fff;
-    margin-top: 20px;
 }
 
 .social-media {
