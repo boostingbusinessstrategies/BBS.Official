@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Share your experience with BBS's custom database solutions">
-    <meta name="keywords" content="customer feedback, database solutions review, BBS testimonials">
-    <title>Customer Feedback - BBS</title>
+    <meta name="description" content="Order your custom database solution from BBS for E-commerce or Healthcare needs">
+    <meta name="keywords" content="order database, custom database, E-commerce database, healthcare database">
+    <title>Order Your Custom Database - BBS</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="css/feedback.css"> <!-- Add a separate CSS file for feedback -->
+    <link rel="stylesheet" href="C:\Users\Alvaro\OneDrive\Documentos\BBS Website\css\orderstyle.css">
 </head>
 <body>
     <nav id="sidebar">
@@ -30,40 +30,61 @@
     </nav>
     <div id="content">
         <header>
-            <h1>Customer Feedback</h1>
+            <h1>Order Your Custom Database</h1>
         </header>
+        
+        <section id="order-form">
+            <h2>Get Your Custom Database Today!</h2>
+            <form id="database-form" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST">
+                <input type="hidden" name="_honey" style="display:none">
+                <input type="hidden" name="_token" value="your_token_here">
+                <input type="hidden" name="_next" value="https://www.paypal.me/AaronObando505"> 
 
-        <section id="feedback-section" class="feedback-section">
-            <h2>Share Your Experience</h2>
-            <form id="feedback-form" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST" onsubmit="submitFeedback(event)">
-                <label for="feedback-first-name">First Name</label>
-                <input type="text" id="feedback-first-name" name="feedback-first-name" required aria-label="Feedback First Name">
-
-                <label for="feedback-last-name">Last Name</label>
-                <input type="text" id="feedback-last-name" name="feedback-last-name" required aria-label="Feedback Last Name">
-
-                <label for="feedback-rating">Rate our services:</label>
-                <select id="feedback-rating" name="feedback-rating" required aria-label="Feedback Rating">
-                    <option value="" disabled selected>Select your rating</option>
-                    <option value="5">⭐️⭐️⭐️⭐️⭐️ (5 stars)</option>
-                    <option value="4">⭐️⭐️⭐️⭐️ (4 stars)</option>
-                    <option value="3">⭐️⭐️⭐️ (3 stars)</option>
-                    <option value="2">⭐️⭐️ (2 stars)</option>
-                    <option value="1">⭐️ (1 star)</option>
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first-name" required aria-label="First Name">
+            
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last-name" required aria-label="Last Name">
+            
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required aria-label="Email">
+            
+                <label for="database-type">Which type of database do you need?</label>
+                <select id="database-type" name="database-type" required aria-label="Database Type">
+                    <option value="" disabled selected>Select your option</option>
+                    <option value="ecommerce">E-commerce Database</option>
+                    <option value="healthcare">Healthcare Database</option>
+                    <option value="custom">Custom Database for My Business</option>
+                </select>
+            
+                <label for="plan">Which plan best suits your needs?</label>
+                <select id="plan" name="plan" required aria-label="Plan Selection">
+                    <option value="" disabled selected>Select your option</option>
+                    <option value="basic">Basic Plan - $199 (5 to 8 tables)</option>
+                    <option value="standard">Standard Plan - $599 (8 to 13 tables)</option>
+                    <option value="business">Business Plan - $999 (10+ tables)</option>
                 </select>
 
-                <label for="feedback-comment">Leave a comment:</label>
-                <textarea id="feedback-comment" name="feedback-comment" rows="4" placeholder="Leave your feedback here..." required aria-label="Feedback Comment"></textarea>
+                <label for="problems">Tell us about your current problems related to data:</label>
+                <textarea id="problems" name="problems" rows="4" placeholder="Describe your data issues here..." aria-label="Current Data Problems"></textarea>
 
-                <input type="submit" value="Submit Feedback">
+                <label for="custom-details">Let us know if you need any specific details in your database (e.g., tables, columns, etc.)</label>
+                <textarea id="custom-details" name="custom-details" rows="4" placeholder="Optional" aria-label="Custom Database Details"></textarea>
+            
+                <p class="note"><small>Please note, you cannot request columns containing sensitive information (such as emails, phone numbers, or Government IDs) due to CCPA and GDPR regulations.</small></p>
+                
+                <h3 style="color: #2a333a; margin: 20px 0; text-align: left;">Payment Information:</h3>
+                <p class="note" style="text-align: left;">
+                    To proceed with your order, please complete your payment via PayPal: 
+                    <a href="https://www.paypal.me/AaronObando505" target="_blank" style="color: #ee4d4d; font-weight: bold;">PayPal Me</a><br>
+                    We DO NOT WORK FOR FREE. If you didn't like the database or you don't need it, we will return your money. You will communicate with me during the process, and there is also customer service available.<br>
+                    Buy now, and you'll be supported by Aaron Obando, expert in Database Development, via email. We'll send the database in a 5-day maximum period.
+                </p>
+
+                <input type="submit" value="Submit & Proceed to PayPal">
             </form>
-
-            <div id="feedback-display" style="margin-top: 30px;">
-                <h3>Recent Feedback:</h3>
-                <ul id="feedback-list"></ul>
-            </div>
         </section>
-
+        
         <footer>
             <div class="container">
                 <p>&copy; 2024 Boosting Business Strategies (BBS). All rights reserved.</p>
@@ -77,6 +98,6 @@
         </footer>
     </div>
 
-    <script src="Javascript/feedback.js"></script>
+    <script src="C:\Users\Alvaro\OneDrive\Documentos\BBS Website\Javascript\scripts.js"></script>
 </body>
 </html>
