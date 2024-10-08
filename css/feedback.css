@@ -378,7 +378,7 @@ header h1 {
 /* Botón de alternancia de administrador */
 .admin-toggle-button {
     position: fixed; /* Fijo en la esquina */
-    top: 25px; /* Espacio desde el borde superior */
+    botton: 25px; /* Espacio desde el borde inferior */
     right: 25px; /* Espacio desde el borde derecho */
     background-color: var(--primary-color); /* Color primario */
     color: white;
