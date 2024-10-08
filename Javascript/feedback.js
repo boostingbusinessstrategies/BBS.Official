@@ -52,7 +52,7 @@ function displayFeedback() {
     // Control visibility of delete buttons
     const deleteButtons = feedbackListElement.querySelectorAll("button");
     deleteButtons.forEach(button => {
-        button.style.display = canDelete ? "inline" : "none"; // Show or hide based on canDelete
+        button.style.display = isAdmin && canDelete ? "inline" : "none"; // Show or hide based on isAdmin and canDelete
     });
 }
 
@@ -148,30 +148,6 @@ window.onload = () => {
     toggleButton.innerText = canDelete ? "Disable Delete Feature" : "Enable Delete Feature";
 };
 
-// Sidebar functionality
-const sidebar = document.getElementById('sidebar');
-const menuToggle = document.getElementById('menu-toggle');
-
-// Add an event listener to the menu button
-menuToggle.addEventListener('click', () => {
-    sidebar.classList.toggle('active');
-});
-
-// Detect clicks outside the sidebar to close it
-document.addEventListener('click', (event) => {
-    if (sidebar.classList.contains('active') && !sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
-        sidebar.classList.remove('active');
-    }
-});
-
-// Close the sidebar when clicking on links
-const sidebarLinks = sidebar.querySelectorAll('ul li a');
-sidebarLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        sidebar.classList.remove('active');
-    });
-});
-
 // Clear feedback form function
 function clearFeedbackForm() {
     document.getElementById("feedback-first-name").value = '';
@@ -179,4 +155,4 @@ function clearFeedbackForm() {
     document.getElementById("feedback-email").value = '';
     document.getElementById("feedback-rating").value = '';
     document.getElementById("feedback-comment").value = '';
-        }
+}
