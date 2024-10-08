@@ -5,7 +5,7 @@ const reviewsToShow = 8;
 let isAdmin = true; // Change to false if you do not want full access
 
 // Variable to determine if the delete feature is enabled
-let canDelete = true; // Change to true to enable the delete feature
+let canDelete = false; // Change to true to enable the delete feature
 
 let feedbackCounter = 0; // Counter for unique feedback IDs
 
@@ -47,8 +47,19 @@ function displayFeedback() {
     // Show the "Show More Reviews" button only if there are more reviews than the limit
     document.getElementById("show-more-reviews").style.display = feedbackList.length > reviewsToShow ? "block" : "none";
 
-    // Show or hide the toggle delete button based on isAdmin
-    document.getElementById("toggle-delete-button").style.display = isAdmin ? "block" : "none";
+    // Control visibility of Enable/Disable button
+    const enableDisableButton = document.getElementById("enable-disable-button");
+    if (isAdmin) {
+        enableDisableButton.style.display = "inline"; // Show the button if isAdmin is true
+    } else {
+        enableDisableButton.style.display = "none"; // Hide if not an admin
+    }
+
+    // Control visibility of delete buttons
+    const deleteButtons = feedbackListElement.querySelectorAll("button");
+    deleteButtons.forEach(button => {
+        button.style.display = canDelete ? "inline" : "none"; // Show or hide based on canDelete
+    });
 }
 
 // Function to submit feedback
