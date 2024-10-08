@@ -2,10 +2,10 @@
 const reviewsToShow = 8;
 
 // Variable to determine if the user is an admin
-const isAdmin = true; // Change to false if you do not want full access
+let isAdmin = true; // Change to false if you do not want full access
 
 // Variable to determine if the delete feature is enabled
-const canDelete = true; // Change to true to enable the delete feature
+let canDelete = false; // Change to true to enable the delete feature
 
 let feedbackCounter = 0; // Counter for unique feedback IDs
 
@@ -123,9 +123,21 @@ function deleteFeedback(id) {
     }
 }
 
+// Function to toggle the delete feature
+function toggleDeleteFeature() {
+    canDelete = !canDelete; // Toggle the delete feature
+    const toggleButton = document.getElementById("toggle-delete-button");
+    toggleButton.innerText = canDelete ? "Disable Delete Feature" : "Enable Delete Feature";
+    displayFeedback(); // Refresh feedback display
+}
+
 // Load feedback when the page loads
 window.onload = () => {
     displayFeedback();
+
+    // Initialize toggle button
+    const toggleButton = document.getElementById("toggle-delete-button");
+    toggleButton.innerText = canDelete ? "Disable Delete Feature" : "Enable Delete Feature";
 };
 
 // Sidebar functionality
@@ -151,3 +163,4 @@ sidebarLinks.forEach(link => {
         sidebar.classList.remove('active');
     });
 });
+
