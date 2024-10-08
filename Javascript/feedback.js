@@ -2,8 +2,8 @@
 const reviewsToShow = 8;
 
 // Variables para controlar el estado del administrador y la capacidad de eliminar
-let isAdmin = false; // Cambia a true si el usuario es administrador
-let canDelete = false; // Cambia a true si se habilita la función de eliminar
+let isAdmin = true; // Cambia a true si el usuario es administrador
+let canDelete = true; // Cambia a true si se habilita la función de eliminar
 
 // Función para cargar más comentarios
 function showMoreReviews() {
