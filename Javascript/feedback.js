@@ -34,7 +34,7 @@ function displayFeedback() {
             <div>${feedback.firstName} ${feedback.lastName}</div>
             <div class="rating">${'⭐'.repeat(feedback.rating)}${'☆'.repeat(5 - feedback.rating)}</div>
             <div>${feedback.comment}</div>
-            <button onclick="deleteFeedback(${index})">Delete</button>  <!-- Botón de eliminar para todas las reseñas -->
+            ${isAdmin ? `<button onclick="deleteFeedback(${index})">Delete</button>` : ''} <!-- Botón de eliminar solo si es admin -->
         `;
         feedbackListElement.appendChild(feedbackItem);
     });
@@ -89,6 +89,9 @@ function submitFeedback(event) {
 
         // Limpiar el formulario
         clearFeedbackForm();
+
+        // Actualizar la lista de feedback para mostrar la nueva reseña
+        displayFeedback();
 
         // Enviar el formulario usando el método POST
         document.getElementById("feedback-form").submit();
@@ -145,3 +148,4 @@ sidebarLinks.forEach(link => {
         sidebar.classList.remove('active');
     });
 });
+
