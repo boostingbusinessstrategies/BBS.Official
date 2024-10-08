@@ -269,7 +269,7 @@ h2 {
 footer {
     margin-top: 20px;
     padding: 20px;
-    background-color: var(--secondary-color); /* Cambiado el color de fondo */
+    background-color: var(--primary-color); /* Cambiado el color de fondo */
     color: white;
     text-align: center;
     border-radius: var(--border-radius);
