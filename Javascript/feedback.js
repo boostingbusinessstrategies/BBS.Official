@@ -4,6 +4,9 @@ const reviewsToShow = 8;
 // Variable to determine if the user is an admin
 const isAdmin = true; // Change to false if you do not want full access
 
+// Variable to determine if the delete feature is enabled
+const canDelete = true; // Change to false to disable the delete feature
+
 // Function to load more reviews
 function showMoreReviews() {
     const feedbackListElement = document.getElementById("feedback-list");
@@ -34,7 +37,7 @@ function displayFeedback() {
             <div>${feedback.firstName} ${feedback.lastName}</div>
             <div class="rating">${'⭐'.repeat(feedback.rating)}${'☆'.repeat(5 - feedback.rating)}</div>
             <div>${feedback.comment}</div>
-            ${isAdmin ? `<button onclick="deleteFeedback(${feedback.id})">Delete</button>` : ''} <!-- Delete button only if admin -->
+            ${canDelete && isAdmin ? `<button onclick="deleteFeedback(${feedback.id})">Delete</button>` : ''} <!-- Delete button only if admin and canDelete is true -->
         `;
         feedbackListElement.appendChild(feedbackItem);
     });
@@ -105,6 +108,11 @@ function deleteFeedback(id) {
         alert("You do not have permission to delete this review.");
         return;
     }
+    
+    if (!canDelete) {
+        alert("The delete feature is currently disabled.");
+        return;
+    }
 
     try {
         let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
@@ -145,3 +153,4 @@ sidebarLinks.forEach(link => {
         sidebar.classList.remove('active');
     });
 });
+
