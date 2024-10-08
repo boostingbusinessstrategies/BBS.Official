@@ -39,8 +39,12 @@
             <h2>Share Your Experience</h2>
 
             <!-- Contenedor para el formulario de feedback -->
-            <div class="feedback-form-container">
-                <form id="feedback-form" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST" onsubmit="submitFeedback(event)">
+           <div class="feedback-form-container">
+               <form id="feedback-form" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST" onsubmit="submitFeedback(event)">
+                   <input type="hidden" name="_honey" style="display:none">
+                   <input type="hidden" name="_token" value="your_token_here"> <!-- Make sure to replace this with your actual token -->
+                   <input type="hidden" name="_next" value="https://boostingbusinessstrategies.github.io/BBS.Official/feedback.html">
+
                     <label for="feedback-first-name">First Name</label>
                     <input type="text" id="feedback-first-name" name="feedback-first-name" required aria-label="First Name">
 
