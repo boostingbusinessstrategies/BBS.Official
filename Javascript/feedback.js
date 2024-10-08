@@ -1,6 +1,9 @@
 // Número de reseñas visibles inicialmente
 const reviewsToShow = 8;
 
+// Variable para determinar si eres un super usuario
+const isAdmin = true; // Cambia a false si no deseas acceso total
+
 // Función para cargar más reseñas
 function showMoreReviews() {
     const feedbackListElement = document.getElementById("feedback-list");
@@ -98,6 +101,11 @@ function submitFeedback(event) {
 
 // Función para eliminar feedback
 function deleteFeedback(index) {
+    if (!isAdmin) {
+        alert("No tienes permiso para eliminar esta reseña.");
+        return;
+    }
+    
     try {
         let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
         feedbackList.splice(index, 1); // Eliminar la reseña
@@ -105,7 +113,7 @@ function deleteFeedback(index) {
         displayFeedback(); // Actualizar la lista de feedback
     } catch (error) {
         console.error("Error deleting feedback:", error);
-        alert("There was an error deleting the feedback. Please try again.");
+        alert("Hubo un error al eliminar la reseña. Por favor, intenta nuevamente.");
     }
 }
 
