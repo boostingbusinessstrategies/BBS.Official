@@ -59,7 +59,7 @@ header h1 {
     left: -300px;
     top: 0;
     padding: 20px;
-    transition: left 0.3s ease; /* Usamos solo transition */
+    transition: left var(--transition-speed) ease;
     box-shadow: 2px 0 10px var(--shadow-color);
     z-index: 1000;
     overflow-y: auto; /* Permite desplazamiento */
@@ -68,14 +68,33 @@ header h1 {
 /* Cambia la animación al abrir */
 #sidebar.active {
     left: 0;
+    animation: slideIn 0.3s forwards; /* Efecto de deslizamiento al abrir */
+}
+
+/* Animaciones */
+@keyframes slideIn {
+    from {
+        left: -300px;
+    }
+    to {
+        left: 0;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        left: 0;
+    }
+    to {
+        left: -300px;
+    }
 }
 
 /* Mantener la clase inactive para cierre de sidebar */
 #sidebar.inactive {
-    left: -300px;
+    animation: slideOut 0.3s forwards; /* Efecto de deslizamiento al cerrar */
 }
 
-/* Blur effect */
 .blur-bg {
     position: fixed;
     top: 0;
@@ -123,7 +142,7 @@ header h1 {
     text-decoration: none;
     font-size: 1em;
     display: block;
-    transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
+    transition: background var(--transition-speed), transform var(--transition-speed), color var(--transition-speed);
     padding: 10px 15px;
     border-radius: var(--border-radius);
 }
@@ -136,7 +155,7 @@ header h1 {
     width: 0;
     height: 3px;
     background: var(--secondary-color);
-    transition: width 0.3s ease, left 0.3s ease;
+    transition: width var(--transition-speed), left var(--transition-speed);
 }
 
 #sidebar ul li a:hover {
@@ -161,7 +180,7 @@ header h1 {
     padding: 12px;
     border-radius: var(--border-radius);
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
+    transition: background var(--transition-speed), transform var(--transition-speed);
     z-index: 1100;
     display: flex;
     justify-content: center;
@@ -193,7 +212,6 @@ header h1 {
         left: 10px; /* Posiciona el botón más cerca en móviles */
     }
 }
-
 
 /* Animaciones */
 @keyframes fadeIn {
