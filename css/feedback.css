@@ -378,7 +378,7 @@ header h1 {
 /* Botón de alternancia de administrador */
 .admin-toggle-button {
     position: fixed; /* Fijo en la esquina */
-    botton: 25px; /* Espacio desde el borde inferior */
+    bottom: 25px; /* Espacio desde el borde inferior */
     right: 25px; /* Espacio desde el borde derecho */
     background-color: var(--primary-color); /* Color primario */
     color: white;
@@ -394,11 +394,13 @@ header h1 {
     z-index: 1000;
 }
 
+/* Efecto hover para el botón */
 .admin-toggle-button:hover {
     background-color: darken(var(--primary-color), 10%); /* Efecto en hover */
     transform: scale(1.05); /* Aumento al pasar el ratón */
 }
 
+/* Estilo del icono dentro del botón */
 .admin-toggle-button i {
     font-size: 18px; /* Tamaño del icono aumentado */
 }
@@ -412,6 +414,18 @@ header h1 {
     to {
         transform: translateY(0);
         opacity: 1;
+    }
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+    .admin-toggle-button {
+        width: 40px; /* Reducir tamaño en móvil */
+        height: 40px; /* Reducir tamaño en móvil */
+    }
+
+    .admin-toggle-button i {
+        font-size: 16px; /* Reducir tamaño del icono en móvil */
     }
 }
 
