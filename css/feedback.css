@@ -1,52 +1,64 @@
+/* CSS Variables for Easy Maintenance */
 :root {
     --primary-color: #ee4d4d;
     --secondary-color: #ffc44d;
     --background-color: #f0f4f8;
     --text-color: #333333;
-    --border-radius: 16px;
-    --transition-speed: 0.3s;
-    --shadow-color: rgba(0, 0, 0, 0.1);
-    --content-background: #ffffff;
-    --input-background: #f9f9f9;
-    --focus-color: rgba(255, 196, 77, 0.2); /* Color al hacer focus */
+    --header-gradient: linear-gradient(135deg, #ee4d4d, #ffc44d);
+    --border-radius: 12px;
+    --transition-speed: 0.4s;
+    --shadow-color: rgba(0, 0, 0, 0.2);
 }
 
-/* Estilo del cuerpo y general */
+/* Global Styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
     margin: 0;
     padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
+    animation: fadeIn 0.5s ease;
 }
 
-#content {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: var(--content-background);
-    border-radius: var(--border-radius);
-    box-shadow: 0 6px 24px var(--shadow-color);
-    transition: box-shadow var(--transition-speed);
-    min-height: 600px; /* Aumenta la altura mínima para más espacio */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Header */
 header {
-    text-align: center;
-    padding: 60px 20px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: var(--header-gradient);
     color: #fff;
-    border-radius: var(--border-radius);
-    animation: fadeIn 0.6s; /* Añadir animación al cargar */
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    animation: slideDown 0.5s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 header h1 {
-    font-size: 2.5em;
     margin: 0;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    font-size: 2.5em;
 }
 
 /* Sidebar Styles */
@@ -213,166 +225,163 @@ header h1 {
     }
 }
 
-/* Animaciones */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Sección de Feedback */
+/* Feedback Section */
 .feedback-section {
-    padding: 30px;
-    background-color: var(--content-background);
-    border-radius: var(--border-radius);
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
-    margin-top: 20px; /* Espaciado superior para la sección de feedback */
-}
-
-.feedback-section h2 {
-    color: var(--primary-color);
-    font-size: 2.2em;
-}
-
-/* Formularios */
-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
 }
 
-input[type="text"],
-textarea,
-select {
-    padding: 15px;
-    border: 2px solid var(--primary-color);
+/* Feedback Form Container */
+.feedback-form-container {
+    background: #fff;
     border-radius: var(--border-radius);
-    font-size: 1.1em;
-    background-color: var(--input-background);
-    transition: border-color var(--transition-speed), background-color var(--transition-speed);
+    box-shadow: 0 2px 10px var(--shadow-color);
+    margin: 20px 0;
+    padding: 20px;
+    width: 100%;
+    animation: fadeInUp 0.5s ease;
 }
 
-input[type="text"]:focus,
-textarea:focus,
-select:focus {
-    border-color: var(--secondary-color);
-    background-color: var(--focus-color);
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.feedback-form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.feedback-form-container label {
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.feedback-form-container input,
+.feedback-form-container select,
+.feedback-form-container textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: var(--border-radius);
+    border: 1px solid #ccc;
+    transition: border-color var(--transition-speed);
+}
+
+.feedback-form-container input:focus,
+.feedback-form-container select:focus,
+.feedback-form-container textarea:focus {
+    border-color: var(--primary-color);
     outline: none;
 }
 
-/* Botón de Envío */
-input[type="submit"] {
-    padding: 14px;
-    background-color: var(--primary-color);
+/* Feedback Display Container */
+.feedback-display-container {
+    background: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 10px var(--shadow-color);
+    margin: 20px 0;
+    padding: 20px;
+    width: 100%;
+    animation: fadeInUp 0.5s ease;
+}
+
+.feedback-display-container h3 {
+    margin-bottom: 15px;
+}
+
+.feedback-display-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.feedback-display-container li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.feedback-display-container li:last-child {
+    border-bottom: none;
+}
+
+/* Show More Button */
+.show-more-btn {
+    background: var(--primary-color);
     color: #fff;
     border: none;
+    padding: 10px 20px;
     border-radius: var(--border-radius);
-    font-size: 1.2em;
     cursor: pointer;
-    transition: background-color var(--transition-speed);
+    transition: background var(--transition-speed);
+    margin-top: 15px;
 }
 
-input[type="submit"]:hover {
-    background-color: var(--secondary-color);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    body {
-        font-size: 14px;
-    }
-
-    #content {
-        padding: 15px;
-    }
-
-    header {
-        padding: 40px 10px;
-    }
-    
-    header h1 {
-        font-size: 2em;
-    }
-
-    #sidebar {
-        width: 250px; /* Mantener el ancho */
-    }
-
-    .feedback-section h2 {
-        font-size: 1.5em; /* Disminuir tamaño en móviles */
-    }
-
-    input[type="text"],
-    textarea,
-    select {
-        font-size: 1em;
-    }
-
-    input[type="submit"] {
-        font-size: 1em;
-    }
-}
-
-/* Media Queries para Ajustes Específicos */
-@media (max-width: 480px) {
-    #sidebar {
-        width: 80%; /* Aumentar ancho del sidebar en pantallas pequeñas */
-    }
-}
-
-.rating {
-    font-size: 20px; /* Ajustar tamaño según sea necesario */
-    margin: 5px 0;
-}
-
-button {
-    background-color: #f44336; /* Fondo rojo para botón de eliminar */
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-top: 5px;
-}
-
-button:hover {
-    background-color: #d32f2f; /* Rojo más oscuro al pasar el ratón */
+.show-more-btn:hover {
+    background: darken(var(--primary-color), 10%);
 }
 
 /* Footer */
 footer {
     text-align: center;
-    padding: 20px;
-    background-color: var(--primary-color);
+    padding: 20px 0;
+    background: var(--primary-color);
     color: #fff;
-    border-radius: var(--border-radius);
+    margin-top: 20px;
 }
 
 footer p {
-    margin: 0;
+    margin: 20px 0;
 }
 
-.social-media {
+footer .social-media {
     list-style: none;
     padding: 0;
-    margin: 10px 0 0;
 }
 
-.social-media li {
+footer .social-media li {
     display: inline;
     margin: 0 10px;
 }
 
-.social-media a {
-    color: #fcf9f9;
-    font-size: 1.5em;
+footer .social-media a {
+    color: #fff;
+    text-decoration: none;
     transition: color var(--transition-speed);
 }
 
-.social-media a:hover {
-    color: var(--secondary-color);
+footer .social-media a:hover {
+    color: #ccc;
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+    .feedback-section {
+        flex-direction: row;
+    }
+
+    .feedback-form-container,
+    .feedback-display-container {
+        width: 48%; /* Ajuste para pantallas más grandes */
+    }
+
+    .feedback-display-container {
+        margin-left: 20px; /* Separación entre formularios y feedbacks */
+    }
+}
+
+/* Additional Styles for Wider Containers on Large Screens */
+@media (min-width: 1200px) {
+    .feedback-form-container,
+    .feedback-display-container {
+        width: 45%; /* Contenedores más anchos en pantallas grandes */
+    }
 }
