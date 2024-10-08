@@ -34,7 +34,7 @@ function displayFeedback() {
             <div>${feedback.firstName} ${feedback.lastName}</div>
             <div class="rating">${'⭐'.repeat(feedback.rating)}${'☆'.repeat(5 - feedback.rating)}</div>
             <div>${feedback.comment}</div>
-            ${isAdmin ? `<button onclick="deleteFeedback('${feedback.id}')">Delete</button>` : ''} <!-- Delete button only if admin -->
+            ${isAdmin ? `<button onclick="deleteFeedback(${feedback.id})">Delete</button>` : ''} <!-- Delete button only if admin -->
         `;
         feedbackListElement.appendChild(feedbackItem);
     });
@@ -93,9 +93,6 @@ function submitFeedback(event) {
         // Update the feedback list to show the new review
         displayFeedback();
 
-        // Submit the form using the POST method
-        document.getElementById("feedback-form").submit();
-
     } catch (error) {
         console.error("Error saving feedback to local storage:", error);
         alert("There was an error saving your feedback. Please try again.");
@@ -108,10 +105,10 @@ function deleteFeedback(id) {
         alert("You do not have permission to delete this review.");
         return;
     }
-    
+
     try {
         let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
-        feedbackList = feedbackList.filter(feedback => feedback.id !== parseInt(id)); // Remove the review by ID
+        feedbackList = feedbackList.filter(feedback => feedback.id !== id); // Remove the review by ID
         localStorage.setItem("feedbackList", JSON.stringify(feedbackList)); // Update localStorage
         displayFeedback(); // Update the feedback list
     } catch (error) {
