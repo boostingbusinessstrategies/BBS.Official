@@ -148,3 +148,4 @@ sidebarLinks.forEach(link => {
         sidebar.classList.remove('active');
     });
 });
+
