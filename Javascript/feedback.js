@@ -2,7 +2,7 @@
 const reviewsToShow = 8;
 
 // Variable para determinar si eres un super usuario
-const isAdmin = false; // Cambia a false si no deseas acceso total
+const isAdmin = true; // Cambia a false si no deseas acceso total
 
 // Función para cargar más reseñas
 function showMoreReviews() {
