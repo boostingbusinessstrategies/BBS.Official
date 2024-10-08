@@ -5,7 +5,7 @@ const reviewsToShow = 8;
 const isAdmin = false; // Change to false if you do not want full access
 
 // Variable to determine if the delete feature is enabled
-const canDelete = false; // Change to false to disable the delete feature
+const canDelete = false; // Change to true to enable the delete feature
 
 let feedbackCounter = 0; // Counter for unique feedback IDs
 
@@ -39,7 +39,7 @@ function displayFeedback() {
             <div>${feedback.firstName} ${feedback.lastName}</div>
             <div class="rating">${'⭐'.repeat(feedback.rating)}${'☆'.repeat(5 - feedback.rating)}</div>
             <div>${feedback.comment}</div>
-            ${isAdmin && canDelete ? `<button onclick="deleteFeedback(${feedback.id})">Delete</button>` : ''} <!-- Delete button only if admin and canDelete is true -->
+            ${isAdmin && canDelete ? `<button onclick="deleteFeedback(${feedback.id})">Delete</button>` : ''}
         `;
         feedbackListElement.appendChild(feedbackItem);
     });
@@ -151,4 +151,3 @@ sidebarLinks.forEach(link => {
         sidebar.classList.remove('active');
     });
 });
-
