@@ -2,8 +2,8 @@
 const reviewsToShow = 8;
 
 // Variables to control admin status and delete capability
-let isAdmin = true; // Change to true if user is admin
-let canDelete = true; // Change to true if delete function is enabled
+let isAdmin = false; // Change to true if user is admin
+let canDelete = false; // Change to true if delete function is enabled
 
 // Function to show/hide buttons based on state
 function updateButtonVisibility() {
