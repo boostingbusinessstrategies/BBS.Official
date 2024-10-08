@@ -2,7 +2,7 @@
 const reviewsToShow = 8;
 
 // Variable to determine if the user is an admin
-let isAdmin = false; // Change to false if you do not want full access
+let isAdmin = true; // Change to false if you do not want full access
 
 // Variable to determine if the delete feature is enabled
 let canDelete = false; // Change to true to enable the delete feature
@@ -46,6 +46,9 @@ function displayFeedback() {
 
     // Show the "Show More Reviews" button only if there are more reviews than the limit
     document.getElementById("show-more-reviews").style.display = feedbackList.length > reviewsToShow ? "block" : "none";
+
+    // Show or hide the toggle delete button based on isAdmin
+    document.getElementById("toggle-delete-button").style.display = isAdmin ? "block" : "none";
 }
 
 // Function to submit feedback
@@ -135,9 +138,8 @@ function toggleDeleteFeature() {
 window.onload = () => {
     displayFeedback();
 
-    // Initialize toggle button visibility based on isAdmin
+    // Initialize toggle button
     const toggleButton = document.getElementById("toggle-delete-button");
-    toggleButton.style.display = isAdmin ? "block" : "none"; // Show button only if isAdmin is true
     toggleButton.innerText = canDelete ? "Disable Delete Feature" : "Enable Delete Feature";
 };
 
