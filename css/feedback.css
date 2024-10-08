@@ -375,46 +375,45 @@ header h1 {
     }
 }
 
-/* Footer */
-footer {
-    text-align: relative;
-    padding: 20px 0;
-    background: var(--primary-color);
-    color: #fff;
-    margin-top: 20px;
-    position: relative; /* Asegura que el footer actúe como referencia para el posicionamiento absoluto */
-}
-
-/* Ajustes para el botón de alternancia de administrador */
+/* Botón de alternancia de administrador */
 .admin-toggle-button {
-    position: absolute; /* Hace que el botón se posicione de manera absoluta dentro del footer */
-    bottom: 20px; /* Distancia desde la parte inferior del footer */
-    right: 20px; /* Distancia desde el lado derecho del footer */
-    background-color: #ee4d4d; /* Color de fondo del botón */
-    color: white; /* Color del texto */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    padding: 10px 15px; /* Espaciado interno */
-    cursor: pointer; /* Cursor de puntero al pasar el mouse */
-    z-index: 1100; /* Asegura que esté por encima de otros elementos */
+    position: fixed; /* Fijo en la esquina */
+    top: 25px; /* Espacio desde el borde superior */
+    right: 25px; /* Espacio desde el borde derecho */
+    background-color: var(--primary-color); /* Color primario */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Redondeado */
+    width: 45px; /* Tamaño más grande */
+    height: 45px; /* Tamaño más grande */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones más suaves */
+    z-index: 1000;
 }
 
 .admin-toggle-button:hover {
-    background-color: #d43c3c; /* Color de fondo al pasar el mouse */
+    background-color: darken(var(--primary-color), 10%); /* Efecto en hover */
+    transform: scale(1.05); /* Aumento al pasar el ratón */
 }
 
-/* Responsividad para pantallas pequeñas */
-@media (max-width: 768px) {
-    .admin-toggle-button {
-        width: 40px; /* Reducir tamaño en móvil */
-        height: 40px; /* Reducir tamaño en móvil */
-    }
-
-    .admin-toggle-button i {
-        font-size: 16px; /* Reducir tamaño del icono en móvil */
-    }
+.admin-toggle-button i {
+    font-size: 18px; /* Tamaño del icono aumentado */
 }
 
+/* Animación de aparición */
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 
 /* Botón "Mostrar más" */
 .show-more-btn {
