@@ -70,10 +70,10 @@
                     <input type="submit" value="Submit Feedback">
                 </form>
             </div>
-
-            <!-- Botón para habilitar la función de eliminación -->
-            <button id="toggle-delete-button" onclick="toggleDeleteFeature()">Enable Delete Feature</button>
-
+            <!-- Botón para habilitar/deshabilitar la función de eliminación -->
+        <button id="toggle-delete-button" style="display:none;" onclick="toggleDeleteFeature()">Enable Delete Feature</button>
+        <!-- Botón para reiniciar la lista de feedback -->
+        <button id="reset-feedback-button" style="display:none;" onclick="resetFeedbackList()">Reset Feedback List</button>
             <!-- Contenedor para mostrar feedbacks -->
             <div id="feedback-display" class="feedback-display-container">
                 <h3>Recent Feedback:</h3>
