@@ -34,6 +34,70 @@ body {
     }
 }
 
+/* Header */
+header {
+    background: var(--header-gradient);
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    animation: slideDown 0.5s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+/* Section Styles */
+.section {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 30px var(--shadow-color);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 50px var(--shadow-color);
+}
+
+.section h2 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+}
+
+.section p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
 /* Sidebar Styles */
 #sidebar {
     width: 280px;
@@ -196,70 +260,6 @@ body {
     #menu-toggle {
         left: 10px; /* Posiciona el botón más cerca en móviles */
     }
-}
-
-/* Header */
-header {
-    background: var(--header-gradient);
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-    box-shadow: 0 2px 5px var(--shadow-color);
-    animation: slideDown 0.5s ease;
-}
-
-@keyframes slideDown {
-    from {
-        transform: translateY(-20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-header h1 {
-    margin: 0;
-    font-size: 2.5em;
-}
-
-/* Section Styles */
-.section {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 30px var(--shadow-color);
-    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-    animation: fadeInUp 0.5s ease;
-}
-
-@keyframes fadeInUp {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 50px var(--shadow-color);
-}
-
-.section h2 {
-    font-size: 2.8em;
-    margin-bottom: 20px;
-}
-
-.section p {
-    font-size: 1.1em;
-    margin-bottom: 15px;
 }
 
 /* Estilo del botón de envío */
