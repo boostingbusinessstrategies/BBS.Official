@@ -377,9 +377,9 @@ header h1 {
 
 /* Botón de alternancia de administrador */
 .admin-toggle-button {
-    position: fixed; /* Fijo en la esquina */
-    bottom: 25px; /* Espacio desde el borde inferior */
-    right: 25px; /* Espacio desde el borde derecho */
+    position: absolute; /* Cambiado a absoluto para estar dentro del footer */
+    bottom: 15px; /* Espacio desde el borde inferior del footer */
+    right: 15px; /* Espacio desde el borde derecho del footer */
     background-color: var(--primary-color); /* Color primario */
     color: white;
     border: none;
@@ -428,6 +428,7 @@ header h1 {
         font-size: 16px; /* Reducir tamaño del icono en móvil */
     }
 }
+
 
 /* Botón "Mostrar más" */
 .show-more-btn {
