@@ -1,45 +1,45 @@
-// Número de reseñas visibles inicialmente
+// Number of reviews to show initially
 const reviewsToShow = 8;
 
-// Variable para determinar si eres un super usuario
-const isAdmin = true; // Cambia a false si no deseas acceso total
+// Variable to determine if the user is an admin
+const isAdmin = true; // Change to false if you do not want full access
 
-// Función para cargar más reseñas
+// Function to load more reviews
 function showMoreReviews() {
     const feedbackListElement = document.getElementById("feedback-list");
     const feedbackItems = feedbackListElement.querySelectorAll("li");
 
-    // Mostrar las reseñas adicionales
+    // Show additional reviews
     for (let i = reviewsToShow; i < feedbackItems.length; i++) {
         feedbackItems[i].style.display = "list-item";
     }
 
-    // Ocultar el botón de "Show More Reviews" después de mostrar más reseñas
+    // Hide the "Show More Reviews" button after showing more reviews
     document.getElementById("show-more-reviews").style.display = "none";
 }
 
-// Función para mostrar feedback, limitada a las primeras reseñas visibles
+// Function to display feedback, limited to the initially visible reviews
 function displayFeedback() {
     const feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
     const feedbackListElement = document.getElementById("feedback-list");
 
-    // Limpiar la lista de reseñas
+    // Clear the feedback list
     feedbackListElement.innerHTML = "";
 
-    // Crear el elemento de reseña y añadirlo a la lista
+    // Create feedback elements and add them to the list
     feedbackList.forEach((feedback, index) => {
         const feedbackItem = document.createElement("li");
-        feedbackItem.style.display = index < reviewsToShow ? "list-item" : "none"; // Mostrar solo las primeras reseñas
+        feedbackItem.style.display = index < reviewsToShow ? "list-item" : "none"; // Show only the first reviews
         feedbackItem.innerHTML = `
             <div>${feedback.firstName} ${feedback.lastName}</div>
             <div class="rating">${'⭐'.repeat(feedback.rating)}${'☆'.repeat(5 - feedback.rating)}</div>
             <div>${feedback.comment}</div>
-            ${isAdmin ? `<button onclick="deleteFeedback(${index})">Delete</button>` : ''} <!-- Botón de eliminar solo si es admin -->
+            ${isAdmin ? `<button onclick="deleteFeedback(${index})">Delete</button>` : ''} <!-- Delete button only if admin -->
         `;
         feedbackListElement.appendChild(feedbackItem);
     });
 
-    // Mostrar el botón de "Show More Reviews" solo si hay más reseñas que el límite
+    // Show the "Show More Reviews" button only if there are more reviews than the limit
     if (feedbackList.length > reviewsToShow) {
         document.getElementById("show-more-reviews").style.display = "block";
     } else {
@@ -47,32 +47,32 @@ function displayFeedback() {
     }
 }
 
-// Función para enviar feedback
+// Function to submit feedback
 function submitFeedback(event) {
-    // Llamamos a preventDefault solo para evitar que se envíe el formulario antes de que validemos
+    // Call preventDefault only to avoid submitting the form before validation
     event.preventDefault();
 
-    // Obtener valores del formulario
+    // Get values from the form
     const firstName = document.getElementById("feedback-first-name").value.trim();
     const lastName = document.getElementById("feedback-last-name").value.trim();
-    const email = document.getElementById("feedback-email").value.trim(); // Obtener el email
+    const email = document.getElementById("feedback-email").value.trim(); // Get the email
     const rating = document.getElementById("feedback-rating").value;
     const comment = document.getElementById("feedback-comment").value.trim();
 
-    // Validar campos
+    // Validate fields
     if (!firstName || !lastName || !email || !rating || !comment) {
         alert("Please fill in all fields before submitting your feedback.");
         return;
     }
 
-    // Validar formato del email
+    // Validate email format
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
         alert("Please enter a valid email address.");
         return;
     }
 
-    // Crear el objeto feedback
+    // Create the feedback object
     const feedback = {
         firstName: firstName,
         lastName: lastName,
@@ -82,18 +82,18 @@ function submitFeedback(event) {
     };
 
     try {
-        // Guardar feedback en localStorage
+        // Save feedback to localStorage
         let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
         feedbackList.push(feedback);
         localStorage.setItem("feedbackList", JSON.stringify(feedbackList));
 
-        // Limpiar el formulario
+        // Clear the form
         clearFeedbackForm();
 
-        // Actualizar la lista de feedback para mostrar la nueva reseña
+        // Update the feedback list to show the new review
         displayFeedback();
 
-        // Enviar el formulario usando el método POST
+        // Submit the form using the POST method
         document.getElementById("feedback-form").submit();
 
     } catch (error) {
@@ -102,25 +102,25 @@ function submitFeedback(event) {
     }
 }
 
-// Función para eliminar feedback
+// Function to delete feedback
 function deleteFeedback(index) {
     if (!isAdmin) {
-        alert("No tienes permiso para eliminar esta reseña.");
+        alert("You do not have permission to delete this review.");
         return;
     }
     
     try {
         let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
-        feedbackList.splice(index, 1); // Eliminar la reseña
-        localStorage.setItem("feedbackList", JSON.stringify(feedbackList)); // Actualizar localStorage
-        displayFeedback(); // Actualizar la lista de feedback
+        feedbackList.splice(index, 1); // Remove the review
+        localStorage.setItem("feedbackList", JSON.stringify(feedbackList)); // Update localStorage
+        displayFeedback(); // Update the feedback list
     } catch (error) {
         console.error("Error deleting feedback:", error);
-        alert("Hubo un error al eliminar la reseña. Por favor, intenta nuevamente.");
+        alert("There was an error deleting the review. Please try again.");
     }
 }
 
-// Cargar feedback al cargar la página
+// Load feedback when the page loads
 window.onload = () => {
     displayFeedback();
 };
@@ -129,23 +129,22 @@ window.onload = () => {
 const sidebar = document.getElementById('sidebar');
 const menuToggle = document.getElementById('menu-toggle');
 
-// Añadir un event listener al botón del menú
+// Add an event listener to the menu button
 menuToggle.addEventListener('click', () => {
     sidebar.classList.toggle('active');
 });
 
-// Detectar clics fuera del sidebar para cerrarlo
+// Detect clicks outside the sidebar to close it
 document.addEventListener('click', (event) => {
     if (sidebar.classList.contains('active') && !sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
         sidebar.classList.remove('active');
     }
 });
 
-// Cerrar el sidebar al hacer clic en los enlaces
+// Close the sidebar when clicking on links
 const sidebarLinks = sidebar.querySelectorAll('ul li a');
 sidebarLinks.forEach(link => {
     link.addEventListener('click', () => {
         sidebar.classList.remove('active');
     });
 });
-
