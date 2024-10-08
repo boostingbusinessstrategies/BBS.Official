@@ -59,7 +59,7 @@ header h1 {
     left: -300px;
     top: 0;
     padding: 20px;
-    transition: left var(--transition-speed) ease;
+    transition: left 0.3s ease; /* Usamos solo transition */
     box-shadow: 2px 0 10px var(--shadow-color);
     z-index: 1000;
     overflow-y: auto; /* Permite desplazamiento */
@@ -68,33 +68,14 @@ header h1 {
 /* Cambia la animación al abrir */
 #sidebar.active {
     left: 0;
-    animation: slideIn 0.3s forwards; /* Efecto de deslizamiento al abrir */
-}
-
-/* Animaciones */
-@keyframes slideIn {
-    from {
-        left: -300px;
-    }
-    to {
-        left: 0;
-    }
-}
-
-@keyframes slideOut {
-    from {
-        left: 0;
-    }
-    to {
-        left: -300px;
-    }
 }
 
 /* Mantener la clase inactive para cierre de sidebar */
 #sidebar.inactive {
-    animation: slideOut 0.3s forwards; /* Efecto de deslizamiento al cerrar */
+    left: -300px;
 }
 
+/* Blur effect */
 .blur-bg {
     position: fixed;
     top: 0;
@@ -142,7 +123,7 @@ header h1 {
     text-decoration: none;
     font-size: 1em;
     display: block;
-    transition: background var(--transition-speed), transform var(--transition-speed), color var(--transition-speed);
+    transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
     padding: 10px 15px;
     border-radius: var(--border-radius);
 }
@@ -155,7 +136,7 @@ header h1 {
     width: 0;
     height: 3px;
     background: var(--secondary-color);
-    transition: width var(--transition-speed), left var(--transition-speed);
+    transition: width 0.3s ease, left 0.3s ease;
 }
 
 #sidebar ul li a:hover {
@@ -180,7 +161,7 @@ header h1 {
     padding: 12px;
     border-radius: var(--border-radius);
     cursor: pointer;
-    transition: background var(--transition-speed), transform var(--transition-speed);
+    transition: background 0.3s ease, transform 0.3s ease;
     z-index: 1100;
     display: flex;
     justify-content: center;
@@ -212,6 +193,7 @@ header h1 {
         left: 10px; /* Posiciona el botón más cerca en móviles */
     }
 }
+
 
 /* Animaciones */
 @keyframes fadeIn {
@@ -318,34 +300,30 @@ input[type="submit"]:hover {
     }
 }
 
-/* Media Queries para Ajustes Especiales */
-@media (min-width: 1200px) {
-    #content {
-        margin-top: 50px; /* Ajustar margen superior para pantallas grandes */
-    }
-
-    header {
-        padding: 80px 20px; /* Aumentar padding en pantallas grandes */
-    }
-
-    header h1 {
-        font-size: 3em; /* Hacer el título más grande */
-    }
-
+/* Media Queries para Ajustes Específicos */
+@media (max-width: 480px) {
     #sidebar {
-        width: 350px; /* Sidebar más ancho en pantallas grandes */
-    }
-
-    #menu-toggle {
-        width: 60px;
-        height: 60px;
-    }
-
-    .feedback-section {
-        margin-top: 50px; /* Más espacio antes de la sección de feedback */
+        width: 80%; /* Aumentar ancho del sidebar en pantallas pequeñas */
     }
 }
 
+.rating {
+    font-size: 20px; /* Ajustar tamaño según sea necesario */
+    margin: 5px 0;
+}
+
+button {
+    background-color: #f44336; /* Fondo rojo para botón de eliminar */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+button:hover {
+    background-color: #d32f2f; /* Rojo más oscuro al pasar el ratón */
+}
 
 /* Footer */
 footer {
