@@ -43,11 +43,7 @@ function displayFeedback() {
     });
 
     // Show the "Show More Reviews" button only if there are more reviews than the limit
-    if (feedbackList.length > reviewsToShow) {
-        document.getElementById("show-more-reviews").style.display = "block";
-    } else {
-        document.getElementById("show-more-reviews").style.display = "none";
-    }
+    document.getElementById("show-more-reviews").style.display = feedbackList.length > reviewsToShow ? "block" : "none";
 }
 
 // Function to submit feedback
