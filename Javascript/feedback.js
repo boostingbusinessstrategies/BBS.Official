@@ -7,6 +7,8 @@ const isAdmin = true; // Change to false if you do not want full access
 // Variable to determine if the delete feature is enabled
 const canDelete = true; // Change to false to disable the delete feature
 
+let feedbackCounter = 0; // Counter for unique feedback IDs
+
 // Function to load more reviews
 function showMoreReviews() {
     const feedbackListElement = document.getElementById("feedback-list");
@@ -72,7 +74,7 @@ function submitFeedback(event) {
 
     // Create the feedback object
     const feedback = {
-        id: Date.now(), // Unique ID based on the current timestamp
+        id: feedbackCounter++, // Unique ID using the counter
         firstName: firstName,
         lastName: lastName,
         email: email,
@@ -104,7 +106,7 @@ function deleteFeedback(id) {
         alert("You do not have permission to delete this review.");
         return;
     }
-    
+
     if (!canDelete) {
         alert("The delete feature is currently disabled.");
         return;
