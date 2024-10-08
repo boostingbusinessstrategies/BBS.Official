@@ -62,15 +62,8 @@ section {
     padding: 20px;
     background: #ffffff;
     border-radius: var(--border-radius);
-    box-shadow: 0 4px 20px var(--shadow-color);
+    box-shadow: 0 2px 5px var(--shadow-color);
     animation: slideIn 0.5s ease;
-    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-}
-
-/* Efecto de movimiento y sombra al pasar el ratón */
-section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px var(--shadow-color);
 }
 
 @keyframes slideIn {
@@ -100,7 +93,7 @@ h2 {
 #sidebar {
     width: 280px;
     height: 100vh;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* Agrega gradient */
     color: #fff;
     position: fixed;
     left: -300px;
@@ -249,13 +242,7 @@ h2 {
     padding: 20px;
     background: #ffffff;
     border-radius: var(--border-radius);
-    box-shadow: 0 4px 20px var(--shadow-color);
-    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-}
-
-.faq-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px var(--shadow-color);
+    box-shadow: 0 2px 5px var(--shadow-color);
 }
 
 .faq-container h2 {
@@ -322,15 +309,16 @@ footer p {
 /* Responsive Styles */
 @media (max-width: 768px) {
     #sidebar {
-        width: 250px;
-    }
-    
-    #sidebar.active {
-        left: 0;
+        width: 70%; /* Sidebar más ancho en dispositivos pequeños */
+        left: -70%; /* Inicia fuera de la vista */
     }
 
-    header {
-        padding: 40px 20px;
+    #sidebar.active {
+        left: 0; /* Desliza hacia adentro */
+    }
+
+    #menu-toggle {
+        left: 10px; /* Posiciona el botón más cerca en móviles */
     }
 
     h1 {
@@ -338,17 +326,10 @@ footer p {
     }
 
     h2 {
-        font-size: 1.6em;
+        font-size: 1.5em;
     }
 
-    h3 {
-        font-size: 1.2em;
-    }
-
-    #menu-toggle {
-        top: 10px;
-        left: 10px;
-        width: 40px;
-        height: 40px;
+    section {
+        margin: 20px 0;
     }
 }
