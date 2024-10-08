@@ -2,12 +2,10 @@
 const reviewsToShow = 8;
 
 // Variable to determine if the user is an admin
-let isAdmin = false; // Change to false if you do not want full access
+let isAdmin = true; // Change to false if you do not want full access
 
 // Variable to determine if the delete feature is enabled
 let canDelete = false; // Change to true to enable the delete feature
-
-let feedbackCounter = 0; // Counter for unique feedback IDs
 
 // Function to load more reviews
 function showMoreReviews() {
@@ -49,11 +47,7 @@ function displayFeedback() {
 
     // Control visibility of Enable/Disable button
     const enableDisableButton = document.getElementById("enable-disable-button");
-    if (isAdmin) {
-        enableDisableButton.style.display = "inline"; // Show the button if isAdmin is true
-    } else {
-        enableDisableButton.style.display = "none"; // Hide if not an admin
-    }
+    enableDisableButton.style.display = isAdmin ? "inline" : "none"; // Show the button if isAdmin is true
 
     // Control visibility of delete buttons
     const deleteButtons = feedbackListElement.querySelectorAll("button");
@@ -177,3 +171,12 @@ sidebarLinks.forEach(link => {
         sidebar.classList.remove('active');
     });
 });
+
+// Clear feedback form function
+function clearFeedbackForm() {
+    document.getElementById("feedback-first-name").value = '';
+    document.getElementById("feedback-last-name").value = '';
+    document.getElementById("feedback-email").value = '';
+    document.getElementById("feedback-rating").value = '';
+    document.getElementById("feedback-comment").value = '';
+        }
