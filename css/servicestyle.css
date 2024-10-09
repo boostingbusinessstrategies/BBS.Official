@@ -6,12 +6,14 @@
     --text-color: #333333;
     --border-radius: 12px;
     --transition-speed: 0.4s;
-    --shadow-color: rgba(0, 0, 0, 0.15); /* Slightly lighter shadow */
-    --blur-opacity: rgba(0, 0, 0, 0.5);
-    --content-background: #ffffff; /* Lighter content background for better contrast */
+    --shadow-color: rgba(0, 0, 0, 0.15);
 }
 
 /* Global Styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -19,22 +21,36 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.8;
-    animation: fadeIn 0.5s ease; /* Animation for body */
+    overflow-x: hidden;
 }
 
-/* Services Section Styles */
-.services-section {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: var(--content-background);
+/* Header Section */
+header {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #ffffff;
     border-radius: var(--border-radius);
-    box-shadow: 0 4px 30px var(--shadow-color);
-    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-    animation: slideIn 0.5s ease; /* Animation for services section */
+    box-shadow: 0 4px 10px var(--shadow-color);
+    margin-bottom: 40px; /* Espacio entre el encabezado y el resto del contenido */
 }
 
-@keyframes slideIn {
+h1 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+/* Section Styles */
+section {
+    margin: 40px 0;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px var(--shadow-color);
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
     from {
         transform: translateY(20px);
         opacity: 0;
@@ -45,180 +61,100 @@ body {
     }
 }
 
-.services-section h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    text-align: center;
+h2 {
     color: var(--primary-color);
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    font-size: 1.8em;
+    margin-bottom: 15px;
 }
 
-/* Service Card Styles */
+/* Service Cards */
+.services-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px; /* Espacio entre las tarjetas */
+}
+
 .service-card {
-    background-color: var(--content-background);
+    flex: 1 1 calc(33.333% - 20px); /* Tres tarjetas por fila con espacio */
+    background: #f9f9f9; /* Color de fondo de la tarjeta */
     border-radius: var(--border-radius);
-    box-shadow: 0 4px 15px var(--shadow-color);
     padding: 20px;
-    margin: 15px 5px; /* Add some margin on the sides */
+    box-shadow: 0 2px 5px var(--shadow-color);
     transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-    position: relative; /* Position relative for the overlay */
-    overflow: hidden; /* Prevent overflow from the overlay */
-    display: flex; /* Use flexbox for responsiveness */
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center items horizontally */
 }
 
 .service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 40px var(--shadow-color);
+    transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
+    box-shadow: 0 4px 10px var(--shadow-color);
 }
 
 .service-card h3 {
-    font-size: 2em;
-    margin-bottom: 10px;
-    color: var(--primary-color);
-    text-align: center; /* Center text in card */
+    margin-top: 0;
+    color: var(--text-color);
 }
 
-.service-card p {
-    font-size: 1em;
-    margin-bottom: 15px;
-    text-align: center; /* Center text in card */
-}
-
-.service-card ul {
-    list-style-type: disc;
-    margin-left: 20px;
-    margin-bottom: 15px;
-}
-
-/* Button Styles */
+/* More Info Button */
 .more-info-button {
     display: inline-block;
-    padding: 12px 20px;
-    background-color: var(--secondary-color);
-    color: #333333;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: #fff;
     text-decoration: none;
     border-radius: var(--border-radius);
-    font-weight: 600;
-    transition: background var(--transition-speed), transform var(--transition-speed);
-    box-shadow: 0 2px 5px var(--shadow-color);
-    text-align: center;
-    width: 100%;
+    transition: background var(--transition-speed);
 }
 
 .more-info-button:hover {
-    background-color: var(--primary-color);
-    color: #fff;
-    transform: translateY(-3px);
+    background-color: var(--secondary-color);
 }
 
-/* Section Styles */
-#extension-options,
-#privacy-commitment,
-#industry-options,
-#faq {
+/* Extension Options */
+#extension-options {
+    background: #f9f9f9;
     padding: 30px;
-    background-color: var(--content-background);
     border-radius: var(--border-radius);
-    box-shadow: 0 4px 30px var(--shadow-color);
-    margin: 40px auto;
-    animation: fadeIn 0.5s ease; /* Animation for each section */
+    box-shadow: 0 2px 5px var(--shadow-color);
 }
 
-#extension-options h2,
-#privacy-commitment h2,
-#industry-options h2,
-#faq h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    text-align: center;
+#extension-options h2 {
     color: var(--primary-color);
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* FAQ Section */
-.faq-section h3 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    color: var(--primary-color);
-}
-
-.faq-section p {
-    font-size: 1em;
-    margin-bottom: 15px;
-}
-
-/* Footer Styles */
-footer {
+#faq {
+    margin: 40px 0;
     padding: 20px;
-    background-color: var(--primary-color);
-    color: #fff;
-    text-align: center;
-    margin-top: 40px;
+    background: #ffffff;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px var(--shadow-color);
 }
 
-footer p {
-    margin: 0;
-    font-size: 0.9em;
+.faq-title {
+    color: var(--primary-color);
+    font-size: 1.8em;
 }
 
 /* Responsive Styles */
-@media (max-width: 1200px) {
-    .services-section {
-        padding: 20px; /* Adjust padding for larger tablets */
-    }
-    
-    .service-card {
-        margin: 10px; /* Adjust margin for tablets */
-        flex: 1 1 calc(45% - 20px); /* Two cards per row */
-    }
-
-    .services-section h2 {
-        font-size: 2.2em; /* Adjust title font size */
-    }
-}
-
 @media (max-width: 768px) {
-    .services-section {
-        padding: 15px; /* Adjust padding for mobile */
-    }
-
     .service-card {
-        margin: 10px 0; /* Reduce margin for mobile */
-        flex: 1 1 calc(100% - 20px); /* One card per row */
+        flex: 1 1 100%; /* Una tarjeta por fila en dispositivos pequeños */
     }
 
-    .service-card h3 {
-        font-size: 1.8em; /* Smaller font size for mobile */
+    header {
+        padding: 40px 10px;
     }
 
-    #extension-options h2,
-    #privacy-commitment h2,
-    #industry-options h2,
-    #faq h2 {
-        font-size: 2em; /* Smaller heading for mobile */
+    h1 {
+        font-size: 2em;
     }
 
-    .more-info-button {
-        width: auto; /* Reset width for mobile */
-    }
-}
-
-@media (max-width: 480px) {
-    .service-card h3 {
-        font-size: 1.5em; /* Further reduce font size for small screens */
+    h2 {
+        font-size: 1.5em;
     }
 
-    .service-card p {
-        font-size: 0.9em; /* Smaller font size for mobile */
-    }
-
-    .more-info-button {
-        padding: 10px; /* Adjust button padding */
-    }
-
-    footer p {
-        font-size: 0.8em; /* Smaller footer text */
+    section {
+        padding: 20px;
     }
 }
