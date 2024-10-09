@@ -260,11 +260,20 @@ h2 {
     background: #ffffff;
     border-radius: var(--border-radius);
     box-shadow: 0 2px 5px var(--shadow-color);
+    text-align: center; /* Centra el contenido de la sección */
 }
 
 .faq-container h2 {
     color: var(--primary-color);
     margin-bottom: 20px; /* Espacio debajo del título */
+    font-size: 2em; /* Aumenta el tamaño de la fuente para mayor impacto */
+}
+
+.faq-separator {
+    width: 50%; /* Ancho del separador */
+    height: 2px; /* Altura del separador */
+    background-color: var(--secondary-color); /* Color del separador */
+    margin: 0 auto 20px; /* Centrando el separador y añadiendo margen inferior */
 }
 
 .faq-item {
