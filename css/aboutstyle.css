@@ -264,7 +264,7 @@ h2 {
 }
 
 .faq-title {
-    color: var(--primary-color); /* Color personalizado */
+    color: #444444; /* Color personalizado */
     font-size: 2em; /* Tamaño base del título */
     line-height: 1.2; /* Ajusta la altura de línea para mejor legibilidad */
     margin-bottom: 20px; /* Espacio debajo del título */
