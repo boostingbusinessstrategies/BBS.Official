@@ -263,21 +263,15 @@ h2 {
     text-align: center; /* Centra el contenido de la sección */
 }
 
-.faq-container h2 {
-    color: var(--primary-color);
-    margin: 40px 0 20px; /* Mayor espacio encima del título */
-    font-size: 2.5em; /* Tamaño base del título, ajustado para diferenciar */
+.faq-title {
+    color: var(--primary-color); /* Color personalizado */
+    font-size: 2em; /* Tamaño base del título */
     line-height: 1.2; /* Ajusta la altura de línea para mejor legibilidad */
-    text-align: center; /* Asegura que el texto esté centrado */
+    margin-bottom: 20px; /* Espacio debajo del título */
+    text-align: center; /* Centra el texto */
 }
 
-/* Media query para adaptar el tamaño del título en dispositivos móviles */
-@media (max-width: 768px) {
-    .faq-container h2 {
-        font-size: 1.8em; /* Tamaño del título en móviles, ajustado */
-    }
-}
-
+/* Otros estilos de la sección FAQ */
 .faq-separator {
     width: 50%; /* Ancho del separador */
     height: 2px; /* Altura del separador */
@@ -292,7 +286,7 @@ h2 {
 .faq-item h3 {
     cursor: pointer;
     color: var(--primary-color);
-    font-size: 1.6em; /* Ajustado para diferenciar de h2 */
+    font-size: 1.4em;
     margin-bottom: 10px; /* Espacio debajo de la pregunta */
 }
 
