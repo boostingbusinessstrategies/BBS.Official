@@ -27,6 +27,11 @@ body {
     animation: fadeIn 0.5s ease;
 }
 
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 /* Contenedor Principal */
 #content {
     margin-left: 0;
@@ -39,6 +44,17 @@ body {
     margin: 0 auto;
     padding: 40px var(--container-padding);
     animation: slideUp 0.6s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 /* Header Principal */
@@ -58,6 +74,17 @@ header h1 {
     margin-bottom: 20px;
     animation: fadeInDown 0.8s ease;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeInDown {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 /* Sección de Introducción */
@@ -99,6 +126,10 @@ header h1 {
     padding: 40px 0;
 }
 
+.services-section h2 {
+    margin-top: -20px;
+}
+
 .services-section .container {
     display: flex;
     flex-direction: column;
@@ -120,11 +151,7 @@ header h1 {
     flex-direction: column;
     gap: 20px;
     animation: fadeIn 0.5s ease;
-}
-
-/* Ajuste de altura mínima para evitar tarjetas alargadas */
-.service-card {
-    min-height: 200px; /* Ajusta según sea necesario */
+    min-height: 200px;
 }
 
 .service-card:hover {
@@ -176,6 +203,35 @@ header h1 {
     line-height: 1;
 }
 
+/* Media Queries para Servicios */
+@media screen and (min-width: 768px) {
+    .services-section .container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--service-card-gap);
+    }
+
+    .service-card {
+        display: flex;
+        flex-direction: row;
+        max-width: 100%;
+    }
+
+    .service-card ul {
+        flex-grow: 1;
+    }
+
+    .service-card p {
+        flex-grow: 1;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .services-section .container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 /* Botones de More Info */
 .more-info-button {
     padding: 12px 20px;
@@ -203,11 +259,9 @@ header h1 {
 
 /* Sección FAQ */
 #faq {
-    padding: 40px 20px; /* Reducir el padding */
+    padding: 60px 0;
     background: #ffffff;
     margin-top: 60px;
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 15px var(--shadow-color);
 }
 
 .faq-title {
@@ -219,14 +273,20 @@ header h1 {
 
 .faq-separator {
     height: 4px;
-    width: 150px; /* Aumentar el ancho para que subraye */
+    width: 100px;
     background: var(--secondary-color);
     margin: 0 auto 40px;
     border-radius: 2px;
 }
 
+@media screen and (min-width: 1024px) {
+    .faq-separator {
+        width: 200px;
+    }
+}
+
 .faq-section {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -274,19 +334,7 @@ header h1 {
     transform: translateY(-3px);
 }
 
-/* Media Queries para Responsividad */
-@media screen and (min-width: 768px) {
-    .services-section .container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: var(--service-card-gap);
-    }
-
-    .service-card {
-        margin: 0;
-    }
-}
-
+/* Media Queries Generales */
 @media screen and (max-width: 767px) {
     header h1 {
         font-size: 2.5em;
@@ -319,33 +367,27 @@ header h1 {
     }
 }
 
-@keyframes fadeIn {
+@keyframes slideIn {
     from {
+        transform: translateX(-100%);
         opacity: 0;
     }
     to {
+        transform: translateX(0);
         opacity: 1;
     }
 }
 
-@keyframes slideUp {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+/* Estilos para elementos destacados */
+.highlight {
+    color: var(--primary-color);
+    font-weight: 600;
 }
 
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+/* Ajustes de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
     }
 }
