@@ -311,9 +311,9 @@ button[type="submit"] {
     transition: background var(--transition-speed), transform var(--transition-speed); /* Transición de fondo y transformación */
     box-shadow: 0 2px 5px var(--shadow-color); /* Sombra */
     display: inline-block;
-    width: 100%; /* Ancho completo en móvil */
-    max-width: 300px; /* Limitar el ancho en pantallas más grandes */
     margin: 10px auto; /* Centrado automático */
+    width: auto; /* Ajuste automático al contenido */
+    max-width: 200px; /* Limitar el ancho máximo */
 }
 
 button[type="submit"]:hover {
