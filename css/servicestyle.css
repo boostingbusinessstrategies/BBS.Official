@@ -7,6 +7,8 @@
     --transition-speed: 0.3s;
     --shadow-color: rgba(0, 0, 0, 0.15);
     --container-padding: 20px;
+    --service-card-width: 320px;
+    --service-card-gap: 20px;
 }
 
 /* Reset y Estilos Globales */
@@ -28,89 +30,48 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 var(--container-padding);
+    padding: 40px var(--container-padding);
 }
 
-/* Header con Animación */
+/* Header */
 header {
     text-align: center;
-    padding: 80px 20px;
+    padding: 60px 20px;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: #ffffff;
-    margin-bottom: 60px;
-    animation: slideDown 0.8s ease-out;
-}
-
-@keyframes slideDown {
-    from {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* Títulos */
-h1 {
-    font-size: 2.8em;
-    margin-bottom: 20px;
-    font-weight: 700;
-}
-
-h2 {
-    color: var(--primary-color);
-    font-size: 2.2em;
-    margin-bottom: 30px;
-    text-align: center;
+    margin-bottom: 40px;
 }
 
 /* Sección de Servicios */
 .services-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--service-card-gap);
     padding: 20px 0;
-    animation: fadeIn 1s ease-out;
+    margin: 0 auto;
 }
 
 .service-card {
     background: #ffffff;
     border-radius: var(--border-radius);
-    padding: 30px;
+    padding: 25px;
     box-shadow: 0 4px 15px var(--shadow-color);
     transition: all var(--transition-speed) ease;
+    width: var(--service-card-width);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    animation: cardAppear 0.5s ease-out forwards;
-    opacity: 0;
-}
-
-.service-card:nth-child(1) { animation-delay: 0.1s; }
-.service-card:nth-child(2) { animation-delay: 0.2s; }
-.service-card:nth-child(3) { animation-delay: 0.3s; }
-
-@keyframes cardAppear {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    height: 400px; /* Altura fija para mantener uniformidad */
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
     box-shadow: 0 8px 25px var(--shadow-color);
 }
 
 .service-card h3 {
     color: var(--primary-color);
-    font-size: 1.5em;
+    font-size: 1.3em;
     margin-bottom: 15px;
 }
 
@@ -119,90 +80,62 @@ h2 {
     flex-grow: 1;
 }
 
-/* Botones */
-button[type="submit"],
-.more-info-button {
-    padding: 12px 20px;
-    background-color: var(--secondary-color);
-    color: #333333;
-    border: none;
-    border-radius: var(--border-radius);
-    font-size: 1.1em;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all var(--transition-speed);
-    box-shadow: 0 2px 5px var(--shadow-color);
-    display: inline-block;
+/* Sección FAQ */
+.faq-section {
+    margin-top: 60px;
+    padding: 40px 20px;
+}
+
+.faq-title {
     text-align: center;
-    text-decoration: none;
-    max-width: 250px;
-    margin: 10px 0;
+    font-size: 2.2em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
 }
 
-button[type="submit"]:hover,
-.more-info-button:hover {
-    background-color: var(--primary-color);
-    color: #ffffff;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 15px var(--shadow-color);
+.faq-divider {
+    height: 4px;
+    width: 100px;
+    background-color: var(--secondary-color);
+    margin: 0 auto 40px;
+    border-radius: 2px;
 }
 
-/* FAQ Section */
-#faq {
-    margin: 60px 0;
-    padding: 40px;
-    background: #ffffff;
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 15px var(--shadow-color);
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .faq-item {
-    margin-bottom: 30px;
+    background: #ffffff;
+    border-radius: var(--border-radius);
     padding: 20px;
-    border-bottom: 2px solid var(--background-color);
-}
-
-.faq-item:last-child {
-    border-bottom: none;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px var(--shadow-color);
 }
 
 /* Media Queries */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 2em;
-    }
-
-    h2 {
-        font-size: 1.8em;
-    }
-
     .services-container {
-        grid-template-columns: 1fr;
-    }
-
-    header {
-        padding: 40px 20px;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px; /* 2cm en móvil */
     }
 
     .service-card {
-        padding: 20px;
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        min-height: 350px;
+    }
+
+    .container {
+        padding: 20px var(--container-padding);
     }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-    .services-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* Animación General de Aparición */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    .service-card {
+        width: calc(50% - var(--service-card-gap));
     }
 }
