@@ -386,15 +386,6 @@ footer p {
         font-size: 1.2em;
     }
 
-    button[type="submit"] {
-        font-size: 1em;
-        padding: 10px 15px;
-        width: auto; /* Let the button size itself based on content on smaller screens */
-        max-width: 100%; /* Ensure the button does not stretch too much on mobile */
-        margin: 10px auto; /* Center the button on mobile */
-        text-align: center;
-    }
-
     .form-section {
         padding: 20px;
     }
