@@ -75,6 +75,7 @@ h2 {
     gap: 20px; /* Espacio entre las tarjetas */
 }
 
+/* Service Card Styles */
 .service-card {
     flex: 1 1 calc(33.333% - 20px); /* Tres tarjetas por fila con espacio */
     background: #f9f9f9; /* Color de fondo de la tarjeta */
@@ -82,6 +83,8 @@ h2 {
     padding: 20px;
     box-shadow: 0 2px 5px var(--shadow-color);
     transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    position: relative; /* Para animación de fondo */
+    overflow: hidden; /* Para evitar que el texto sobresalga */
 }
 
 .service-card:hover {
@@ -89,9 +92,29 @@ h2 {
     box-shadow: 0 4px 10px var(--shadow-color);
 }
 
+/* Animación de fondo en las tarjetas */
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: opacity var(--transition-speed);
+    z-index: 0;
+}
+
+.service-card:hover::before {
+    opacity: 1; /* Efecto de superposición al pasar el ratón */
+}
+
 .service-card h3 {
     margin-top: 0;
     color: var(--text-color);
+    position: relative; /* Para mantener el texto por encima del efecto de fondo */
+    z-index: 1;
 }
 
 /* More Info Button */
@@ -158,3 +181,4 @@ h2 {
         padding: 20px;
     }
 }
+
