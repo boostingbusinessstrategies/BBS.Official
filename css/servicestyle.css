@@ -33,6 +33,7 @@ header {
     border-radius: var(--border-radius);
     box-shadow: 0 4px 10px var(--shadow-color);
     margin-bottom: 40px; /* Espacio entre el encabezado y el resto del contenido */
+    animation: fadeIn 0.5s ease; /* Animación al cargar */
 }
 
 h1 {
@@ -47,9 +48,9 @@ section {
     background: #ffffff;
     border-radius: var(--border-radius);
     box-shadow: 0 2px 5px var(--shadow-color);
-    animation: fadeIn 0.5s ease;
 }
 
+/* Fade In Animation */
 @keyframes fadeIn {
     from {
         transform: translateY(20px);
@@ -73,9 +74,9 @@ h2 {
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 20px; /* Espacio entre las tarjetas */
+    animation: fadeIn 0.5s ease; /* Animación de las tarjetas */
 }
 
-/* Service Card Styles */
 .service-card {
     flex: 1 1 calc(33.333% - 20px); /* Tres tarjetas por fila con espacio */
     background: #f9f9f9; /* Color de fondo de la tarjeta */
@@ -83,8 +84,7 @@ h2 {
     padding: 20px;
     box-shadow: 0 2px 5px var(--shadow-color);
     transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-    position: relative; /* Para animación de fondo */
-    overflow: hidden; /* Para evitar que el texto sobresalga */
+    overflow: hidden; /* Evitar desbordamiento de texto */
 }
 
 .service-card:hover {
@@ -92,29 +92,9 @@ h2 {
     box-shadow: 0 4px 10px var(--shadow-color);
 }
 
-/* Animación de fondo en las tarjetas */
-.service-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    transition: opacity var(--transition-speed);
-    z-index: 0;
-}
-
-.service-card:hover::before {
-    opacity: 1; /* Efecto de superposición al pasar el ratón */
-}
-
 .service-card h3 {
     margin-top: 0;
     color: var(--text-color);
-    position: relative; /* Para mantener el texto por encima del efecto de fondo */
-    z-index: 1;
 }
 
 /* More Info Button */
@@ -141,10 +121,6 @@ h2 {
     box-shadow: 0 2px 5px var(--shadow-color);
 }
 
-#extension-options h2 {
-    color: var(--primary-color);
-}
-
 /* FAQ Section */
 #faq {
     margin: 40px 0;
@@ -154,6 +130,7 @@ h2 {
     box-shadow: 0 2px 5px var(--shadow-color);
 }
 
+/* FAQ Title */
 .faq-title {
     color: var(--primary-color);
     font-size: 1.8em;
@@ -182,3 +159,45 @@ h2 {
     }
 }
 
+/* Additional Animations for Service Cards */
+@keyframes cardPop {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.service-card {
+    animation: cardPop 0.5s ease; /* Animación al cargar */
+}
+
+/* Button Styling */
+button[type="submit"] {
+    padding: 12px 20px;
+    background-color: var(--secondary-color); /* Secondary color */
+    color: #333333; /* Text color */
+    border: none;
+    border-radius: var(--border-radius); /* Rounded borders */
+    font-size: 1.2em; /* Font size */
+    font-weight: 600; /* Font weight */
+    cursor: pointer;
+    transition: background var(--transition-speed), transform var(--transition-speed); /* Smooth transitions */
+    box-shadow: 0 2px 5px var(--shadow-color); /* Shadow */
+    display: block;
+    max-width: 250px; /* Adjusted max width to prevent button from being too long */
+    margin: 10px auto; /* Center the button */
+    text-align: center; /* Center text */
+}
+
+button[type="submit"]:hover {
+    background-color: var(--primary-color); /* Background change on hover */
+    color: #fff; /* Text color change on hover */
+    transform: translateY(-3px); /* Hover effect */
+}
