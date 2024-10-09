@@ -7,197 +7,230 @@
     --border-radius: 12px;
     --transition-speed: 0.4s;
     --shadow-color: rgba(0, 0, 0, 0.15);
+    --container-padding: 20px;
+    --max-width: 1200px;
 }
 
 /* Global Styles */
 *, *::before, *::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.8;
     overflow-x: hidden;
 }
 
-/* Header Section */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+/* Header Section with Animation */
 header {
     text-align: center;
-    padding: 60px 20px;
+    padding: 80px 20px;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: #ffffff;
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 10px var(--shadow-color);
-    margin-bottom: 40px; /* Espacio entre el encabezado y el resto del contenido */
-    animation: fadeIn 0.5s ease; /* Animación al cargar */
+    margin-bottom: 60px;
+    position: relative;
+    overflow: hidden;
+    animation: headerFadeIn 1s ease-out;
+}
+
+@keyframes headerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 h1 {
-    font-size: 2.5em;
-    margin: 0;
+    font-size: 3em;
+    margin-bottom: 20px;
+    animation: titleSlideIn 1.2s ease-out;
 }
 
-/* Section Styles */
-section {
-    margin: 40px 0;
-    padding: 30px;
-    background: #ffffff;
-    border-radius: var(--border-radius);
-    box-shadow: 0 2px 5px var(--shadow-color);
-}
-
-/* Fade In Animation */
-@keyframes fadeIn {
+@keyframes titleSlideIn {
     from {
-        transform: translateY(20px);
         opacity: 0;
+        transform: translateX(-50px);
     }
     to {
-        transform: translateY(0);
         opacity: 1;
+        transform: translateX(0);
     }
 }
 
-h2 {
-    color: var(--primary-color);
-    font-size: 1.8em;
-    margin-bottom: 15px;
-}
-
-/* Service Cards */
+/* Services Section */
 .services-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px; /* Espacio entre las tarjetas */
-    animation: fadeIn 0.5s ease; /* Animación de las tarjetas */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
+    margin: 0 auto;
+    max-width: var(--max-width);
 }
 
 .service-card {
-    flex: 1 1 calc(33.333% - 20px); /* Tres tarjetas por fila con espacio */
-    background: #f9f9f9; /* Color de fondo de la tarjeta */
+    background: #ffffff;
     border-radius: var(--border-radius);
-    padding: 20px;
-    box-shadow: 0 2px 5px var(--shadow-color);
-    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-    overflow: hidden; /* Evitar desbordamiento de texto */
+    padding: 30px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: all var(--transition-speed);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    animation: cardFadeIn 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .service-card:hover {
-    transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
-    box-shadow: 0 4px 10px var(--shadow-color);
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px var(--shadow-color);
 }
 
 .service-card h3 {
-    margin-top: 0;
-    color: var(--text-color);
+    color: var(--primary-color);
+    font-size: 1.5em;
+    margin-bottom: 15px;
 }
 
-/* More Info Button */
+.service-card p {
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+/* Buttons Styling */
+button[type="submit"],
 .more-info-button {
+    padding: 12px 20px;
+    background-color: var(--secondary-color);
+    color: #333333;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    box-shadow: 0 2px 5px var(--shadow-color);
     display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
+    max-width: 250px;
+    margin: 10px 0;
+    text-align: left;
+    text-decoration: none;
+}
+
+button[type="submit"]:hover,
+.more-info-button:hover {
     background-color: var(--primary-color);
     color: #fff;
-    text-decoration: none;
-    border-radius: var(--border-radius);
-    transition: background var(--transition-speed);
-}
-
-.more-info-button:hover {
-    background-color: var(--secondary-color);
-}
-
-/* Extension Options */
-#extension-options {
-    background: #f9f9f9;
-    padding: 30px;
-    border-radius: var(--border-radius);
-    box-shadow: 0 2px 5px var(--shadow-color);
+    transform: translateY(-3px);
 }
 
 /* FAQ Section */
 #faq {
-    margin: 40px 0;
-    padding: 20px;
+    max-width: var(--max-width);
+    margin: 60px auto;
+    padding: 40px 20px;
     background: #ffffff;
     border-radius: var(--border-radius);
-    box-shadow: 0 2px 5px var(--shadow-color);
+    box-shadow: 0 4px 15px var(--shadow-color);
 }
 
-/* FAQ Title */
-.faq-title {
+.faq-item {
+    margin-bottom: 30px;
+    padding: 20px;
+    border-bottom: 2px solid var(--background-color);
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-question {
+    font-weight: 600;
     color: var(--primary-color);
-    font-size: 1.8em;
+    margin-bottom: 10px;
 }
 
-/* Responsive Styles */
+/* Responsive Design */
 @media (max-width: 768px) {
-    .service-card {
-        flex: 1 1 100%; /* Una tarjeta por fila en dispositivos pequeños */
-    }
-
-    header {
-        padding: 40px 10px;
+    .services-section {
+        grid-template-columns: 1fr;
+        padding: 20px;
     }
 
     h1 {
-        font-size: 2em;
+        font-size: 2.2em;
     }
 
-    h2 {
-        font-size: 1.5em;
+    header {
+        padding: 60px 20px;
     }
 
-    section {
-        padding: 20px;
+    .service-card {
+        padding: 25px;
     }
-}
 
-/* Additional Animations for Service Cards */
-@keyframes cardPop {
-    0% {
-        transform: scale(0.9);
-        opacity: 0;
-    }
-    50% {
-        opacity: 0.5;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
+    button[type="submit"],
+    .more-info-button {
+        width: 100%;
+        max-width: none;
+        text-align: center;
     }
 }
 
-.service-card {
-    animation: cardPop 0.5s ease; /* Animación al cargar */
+/* Extension Options Section */
+#extension-options {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px var(--shadow-color);
+    margin: 40px auto;
+    max-width: var(--max-width);
 }
 
-/* Button Styling */
-button[type="submit"] {
-    padding: 12px 20px;
-    background-color: var(--secondary-color); /* Secondary color */
-    color: #333333; /* Text color */
-    border: none;
-    border-radius: var(--border-radius); /* Rounded borders */
-    font-size: 1.2em; /* Font size */
-    font-weight: 600; /* Font weight */
-    cursor: pointer;
-    transition: background var(--transition-speed), transform var(--transition-speed); /* Smooth transitions */
-    box-shadow: 0 2px 5px var(--shadow-color); /* Shadow */
-    display: block;
-    max-width: 250px; /* Adjusted max width to prevent button from being too long */
-    margin: 10px auto; /* Center the button */
-    text-align: center; /* Center text */
+#extension-options .options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
 }
 
-button[type="submit"]:hover {
-    background-color: var(--primary-color); /* Background change on hover */
-    color: #fff; /* Text color change on hover */
-    transform: translateY(-3px); /* Hover effect */
+.option-item {
+    padding: 20px;
+    background: var(--background-color);
+    border-radius: var(--border-radius);
+    transition: all var(--transition-speed);
+}
+
+.option-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px var(--shadow-color);
 }
