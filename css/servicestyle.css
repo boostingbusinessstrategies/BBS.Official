@@ -22,7 +22,7 @@ body {
     animation: fadeIn 0.5s ease; /* Animation for body */
 }
 
-/* Service Section Styles */
+/* Services Section Styles */
 .services-section {
     max-width: 1200px;
     margin: 40px auto;
@@ -31,21 +31,41 @@ body {
     border-radius: var(--border-radius);
     box-shadow: 0 4px 30px var(--shadow-color);
     transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    animation: slideIn 0.5s ease; /* Animation for services section */
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .services-section h2 {
     font-size: 2.5em;
     margin-bottom: 20px;
     text-align: center;
+    color: var(--primary-color);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Service Card Styles */
 .service-card {
     background-color: var(--content-background);
     border-radius: var(--border-radius);
     box-shadow: 0 4px 15px var(--shadow-color);
     padding: 20px;
-    margin: 15px 0;
+    margin: 15px 5px; /* Add some margin on the sides */
     transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    position: relative; /* Position relative for the overlay */
+    overflow: hidden; /* Prevent overflow from the overlay */
+    display: flex; /* Use flexbox for responsiveness */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
 }
 
 .service-card:hover {
@@ -57,11 +77,13 @@ body {
     font-size: 2em;
     margin-bottom: 10px;
     color: var(--primary-color);
+    text-align: center; /* Center text in card */
 }
 
 .service-card p {
     font-size: 1em;
     margin-bottom: 15px;
+    text-align: center; /* Center text in card */
 }
 
 .service-card ul {
@@ -70,7 +92,8 @@ body {
     margin-bottom: 15px;
 }
 
-.service-card .more-info-button {
+/* Button Styles */
+.more-info-button {
     display: inline-block;
     padding: 12px 20px;
     background-color: var(--secondary-color);
@@ -84,93 +107,37 @@ body {
     width: 100%;
 }
 
-.service-card .more-info-button:hover {
+.more-info-button:hover {
     background-color: var(--primary-color);
     color: #fff;
     transform: translateY(-3px);
 }
 
-/* Extension Options Section */
-#extension-options {
-    padding: 30px;
-    background-color: var(--content-background);
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 30px var(--shadow-color);
-    margin: 40px auto;
-}
-
-#extension-options h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-#extension-options ul {
-    list-style-type: none;
-    padding: 0;
-    margin-bottom: 15px;
-}
-
-#extension-options li {
-    margin: 10px 0;
-    font-size: 1.1em;
-}
-
-/* Privacy Commitment Section */
-#privacy-commitment {
-    padding: 30px;
-    background-color: var(--content-background);
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 30px var(--shadow-color);
-    margin: 40px auto;
-}
-
-#privacy-commitment h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-#privacy-commitment p {
-    font-size: 1em;
-    margin-bottom: 15px;
-}
-
-/* Industry-Specific Solutions Section */
-#industry-options {
-    padding: 30px;
-    background-color: var(--content-background);
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 30px var(--shadow-color);
-    margin: 40px auto;
-}
-
-#industry-options h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-#industry-options p {
-    font-size: 1em;
-    margin-bottom: 15px;
-}
-
-/* FAQ Section */
+/* Section Styles */
+#extension-options,
+#privacy-commitment,
+#industry-options,
 #faq {
     padding: 30px;
     background-color: var(--content-background);
     border-radius: var(--border-radius);
     box-shadow: 0 4px 30px var(--shadow-color);
     margin: 40px auto;
+    animation: fadeIn 0.5s ease; /* Animation for each section */
 }
 
+#extension-options h2,
+#privacy-commitment h2,
+#industry-options h2,
 #faq h2 {
     font-size: 2.5em;
     margin-bottom: 20px;
     text-align: center;
+    color: var(--primary-color);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* FAQ Section */
 .faq-section h3 {
     font-size: 1.5em;
     margin-bottom: 10px;
@@ -197,17 +164,29 @@ footer p {
 }
 
 /* Responsive Styles */
+@media (max-width: 1200px) {
+    .services-section {
+        padding: 20px; /* Adjust padding for larger tablets */
+    }
+    
+    .service-card {
+        margin: 10px; /* Adjust margin for tablets */
+        flex: 1 1 calc(45% - 20px); /* Two cards per row */
+    }
+
+    .services-section h2 {
+        font-size: 2.2em; /* Adjust title font size */
+    }
+}
+
 @media (max-width: 768px) {
-    .services-section,
-    #extension-options,
-    #privacy-commitment,
-    #industry-options,
-    #faq {
-        padding: 20px; /* Adjust padding for mobile */
+    .services-section {
+        padding: 15px; /* Adjust padding for mobile */
     }
 
     .service-card {
         margin: 10px 0; /* Reduce margin for mobile */
+        flex: 1 1 calc(100% - 20px); /* One card per row */
     }
 
     .service-card h3 {
@@ -223,5 +202,23 @@ footer p {
 
     .more-info-button {
         width: auto; /* Reset width for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .service-card h3 {
+        font-size: 1.5em; /* Further reduce font size for small screens */
+    }
+
+    .service-card p {
+        font-size: 0.9em; /* Smaller font size for mobile */
+    }
+
+    .more-info-button {
+        padding: 10px; /* Adjust button padding */
+    }
+
+    footer p {
+        font-size: 0.8em; /* Smaller footer text */
     }
 }
