@@ -78,7 +78,7 @@ section {
 }
 
 h2 {
-    color: var(--primary-color);
+    color: #444444;
     font-size: 1.8em;
     margin-bottom: 10px;
 }
@@ -206,6 +206,7 @@ h2 {
 
 #sidebar ul li a:hover::after {
     width: 100%; /* Efecto de subrayado al pasar el ratón */
+    left: 0;
 }
 
 /* Toggle Button */
@@ -234,6 +235,22 @@ h2 {
 #menu-toggle:hover {
     background-color: rgba(196, 62, 62, 0.75);
     transform: scale(1.05);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #sidebar {
+        width: 70%; /* Sidebar más ancho en dispositivos pequeños */
+        left: -70%; /* Inicia fuera de la vista */
+    }
+
+    #sidebar.active {
+        left: 0; /* Desliza hacia adentro */
+    }
+
+    #menu-toggle {
+        left: 10px; /* Posiciona el botón más cerca en móviles */
+    }
 }
 
 /* FAQ Section */
