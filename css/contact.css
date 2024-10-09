@@ -313,7 +313,7 @@ button[type="submit"] {
     box-shadow: 0 2px 5px var(--shadow-color); /* Shadow */
     display: block;
     width: 100%; /* Full width on mobile */
-    max-width: 300px; /* Limit width on larger screens */
+    max-width: 250px; /* Adjusted max width to prevent button from being too long */
     margin: 10px auto; /* Center the button */
 }
 
@@ -389,7 +389,8 @@ footer p {
     button[type="submit"] {
         font-size: 1em;
         padding: 10px 15px;
-        width: 100%; /* Ensure button takes full width on mobile */
+        width: auto; /* Let the button size itself based on content on smaller screens */
+        max-width: 100%; /* Ensure the button does not stretch too much on mobile */
     }
 
     .form-section {
