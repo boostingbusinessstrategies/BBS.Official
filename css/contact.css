@@ -300,20 +300,26 @@ header.hero-section p {
 }
 
 button[type="submit"] {
-    background-color: var(--primary-color);
-    color: #fff;
     padding: 12px 20px;
+    background-color: var(--secondary-color); /* Color de fondo secundario */
+    color: #333333; /* Color del texto */
     border: none;
-    border-radius: var(--border-radius);
-    font-size: 1.2em;
+    border-radius: var(--border-radius); /* Bordes redondeados */
+    font-size: 1.2em; /* Tamaño de fuente */
+    font-weight: 600; /* Peso de la fuente */
     cursor: pointer;
-    transition: background var(--transition-speed), transform var(--transition-speed);
-    margin-top: 20px; /* Added margin to separate the button from the form */
+    transition: background var(--transition-speed), transform var(--transition-speed); /* Transición de fondo y transformación */
+    box-shadow: 0 2px 5px var(--shadow-color); /* Sombra */
+    display: inline-block;
+    width: 100%; /* Ancho completo en móvil */
+    max-width: 300px; /* Limitar el ancho en pantallas más grandes */
+    margin: 10px auto; /* Centrado automático */
 }
 
 button[type="submit"]:hover {
-    background-color: darken(var(--primary-color), 10%);
-    transform: translateY(-2px);
+    background-color: var(--primary-color); /* Cambio de color al hacer hover */
+    color: #fff; /* Color del texto al hacer hover */
+    transform: translateY(-3px); /* Movimiento hacia arriba al hacer hover */
 }
 
 /* Section Styles */
