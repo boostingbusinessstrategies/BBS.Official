@@ -86,7 +86,7 @@ h2 {
 /* Highlighted Text */
 .highlight {
     font-weight: bold;
-    color: var(--primary-color);
+    color: #444444;
 }
 
 /* Sidebar Styles */
