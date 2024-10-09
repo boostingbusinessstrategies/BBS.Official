@@ -1,17 +1,15 @@
-/* CSS Variables for Easy Maintenance */
 :root {
     --primary-color: #ee4d4d;
     --secondary-color: #ffc44d;
     --background-color: #f0f4f8;
     --text-color: #333333;
     --border-radius: 12px;
-    --transition-speed: 0.4s;
+    --transition-speed: 0.3s;
     --shadow-color: rgba(0, 0, 0, 0.15);
     --container-padding: 20px;
-    --max-width: 1200px;
 }
 
-/* Global Styles */
+/* Reset y Estilos Globales */
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -22,64 +20,59 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
-    line-height: 1.8;
+    line-height: 1.6;
     overflow-x: hidden;
 }
 
+/* Contenedor Principal */
 .container {
-    max-width: var(--max-width);
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--container-padding);
 }
 
-/* Header Section with Animation */
+/* Header con Animación */
 header {
     text-align: center;
     padding: 80px 20px;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: #ffffff;
     margin-bottom: 60px;
-    position: relative;
-    overflow: hidden;
-    animation: headerFadeIn 1s ease-out;
+    animation: slideDown 0.8s ease-out;
 }
 
-@keyframes headerFadeIn {
+@keyframes slideDown {
     from {
+        transform: translateY(-100%);
         opacity: 0;
-        transform: translateY(-20px);
     }
     to {
-        opacity: 1;
         transform: translateY(0);
-    }
-}
-
-h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
-    animation: titleSlideIn 1.2s ease-out;
-}
-
-@keyframes titleSlideIn {
-    from {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    to {
         opacity: 1;
-        transform: translateX(0);
     }
 }
 
-/* Services Section */
-.services-section {
+/* Títulos */
+h1 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+h2 {
+    color: var(--primary-color);
+    font-size: 2.2em;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Sección de Servicios */
+.services-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    padding: 40px 20px;
-    margin: 0 auto;
-    max-width: var(--max-width);
+    padding: 20px 0;
+    animation: fadeIn 1s ease-out;
 }
 
 .service-card {
@@ -87,19 +80,19 @@ h1 {
     border-radius: var(--border-radius);
     padding: 30px;
     box-shadow: 0 4px 15px var(--shadow-color);
-    transition: all var(--transition-speed);
+    transition: all var(--transition-speed) ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    animation: cardFadeIn 0.6s ease-out;
-    animation-fill-mode: both;
+    animation: cardAppear 0.5s ease-out forwards;
+    opacity: 0;
 }
 
 .service-card:nth-child(1) { animation-delay: 0.1s; }
 .service-card:nth-child(2) { animation-delay: 0.2s; }
 .service-card:nth-child(3) { animation-delay: 0.3s; }
 
-@keyframes cardFadeIn {
+@keyframes cardAppear {
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -126,7 +119,7 @@ h1 {
     flex-grow: 1;
 }
 
-/* Buttons Styling */
+/* Botones */
 button[type="submit"],
 .more-info-button {
     padding: 12px 20px;
@@ -134,30 +127,30 @@ button[type="submit"],
     color: #333333;
     border: none;
     border-radius: var(--border-radius);
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: 600;
     cursor: pointer;
     transition: all var(--transition-speed);
     box-shadow: 0 2px 5px var(--shadow-color);
     display: inline-block;
+    text-align: center;
+    text-decoration: none;
     max-width: 250px;
     margin: 10px 0;
-    text-align: left;
-    text-decoration: none;
 }
 
 button[type="submit"]:hover,
 .more-info-button:hover {
     background-color: var(--primary-color);
-    color: #fff;
+    color: #ffffff;
     transform: translateY(-3px);
+    box-shadow: 0 4px 15px var(--shadow-color);
 }
 
 /* FAQ Section */
 #faq {
-    max-width: var(--max-width);
-    margin: 60px auto;
-    padding: 40px 20px;
+    margin: 60px 0;
+    padding: 40px;
     background: #ffffff;
     border-radius: var(--border-radius);
     box-shadow: 0 4px 15px var(--shadow-color);
@@ -173,64 +166,43 @@ button[type="submit"]:hover,
     border-bottom: none;
 }
 
-.faq-question {
-    font-weight: 600;
-    color: var(--primary-color);
-    margin-bottom: 10px;
-}
-
-/* Responsive Design */
+/* Media Queries */
 @media (max-width: 768px) {
-    .services-section {
-        grid-template-columns: 1fr;
-        padding: 20px;
+    h1 {
+        font-size: 2em;
     }
 
-    h1 {
-        font-size: 2.2em;
+    h2 {
+        font-size: 1.8em;
+    }
+
+    .services-container {
+        grid-template-columns: 1fr;
     }
 
     header {
-        padding: 60px 20px;
+        padding: 40px 20px;
     }
 
     .service-card {
-        padding: 25px;
-    }
-
-    button[type="submit"],
-    .more-info-button {
-        width: 100%;
-        max-width: none;
-        text-align: center;
+        padding: 20px;
     }
 }
 
-/* Extension Options Section */
-#extension-options {
-    background: #ffffff;
-    padding: 40px;
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 15px var(--shadow-color);
-    margin: 40px auto;
-    max-width: var(--max-width);
+@media (min-width: 769px) and (max-width: 1024px) {
+    .services-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-#extension-options .options-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
-}
-
-.option-item {
-    padding: 20px;
-    background: var(--background-color);
-    border-radius: var(--border-radius);
-    transition: all var(--transition-speed);
-}
-
-.option-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px var(--shadow-color);
+/* Animación General de Aparición */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
