@@ -380,27 +380,38 @@ header h1 {
     position: fixed; /* Fijo en la esquina */
     top: 25px; /* Espacio desde el borde superior */
     right: 25px; /* Espacio desde el borde derecho */
-    background-color: var(--primary-color); /* Color primario */
+    background-color: transparent; /* Botón transparente */
     color: white;
     border: none;
     border-radius: 50%; /* Redondeado */
-    width: 45px; /* Tamaño más grande */
-    height: 45px; /* Tamaño más grande */
+    width: 35px; /* Tamaño más pequeño */
+    height: 35px; /* Tamaño más pequeño */
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones más suaves */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transiciones más suaves */
     z-index: 1000;
+    opacity: 0; /* Ocultar por defecto */
 }
 
+/* Mostrar el botón al pasar el mouse */
 .admin-toggle-button:hover {
-    background-color: darken(var(--primary-color), 10%); /* Efecto en hover */
+    opacity: 1; /* Hacer visible al pasar el ratón */
+    background-color: rgba(0, 0, 0, 0.3); /* Color de fondo al hacer hover */
     transform: scale(1.05); /* Aumento al pasar el ratón */
 }
 
+/* Mostrar el botón en dispositivos táctiles */
+@media (hover: none) {
+    .admin-toggle-button:active {
+        opacity: 1; /* Hacer visible al tocar en móviles */
+        background-color: rgba(0, 0, 0, 0.3); /* Color de fondo al tocar */
+    }
+}
+
 .admin-toggle-button i {
-    font-size: 18px; /* Tamaño del icono aumentado */
+    font-size: 16px; /* Tamaño del icono reducido */
 }
 
 /* Animación de aparición */
