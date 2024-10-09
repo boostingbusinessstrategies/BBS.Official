@@ -1,3 +1,4 @@
+/* CSS Variables for Easy Maintenance */
 :root {
     --primary-color: #ee4d4d;
     --secondary-color: #ffc44d;
@@ -5,360 +6,222 @@
     --text-color: #333333;
     --border-radius: 12px;
     --transition-speed: 0.4s;
-    --shadow-color: rgba(0, 0, 0, 0.2);
-    --hover-opacity: rgba(255, 255, 255, 0.3);
-    --box-shadow: 0 4px 20px var(--shadow-color);
+    --shadow-color: rgba(0, 0, 0, 0.15); /* Slightly lighter shadow */
+    --blur-opacity: rgba(0, 0, 0, 0.5);
+    --content-background: #ffffff; /* Lighter content background for better contrast */
 }
 
 /* Global Styles */
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     background-color: var(--background-color);
     color: var(--text-color);
-    line-height: 1.6;
-    overflow-x: hidden;
+    line-height: 1.8;
+    animation: fadeIn 0.5s ease; /* Animation for body */
 }
 
-/* Sidebar Styles */
-#sidebar {
-    width: 280px;
-    height: 100vh;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: #fff;
-    position: fixed;
-    left: -300px;
-    top: 0;
-    padding: 20px;
-    transition: left var(--transition-speed) ease;
-    box-shadow: 2px 0 10px var(--shadow-color);
-    z-index: 1000;
-}
-
-/* Cambia la animación al abrir */
-#sidebar.active {
-    left: 0;
-    animation: slideIn 0.3s forwards; 
-}
-
-/* Animations */
-@keyframes slideIn {
-    from {
-        left: -300px;
-    }
-    to {
-        left: 0;
-    }
-}
-
-@keyframes slideOut {
-    from {
-        left: 0;
-    }
-    to {
-        left: -300px;
-    }
-}
-
-#sidebar.inactive {
-    animation: slideOut 0.3s forwards; 
-}
-
-.blur-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    backdrop-filter: blur(8px);
-    opacity: 0.5;
-    z-index: 500;
-}
-
-/* Sidebar Header */
-#sidebar .sidebar-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background-color: var(--secondary-color);
-    border-radius: var(--border-radius);
-    box-shadow: 0 2px 5px var(--shadow-color);
-    animation: fadeIn 0.4s;
-}
-
-#sidebar .sidebar-header h3 {
-    margin: 0;
-    font-size: 1.8em;
-    text-transform: uppercase;
-    letter-spacing: 1px; 
-}
-
-/* Sidebar Navigation */
-#sidebar ul {
-    padding: 0;
-    margin: 20px 0;
-    list-style: none;
-}
-
-#sidebar ul li {
-    position: relative; 
-    padding: 10px 0;
-}
-
-#sidebar ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1em;
-    display: block;
-    transition: background var(--transition-speed), transform var(--transition-speed), color var(--transition-speed);
-    padding: 10px 15px;
-    border-radius: var(--border-radius);
-}
-
-#sidebar ul li a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 3px;
-    background: var(--secondary-color);
-    transition: width var(--transition-speed), left var(--transition-speed);
-}
-
-#sidebar ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    transform: translateX(5px);
-    color: var(--secondary-color); 
-}
-
-#sidebar ul li a:hover::after {
-    width: 100%; 
-}
-
-/* Toggle Button */
-#menu-toggle {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background-color: rgba(226, 16, 16, 0.63);
-    border: none;
-    color: #fff;
-    padding: 12px;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    transition: background var(--transition-speed), transform var(--transition-speed);
-    z-index: 1100;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-    box-shadow: 0 2px 8px var(--shadow-color);
-    opacity: 0.8;
-    animation: fadeIn 0.4s; 
-}
-
-#menu-toggle:hover {
-    background-color: rgba(196, 62, 62, 0.75);
-    transform: scale(1.05);
-}
-
-/* Main Content Styles */
-#content {
-    margin: 0 auto; 
-    padding: 20px;
-    max-width: 900px; /* Increased width for larger screens */
-    background-color: white;
-    box-shadow: var(--box-shadow);
-    border-radius: var(--border-radius);
-    transition: margin-left var(--transition-speed);
-    margin-bottom: 20px; /* Add bottom margin */
-}
-
-/* Header Styles */
-header {
-    margin-bottom: 20px;
-}
-
-h1, h2 {
-    color: var(--primary-color);
-    margin-bottom: 10px;
-    text-align: center; 
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-/* Service Cards */
+/* Service Section Styles */
 .services-section {
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: space-between; 
-    margin-top: 20px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: var(--content-background);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 30px var(--shadow-color);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.services-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .service-card {
-    background-color: var(--secondary-color);
+    background-color: var(--content-background);
     border-radius: var(--border-radius);
-    padding: 15px;
-    box-shadow: var(--box-shadow);
+    box-shadow: 0 4px 15px var(--shadow-color);
+    padding: 20px;
+    margin: 15px 0;
     transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-    position: relative; 
-    flex: 1 1 30%; 
-    margin: 10px; 
 }
 
 .service-card:hover {
-    transform: translateY(-5px); 
-    box-shadow: 0 4px 25px var(--shadow-color); 
+    transform: translateY(-5px);
+    box-shadow: 0 6px 40px var(--shadow-color);
 }
 
 .service-card h3 {
-    margin-top: 0;
-    font-size: 1.5em; 
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: var(--primary-color);
 }
 
-/* Section Styles */
-.container {
-    padding: 20px;
-    border-radius: var(--border-radius);
-    background-color: white; 
-    box-shadow: var(--box-shadow);
-    margin-bottom: 20px;
+.service-card p {
+    font-size: 1em;
+    margin-bottom: 15px;
 }
 
-/* More Information Buttons */
-.more-info-button {
+.service-card ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+.service-card .more-info-button {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--primary-color);
-    color: white;
+    padding: 12px 20px;
+    background-color: var(--secondary-color);
+    color: #333333;
     text-decoration: none;
     border-radius: var(--border-radius);
-    transition: background var(--transition-speed);
+    font-weight: 600;
+    transition: background var(--transition-speed), transform var(--transition-speed);
+    box-shadow: 0 2px 5px var(--shadow-color);
+    text-align: center;
+    width: 100%;
 }
 
-.more-info-button:hover {
-    background-color: darkred; 
+.service-card .more-info-button:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-3px);
 }
 
-/* Specific styles for the custom database request link */
-.more-info-button.custom-request {
-    background: none; 
-    color: var(--primary-color); 
-    padding: 0; 
-    text-decoration: underline; 
+/* Extension Options Section */
+#extension-options {
+    padding: 30px;
+    background-color: var(--content-background);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 30px var(--shadow-color);
+    margin: 40px auto;
 }
 
-/* Animation for sections */
-.container {
-    animation: fadeIn var(--transition-speed);
+#extension-options h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+#extension-options ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 15px;
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-    #content {
-        margin-left: 0; 
-        padding: 10px; 
-        max-width: 95%; /* Adjust for mobile */
-    }
+#extension-options li {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
 
-    .service-card {
-        flex: 1 1 100%; 
-    }
+/* Privacy Commitment Section */
+#privacy-commitment {
+    padding: 30px;
+    background-color: var(--content-background);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 30px var(--shadow-color);
+    margin: 40px auto;
+}
 
-    h1, h2 {
-        text-align: center; 
-    }
+#privacy-commitment h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#privacy-commitment p {
+    font-size: 1em;
+    margin-bottom: 15px;
+}
+
+/* Industry-Specific Solutions Section */
+#industry-options {
+    padding: 30px;
+    background-color: var(--content-background);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 30px var(--shadow-color);
+    margin: 40px auto;
+}
+
+#industry-options h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#industry-options p {
+    font-size: 1em;
+    margin-bottom: 15px;
 }
 
 /* FAQ Section */
-.faq-container {
-    margin: 40px 0; /* Espacio entre secciones */
-    padding: 20px;
-    background: #ffffff;
+#faq {
+    padding: 30px;
+    background-color: var(--content-background);
     border-radius: var(--border-radius);
-    box-shadow: 0 2px 5px var(--shadow-color);
-    text-align: center; /* Centra el contenido de la sección */
+    box-shadow: 0 4px 30px var(--shadow-color);
+    margin: 40px auto;
 }
 
-.faq-title {
-    color: #444444; /* Color personalizado */
-    font-size: 2em; /* Tamaño base del título */
-    line-height: 1.2; /* Ajusta la altura de línea para mejor legibilidad */
-    margin-bottom: 20px; /* Espacio debajo del título */
-    text-align: center; /* Centra el texto */
+#faq h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-/* Otros estilos de la sección FAQ */
-.faq-separator {
-    width: 50%; /* Ancho del separador */
-    height: 2px; /* Altura del separador */
-    background-color: var(--secondary-color); /* Color del separador */
-    margin: 0 auto 20px; /* Centrando el separador y añadiendo margen inferior */
-}
-
-.faq-item {
-    margin-bottom: 30px; /* Espacio entre preguntas */
-}
-
-.faq-item h3 {
-    cursor: pointer;
+.faq-section h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
     color: var(--primary-color);
-    font-size: 1.4em;
-    margin-bottom: 10px; /* Espacio debajo de la pregunta */
 }
 
-.faq-item p {
-    display: none; /* Inicialmente oculto */
-    padding: 10px 0;
-    color: var(--text-color);
-    line-height: 1.5; /* Mejora la legibilidad del texto */
+.faq-section p {
+    font-size: 1em;
+    margin-bottom: 15px;
 }
 
 /* Footer Styles */
 footer {
-    background-color: var(--primary-color); 
-    color: white; 
-    padding: 20px; 
-    text-align: center; 
-    border-top-left-radius: var(--border-radius); 
-    border-top-right-radius: var(--border-radius); 
+    padding: 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    text-align: center;
+    margin-top: 40px;
 }
 
-.social-media {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0 0;
+footer p {
+    margin: 0;
+    font-size: 0.9em;
 }
 
-.social-media li {
-    display: inline;
-    margin: 0 10px;
-}
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .services-section,
+    #extension-options,
+    #privacy-commitment,
+    #industry-options,
+    #faq {
+        padding: 20px; /* Adjust padding for mobile */
+    }
 
-.social-media a {
-    color: #fcf9f9;
-    font-size: 1.5em;
-    transition: color var(--transition-speed);
-}
+    .service-card {
+        margin: 10px 0; /* Reduce margin for mobile */
+    }
 
-.social-media a:hover {
-    color: var(--secondary-color);
+    .service-card h3 {
+        font-size: 1.8em; /* Smaller font size for mobile */
+    }
+
+    #extension-options h2,
+    #privacy-commitment h2,
+    #industry-options h2,
+    #faq h2 {
+        font-size: 2em; /* Smaller heading for mobile */
+    }
+
+    .more-info-button {
+        width: auto; /* Reset width for mobile */
+    }
 }
