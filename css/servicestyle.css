@@ -149,6 +149,11 @@ header h1 {
     animation: fadeIn 0.5s ease;
 }
 
+/* Ajuste de altura mínima para evitar tarjetas alargadas */
+.service-card {
+    min-height: 200px; /* Ajusta según sea necesario */
+}
+
 .service-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 30px var(--shadow-color);
@@ -239,7 +244,7 @@ header h1 {
 
 .faq-separator {
     height: 4px;
-    width: 100px;
+    width: 120px; /* Aumentar el ancho */
     background: var(--secondary-color);
     margin: 0 auto 40px;
     border-radius: 2px;
