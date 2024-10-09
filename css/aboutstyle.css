@@ -266,7 +266,15 @@ h2 {
 .faq-container h2 {
     color: var(--primary-color);
     margin-bottom: 20px; /* Espacio debajo del título */
-    font-size: 2em; /* Aumenta el tamaño de la fuente para mayor impacto */
+    font-size: 2em; /* Tamaño base del título */
+    line-height: 1.2; /* Ajusta la altura de línea para mejor legibilidad */
+}
+
+/* Media query para adaptar el tamaño del título en dispositivos móviles */
+@media (max-width: 768px) {
+    .faq-container h2 {
+        font-size: 1.5em; /* Tamaño del título en móviles */
+    }
 }
 
 .faq-separator {
@@ -293,6 +301,7 @@ h2 {
     color: var(--text-color);
     line-height: 1.5; /* Mejora la legibilidad del texto */
 }
+
 
 /* Footer Styles */
 footer {
