@@ -27,11 +27,6 @@ body {
     animation: fadeIn 0.5s ease;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
 /* Contenedor Principal */
 #content {
     margin-left: 0;
@@ -44,17 +39,6 @@ body {
     margin: 0 auto;
     padding: 40px var(--container-padding);
     animation: slideUp 0.6s ease;
-}
-
-@keyframes slideUp {
-    from {
-        transform: translateY(30px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
 }
 
 /* Header Principal */
@@ -74,17 +58,6 @@ header h1 {
     margin-bottom: 20px;
     animation: fadeInDown 0.8s ease;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-@keyframes fadeInDown {
-    from {
-        transform: translateY(-30px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
 }
 
 /* Sección de Introducción */
@@ -127,12 +100,11 @@ header h1 {
 }
 
 .services-section .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--service-card-gap);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
-/* Ajuste de altura mínima para evitar tarjetas alargadas */
 .service-card {
     background: #ffffff;
     border-radius: var(--border-radius);
@@ -140,13 +112,19 @@ header h1 {
     box-shadow: 0 4px 15px var(--shadow-color);
     transition: all var(--transition-speed) ease;
     width: 100%;
+    max-width: var(--service-card-width);
+    margin: 0 auto;
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     gap: 20px;
     animation: fadeIn 0.5s ease;
-    min-height: 250px; /* Ajusta según sea necesario para mantener el diseño */
+}
+
+/* Ajuste de altura mínima para evitar tarjetas alargadas */
+.service-card {
+    min-height: 200px; /* Ajusta según sea necesario */
 }
 
 .service-card:hover {
@@ -225,9 +203,11 @@ header h1 {
 
 /* Sección FAQ */
 #faq {
-    padding: 60px 0;
+    padding: 40px 20px; /* Reducir el padding */
     background: #ffffff;
     margin-top: 60px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px var(--shadow-color);
 }
 
 .faq-title {
@@ -239,7 +219,7 @@ header h1 {
 
 .faq-separator {
     height: 4px;
-    width: 160px; /* Aumentar el ancho para que subraye mejor */
+    width: 150px; /* Aumentar el ancho para que subraye */
     background: var(--secondary-color);
     margin: 0 auto 40px;
     border-radius: 2px;
@@ -339,27 +319,33 @@ header h1 {
     }
 }
 
-@keyframes slideIn {
+@keyframes fadeIn {
     from {
-        transform: translateX(-100%);
         opacity: 0;
     }
     to {
-        transform: translateX(0);
         opacity: 1;
     }
 }
 
-/* Estilos para elementos destacados */
-.highlight {
-    color: var(--primary-color);
-    font-weight: 600;
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
-/* Ajustes de accesibilidad */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation: none !important;
-        transition: none !important;
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
