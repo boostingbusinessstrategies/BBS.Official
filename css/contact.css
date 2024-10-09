@@ -299,27 +299,28 @@ header.hero-section p {
     margin: 10px 0;
 }
 
+/* Submit Button Styling */
 button[type="submit"] {
     padding: 12px 20px;
-    background-color: var(--secondary-color); /* Color de fondo secundario */
-    color: #333333; /* Color del texto */
+    background-color: var(--secondary-color); /* Secondary color */
+    color: #333333; /* Text color */
     border: none;
-    border-radius: var(--border-radius); /* Bordes redondeados */
-    font-size: 1.2em; /* Tamaño de fuente */
-    font-weight: 600; /* Peso de la fuente */
+    border-radius: var(--border-radius); /* Rounded borders */
+    font-size: 1.2em; /* Font size */
+    font-weight: 600; /* Font weight */
     cursor: pointer;
-    transition: background var(--transition-speed), transform var(--transition-speed); /* Transición de fondo y transformación */
-    box-shadow: 0 2px 5px var(--shadow-color); /* Sombra */
-    display: inline-block;
-    margin: 10px auto; /* Centrado automático */
-    width: auto; /* Ajuste automático al contenido */
-    max-width: 200px; /* Limitar el ancho máximo */
+    transition: background var(--transition-speed), transform var(--transition-speed); /* Smooth transitions */
+    box-shadow: 0 2px 5px var(--shadow-color); /* Shadow */
+    display: block;
+    width: 100%; /* Full width on mobile */
+    max-width: 300px; /* Limit width on larger screens */
+    margin: 10px auto; /* Center the button */
 }
 
 button[type="submit"]:hover {
-    background-color: var(--primary-color); /* Cambio de color al hacer hover */
-    color: #fff; /* Color del texto al hacer hover */
-    transform: translateY(-3px); /* Movimiento hacia arriba al hacer hover */
+    background-color: var(--primary-color); /* Background change on hover */
+    color: #fff; /* Text color change on hover */
+    transform: translateY(-3px); /* Hover effect */
 }
 
 /* Section Styles */
@@ -388,9 +389,11 @@ footer p {
     button[type="submit"] {
         font-size: 1em;
         padding: 10px 15px;
+        width: 100%; /* Ensure button takes full width on mobile */
     }
 
     .form-section {
         padding: 20px;
     }
 }
+
