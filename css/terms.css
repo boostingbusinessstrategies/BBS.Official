@@ -284,7 +284,7 @@ p:has(+ h3) {
 
 header {
     text-align: center;
-    padding: 80px 20px;
+    padding: 40px 20px; /* Reducido de 80px a 40px */
     background: var(--header-background);
     color: #ffffff;
     margin-bottom: 40px;
