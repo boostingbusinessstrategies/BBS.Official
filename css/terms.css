@@ -1,0 +1,182 @@
+:root {
+    --primary-color: #ee4d4d;
+    --secondary-color: #ffc44d;
+    --background-color: #f0f4f8;
+    --text-color: #333333;
+    --border-radius: 12px;
+    --transition-speed: 0.3s;
+    --shadow-color: rgba(0, 0, 0, 0.15);
+    --container-padding: 20px;
+    --policy-menu-background: #ffffff;
+    --header-background: linear-gradient(135deg, #ee4d4d, #ffc44d);
+    --footer-background: #ee4d4d;
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Reset y Estilos Base */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Contenedor Principal */
+#content {
+    padding-top: 60px;
+    animation: fadeInUp 0.8s ease-out; /* Aplicar la animación al contenedor principal */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--container-padding);
+}
+
+/* Menú de Políticas */
+.policy-menu {
+    list-style: none;
+    padding: 20px;
+    background-color: var(--policy-menu-background);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px var(--shadow-color);
+    margin-bottom: 40px;
+}
+
+.policy-menu li {
+    margin: 10px 0; /* Espacio reducido entre elementos */
+}
+
+.policy-menu a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: color var(--transition-speed), transform var(--transition-speed);
+    padding: 10px 15px; /* Agregado para mejorar el área clickeable */
+    display: block; /* Para mejorar la accesibilidad */
+}
+
+.policy-menu a:hover {
+    color: var(--secondary-color);
+    transform: translateX(5px);
+}
+
+/* Espaciado entre Títulos y Párrafos */
+h2 {
+    margin-bottom: 20px; /* Reducido para coherencia */
+}
+
+h3 {
+    margin-bottom: 15px; /* Espaciado ajustado */
+}
+
+/* Header Principal */
+header {
+    text-align: center;
+    padding: 80px 20px;
+    background: var(--header-background);
+    color: #ffffff;
+    margin-bottom: 40px;
+    position: relative;
+    box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+header h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Sección de Políticas */
+.container section {
+    background: #ffffff;
+    border-radius: var(--border-radius);
+    padding: 40px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.container section h2 {
+    color: var(--primary-color);
+    font-size: 2.2em;
+    margin-bottom: 20px; /* Reducido para coherencia */
+}
+
+.container section h3 {
+    color: var(--secondary-color);
+    font-size: 1.8em;
+    margin-bottom: 10px; /* Reducido para que se vea mejor */
+}
+
+/* Estilos de Párrafo */
+.container section p {
+    margin-bottom: 20px; /* Ajustado para un espaciado más uniforme */
+    line-height: 1.8;
+}
+
+/* Footer */
+#footer-container {
+    background: var(--footer-background);
+    color: #ffffff;
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 60px;
+    box-shadow: 0 -4px 20px var(--shadow-color);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.social-media {
+    list-style: none;
+    padding: 10px 0;
+}
+
+.social-media li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.social-media a {
+    color: #ffffff;
+    transition: color var(--transition-speed);
+}
+
+.social-media a:hover {
+    color: var(--secondary-color);
+}
+
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px; /* Menos padding en dispositivos más pequeños */
+    }
+
+    header h1 {
+        font-size: 2.5em; /* Ajustado para mejor legibilidad en móviles */
+    }
+
+    .policy-menu a {
+        padding: 10px; /* Menos padding en móviles */
+    }
+}
