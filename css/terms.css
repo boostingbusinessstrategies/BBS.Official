@@ -251,7 +251,7 @@ body {
 h2 {
     margin-top: var(--spacing-large);
     margin-bottom: var(--spacing-medium);
-    color: var(--primary-color);
+    color: #444444;
     font-size: 2.2em;
 }
 
@@ -262,7 +262,7 @@ h2:first-child {
 h3 {
     margin-top: var(--spacing-large);
     margin-bottom: var(--spacing-small);
-    color: var(--secondary-color);
+    color: #444444;
     font-size: 1.8em;
 }
 
