@@ -2,9 +2,9 @@
 const reviewsToShow = 8;
 
 // Variables to control admin status and delete capability
-let isAdmin = true;
+let isAdmin = false; // Cambiar a false para ocultar los controles de administrador inicialmente
 let canDelete = true;
-let adminPassword = "admin123"; // Change this to your desired password
+let adminPassword = "admin123"; // Cambia esto a tu contraseña deseada
 
 // Function to toggle admin controls visibility
 function toggleAdminControls() {
@@ -192,7 +192,7 @@ function resetFeedbackList() {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Initial state - isAdmin:', isAdmin, 'canDelete:', canDelete);
     displayFeedback();
-    updateAdminControlsVisibility();
+    updateAdminControlsVisibility(); // Los controles de administrador están ocultos por defecto
 });
 
 // Sidebar functionality
