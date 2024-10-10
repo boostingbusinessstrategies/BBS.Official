@@ -476,23 +476,22 @@ header h1 {
 .social-media {
     list-style: none;
     padding: 0;
-    margin: 20px 0;
+    margin: 10px 0 0;
 }
 
 .social-media li {
-    display: inline-block;
-    margin: 0 15px;
+    display: inline;
+    margin: 0 10px;
 }
 
 .social-media a {
-    color: #ffffff;
+    color: #fcf9f9;
     font-size: 1.5em;
     transition: color var(--transition-speed);
 }
 
 .social-media a:hover {
     color: var(--secondary-color);
-    transform: translateY(-3px);
 }
 
 /* Media Queries Generales */
