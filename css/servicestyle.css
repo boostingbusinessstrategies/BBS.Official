@@ -221,22 +221,19 @@ body {
     }
 }
 
-/* Header Principal */
 header {
     text-align: center;
-    padding: 80px 20px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    padding: 40px 20px; /* Reducido de 80px a 40px */
+    background: var(--header-background);
     color: #ffffff;
     margin-bottom: 40px;
     position: relative;
-    overflow: hidden;
     box-shadow: 0 4px 20px var(--shadow-color);
 }
 
 header h1 {
     font-size: 3.5em;
     margin-bottom: 20px;
-    animation: fadeInDown 0.8s ease;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
