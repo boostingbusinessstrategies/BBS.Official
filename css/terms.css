@@ -10,6 +10,10 @@
     --policy-menu-background: #ffffff;
     --header-background: linear-gradient(135deg, #ee4d4d, #ffc44d);
     --menu-item-padding: 15px;
+    /* Variables de espaciado */
+    --spacing-large: 45px;
+    --spacing-medium: 30px;
+    --spacing-small: 15px;
 }
 
 @keyframes fadeInUp {
@@ -79,22 +83,48 @@ body {
     transform: translateY(-3px);
 }
 
-/* Espaciado actualizado entre elementos */
+/* Sistema de espaciado actualizado */
 h2 {
-    margin-bottom: 30px;
+    margin-top: var(--spacing-large);
+    margin-bottom: var(--spacing-medium);
+    color: var(--primary-color);
+    font-size: 2.2em;
+}
+
+h2:first-child {
+    margin-top: 0;
 }
 
 h3 {
-    margin-top: 40px;
-    margin-bottom: 20px;
+    margin-top: var(--spacing-large);
+    margin-bottom: var(--spacing-small);
+    color: var(--secondary-color);
+    font-size: 1.8em;
 }
 
 p {
-    margin-bottom: 25px;
+    margin-bottom: var(--spacing-medium);
+}
+
+/* Reglas específicas */
+h2 + h3 {
+    margin-top: var(--spacing-medium);
+}
+
+p + h2 {
+    margin-top: var(--spacing-large);
 }
 
 p + h3 {
-    margin-top: 40px;
+    margin-top: var(--spacing-large);
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+p:has(+ h3) {
+    margin-bottom: var(--spacing-medium);
 }
 
 header {
@@ -124,16 +154,6 @@ header h1 {
 
 .container section:hover {
     transform: translateY(-5px);
-}
-
-.container section h2 {
-    color: var(--primary-color);
-    font-size: 2.2em;
-}
-
-.container section h3 {
-    color: var(--secondary-color);
-    font-size: 1.8em;
 }
 
 #footer-container {
@@ -170,6 +190,12 @@ header h1 {
 }
 
 @media (max-width: 768px) {
+    :root {
+        --spacing-large: 35px;
+        --spacing-medium: 25px;
+        --spacing-small: 12px;
+    }
+    
     header h1 {
         font-size: 2.5em;
     }
