@@ -56,7 +56,7 @@ body {
 #sidebar {
     width: 280px;
     height: 100vh;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* Agrega gradient */
     color: #fff;
     position: fixed;
     left: -300px;
@@ -65,14 +65,16 @@ body {
     transition: left var(--transition-speed) ease;
     box-shadow: 2px 0 10px var(--shadow-color);
     z-index: 1000;
-    overflow-y: auto;
+    overflow-y: auto; /* Permite desplazamiento */
 }
 
+/* Cambia la animación al abrir */
 #sidebar.active {
     left: 0;
-    animation: slideIn 0.3s forwards;
+    animation: slideIn 0.3s forwards; /* Efecto de deslizamiento al abrir */
 }
 
+/* Animaciones */
 @keyframes slideIn {
     from {
         left: -300px;
@@ -91,8 +93,9 @@ body {
     }
 }
 
+/* Mantener la clase inactive para cierre de sidebar */
 #sidebar.inactive {
-    animation: slideOut 0.3s forwards;
+    animation: slideOut 0.3s forwards; /* Efecto de deslizamiento al cerrar */
 }
 
 .blur-bg {
@@ -106,6 +109,7 @@ body {
     z-index: 500;
 }
 
+/* Sidebar Header */
 #sidebar .sidebar-header {
     display: flex;
     justify-content: center;
@@ -114,16 +118,17 @@ body {
     background-color: var(--secondary-color);
     border-radius: var(--border-radius);
     box-shadow: 0 2px 5px var(--shadow-color);
-    animation: fadeIn 0.4s;
+    animation: fadeIn 0.4s; /* Fade in effect for sidebar header */
 }
 
 #sidebar .sidebar-header h3 {
     margin: 0;
     font-size: 1.8em;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    text-transform: uppercase; /* Mayúsculas */
+    letter-spacing: 1px; /* Espaciado de letras */
 }
 
+/* Sidebar Navigation */
 #sidebar ul {
     padding: 0;
     margin: 20px 0;
@@ -131,7 +136,7 @@ body {
 }
 
 #sidebar ul li {
-    position: relative;
+    position: relative; /* Para efecto de subrayado */
     padding: 10px 0;
 }
 
@@ -159,14 +164,15 @@ body {
 #sidebar ul li a:hover {
     background-color: rgba(255, 255, 255, 0.2);
     transform: translateX(5px);
-    color: var(--secondary-color);
+    color: var(--secondary-color); /* Cambia el color del texto al pasar el ratón */
 }
 
 #sidebar ul li a:hover::after {
-    width: 100%;
+    width: 100%; /* Efecto de subrayado al pasar el ratón */
     left: 0;
 }
 
+/* Toggle Button */
 #menu-toggle {
     position: fixed;
     top: 20px;
@@ -186,7 +192,7 @@ body {
     height: 50px;
     box-shadow: 0 2px 8px var(--shadow-color);
     opacity: 0.8;
-    animation: fadeIn 0.4s;
+    animation: fadeIn 0.4s; /* Fade in effect for toggle button */
 }
 
 #menu-toggle:hover {
@@ -194,18 +200,19 @@ body {
     transform: scale(1.05);
 }
 
+/* Responsive Adjustments */
 @media (max-width: 768px) {
     #sidebar {
-        width: 70%;
-        left: -70%;
+        width: 70%; /* Sidebar más ancho en dispositivos pequeños */
+        left: -70%; /* Inicia fuera de la vista */
     }
 
     #sidebar.active {
-        left: 0;
+        left: 0; /* Desliza hacia adentro */
     }
 
     #menu-toggle {
-        left: 10px;
+        left: 10px; /* Posiciona el botón más cerca en móviles */
     }
 }
 
@@ -282,14 +289,19 @@ p:has(+ h3) {
     margin-bottom: var(--spacing-medium);
 }
 
-header {
+/* Header Section */
+header.hero-section, header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 40px 20px; /* Reducido de 80px a 40px */
-    background: var(--header-background);
+    padding: 120px 20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: #ffffff;
-    margin-bottom: 40px;
-    position: relative;
+    border-radius: var(--border-radius);
+    transition: background var(--transition-speed);
     box-shadow: 0 4px 20px var(--shadow-color);
+    animation: fadeInUp 0.5s ease;
 }
 
 header h1 {
