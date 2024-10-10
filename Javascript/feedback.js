@@ -2,8 +2,8 @@
 const reviewsToShow = 8;
 
 // Variables to control admin status and delete capability
-let isAdmin = false;
-let canDelete = false;
+let isAdmin = true;
+let canDelete = true;
 let adminPassword = "admin123"; // Change this to your desired password
 
 // Function to toggle admin controls visibility
@@ -32,6 +32,13 @@ function updateAdminControlsVisibility() {
     });
 }
 
+// Function to toggle delete capability
+function toggleDelete() {
+    if (!isAdmin) return;
+    canDelete = !canDelete;
+    updateButtonVisibility();
+}
+
 // Function to show/hide buttons based on state
 function updateButtonVisibility() {
     const deleteButtons = document.querySelectorAll('.delete-feedback-button');
@@ -45,6 +52,27 @@ function updateButtonVisibility() {
     deleteButtons.forEach(button => {
         button.style.display = (isAdmin && canDelete) ? 'inline-flex' : 'none';
     });
+}
+
+// Function to delete specific feedback
+function deleteFeedback(id) {
+    if (!isAdmin || !canDelete) {
+        alert("You must be an admin with delete privileges to remove feedback.");
+        return;
+    }
+
+    if (confirm("Are you sure you want to delete this feedback?")) {
+        try {
+            let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
+            feedbackList = feedbackList.filter(feedback => feedback.id !== id);
+            localStorage.setItem("feedbackList", JSON.stringify(feedbackList));
+            displayFeedback();
+            alert("Feedback deleted successfully.");
+        } catch (error) {
+            console.error("Error deleting feedback:", error);
+            alert("There was an error deleting the feedback. Please try again.");
+        }
+    }
 }
 
 // Function to show more reviews
@@ -162,40 +190,6 @@ function resetFeedbackList() {
     }
 }
 
-// Function to display feedback
-function displayFeedback() {
-    const feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
-    const feedbackListElement = document.getElementById("feedback-list");
-
-    if (!feedbackListElement) {
-        console.error("Feedback list element not found");
-        return;
-    }
-
-    feedbackListElement.innerHTML = "";
-
-    feedbackList.forEach((feedback) => {
-        const feedbackItem = document.createElement("li");
-        feedbackItem.style.display = feedbackListElement.childElementCount < reviewsToShow ? "list-item" : "none";
-        feedbackItem.innerHTML = `
-            <div>${feedback.firstName} ${feedback.lastName}</div>
-            <div class="rating">${'⭐'.repeat(feedback.rating)}${'☆'.repeat(5 - feedback.rating)}</div>
-            <div>${feedback.comment}</div>
-            <button class="delete-feedback-button" onclick="deleteFeedback('${feedback.id}')" style="display: none;">
-                <i class="fas fa-trash"></i> Delete
-            </button>
-        `;
-        feedbackListElement.appendChild(feedbackItem);
-    });
-
-    const showMoreButton = document.getElementById("show-more-reviews");
-    if (showMoreButton) {
-        showMoreButton.style.display = feedbackList.length > reviewsToShow ? "block" : "none";
-    }
-
-    updateAdminControlsVisibility();
-}
-
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Initial state - isAdmin:', isAdmin, 'canDelete:', canDelete);
@@ -203,21 +197,16 @@ document.addEventListener('DOMContentLoaded', function() {
     updateAdminControlsVisibility();
 });
 
-// Get references to elements
+// Sidebar functionality
 const sidebar = document.getElementById('sidebar');
 const menuToggle = document.getElementById('menu-toggle');
 
-// Add an event listener to the menu button
 menuToggle.addEventListener('click', () => {
-    // Toggle the 'active' class on the sidebar
     sidebar.classList.toggle('active');
 });
 
-// Add an event listener to the document to detect clicks outside the sidebar
 document.addEventListener('click', (event) => {
-    // If the sidebar is active and the click occurs outside the sidebar and the menu toggle
     if (sidebar.classList.contains('active') && !sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
-        // Remove the 'active' class to close the sidebar
         sidebar.classList.remove('active');
     }
 });
