@@ -9,7 +9,7 @@
     --container-padding: 20px;
     --policy-menu-background: #ffffff;
     --header-background: linear-gradient(135deg, #ee4d4d, #ffc44d);
-    --footer-background: #ee4d4d;
+    --menu-item-padding: 15px; /* Padding para los items del menú */
 }
 
 /* Animación de entrada */
@@ -59,10 +59,12 @@ body {
     border-radius: var(--border-radius);
     box-shadow: 0 4px 15px var(--shadow-color);
     margin-bottom: 40px;
+    display: flex; /* Usar flexbox para el menú */
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan en móviles */
 }
 
 .policy-menu li {
-    margin: 10px 0;
+    margin: 10px; /* Espaciado entre items del menú */
 }
 
 .policy-menu a {
@@ -70,11 +72,15 @@ body {
     color: var(--primary-color);
     font-weight: 600;
     transition: color var(--transition-speed), transform var(--transition-speed);
+    padding: var(--menu-item-padding); /* Padding para los enlaces del menú */
+    display: block; /* Hacer que el área clickeable sea más grande */
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px var(--shadow-color);
 }
 
 .policy-menu a:hover {
     color: var(--secondary-color);
-    transform: translateX(5px);
+    transform: translateY(-3px); /* Efecto de elevación al pasar el ratón */
 }
 
 /* Espaciado entre Títulos y Párrafos */
@@ -83,7 +89,7 @@ h2 {
 }
 
 h3 {
-    margin-bottom: 25px; /* Aumentar la distancia entre h3 y p */
+    margin-bottom: 30px; /* Aumentar la distancia entre h3 y p */
 }
 
 /* Header Principal */
@@ -179,5 +185,9 @@ header h1 {
 
     .container section {
         padding: 20px; /* Reducir el padding en dispositivos móviles */
+    }
+
+    .policy-menu a {
+        font-size: 1.2em; /* Aumentar el tamaño de fuente en móviles */
     }
 }
