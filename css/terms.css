@@ -312,8 +312,8 @@ header h1 {
 }
 
 #footer-container {
-    background: var(--footer-background);
-    color: #ee4d4d;
+    background: #ee4d4d;
+    color: #ffffff
     padding: 40px 20px;
     text-align: center;
     margin-top: 60px;
