@@ -339,7 +339,8 @@ header h1 {
 
 .social-media {
     list-style: none;
-    padding: 10px 0;
+    padding: 0;
+    margin: 10px 0 0;
 }
 
 .social-media li {
@@ -348,7 +349,8 @@ header h1 {
 }
 
 .social-media a {
-    color: #ffffff;
+    color: #fcf9f9;
+    font-size: 1.5em;
     transition: color var(--transition-speed);
 }
 
