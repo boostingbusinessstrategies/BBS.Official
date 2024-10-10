@@ -26,30 +26,27 @@ function updateAdminControlsVisibility() {
     }
     
     // Update delete buttons visibility in existing feedback
-    const deleteButtons = document.querySelectorAll('.delete-feedback-button');
-    deleteButtons.forEach(button => {
-        button.style.display = (isAdmin && canDelete) ? 'inline-flex' : 'none';
-    });
+    updateButtonVisibility();
 }
 
 // Function to toggle delete capability
 function toggleDelete() {
     if (!isAdmin) return;
-    canDelete = !canDelete;
-    updateButtonVisibility();
+    canDelete = !canDelete; // Toggle delete capability
+    updateButtonVisibility(); // Update button visibility
 }
 
 // Function to show/hide buttons based on state
 function updateButtonVisibility() {
     const deleteButtons = document.querySelectorAll('.delete-feedback-button');
     const toggleDeleteButton = document.getElementById('toggle-delete-button');
-    const resetButton = document.getElementById('reset-feedback-button');
 
     if (toggleDeleteButton) {
         toggleDeleteButton.textContent = canDelete ? 'Disable Delete Function' : 'Enable Delete Function';
     }
 
     deleteButtons.forEach(button => {
+        // Change visibility of delete buttons based on state
         button.style.display = (isAdmin && canDelete) ? 'inline-flex' : 'none';
     });
 }
@@ -173,6 +170,7 @@ function displayFeedback() {
         showMoreButton.style.display = feedbackList.length > reviewsToShow ? "block" : "none";
     }
 
+    // Update the visibility of admin controls
     updateAdminControlsVisibility();
 }
 
