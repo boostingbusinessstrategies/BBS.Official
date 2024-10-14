@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Share your experience with BBS's custom database solutions and explore options for database extension and modification.">
-    <meta name="keywords" content="customer feedback, database solutions review, BBS testimonials, database extension, customer trust">
+    <meta name="description" content="Share your experience with BBS's custom database solutions and customer service.">
+    <meta name="keywords" content="customer feedback, database solutions review, BBS testimonials, client satisfaction, reliable database service">
+    <meta name="author" content="Boosting Business Strategies">
     <title>Customer Feedback - BBS</title>
 
     <!-- Fonts and styles -->
@@ -33,21 +34,18 @@
     <div id="content">
         <header>
             <h1>Customer Feedback</h1>
+            <!-- New Admin Toggle Button -->
             <button id="admin-toggle" class="admin-toggle-button" onclick="toggleAdminControls()">
                 <i class="fas fa-lock"></i>
             </button>
         </header>
 
         <section id="feedback-section" class="feedback-section">
-            <h2>Share Your Experience</h2>
-            <p>Your feedback is invaluable to us. At BBS, we are committed to providing exceptional database solutions tailored to your needs. By sharing your experience, you help us improve and continue to deliver the highest quality service.</p>
-            <p>Explore our options for <strong>database extension</strong> and <strong>modification</strong> to meet your business demands:</p>
-            <ul>
-                <li><strong>Database Extension:</strong> Expand your existing database capabilities with our customized solutions that adapt to your growing needs.</li>
-                <li><strong>Database Modification:</strong> Alter your current database to enhance performance, security, and compliance with our expert guidance.</li>
-            </ul>
-            <p>We value transparency and integrity in our relationship with clients. Please take a moment to read and accept our <a href="terms.html">Terms and Conditions</a> to ensure a smooth experience.</p>
+            <h2>Share Your Experience with BBS</h2>
+            <p>At BBS, we prioritize your satisfaction. Your feedback helps us enhance our services and ensures that we continue to meet your expectations. We value your insights and appreciate you taking the time to share your experience.</p>
+            <p>Whether you've utilized our database solutions or experienced our customer service, your voice matters. Together, we can foster a community of trust and transparency.</p>
 
+            <!-- Updated Admin Controls with display:none -->
             <div id="admin-controls" class="admin-controls" style="display: none;">
                 <button id="toggle-delete-button" class="admin-button" onclick="toggleDeleteFeature()">
                     <i class="fas fa-trash"></i> Enable Delete Feature
@@ -80,6 +78,18 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="service-type">Select Service Type:</label>
+                        <select id="service-type" name="service-type" required aria-label="Service Type">
+                            <option value="" disabled selected>Select your service type</option>
+                            <option value="customer_service">Customer Service</option>
+                            <option value="bbs_database">BBS Database</option>
+                            <option value="database_extension">Database Extension</option>
+                            <option value="database_modification">Database Modification</option>
+                            <option value="existing_provider_modification">Modification of Existing Databases</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <label for="feedback-rating">Rate our services:</label>
                         <select id="feedback-rating" name="feedback-rating" required aria-label="Rating">
                             <option value="" disabled selected>Select your rating</option>
@@ -95,10 +105,12 @@
                         <label for="feedback-comment">Leave a comment:</label>
                         <textarea id="feedback-comment" name="feedback-comment" rows="4" placeholder="Leave your feedback here..." required aria-label="Comment"></textarea>
                     </div>
+                    
+                    </div>
 
                     <div class="form-group">
-                        <input type="checkbox" id="terms-conditions" name="terms-conditions" required>
-                        <label for="terms-conditions">I have read and accept the <a href="terms.html">Terms and Conditions</a>.</label>
+                        <input type="checkbox" id="terms-checkbox" name="terms-checkbox" required>
+                        <label for="terms-checkbox">I have read and accepted the <a href="terms.html">Terms and Conditions</a>.</label>
                     </div>
 
                     <button type="submit" class="submit-button">
