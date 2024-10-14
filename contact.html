@@ -55,13 +55,13 @@
                     <label for="contact-email">Email</label>
                     <input type="email" id="contact-email" name="contact-email" required>
 
-                    <label for="contact-reason">How can we assist you?</label>
                     <select id="contact-reason" name="contact-reason" required>
                         <option value="" disabled selected>Select your reason</option>
                         <option value="question">I have a question</option>
                         <option value="support">I need support</option>
                         <option value="feedback">I want to provide feedback</option>
-                        <option value="modify_table">I need to modify an existing table</option>
+                        <option value="expand_database">I want to expand my BBS database</option>
+                        <option value="modify_database">I need to modify an existing database from another provider</option>
                     </select>
 
                     <div id="extension-options" class="form-section">
@@ -72,7 +72,7 @@
                             <option value="standard">Standard Plan</option>
                             <option value="business">Business Plan</option>
                         </select>
-                        <p class="extension-cost-info">Each new table costs $30, and each column costs $5. Plans Basic and Standard include 2 free modifications, Business offers unlimited modifications for 3 days. For more details, read our <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html#database-extension-policies" target="_blank">Database Extension Policies</a>.</p>
+                        <p class="extension-cost-info">Each new full table costs $39, and each column costs $5. Plans Basic and Standard include 2 free modifications, Business offers unlimited modifications for 3 days. For more details, read our <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html#database-extension-policies" target="_blank" style="color: #ee4d4d; font-weight: bold;">Database Extension Policies</a>.</p>
                     </div>
 
                     <div id="modification-options" class="form-section">
@@ -84,12 +84,17 @@
                             <option value="medium-used">Used, 8-12 tables or 25,000-50,000 records - $849</option>
                             <option value="large-used">Used, 12+ tables or 60,000+ records - $1999</option>
                         </select>
-                        <p class="modification-cost-info">All modifications include 7-day warranty. New/unused databases include 5 free modifications, while used databases include 10 free modifications. For more details, read our <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html#existing-database-modifications" target="_blank">Database Modification Policies</a>.</p>
+                        <p class="modification-cost-info">All modifications include 7-day warranty. New/unused databases include 5 free modifications, while used databases include 10 free modifications. For more details, read our <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html#existing-database-modifications" target="_blank" style="color: #ee4d4d; font-weight: bold;">Database Modification Policies</a>.</p>
                     </div>
+
+                    <div class="form-section">
+                        <label for="contact-message">Tell us more about your inquiry</label>
+                        <textarea id="contact-message" name="contact-message" rows="5" placeholder="Please describe your request, question, or feedback here..." required></textarea>
+                    </div>                    
 
                     <div class="checkbox">
                         <input type="checkbox" id="terms" name="terms" required>
-                        <label for="terms">I have read and accept the <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html" target="_blank">Terms and Conditions</a></label>
+                        <label for="terms">I have read and accept the <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a></label>
                     </div>
 
                     <p>After submitting your request, a member of our customer service team will contact you for payment processing via PayPal.</p>
@@ -99,9 +104,10 @@
         </section>
 
         <section id="contact-info">
-            <h2>Our Contact Information</h2>
             <p>Email: <a href="mailto:boostingbusinessstrategies@gmail.com" target="_blank" style="color: #ee4d4d; font-weight: bold;">boostingbusinessstrategies@gmail.com</a></p>
-            <p>Messenger: <a href="https://m.me/contactbbs" target="_blank" style="color: #ee4d4d; font-weight: bold;">contactbbs</a></p>
+            <p>Messenger (founder contact): <a href="https://m.me/contactbbs" target="_blank" style="color: #ee4d4d; font-weight: bold;">contactbbs</a></p>
+            <p>FaceBook: <a href="https://www.facebook.com/profile.php?id=61566338476564&mibextid=ZbWKwL" target="_blank" style="color: #ee4d4d; font-weight: bold;">Boosting Business Strategies</a></p>
+            <p>Instagram: <a href="https://www.instagram.com/bbs.official.account/" target="_blank" style="color: #ee4d4d; font-weight: bold;">bbs.official.account</a> (Direct messages on Instagram are only for inquiries about our services and policies; no files can be sent due to software limitations.)</p>
             <p>WhatsApp Business: <a href="https://wa.me/message/IQIFXFHK7JILI1" target="_blank" style="color: #ee4d4d; font-weight: bold;">+506 60447382</a></p>
         </section>
 
@@ -119,7 +125,6 @@
         </footer>
     </div>
 
-    <script src="Javascript/scripts.js"></script>
+    <script src="Javascript\contactscript.js"></script>
 </body>
-
 </html>
