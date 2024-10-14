@@ -1,16 +1,18 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contact BBS for custom database solutions and support">
-    <meta name="keywords" content="contact BBS, database solutions support, custom database inquiry">
+    <meta name="description" content="Contact BBS for custom database solutions, database extensions, and modifications. Get professional support tailored to your needs.">
+    <meta name="keywords" content="contact BBS, database solutions, database extension, database modification, custom database support">
     <title>Contact Us - BBS</title>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="css/contact.css">
 </head>
+
 <body>
     <nav id="sidebar">
         <div class="sidebar-header">
@@ -29,12 +31,13 @@
             <li><a href="terms.html"><i class="fas fa-file-contract"></i> Terms and Conditions</a></li>
         </ul>
     </nav>
+
     <div id="content">
         <header class="hero-section">
             <h1>Contact Us</h1>
             <p>Your inquiry is important to us. Please fill out the form below to get in touch.</p>
         </header>
-        
+
         <section id="contact" class="container">
             <h2>Contact BBS Support</h2>
             <form id="contact-form" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST">
@@ -58,51 +61,65 @@
                         <option value="question">I have a question</option>
                         <option value="support">I need support</option>
                         <option value="feedback">I want to provide feedback</option>
-                        <option value="modify_table">I need to modify an existing table</option> <!-- Nueva opción añadida -->
+                        <option value="modify_table">I need to modify an existing table</option>
                     </select>
 
-                    <label for="contact-message">Your Message</label>
-                    <textarea id="contact-message" name="contact-message" rows="4" placeholder="Type your message here..." required></textarea>
-
-                    <div class="payment-info">
-                        <h3>Payment for Special Requests</h3>
-                        <p>For database modifications or special support requests requiring payment, please use our PayPal service:</p>
-                        <a href="https://www.paypal.me/AaronObando505" target="_blank" style="color: #0070ba; font-weight: bold;">
-                            <i class="fab fa-paypal"></i> Pay with PayPal
-                        </a>
-                        <p class="note">
-                            New table additions: $30 per table or $5 per column. Modifications to the table outside the 7-day guarantee period will incur additional charges. If you wish to modify an existing MySQL database, there is a fee of $149. 
-                            Please provide the database file in ZIP format via email or Messenger so that we can assist you. Satisfaction guaranteed or your money back.
-                        </p>
+                    <div id="extension-options" class="form-section">
+                        <label for="database-extension">Database Extension Options</label>
+                        <select id="database-extension" name="database-extension">
+                            <option value="" disabled selected>Select Database Plan</option>
+                            <option value="basic">Basic Plan</option>
+                            <option value="standard">Standard Plan</option>
+                            <option value="business">Business Plan</option>
+                        </select>
+                        <p class="extension-cost-info">Each new table costs $30, and each column costs $5. Plans Basic and Standard include 2 free modifications, Business offers unlimited modifications for 3 days. For more details, read our <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html#database-extension-policies" target="_blank">Database Extension Policies</a>.</p>
                     </div>
 
+                    <div id="modification-options" class="form-section">
+                        <label for="existing-database">Modification of Existing Database</label>
+                        <select id="existing-database" name="existing-database">
+                            <option value="" disabled selected>Select Database Condition</option>
+                            <option value="new-unused">New, unused (less than 4000 records) - $119</option>
+                            <option value="small-used">Used, 5-8 tables or 5000+ records - $149</option>
+                            <option value="medium-used">Used, 8-12 tables or 25,000-50,000 records - $849</option>
+                            <option value="large-used">Used, 12+ tables or 60,000+ records - $1999</option>
+                        </select>
+                        <p class="modification-cost-info">All modifications include 7-day warranty. New/unused databases include 5 free modifications, while used databases include 10 free modifications. For more details, read our <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html#existing-database-modifications" target="_blank">Database Modification Policies</a>.</p>
+                    </div>
+
+                    <div class="checkbox">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">I have read and accept the <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html" target="_blank">Terms and Conditions</a></label>
+                    </div>
+
+                    <p>After submitting your request, a member of our customer service team will contact you for payment processing via PayPal.</p>
                     <button type="submit">Send Message</button>
                 </div>
             </form>
         </section>
-        
-        <section id="contact-info">
-    <h2>Our Contact Information</h2>
-    <p>Email: <a href="mailto:boostingbusinessstrategies@gmail.com" target="_blank" style="color: #ee4d4d; font-weight: bold;">boostingbusinessstrategies@gmail.com</a></p>
-    <p>Messenger: <a href="https://m.me/contactbbs" target="_blank" style="color: #ee4d4d; font-weight: bold;">contactbbs</a></p>
-    <p>WhatsApp Business: <a href="https://wa.me/message/IQIFXFHK7JILI1" target="_blank" style="color: #ee4d4d; font-weight: bold;">+506 60447382</a></p>
-</section>
 
-        
+        <section id="contact-info">
+            <h2>Our Contact Information</h2>
+            <p>Email: <a href="mailto:boostingbusinessstrategies@gmail.com" target="_blank" style="color: #ee4d4d; font-weight: bold;">boostingbusinessstrategies@gmail.com</a></p>
+            <p>Messenger: <a href="https://m.me/contactbbs" target="_blank" style="color: #ee4d4d; font-weight: bold;">contactbbs</a></p>
+            <p>WhatsApp Business: <a href="https://wa.me/message/IQIFXFHK7JILI1" target="_blank" style="color: #ee4d4d; font-weight: bold;">+506 60447382</a></p>
+        </section>
+
         <footer id="footer-container">
-        <div class="footer-container">
-            <p style="color: #fffafa;">&copy; 2024 Boosting Business Strategies (BBS). All rights reserved.</p>
-            <p>Follow us on social media:</p>
-            <ul class="social-media">
-                <li><a href="https://www.facebook.com/profile.php?id=61566338476564&mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="https://www.linkedin.com/in/aaron-obando-55a098308?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin-in"></i></a></li>
-                <li><a href="https://www.instagram.com/bbs.official.account/"><i class="fab fa-instagram"></i></a></li>
-            </ul>
-            <p><a href="terms.html" style="color: #fffafa;">Terms and Conditions</a> | <a href="contact.html" style="color: #fffafa;">Contact Us</a></p>
-        </div>
-    </footer>
+            <div class="footer-container">
+                <p style="color: #fffafa;">&copy; 2024 Boosting Business Strategies (BBS). All rights reserved.</p>
+                <p>Follow us on social media:</p>
+                <ul class="social-media">
+                    <li><a href="https://www.facebook.com/profile.php?id=61566338476564&mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.linkedin.com/in/aaron-obando-55a098308?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li><a href="https://www.instagram.com/bbs.official.account/"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+                <p><a href="terms.html" style="color: #fffafa;">Terms and Conditions</a> | <a href="contact.html" style="color: #fffafa;">Contact Us</a></p>
+            </div>
+        </footer>
     </div>
-    
+
     <script src="Javascript/scripts.js"></script>
 </body>
+
 </html>
