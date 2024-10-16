@@ -8,6 +8,18 @@
     --border-radius: 12px;
     --transition-speed: 0.4s;
     --shadow-color: rgba(0, 0, 0, 0.2);
+
+            /* Sidebar */
+    --sidebar-width: 280px;
+    --sidebar-bg: rgba(20, 33, 53, 0.95); /* Fondo más oscuro y elegante para un toque profesional */
+    --sidebar-text: #ffffff; /* Texto blanco para un contraste claro sobre el fondo oscuro */
+    --sidebar-hover: #ee4d4d; /* Hover en rojo para conectar con la urgencia y el enfoque de marca */
+    --sidebar-border: rgba(255, 196, 77, 0.2); /* Borde sutil en amarillo para destacar secciones importantes */
+  
+    /* Toggle Menu */
+    --toggle-bg: #1f2937; /* Fondo oscuro para el menú toggle, con un tono neutro y serio */
+    --toggle-color: #ffc44d; /* Iconos o texto del toggle en amarillo para captar la atención */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Transición fluida para una experiencia suave */
 }
 
 /* Global Styles */
@@ -98,169 +110,12 @@ header h1 {
     margin-bottom: 15px;
 }
 
-/* Sidebar Styles */
-#sidebar {
-    width: 280px;
-    height: 100vh;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* Agrega gradient */
-    color: #fff;
-    position: fixed;
-    left: -300px;
-    top: 0;
-    padding: 20px;
-    transition: left var(--transition-speed) ease;
-    box-shadow: 2px 0 10px var(--shadow-color);
-    z-index: 1000;
-    overflow-y: auto; /* Permite desplazamiento */
-}
 
-/* Cambia la animación al abrir */
-#sidebar.active {
-    left: 0;
-    animation: slideIn 0.3s forwards; /* Efecto de deslizamiento al abrir */
-}
 
-/* Animaciones */
-@keyframes slideIn {
-    from {
-        left: -300px;
-    }
-    to {
-        left: 0;
-    }
-}
 
-@keyframes slideOut {
-    from {
-        left: 0;
-    }
-    to {
-        left: -300px;
-    }
-}
 
-/* Mantener la clase inactive para cierre de sidebar */
-#sidebar.inactive {
-    animation: slideOut 0.3s forwards; /* Efecto de deslizamiento al cerrar */
-}
 
-.blur-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    backdrop-filter: blur(8px);
-    opacity: 0.5;
-    z-index: 500;
-}
 
-/* Sidebar Header */
-#sidebar .sidebar-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background-color: var(--secondary-color);
-    border-radius: var(--border-radius);
-    box-shadow: 0 2px 5px var(--shadow-color);
-    animation: fadeIn 0.4s; /* Fade in effect for sidebar header */
-}
-
-#sidebar .sidebar-header h3 {
-    margin: 0;
-    font-size: 1.8em;
-    text-transform: uppercase; /* Mayúsculas */
-    letter-spacing: 1px; /* Espaciado de letras */
-}
-
-/* Sidebar Navigation */
-#sidebar ul {
-    padding: 0;
-    margin: 20px 0;
-    list-style: none;
-}
-
-#sidebar ul li {
-    position: relative; /* Para efecto de subrayado */
-    padding: 10px 0;
-}
-
-#sidebar ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1em;
-    display: block;
-    transition: background var(--transition-speed), transform var(--transition-speed), color var(--transition-speed);
-    padding: 10px 15px;
-    border-radius: var(--border-radius);
-}
-
-#sidebar ul li a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 3px;
-    background: var(--secondary-color);
-    transition: width var(--transition-speed), left var(--transition-speed);
-}
-
-#sidebar ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    transform: translateX(5px);
-    color: var(--secondary-color); /* Cambia el color del texto al pasar el ratón */
-}
-
-#sidebar ul li a:hover::after {
-    width: 100%; /* Efecto de subrayado al pasar el ratón */
-    left: 0;
-}
-
-/* Toggle Button */
-#menu-toggle {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background-color: rgba(226, 16, 16, 0.63);
-    border: none;
-    color: #fff;
-    padding: 12px;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    transition: background var(--transition-speed), transform var(--transition-speed);
-    z-index: 1100;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-    box-shadow: 0 2px 8px var(--shadow-color);
-    opacity: 0.8;
-    animation: fadeIn 0.4s; /* Fade in effect for toggle button */
-}
-
-#menu-toggle:hover {
-    background-color: rgba(196, 62, 62, 0.75);
-    transform: scale(1.05);
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    #sidebar {
-        width: 70%; /* Sidebar más ancho en dispositivos pequeños */
-        left: -70%; /* Inicia fuera de la vista */
-    }
-
-    #sidebar.active {
-        left: 0; /* Desliza hacia adentro */
-    }
-
-    #menu-toggle {
-        left: 10px; /* Posiciona el botón más cerca en móviles */
-    }
-}
 
 /* Estilo del botón de envío */
 .submit-button {
@@ -372,57 +227,6 @@ header h1 {
     .feedback-form-container,
     .feedback-display-container {
         width: 45%;
-    }
-}
-
-/* Botón de alternancia de administrador */
-.admin-toggle-button {
-    position: fixed; /* Fijo en la esquina */
-    top: 25px; /* Espacio desde el borde superior */
-    right: 25px; /* Espacio desde el borde derecho */
-    background-color: transparent; /* Botón transparente */
-    color: white;
-    border: none;
-    border-radius: 50%; /* Redondeado */
-    width: 35px; /* Tamaño más pequeño */
-    height: 35px; /* Tamaño más pequeño */
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.3s ease, transform 0.3s ease; /* Transiciones más suaves */
-    z-index: 1000;
-    opacity: 0; /* Ocultar por defecto */
-}
-
-/* Mostrar el botón al pasar el mouse */
-.admin-toggle-button:hover {
-    opacity: 1; /* Hacer visible al pasar el ratón */
-    background-color: rgba(0, 0, 0, 0.3); /* Color de fondo al hacer hover */
-    transform: scale(1.05); /* Aumento al pasar el ratón */
-}
-
-/* Mostrar el botón en dispositivos táctiles */
-@media (hover: none) {
-    .admin-toggle-button:active {
-        opacity: 1; /* Hacer visible al tocar en móviles */
-        background-color: rgba(0, 0, 0, 0.3); /* Color de fondo al tocar */
-    }
-}
-
-.admin-toggle-button i {
-    font-size: 16px; /* Tamaño del icono reducido */
-}
-
-/* Animación de aparición */
-@keyframes fadeInUp {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
     }
 }
 
@@ -568,4 +372,265 @@ footer {
 
 .social-media a:hover {
     color: var(--secondary-color);
+}
+
+
+
+
+
+
+
+#sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    background-color: var(--sidebar-bg);
+    backdrop-filter: blur(15px);
+    color: var(--sidebar-text);
+    position: fixed;
+    left: calc(-1 * var(--sidebar-width));
+    top: 0;
+    padding: 2rem;
+    transition: var(--transition);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    overflow-y: auto;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#sidebar.active {
+    left: 0;
+    animation: slideIn 0.5s forwards, fadeIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+    from { left: calc(-1 * var(--sidebar-width)); }
+    to { left: 0; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#menu-toggle {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    background: var(--toggle-bg);
+    border: none;
+    color: var(--toggle-color);
+    padding: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 1100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+#menu-toggle:hover {
+    background: #ffffff;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+#menu-toggle.active {
+    left: calc(var(--sidebar-width) - 1.75rem);
+    background: var(--sidebar-hover);
+}
+
+#menu-toggle i {
+    font-size: 1.5rem;
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+#menu-toggle.active i {
+    transform: rotate(360deg);
+}
+
+@keyframes rotateWheel {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+#menu-toggle i {
+    animation: rotateWheel 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+#menu-toggle.active i {
+    animation: rotateWheel 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) reverse;
+}
+
+#sidebar .sidebar-header {
+    text-align: center;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 2rem;
+}
+
+#sidebar .sidebar-header h3 {
+    color: #fff;
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#sidebar ul.components {
+    padding: 0;
+}
+
+#sidebar ul li {
+    margin-bottom: 0.5rem;
+}
+
+#sidebar ul li a {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    color: var(--sidebar-text);
+    text-decoration: none;
+    transition: var(--transition);
+    border-radius: 0.375rem;
+    position: relative;
+    overflow: hidden;
+}
+
+#sidebar ul li a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background-color: var(--sidebar-hover);
+    opacity: 0.2;
+    transition: width 0.3s ease;
+}
+
+#sidebar ul li a:hover::before {
+    width: 100%;
+}
+
+#sidebar ul li a:hover {
+    color: #fff;
+    transform: translateX(5px);
+}
+
+#sidebar ul li a i {
+    margin-right: 0.75rem;
+    font-size: 1.25rem;
+    transition: var(--transition);
+}
+
+#sidebar ul li a:hover i {
+    color: var(--sidebar-hover);
+    transform: scale(1.1);
+}
+
+/* Scrollbar styling */
+#sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+#sidebar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+}
+
+#sidebar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Add a subtle gradient overlay */
+#sidebar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(30, 64, 175, 0.1) 100%);
+    pointer-events: none;
+}
+
+/* Add a subtle pulsating glow effect to the sidebar */
+@keyframes glow {
+    0% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.3); }
+    50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+    100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.3); }
+}
+
+#sidebar.active {
+    animation: slideIn 0.5s forwards, fadeIn 0.5s forwards, glow 3s infinite;
+}
+
+
+
+
+
+
+
+
+
+
+/* Botón de alternancia de administrador */
+.admin-toggle-button {
+    position: fixed; /* Fijo en la esquina */
+    top: 25px; /* Espacio desde el borde superior */
+    right: 25px; /* Espacio desde el borde derecho */
+    background-color: transparent; /* Botón transparente */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Redondeado */
+    width: 35px; /* Tamaño más pequeño */
+    height: 35px; /* Tamaño más pequeño */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transiciones más suaves */
+    z-index: 1000;
+    opacity: 0; /* Ocultar por defecto */
+}
+
+/* Mostrar el botón al pasar el mouse */
+.admin-toggle-button:hover {
+    opacity: 1; /* Hacer visible al pasar el ratón */
+    background-color: rgba(0, 0, 0, 0.3); /* Color de fondo al hacer hover */
+    transform: scale(1.05); /* Aumento al pasar el ratón */
+}
+
+/* Mostrar el botón en dispositivos táctiles */
+@media (hover: none) {
+    .admin-toggle-button:active {
+        opacity: 1; /* Hacer visible al tocar en móviles */
+        background-color: rgba(0, 0, 0, 0.3); /* Color de fondo al tocar */
+    }
+}
+
+.admin-toggle-button i {
+    font-size: 16px; /* Tamaño del icono reducido */
+}
+
+/* Animación de aparición */
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
