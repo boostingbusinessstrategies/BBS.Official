@@ -36,182 +36,173 @@ body {
     color: var(--text-color);
     line-height: 1.8;
     overflow-x: hidden;
-    animation: fadeIn 0.5s ease; /* Animation for body */
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-/* Main Content Container */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
 
-/* Header Section */
+/* Header Section with Background Image */
 header.hero-section {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: center;
-    text-align: center;
-    padding: 120px 20px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    text-align: left;
+    padding: 150px 50px;
+    background-image: url('css/Untitled design (1).jpg');
+    background-size: cover;
+    background-position: center;
     color: #ffffff;
-    border-radius: var(--border-radius);
-    transition: background var(--transition-speed);
-    box-shadow: 0 4px 20px var(--shadow-color); /* Softer shadow */
-    animation: fadeInUp 0.5s ease; /* Animation for hero section */
+    position: relative;
+    min-height: 500px;
 }
 
-@keyframes fadeInUp {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+header.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+header.hero-section > * {
+    position: relative;
+    z-index: 2;
 }
 
 header.hero-section h1 {
     font-size: 3.5em;
-    margin-bottom: 10px;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 header.hero-section p {
     font-size: 1.2em;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    max-width: 600px;
 }
 
 header.hero-section .cta-button {
-    padding: 14px 24px;
-    background-color: #fff;
-    color: var(--primary-color);
+    padding: 15px 30px;
+    background-color: var(--primary-color);
+    color: #ffffff;
     text-decoration: none;
     border-radius: var(--border-radius);
     font-weight: 600;
-    text-align: center; /* Center text */
-    transition: background var(--transition-speed), transform var(--transition-speed);
-    box-shadow: 0 2px 5px var(--shadow-color);
-    display: inline-block; /* Ensure it behaves as a block for spacing */
-    max-width: 90%; /* Limit width on smaller screens */
+    text-align: center;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: inline-block;
 }
 
 header.hero-section .cta-button:hover {
-    background-color: var(--primary-color);
-    color: #fff;
+    background-color: #ff6b6b;
     transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Section Styles */
+/* Main Content Styles */
+.main-content {
+    padding: 60px 0;
+}
+
 .section {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #ffffff;
+    background-color: var(--content-background);
     border-radius: var(--border-radius);
-    box-shadow: 0 4px 30px var(--shadow-color);
+    box-shadow: 0 10px 30px var(--shadow-color);
+    padding: 40px;
+    margin-bottom: 40px;
     transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-    animation: fadeIn 0.5s ease; /* Animation for section */
 }
 
 .section:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 50px var(--shadow-color);
+    box-shadow: 0 15px 40px var(--shadow-color);
 }
 
 .section h2 {
-    font-size: 2.8em; /* Increased font size for more emphasis */
+    color: var(--primary-color);
+    font-size: 2.5em;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .section p {
     font-size: 1.1em;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    text-align: justify;
 }
 
 .section .cta-button {
-    padding: 12px 20px;
+    padding: 12px 24px;
     background-color: var(--secondary-color);
-    color: #333333;
+    color: var(--text-color);
     text-decoration: none;
     border-radius: var(--border-radius);
     font-weight: 600;
-    text-align: center; /* Center text */
-    transition: background var(--transition-speed), transform var(--transition-speed);
-    box-shadow: 0 2px 5px var(--shadow-color);
-    display: inline-block; /* Ensure it behaves as a block for spacing */
-    width: 100%; /* Full width on mobile */
-    max-width: 300px; /* Limit width on larger screens */
-    margin: 10px auto; /* Centering */
+    text-align: center;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    margin-top: 20px;
 }
 
 .section .cta-button:hover {
-    background-color: var(--primary-color);
-    color: #fff;
+    background-color: #ffd680;
     transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Footer Styles */
-footer {
-    padding: 20px;
-    background-color: var(--primary-color);
-    color: #fff;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 -2px 20px var(--shadow-color);
-    margin-top: 40px;
-}
-
-footer p {
-    margin: 0;
-    font-size: 0.9em;
-}
-
-/* Additional Animations */
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-20px);
-    }
-    60% {
-        transform: translateY(-10px);
-    }
-}
-
-/* Responsive typography */
+/* Responsive Design */
 @media (max-width: 768px) {
+    header.hero-section {
+        padding: 100px 30px;
+        text-align: center;
+        align-items: center;
+    }
+
     header.hero-section h1 {
-        font-size: 2.5em; /* Reduce size on mobile */
+        font-size: 2.5em;
     }
 
     header.hero-section p {
-        font-size: 1em; /* Reduce size on mobile */
-    }
-
-    .section h2 {
-        font-size: 2em; /* Reduce size on mobile */
-    }
-
-    /* Make buttons stack vertically on mobile */
-    .section .cta-button {
-        width: 90%; /* Make buttons smaller on mobile */
-        padding: 12px; /* Adjust padding for better touch target */
+        font-size: 1em;
     }
 
     .section {
-        padding: 20px; /* Reduce padding on sections for mobile */
+        padding: 30px;
+    }
+
+    .section h2 {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 480px) {
+    header.hero-section {
+        padding: 80px 20px;
+    }
+
+    header.hero-section h1 {
+        font-size: 2em;
+    }
+
+    header.hero-section p {
+        font-size: 0.9em;
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+    .section h2 {
+        font-size: 1.8em;
     }
 }
 
