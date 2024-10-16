@@ -49,15 +49,16 @@ header.hero-section {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start; /* Cambiado a flex-start para elevar el contenido */
     text-align: left;
-    padding: 150px 50px;
-    background-image: url('https://i.imgur.com/upYyIfb.jpg'); /* Updated image URL */
-    background-size: cover;
-    background-position: center;
+    padding: 50px 50px; /* Ajusta el padding superior para que no esté tan bajo */
+    background-image: url('https://i.imgur.com/upYyIfb.jpg'); /* URL de la imagen */
+    background-size: contain; /* Cambiado a contain para mantener el tamaño original de la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center; 
     color: #ffffff;
     position: relative;
-    min-height: 500px;
+    min-height: 500px; /* Mantener esto o ajustar según necesidad */
 }
 
 header.hero-section::before {
@@ -81,6 +82,7 @@ header.hero-section h1 {
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
 
 header.hero-section p {
     font-size: 1.2em;
