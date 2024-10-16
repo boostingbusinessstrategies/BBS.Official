@@ -39,7 +39,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-function reveal() {
+  function reveal() {
     var reveals = document.querySelectorAll(".reveal");
     for (var i = 0; i < reveals.length; i++) {
       var windowHeight = window.innerHeight;
@@ -52,6 +52,6 @@ function reveal() {
       }
     }
   }
-  
+
   window.addEventListener("scroll", reveal);
   reveal(); // Call once to check for elements in view on page load
