@@ -50,9 +50,13 @@ header::before {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.1) 75%, transparent 75%, transparent);
+    background: linear-gradient(45deg, rgba(255,255,255,0.3) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.3) 75%, transparent 75%, transparent);
     animation: headerAnimation 30s linear infinite;
-    opacity: 0.3;
+    opacity: 0.5; /* Aumentar la opacidad para un brillo más evidente */
+}
+
+header {
+    animation: slideInFromTop 1.5s ease-out forwards;
 }
 
 @keyframes headerAnimation {
@@ -71,18 +75,35 @@ header h1 {
     z-index: 1;
 }
 
-/* Introduction Section */
 #introduction {
     background-color: white;
     border-radius: var(--border-radius);
     padding: 3rem;
     margin-top: 3rem;
-    box-shadow: 0 10px 30px var(--shadow-color);
+    position: relative;
+    z-index: 1;
     transition: transform var(--transition-speed);
+}
+
+#introduction::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: -1;
+    transition: box-shadow var(--transition-speed);
 }
 
 #introduction:hover {
     transform: translateY(-5px);
+}
+
+#introduction:hover::after {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 #introduction h2 {
@@ -97,8 +118,23 @@ header h1 {
     line-height: 1.8;
 }
 
+#introduction {
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .highlight {
-    color: var(--primary-color);
+    color: var(--text-color);
     font-weight: bold;
 }
 
@@ -422,6 +458,8 @@ header h1 {
 
 
 
+
+
 /* Sidebar Styles */
 #sidebar {
     width: 280px;
@@ -584,5 +622,3 @@ header h1 {
         left: 10px; /* Position button closer on mobile */
     }
 }
-
-
