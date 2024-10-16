@@ -10,14 +10,15 @@
     --shadow-color: rgba(0, 0, 0, 0.2);
 
             /* Sidebar */
+/* Sidebar */
     --sidebar-width: 280px;
-    --sidebar-bg: rgba(20, 33, 53, 0.95); /* Fondo más oscuro y elegante para un toque profesional */
+    --sidebar-bg: rgba(20, 33, 53, 0.8); /* Fondo oscuro con un poco de transparencia */
     --sidebar-text: #ffffff; /* Texto blanco para un contraste claro sobre el fondo oscuro */
     --sidebar-hover: #ee4d4d; /* Hover en rojo para conectar con la urgencia y el enfoque de marca */
-    --sidebar-border: rgba(255, 196, 77, 0.2); /* Borde sutil en amarillo para destacar secciones importantes */
+    --sidebar-border: rgba(255, 196, 77, 0.3); /* Borde sutil en amarillo para destacar secciones importantes */
   
     /* Toggle Menu */
-    --toggle-bg: #1f2937; /* Fondo oscuro para el menú toggle, con un tono neutro y serio */
+    --toggle-bg: rgba(31, 41, 55, 0.9); /* Fondo oscuro y semi-transparente para el menú toggle */
     --toggle-color: #ffc44d; /* Iconos o texto del toggle en amarillo para captar la atención */
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Transición fluida para una experiencia suave */
 }
@@ -383,8 +384,8 @@ footer {
 #sidebar {
     width: var(--sidebar-width);
     height: 100vh;
-    background-color: var(--sidebar-bg);
-    backdrop-filter: blur(15px);
+    background-color: var(--sidebar-bg); /* Se mantiene el fondo oscuro y transparente */
+    backdrop-filter: blur(20px); /* Efecto de desenfoque */
     color: var(--sidebar-text);
     position: fixed;
     left: calc(-1 * var(--sidebar-width));
@@ -394,7 +395,7 @@ footer {
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
     z-index: 1000;
     overflow-y: auto;
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid var(--sidebar-border); /* Borde más sutil */
 }
 
 #sidebar.active {
@@ -416,7 +417,7 @@ footer {
     position: fixed;
     top: 2rem;
     left: 2rem;
-    background: var(--toggle-bg);
+    background: var(--toggle-bg); /* Fondo oscuro y semi-transparente para el toggle */
     border: none;
     color: var(--toggle-color);
     padding: 0;
@@ -433,7 +434,7 @@ footer {
 }
 
 #menu-toggle:hover {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.2); /* Fondo más claro al hacer hover */
     transform: translateY(-2px) scale(1.05);
     box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
 }
@@ -468,7 +469,7 @@ footer {
 #sidebar .sidebar-header {
     text-align: center;
     padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--sidebar-border); /* Borde más sutil */
     margin-bottom: 2rem;
 }
 
@@ -574,6 +575,7 @@ footer {
 #sidebar.active {
     animation: slideIn 0.5s forwards, fadeIn 0.5s forwards, glow 3s infinite;
 }
+
 
 
 
