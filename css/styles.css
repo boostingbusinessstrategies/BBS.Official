@@ -195,6 +195,7 @@ header.hero-section .cta-button:hover {
     }
 }
 
+
 /* Main Content Styles */
 .main-content {
     padding: 60px 0;
@@ -292,6 +293,14 @@ header.hero-section .cta-button:hover {
     .section h2 {
         font-size: 1.8em;
     }
+}
+
+/* Footer */
+#footer-container {
+    background: rgb(20, 33, 53);
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
 }
 
 /* Social Media Icons */
