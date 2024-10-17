@@ -49,16 +49,17 @@ header.hero-section {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-start; /* Cambiado a flex-start para elevar el contenido */
+    justify-content: flex-end; /* Cambiado a flex-end para mover el contenido hacia abajo */
     text-align: left;
-    padding: 50px 50px; /* Ajusta el padding superior para que no esté tan bajo */
-    background-image: url('https://i.imgur.com/upYyIfb.jpg'); /* URL de la imagen */
-    background-size: contain; /* Cambiado a contain para mantener el tamaño original de la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    background-position: center; 
+    padding: 50px 5%; /* Cambiado a porcentaje para mejor responsividad */
+    background-image: url('https://i.imgur.com/upYyIfb.jpg');
+    background-size: cover; /* Cambiado a cover para cubrir todo el espacio */
+    background-repeat: no-repeat;
+    background-position: center;
     color: #ffffff;
     position: relative;
-    min-height: 500px; /* Mantener esto o ajustar según necesidad */
+    min-height: 100vh; /* Cambiado a 100vh para ocupar toda la altura de la pantalla */
+    width: 100%;
 }
 
 header.hero-section::before {
@@ -68,26 +69,48 @@ header.hero-section::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.3); /* Reducido la opacidad para ver mejor la imagen */
     z-index: 1;
 }
 
 header.hero-section > * {
     position: relative;
     z-index: 2;
+    max-width: 50%; /* Limita el ancho del contenido para no sobreponerse a la imagen */
 }
 
 header.hero-section h1 {
-    font-size: 3.5em;
+    font-size: 2.5em; /* Reducido ligeramente para mejor ajuste en pantallas pequeñas */
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-
 header.hero-section p {
-    font-size: 1.2em;
+    font-size: 1.1em; /* Ajustado para mejor legibilidad */
     margin-bottom: 30px;
-    max-width: 600px;
+    max-width: 100%; /* Cambiado para ajustarse al ancho del contenedor padre */
+}
+
+/* Media query para ajustes en dispositivos móviles */
+@media (max-width: 768px) {
+    header.hero-section {
+        background-size: cover;
+        align-items: center;
+        text-align: center;
+        padding: 30px 5%;
+    }
+
+    header.hero-section > * {
+        max-width: 100%;
+    }
+
+    header.hero-section h1 {
+        font-size: 2em;
+    }
+
+    header.hero-section p {
+        font-size: 1em;
+    }
 }
 
 header.hero-section .cta-button {
