@@ -12,7 +12,30 @@
     --transition-speed: 0.4s;
     --shadow-color: rgba(0, 0, 0, 0.1);
     --accent-color: #0056a3;
+    
+    /* Sidebar */
+    --sidebar-width: 280px;
+    --sidebar-bg: rgba(20, 33, 53, 0.8); /* Fondo oscuro y transparente para barra lateral */
+    --sidebar-text: #ffffff; /* Texto blanco en sidebar para contraste */
+    --sidebar-hover: #ee4d4d; /* Hover en rojo para transmitir urgencia y confianza en la navegación */
+    --sidebar-border: rgba(255, 196, 77, 0.3); /* Borde amarillo para resaltar secciones importantes */
+  
+    /* Toggle Menu */
+    --toggle-bg: rgba(31, 41, 55, 0.9); /* Fondo oscuro semitransparente en menú toggle */
+    --toggle-color: #ffc44d; /* Íconos o texto del toggle en amarillo para capturar atención */
+    
+    /* Container */
+    --container-padding: 20px; /* Espaciado interno para mantener claridad y orden */
+    
+    /* Footer */
+    --footer-bg: rgb(20, 33, 53); /* Fondo azul oscuro casi negro en footer para elegancia y un cierre visual sólido */
+    --footer-text: #ffffff; /* Texto blanco en el footer para garantizar legibilidad y contraste */
+    --footer-link-hover: #ffc44d; /* Hover en amarillo para los enlaces del footer, captando atención de manera sutil */
+    
+    /* Transición suave */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 
 /* Estilos base y reset */
 *, *::before, *::after {
@@ -51,6 +74,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
     z-index: 1;
 }
 
@@ -217,7 +241,7 @@ body {
 
 /* Footer */
 #footer-container {
-    background: var(--header-gradient);
+    background: var(--footer-bg);
     color: #ffffff;
     padding: 3rem 0;
 }
@@ -360,101 +384,6 @@ body {
         flex-direction: column;
     }
 }
-
-/* Estilos para el menú desplegable en móviles */
-.mobile-menu-toggle {
-    display: none;
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    z-index: 1000;
-    background-color: var(--primary-color);
-    color: #ffffff;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.mobile-menu-toggle:hover {
-    background-color: var(--accent-color);
-}
-
-.mobile-menu {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--primary-color);
-    z-index: 999;
-    padding: 2rem;
-    transform: translateX(100%);
-    transition: all 0.3s ease;
-}
-
-.mobile-menu.active {
-    transform: translateX(0);
-}
-
-.mobile-menu ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 3rem;
-}
-
-.mobile-menu li {
-    margin-bottom: 1rem;
-}
-
-.mobile-menu a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.mobile-menu a:hover {
-    color: var(--secondary-color);
-}
-
-@media (max-width: 768px) {
-    .mobile-menu-toggle {
-        display: block;
-    }
-
-    .mobile-menu {
-        display: block;
-    }
-}
-
-/* Optimizaciones de rendimiento */
-.hero-section, .service-card, .features-list li {
-    will-change: transform;
-}
-
-/* Accesibilidad */
-.cta-button:focus, .desktop-nav a:focus, .mobile-menu a:focus {
-    outline: 3px solid var(--secondary-color);
-    outline-offset: 3px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-
-
-
 
 #sidebar {
     width: var(--sidebar-width);
