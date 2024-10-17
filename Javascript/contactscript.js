@@ -28,34 +28,66 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Parte 2: Manejo del sidebar
-document.addEventListener('DOMContentLoaded', function() {
-  const sidebar = document.getElementById('sidebar');
-  const menuToggle = document.getElementById('menu-toggle');
+document.addEventListener('DOMContentLoaded', function () {
+    // Parte 1: Manejo de las opciones de contacto
+    const contactReason = document.getElementById('contact-reason');
+    const extensionOptions = document.getElementById('extension-options');
+    const modificationOptions = document.getElementById('modification-options');
 
-  if (!sidebar || !menuToggle) {
-      console.error('Sidebar or menu toggle not found');
-      return;
-  }
+    // Oculta ambas secciones al cargar la página
+    if (extensionOptions) extensionOptions.style.display = 'none';
+    if (modificationOptions) modificationOptions.style.display = 'none';
 
-  function toggleSidebar() {
-      sidebar.classList.toggle('active');
-      menuToggle.classList.toggle('active');
-  }
+    if (contactReason) {
+        contactReason.addEventListener('change', function () {
+            const selectedValue = contactReason.value;
+            console.log('Selected Value:', selectedValue); // Para depuración
 
-  menuToggle.addEventListener('click', function(event) {
-      event.stopPropagation();
-      toggleSidebar();
-  });
+            // Mostrar u ocultar las secciones según la selección
+            if (selectedValue === 'expand_database') {
+                extensionOptions.style.display = 'block';
+                modificationOptions.style.display = 'none';
+            } else if (selectedValue === 'modify_database') {
+                extensionOptions.style.display = 'none';
+                modificationOptions.style.display = 'block';
+            } else {
+                extensionOptions.style.display = 'none';
+                modificationOptions.style.display = 'none';
+            }
+        });
+    }
 
-  document.addEventListener('click', function(event) {
-      if (sidebar.classList.contains('active') && !sidebar.contains(event.target) && event.target !== menuToggle) {
-          toggleSidebar();
-      }
-  });
+    // Parte 2: Manejo del sidebar
+    const sidebar = document.getElementById('sidebar');
+    const menuToggle = document.getElementById('menu-toggle');
 
-  sidebar.addEventListener('click', function(event) {
-      event.stopPropagation();
-  });
+    if (!sidebar || !menuToggle) {
+        console.error('Sidebar or menu toggle not found');
+        return;
+    }
 
-  console.log('Sidebar script loaded');
+    function toggleSidebar() {
+        sidebar.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+    }
+
+    // Al hacer clic en el botón de toggle, se activa/desactiva el sidebar
+    menuToggle.addEventListener('click', function(event) {
+        event.stopPropagation(); // Evita que el clic propague y cierre el sidebar inmediatamente
+        toggleSidebar();
+    });
+
+    // Cierra el sidebar si se hace clic fuera de él
+    document.addEventListener('click', function(event) {
+        if (sidebar.classList.contains('active') && !sidebar.contains(event.target) && event.target !== menuToggle) {
+            toggleSidebar();
+        }
+    });
+
+    // Asegura que al hacer clic dentro del sidebar no se cierre accidentalmente
+    sidebar.addEventListener('click', function(event) {
+        event.stopPropagation(); // Evita que los clics dentro del sidebar lo cierren
+    });
+
+    console.log('Sidebar script loaded successfully');
 });
