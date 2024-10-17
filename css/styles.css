@@ -9,13 +9,16 @@
     --shadow-color: rgba(0, 0, 0, 0.15);
     --blur-opacity: rgba(0, 0, 0, 0.5);
     --content-background: #ffffff;
+    
     --sidebar-width: 280px;
-    --sidebar-bg: rgba(20, 33, 53, 0.95);
-    --sidebar-text: #ffffff;
-    --sidebar-hover: #ee4d4d;
-    --sidebar-border: rgba(255, 196, 77, 0.3);
-    --toggle-bg: rgba(31, 41, 55, 0.9);
-    --toggle-color: #ffc44d;
+    --sidebar-bg: rgba(20, 33, 53, 0.8); /* Fondo oscuro y transparente para barra lateral */
+    --sidebar-text: #ffffff; /* Texto blanco en sidebar para contraste */
+    --sidebar-hover: #ee4d4d; /* Hover en rojo para transmitir urgencia y confianza en la navegación */
+    --sidebar-border: rgba(255, 196, 77, 0.3); /* Borde amarillo para resaltar secciones importantes */
+  
+    /* Toggle Menu */
+    --toggle-bg: rgba(31, 41, 55, 0.9); /* Fondo oscuro semitransparente en menú toggle */
+    --toggle-color: #ffc44d; /* Íconos o texto del toggle en amarillo para capturar atención */
 }
 
 body {
@@ -33,66 +36,6 @@ body {
     padding: 40px 20px;
 }
 
-/* Sidebar Styles */
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: var(--sidebar-width);
-    background-color: var(--sidebar-bg);
-    color: var(--sidebar-text);
-    padding: 2rem 0;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease-in-out;
-    z-index: 1000;
-}
-
-.sidebar.active {
-    transform: translateX(0);
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.sidebar ul li {
-    padding: 0.5rem 2rem;
-}
-
-.sidebar ul li a {
-    color: var(--sidebar-text);
-    text-decoration: none;
-    transition: color var(--transition-speed);
-}
-
-.sidebar ul li a:hover {
-    color: var(--sidebar-hover);
-}
-
-/* Toggle Button */
-.toggle-btn {
-    position: fixed;
-    top: 1rem;
-    left: 1rem;
-    background-color: var(--toggle-bg);
-    color: var(--toggle-color);
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    z-index: 1001;
-    transition: all var(--transition-speed);
-}
-
-.toggle-btn:hover {
-    background-color: var(--primary-color);
-    color: white;
-}
 
 /* Main Content */
 .main-content {
@@ -328,6 +271,8 @@ body {
         margin: 10px 0;
     }
 }
+
+
 
 
 
