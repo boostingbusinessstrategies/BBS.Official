@@ -59,7 +59,6 @@ body {
     background: url('https://imgur.com/c59fzb8.jpg') no-repeat center center;
     background-size: cover;
     display: flex;
-    background: rgba(0, 0, 0, 0.5);
     flex-direction: column;
     justify-content: center;
     align-items: center;
