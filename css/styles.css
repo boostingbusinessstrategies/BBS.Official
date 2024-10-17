@@ -48,9 +48,9 @@ body {
 header.hero-section {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    text-align: center;
+    text-align: left;
     padding: 50px 10%;
     background-image: url('https://imgur.com/c59fzb8.jpg');
     background-size: cover;
@@ -73,10 +73,11 @@ header.hero-section::before {
     z-index: 1;
 }
 
+
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 60%;
+    max-width: 50%;
 }
 
 .logo-container {
@@ -87,9 +88,45 @@ header.hero-section::before {
 }
 
 .bbs-logo {
-    width: 120px; /* Aumentado de 100px a 120px */
+    width: 150px; /* Aumentado de 120px a 150px */
     height: auto;
 }
+
+/* Estilos para la navegación de escritorio */
+.desktop-nav {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 4;
+}
+
+.desktop-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.desktop-nav ul li {
+    margin-left: 20px;
+}
+
+.desktop-nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.desktop-nav ul li a:hover {
+    color: var(--secondary-color);
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none; /* Ocultar navegación de escritorio en móviles */
+    }
 
 header.hero-section h1 {
     font-size: 3.5em;
