@@ -9,14 +9,14 @@
     --shadow-color: rgba(0, 0, 0, 0.15);
     --content-background: #ffffff;
 
-    --sidebar-width: 280px;
-    --sidebar-bg: rgba(20, 33, 53, 0.8);
-    --sidebar-text: #ffffff;
-    --sidebar-hover: #ee4d4d;
-    --sidebar-border: rgba(255, 196, 77, 0.3);
+    --sidebar-bg: rgba(20, 33, 53, 0.8); /* Fondo oscuro y transparente para barra lateral */
+    --sidebar-text: #ffffff; /* Texto blanco en sidebar para contraste */
+    --sidebar-hover: #ee4d4d; /* Hover en rojo para transmitir urgencia y confianza en la navegación */
+    --sidebar-border: rgba(255, 196, 77, 0.3); /* Borde amarillo para resaltar secciones importantes */
   
-    --toggle-bg: rgba(31, 41, 55, 0.9);
-    --toggle-color: #ffc44d;
+    /* Toggle Menu */
+    --toggle-bg: rgba(31, 41, 55, 0.9); /* Fondo oscuro semitransparente en menú toggle */
+    --toggle-color: #ffc44d; /* Íconos o texto del toggle en amarillo para capturar atención */
 }
 
 body {
