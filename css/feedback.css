@@ -384,46 +384,36 @@ footer {
 #sidebar {
     width: var(--sidebar-width);
     height: 100vh;
-    background-color: var(--sidebar-bg); /* Se mantiene el fondo oscuro y transparente */
-    backdrop-filter: blur(20px); /* Efecto de desenfoque */
+    background-color: var(--sidebar-bg);
+    backdrop-filter: blur(20px);
     color: var(--sidebar-text);
     position: fixed;
     left: calc(-1 * var(--sidebar-width));
     top: 0;
     padding: 2rem;
-    transition: var(--transition);
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
     z-index: 1000;
     overflow-y: auto;
-    border-right: 1px solid var(--sidebar-border); /* Borde más sutil */
+    border-right: 1px solid var(--sidebar-border);
+    transition: left 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
 }
 
 #sidebar.active {
     left: 0;
-    animation: slideIn 0.5s forwards, fadeIn 0.5s forwards;
-}
-
-@keyframes slideIn {
-    from { left: calc(-1 * var(--sidebar-width)); }
-    to { left: 0; }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    opacity: 1;
 }
 
 #menu-toggle {
     position: fixed;
     top: 2rem;
     left: 2rem;
-    background: var(--toggle-bg); /* Fondo oscuro y semi-transparente para el toggle */
+    background: var(--toggle-bg);
     border: none;
     color: var(--toggle-color);
     padding: 0;
     border-radius: 50%;
     cursor: pointer;
-    transition: var(--transition);
     z-index: 1100;
     display: flex;
     justify-content: center;
@@ -431,10 +421,11 @@ footer {
     width: 3.5rem;
     height: 3.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, left 0.5s ease;
 }
 
 #menu-toggle:hover {
-    background: rgba(255, 255, 255, 0.2); /* Fondo más claro al hacer hover */
+    background: rgba(255, 255, 255, 0.2);
     transform: translateY(-2px) scale(1.05);
     box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
 }
@@ -451,11 +442,6 @@ footer {
 
 #menu-toggle.active i {
     transform: rotate(360deg);
-}
-
-@keyframes rotateWheel {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
 }
 
 #menu-toggle i {
