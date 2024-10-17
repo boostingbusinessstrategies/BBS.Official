@@ -44,15 +44,15 @@ body {
     padding: 20px;
 }
 
-/* Header Section with Background Image */
+/* Hero Section Styles */
 header.hero-section {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: space-between;
     text-align: left;
     padding: 50px 10%;
-    background-image: url('https://i.imgur.com/xeV7Rqd.jpg'); /* Corregida la URL de la imagen */
+    background-image: url('https://i.imgur.com/xeV7Rqd.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -73,10 +73,22 @@ header.hero-section::before {
     z-index: 1;
 }
 
-header.hero-section > * {
+.hero-content {
     position: relative;
     z-index: 2;
     max-width: 60%;
+}
+
+.logo-container {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 3;
+}
+
+.bbs-logo {
+    width: 100px;
+    height: auto;
 }
 
 header.hero-section h1 {
@@ -98,22 +110,24 @@ header.hero-section p {
 
 header.hero-section .cta-button {
     padding: 15px 30px;
-    background-color: #FF5722; /* Color naranja brillante */
+    background-color: #FF5722;
     color: #ffffff;
     text-decoration: none;
     border-radius: 4px;
     font-weight: 600;
     font-size: 1.1em;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
     display: inline-block;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 header.hero-section .cta-button:hover {
     background-color: #E64A19;
     transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Media query para ajustes en dispositivos móviles */
+/* Media query for mobile devices */
 @media (max-width: 768px) {
     header.hero-section {
         align-items: center;
@@ -123,7 +137,7 @@ header.hero-section .cta-button:hover {
         background-position: top center;
     }
 
-    header.hero-section > * {
+    .hero-content {
         max-width: 100%;
     }
 
@@ -139,6 +153,32 @@ header.hero-section .cta-button:hover {
     header.hero-section .cta-button {
         width: 100%;
         text-align: center;
+    }
+
+    .logo-container {
+        position: static;
+        margin-top: 30px;
+        align-self: center;
+    }
+
+    .bbs-logo {
+        width: 80px;
+    }
+}
+
+/* Styles for very small devices */
+@media (max-width: 480px) {
+    header.hero-section {
+        background-image: url('https://imgur.com/c59fzb8.jpg');
+        background-position: center top;
+    }
+
+    header.hero-section h1 {
+        font-size: 2em;
+    }
+
+    header.hero-section p {
+        font-size: 1em;
     }
 }
 
