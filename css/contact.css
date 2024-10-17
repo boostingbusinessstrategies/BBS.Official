@@ -94,6 +94,16 @@ header.hero-section p {
     margin: 0 0 20px; /* Ensured consistent spacing */
 }
 
+.logo-container {
+@@ -87,10 +88,46 @@ header.hero-section::before {
+}
+
+.bbs-logo {
+    width: 120px; /* Aumentado de 100px a 120px */
+    width: 150px; /* Aumentado de 120px a 150px */
+    height: auto;
+}
+
 /* Form Section Styles */
 #contact {
     margin-top: 40px;
