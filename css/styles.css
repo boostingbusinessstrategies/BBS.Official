@@ -52,7 +52,7 @@ header.hero-section {
     justify-content: flex-end; /* Cambiado a flex-end para mover el contenido hacia abajo */
     text-align: left;
     padding: 50px 5%; /* Cambiado a porcentaje para mejor responsividad */
-    background-image: url('https://i.imgur.com/upYyIfb.jpg');
+    background-image: url('https://www.pexels.com/es-es/foto/hombre-y-mujer-junto-a-la-mesa-3184465/');
     background-size: cover; /* Cambiado a cover para cubrir todo el espacio */
     background-repeat: no-repeat;
     background-position: center;
