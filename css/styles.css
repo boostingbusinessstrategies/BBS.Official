@@ -52,7 +52,7 @@ header.hero-section {
     justify-content: flex-end; /* Cambiado a flex-end para mover el contenido hacia abajo */
     text-align: left;
     padding: 50px 5%; /* Cambiado a porcentaje para mejor responsividad */
-    background-image: url('https://imgur.com/undefined');
+    background-image: url('https://imgur.com/xeV7Rqd');
     background-size: cover; /* Cambiado a cover para cubrir todo el espacio */
     background-repeat: no-repeat;
     background-position: center;
