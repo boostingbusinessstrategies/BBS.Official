@@ -29,19 +29,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Funcionalidad para la navegación de escritorio
-    if (desktopNav) {
-        const navLinks = desktopNav.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetSection = document.getElementById(targetId);
-                if (targetSection) {
-                    targetSection.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-    }
-    
-    console.log('Navigation script loaded');
-}); 
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navList = document.querySelector('.desktop-nav ul');
+
+    mobileMenuBtn.addEventListener('click', function() {
+        navList.classList.toggle('show');
+    });
+});
