@@ -28,33 +28,34 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Parte 2: Manejo del sidebar
-    const sidebar = document.getElementById('sidebar');
-    const menuToggle = document.getElementById('menu-toggle');
+document.addEventListener('DOMContentLoaded', function() {
+  const sidebar = document.getElementById('sidebar');
+  const menuToggle = document.getElementById('menu-toggle');
 
-    if (!sidebar || !menuToggle) {
-        console.error('Sidebar or menu toggle not found');
-        return;
-    }
+  if (!sidebar || !menuToggle) {
+      console.error('Sidebar or menu toggle not found');
+      return;
+  }
 
-    function toggleSidebar() {
-        sidebar.classList.toggle('active');
-        menuToggle.classList.toggle('active');
-    }
+  function toggleSidebar() {
+      sidebar.classList.toggle('active');
+      menuToggle.classList.toggle('active');
+  }
 
-    menuToggle.addEventListener('click', function (event) {
-        event.stopPropagation();
-        toggleSidebar();
-    });
+  menuToggle.addEventListener('click', function(event) {
+      event.stopPropagation();
+      toggleSidebar();
+  });
 
-    document.addEventListener('click', function (event) {
-        if (sidebar.classList.contains('active') && !sidebar.contains(event.target) && event.target !== menuToggle) {
-            toggleSidebar();
-        }
-    });
+  document.addEventListener('click', function(event) {
+      if (sidebar.classList.contains('active') && !sidebar.contains(event.target) && event.target !== menuToggle) {
+          toggleSidebar();
+      }
+  });
 
-    sidebar.addEventListener('click', function (event) {
-        event.stopPropagation();
-    });
+  sidebar.addEventListener('click', function(event) {
+      event.stopPropagation();
+  });
 
-    console.log('Sidebar script loaded');
+  console.log('Sidebar script loaded');
 });
