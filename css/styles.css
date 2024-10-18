@@ -234,11 +234,6 @@ p {
     transform: translateY(-5px);
 }
 
-/* Typography */
-p {
-    margin-bottom: 2rem;
-}
-
 /* CTA Button */
 .cta-button {
     display: inline-block;
