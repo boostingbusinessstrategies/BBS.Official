@@ -234,7 +234,7 @@ p {
 
 /* Typography */
 p {
-    margin-bottom: 2rem; /* Increased from 1.5rem to create more space above buttons */
+    margin-bottom: 2rem;
 }
 
 /* CTA Button */
@@ -250,7 +250,7 @@ p {
     position: relative;
     overflow: hidden;
     text-align: center;
-    margin-top: 1rem; /* Added to create space below paragraphs */
+    margin-top: 1rem;
 }
 
 .cta-button::before {
@@ -276,11 +276,11 @@ p {
 
 /* Additional spacing for buttons in specific contexts */
 .section > .cta-button {
-    margin-top: 2rem; /* Increased space when button is directly inside a section */
+    margin-top: 2rem;
 }
 
 #services .cta-button {
-    margin-top: 3rem; /* Even more space in the services section */
+    margin-top: 3rem;
 }
 
 /* Services Grid */
@@ -289,21 +289,22 @@ p {
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
     margin-top: 3rem;
-    overflow-x: auto; /* Allows horizontal scrolling on smaller screens */
+    overflow-x: auto;
 }
 
 .service-card {
     background-color: var(--content-background);
     border-radius: var(--border-radius);
-    box-shadow: 0 6px 12px var(--shadow-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adjusted shadow for consistency */
     padding: 1.5rem;
     text-align: center;
-    transition: transform var(--transition-speed);
-    min-width: 200px; /* Ensures a minimum width for each card */
+    transition: all var(--transition-speed);
+    min-width: 200px;
 }
 
 .service-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
 }
 
 .service-card i {
