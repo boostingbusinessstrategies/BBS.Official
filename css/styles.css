@@ -278,7 +278,7 @@ p {
 
 /* Additional spacing for buttons in specific contexts */
 .section > .cta-button {
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 #services .cta-button {
