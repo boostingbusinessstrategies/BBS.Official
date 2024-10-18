@@ -497,6 +497,7 @@ p {
 
 
 
+
 /* Footer */
 #footer-container {
     background: rgb(20, 33, 53); /* Color de fondo específico */
@@ -538,6 +539,7 @@ p {
     color: var(--secondary-color);
     position: relative;
     padding-bottom: 0.5rem;
+    text-align: left; /* Alineación a la izquierda */
 }
 
 .footer-section h3::after {
@@ -566,6 +568,7 @@ p {
     display: inline-block;
     word-wrap: break-word; /* Para emails largos */
     overflow-wrap: break-word; /* Ajusta el texto largo */
+    text-align: left; /* Alineación a la izquierda */
 }
 
 .footer-section a:hover {
@@ -614,29 +617,33 @@ p {
 @media (max-width: 768px) {
     .footer-content {
         flex-direction: column;
-        padding: 0 1rem; /* Reducir padding para pantallas más pequeñas */
+        padding: 0 2rem; /* Mantener padding adecuado sin tocar el borde */
     }
     
     .footer-section {
         margin-bottom: 2.5rem;
-        text-align: center; /* Centrar contenido en pantallas pequeñas */
+        text-align: left; /* Alinear a la izquierda en móviles */
+    }
+
+    .footer-section h3::after {
+        left: 0; /* Asegurarse de que la línea roja esté alineada con el texto */
     }
     
     .social-media {
-        justify-content: center;
+        justify-content: flex-start; /* Alineación a la izquierda para iconos sociales en móviles */
     }
 
     /* Ajustes específicos para texto largo como el email */
     .footer-section a {
         word-wrap: break-word;
         overflow-wrap: break-word;
-        font-size: 0.9rem; /* Reducir el tamaño de fuente para pantallas pequeñas */
-        text-align: center; /* Centrar texto largo en pantallas pequeñas */
+        font-size: 1rem; /* Mantener tamaño adecuado para móviles */
+        text-align: left; /* Alinear texto a la izquierda en móviles */
     }
 
     .footer-bottom {
         padding-top: 1rem;
-        font-size: 0.8rem; /* Reducir el tamaño de fuente del copyright */
+        font-size: 0.9rem; /* Mantener legibilidad */
     }
 }
 
