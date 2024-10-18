@@ -220,18 +220,6 @@ p {
 }
 
 
-/ Responsive adjustments */
-@media (max-width: 1024px) {
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-@media (max-width: 640px) {
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
 /* Section Styling */
 .section {
     background-color: var(--content-background);
@@ -244,6 +232,11 @@ p {
 
 .section:hover {
     transform: translateY(-5px);
+}
+
+/* Typography */
+p {
+    margin-bottom: 2rem; /* Increased space above buttons */
 }
 
 /* CTA Button */
@@ -259,7 +252,7 @@ p {
     position: relative;
     overflow: hidden;
     text-align: center;
-    margin-top: 1rem; /* Space below paragraphs */
+    margin-top: 1.5rem; /* Increased space to prevent cutting shadow */
 }
 
 .cta-button::before {
@@ -302,13 +295,15 @@ p {
 }
 
 .service-card {
-    background-color: var(--content-background);
+    background-color: #ffffff; /* Changed to a contrasting color */
     border-radius: var(--border-radius);
     box-shadow: 0 12px 24px var(--shadow-color); /* Increased shadow for better visibility */
-    padding: 1.5rem;
+    padding: 2rem; /* Increased padding for rectangular shape */
     text-align: center;
     transition: transform var(--transition-speed);
-    min-width: 200px; /* Ensures a minimum width for each card */
+    min-width: 220px; /* Ensures a minimum width for each card */
+    max-width: 300px; /* Added to restrict the width for a better rectangular shape */
+    height: 250px; /* Fixed height for consistency */
     position: relative; /* Added for better shadow visibility */
     z-index: 1; /* Ensures the card appears above other elements */
 }
@@ -330,6 +325,20 @@ p {
     margin-bottom: 0.5rem;
 }
 
+
+
+
+/ Responsive adjustments */
+@media (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 640px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
 /* Features List */
 .features-list {
