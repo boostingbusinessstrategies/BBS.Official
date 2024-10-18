@@ -228,6 +228,7 @@ p {
     margin: 3rem 0;
     padding: 3rem 2rem;
     transition: transform var(--transition-speed);
+    overflow: visible; /* Permite que las sombras sean visibles fuera de la sección */
 }
 
 .section:hover {
@@ -294,6 +295,7 @@ p {
     overflow-x: auto; /* Allows horizontal scrolling on smaller screens */
 }
 
+/* Service Card Styling */
 .service-card {
     background-color: #ffffff; /* Changed to a contrasting color */
     border-radius: var(--border-radius);
@@ -324,6 +326,7 @@ p {
     color: var(--secondary-color);
     margin-bottom: 0.5rem;
 }
+
 
 
 
