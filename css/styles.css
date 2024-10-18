@@ -54,6 +54,8 @@ body {
     padding: 0;
 }
 
+
+
 /* Hero Section (Header de pantalla completa) */
 .hero-section {
     position: relative;
@@ -76,7 +78,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.55); /* Aumentado el contraste de fondo para mejorar la visibilidad del texto */
     z-index: 1;
 }
 
@@ -88,20 +90,22 @@ body {
 }
 
 .hero-section h1 {
-    font-size: 4rem;
-    font-weight: 700;
+    font-size: 3.2rem; /* Reducido el tamaño del título */
+    line-height: 1.15; /* Ajustado para mayor legibilidad */
+    font-weight: 700; /* Ligero ajuste en el peso de la fuente */
     color: #ffffff;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1.2rem; /* Reducido el margen inferior */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Ligera sombra para mejorar la visibilidad */
     animation: fadeInDown 1s ease-out;
     text-align: left;
 }
 
 .hero-section p {
-    font-size: 1.5rem;
+    font-size: 1.3rem; /* Reducido para mayor equilibrio con el título */
+    line-height: 1.5; /* Ajuste en el espaciado entre líneas */
     color: #ffffff;
-    margin-bottom: 1.5rem; /* Reducido de 2rem a 1.5rem para acercar el botón */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1.2rem; /* Ajuste del margen inferior */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Sombra suave */
     animation: fadeInUp 1s ease-out 0.5s both;
     text-align: left;
 }
@@ -111,22 +115,22 @@ body {
     display: inline-block;
     background-color: var(--primary-color);
     color: white;
-    padding: 0.9rem 1.8rem; /* Ligeramente reducido para un aspecto más compacto */
+    padding: 1rem 2.2rem; /* Manteniendo el padding */
     border-radius: var(--border-radius);
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.2rem; /* Ligeramente reducido para mantener la proporción */
+    font-size: 1.3rem; /* Manteniendo el tamaño del texto del botón */
     transition: all var(--transition-speed);
     position: relative;
     overflow: hidden;
     align-self: flex-start;
-    margin-top: 0.5rem; /* Añadido un pequeño margen superior */
+    margin-top: 1rem;
 }
 
 .hero-section .cta-button:hover {
     background-color: var(--secondary-color);
     color: black;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .hero-section .cta-button::before {
@@ -174,12 +178,12 @@ body {
     }
 
     .hero-section p {
-        font-size: 1.25rem;
+        font-size: 1.2rem;
     }
 
     .hero-section .cta-button {
-        font-size: 1rem;
-        padding: 0.75rem 1.5rem;
+        font-size: 1.1rem;
+        padding: 0.85rem 1.75rem;
     }
 }
 
@@ -193,10 +197,11 @@ body {
     }
 
     .hero-section .cta-button {
-        font-size: 0.875rem;
-        padding: 0.5rem 1.25rem;
+        font-size: 1rem;
+        padding: 0.7rem 1.5rem;
     }
 }
+
 
 
 
