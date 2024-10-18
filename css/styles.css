@@ -220,104 +220,114 @@ p {
     font-size: 1.1rem;
 }
 
-
-.section {
-  background-color: var(--content-background);
-  border-radius: var(--border-radius);
-  box-shadow: 0 8px 16px var(--shadow-color);
-  margin: 3rem 0;
-  padding: 3rem 2rem;
-  transition: transform var(--transition-speed);
+#services {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: var(--content-background);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px var(--shadow-color);
 }
 
-.section:hover {
-  transform: translateY(-5px);
+h2 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
 }
 
-p {
-  margin-bottom: 2rem;
-}
-
-.cta-button {
-  display: inline-block;
-  background-color: var(--secondary-color);
-  color: var(--text-color);
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--border-radius);
-  text-decoration: none;
-  font-weight: bold;
-  transition: all var(--transition-speed);
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-  margin-top: 1rem;
-}
-
-.cta-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transition: all 0.6s;
-}
-
-.cta-button:hover::before {
-  left: 100%;
-}
-
-.cta-button:hover {
-  background-color: var(--primary-color);
-  color: white;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.section > .cta-button {
-  margin-top: 2rem;
-}
-
-#services .cta-button {
-  margin-top: 3rem;
+.intro-text {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    font-size: 1.1rem;
 }
 
 .services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-  padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
 }
 
 .service-card {
-  background-color: var(--content-background);
-  border-radius: var(--border-radius);
-  padding: 1.5rem;
-  text-align: center;
-  transition: all var(--transition-speed);
-  position: relative;
-  z-index: 1;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    background: var(--header-gradient);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    text-align: center;
+    transition: all var(--transition-speed);
+    color: white;
 }
 
 .service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 .service-card i {
-  font-size: 2.5rem;
-  color: var(--secondary-color);
-  margin-bottom: 0.5rem;
+    font-size: 3rem;
+    margin-bottom: 1rem;
 }
 
-@media (max-width: 640px) {
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
 }
 
+.service-card p {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.cta-button {
+    display: block;
+    width: max-content;
+    margin: 3rem auto 0;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: bold;
+    transition: all var(--transition-speed);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: all 0.6s;
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+.cta-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    #services {
+        padding: 1.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
 /* Features List */
 .features-list {
