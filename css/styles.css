@@ -174,35 +174,37 @@ body {
 /* Media Queries para hacerlo responsive */
 @media (max-width: 768px) {
     .hero-section h1 {
-        font-size: 2.5rem;
+        font-size: 2.8rem; /* Aumentado ligeramente para mayor impacto */
+        line-height: 1.2; /* Ajuste en la altura de línea para evitar dispersión */
     }
 
     .hero-section p {
-        font-size: 1.2rem;
+        font-size: 1.3rem; /* Aumentado un poco para mejor visibilidad */
+        line-height: 1.4; /* Más compacto pero aún legible */
     }
 
     .hero-section .cta-button {
-        font-size: 1.1rem;
-        padding: 0.85rem 1.75rem;
+        font-size: 1.2rem; /* Incrementado para mejorar el impacto */
+        padding: 1rem 2.2rem; /* Mayor padding para hacer el botón más prominente */
     }
 }
 
 @media (max-width: 480px) {
     .hero-section h1 {
-        font-size: 2rem;
+        font-size: 2.4rem; /* Mayor que antes para no perder protagonismo en móviles */
+        line-height: 1.2; /* Altura de línea ajustada */
     }
 
     .hero-section p {
-        font-size: 1rem;
+        font-size: 1.2rem; /* Mejorado para que sea más visible en pantallas pequeñas */
+        line-height: 1.3; /* Compacto pero aún fácil de leer */
     }
 
     .hero-section .cta-button {
-        font-size: 1rem;
-        padding: 0.7rem 1.5rem;
+        font-size: 1.1rem; /* Un poco más grande para que se vea más prominente */
+        padding: 1rem 2rem; /* Más padding para mejor presencia */
     }
 }
-
-
 
 
 
