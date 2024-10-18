@@ -50,6 +50,8 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
+    margin: 0;
+    padding: 0;
 }
 
 /* Hero Section (Header de pantalla completa) */
@@ -192,14 +194,7 @@ body {
     }
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-}
+
 
 .main-content {
     max-width: 1200px;
@@ -256,7 +251,7 @@ p {
     padding: 2rem;
     text-align: center;
     transition: all var(--transition-speed);
-    color: white;
+    color: black;
 }
 
 .service-card:hover {
