@@ -196,6 +196,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
+    background: var(--background-color);
 }
 
 /* Typography */
@@ -225,6 +226,7 @@ p {
     box-shadow: 0 8px 16px var(--shadow-color);
     margin: 3rem 0;
     padding: 3rem 2rem;
+    background: var(--background-color);
     transition: transform var(--transition-speed);
 }
 
