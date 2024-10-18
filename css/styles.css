@@ -628,10 +628,6 @@ p {
     .footer-section h3::after {
         left: 0; /* Asegurarse de que la línea roja esté alineada con el texto */
     }
-    
-    .social-media {
-        justify-content: flex-start; /* Alineación a la izquierda para iconos sociales en móviles */
-    }
 
     /* Ajustes específicos para texto largo como el email */
     .footer-section a {
