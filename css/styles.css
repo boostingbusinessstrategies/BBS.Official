@@ -215,8 +215,21 @@ h3 {
 }
 
 p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem; /* Increased space above buttons */
     font-size: 1.1rem;
+}
+
+
+/ Responsive adjustments */
+@media (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 640px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Section Styling */
@@ -226,7 +239,6 @@ p {
     box-shadow: 0 8px 16px var(--shadow-color);
     margin: 3rem 0;
     padding: 3rem 2rem;
-    background: var(--background-color);
     transition: transform var(--transition-speed);
 }
 
@@ -247,7 +259,7 @@ p {
     position: relative;
     overflow: hidden;
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 1rem; /* Space below paragraphs */
 }
 
 .cta-button::before {
@@ -273,65 +285,49 @@ p {
 
 /* Additional spacing for buttons in specific contexts */
 .section > .cta-button {
-    margin-top: 1rem;
+    margin-top: 2rem; /* Increased space when button is directly inside a section */
 }
 
 #services .cta-button {
-    margin-top: 1rem;
+    margin-top: 3rem; /* More space in the services section */
 }
-
 
 /* Services Grid */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    margin-top: 2rem;
-    overflow-x: auto;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    overflow-x: auto; /* Allows horizontal scrolling on smaller screens */
 }
 
 .service-card {
     background-color: var(--content-background);
     border-radius: var(--border-radius);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 1.2rem;
+    box-shadow: 0 12px 24px var(--shadow-color); /* Increased shadow for better visibility */
+    padding: 1.5rem;
     text-align: center;
-    transition: all var(--transition-speed);
-    min-width: 180px;
+    transition: transform var(--transition-speed);
+    min-width: 200px; /* Ensures a minimum width for each card */
+    position: relative; /* Added for better shadow visibility */
+    z-index: 1; /* Ensures the card appears above other elements */
 }
 
 .service-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
 }
 
+/* Adjust button position within service card */
+.service-card .cta-button {
+    margin-top: 1rem; /* Space above buttons in service cards */
+    z-index: 2; /* Ensure button is above card */
+}
+
+/* Service card icon styling */
 .service-card i {
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: var(--secondary-color);
     margin-bottom: 0.5rem;
-}
-
-.service-card h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-}
-
-.service-card p {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-}
-
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 640px) {
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 
