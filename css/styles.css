@@ -277,7 +277,7 @@ p {
 }
 
 #services .cta-button {
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 
@@ -294,7 +294,7 @@ p {
     background-color: var(--content-background);
     border-radius: var(--border-radius);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
+    padding: 1.2rem;
     text-align: center;
     transition: all var(--transition-speed);
     min-width: 180px;
