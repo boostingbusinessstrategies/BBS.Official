@@ -497,8 +497,6 @@ p {
 
 
 
-
-
 /* Footer */
 #footer-container {
     background: rgb(20, 33, 53); /* Color de fondo específico */
@@ -566,6 +564,8 @@ p {
     text-decoration: none; /* Eliminar subrayado */
     transition: all 0.3s ease;
     display: inline-block;
+    word-wrap: break-word; /* Para emails largos */
+    overflow-wrap: break-word; /* Ajusta el texto largo */
 }
 
 .footer-section a:hover {
@@ -622,7 +622,15 @@ p {
     .social-media {
         justify-content: center;
     }
+    
+    /* Ajustes para que los enlaces largos no se desborden */
+    .footer-section a {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
 }
+
+
 
 
 
