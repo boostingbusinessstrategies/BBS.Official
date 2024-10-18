@@ -222,13 +222,12 @@ p {
 
 /* Section Styling */
 .section {
-    background-color: var(--content-background);
+    background-color: #ffffff; /* Sección blanca */
     border-radius: var(--border-radius);
     box-shadow: 0 8px 16px var(--shadow-color);
     margin: 3rem 0;
     padding: 3rem 2rem;
     transition: transform var(--transition-speed);
-    overflow: visible; /* Permite que las sombras sean visibles fuera de la sección */
 }
 
 .section:hover {
@@ -243,7 +242,7 @@ p {
 /* CTA Button */
 .cta-button {
     display: inline-block;
-    background-color: var(--secondary-color);
+    background-color: var(--secondary-color); /* Color del botón */
     color: var(--text-color);
     padding: 0.75rem 1.5rem;
     border-radius: var(--border-radius);
@@ -297,15 +296,16 @@ p {
 
 /* Service Card Styling */
 .service-card {
-    background-color: #ffffff; /* Changed to a contrasting color */
+    background-color: #0056a3; /* Color profesional que coincide con tu marca */
+    color: #ffffff; /* Texto blanco para contraste */
     border-radius: var(--border-radius);
     box-shadow: 0 12px 24px var(--shadow-color); /* Increased shadow for better visibility */
-    padding: 2rem; /* Increased padding for rectangular shape */
+    padding: 1.5rem; /* Ajustado el padding para evitar que el texto se desborde */
     text-align: center;
     transition: transform var(--transition-speed);
-    min-width: 220px; /* Ensures a minimum width for each card */
-    max-width: 300px; /* Added to restrict the width for a better rectangular shape */
-    height: 250px; /* Fixed height for consistency */
+    min-width: 200px; /* Ajustado para cards más pequeñas */
+    max-width: 250px; /* Restricción de ancho */
+    height: auto; /* Cambiado a automático para adaptarse al contenido */
     position: relative; /* Added for better shadow visibility */
     z-index: 1; /* Ensures the card appears above other elements */
 }
@@ -322,8 +322,8 @@ p {
 
 /* Service card icon styling */
 .service-card i {
-    font-size: 2.5rem;
-    color: var(--secondary-color);
+    font-size: 2rem; /* Ajustado para que el icono se ajuste mejor */
+    color: #ffffff; /* Color del icono */
     margin-bottom: 0.5rem;
 }
 
