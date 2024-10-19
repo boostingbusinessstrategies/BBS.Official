@@ -122,11 +122,12 @@ header img:hover {
 
     header h1 {
         font-size: 2em; /* Ajustar tamaño del título en móviles */
-        margin-left: 0; /* Eliminar margen izquierdo en móviles */
+        margin-left: 80xp; /* Eliminar margen izquierdo en móviles */
     }
 
     header img {
         height: 60px; /* Ajustar altura del logo en móviles */
+        margin-right: 80xp;
     }
 }
 
@@ -146,6 +147,8 @@ header {
         opacity: 1; /* Finalizar con opacidad 1 */
     }
 }
+
+
 
 
 #introduction {
