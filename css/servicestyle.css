@@ -1,18 +1,20 @@
-/* Importación de fuentes */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
-/* Variables globales */
-:root {
-    --primary-color: #ee4d4d;
-    --secondary-color: #ffc44d;
-    --background-color: #f0f4f8;
-    --text-color: #333333;
-    --header-gradient: linear-gradient(135deg, #ee4d4d, #ffc44d);
-    --border-radius: 8px;
-    --transition-speed: 0.3s;
-    --shadow-color: rgba(0, 0, 0, 0.1);
-    --accent-color: #0056a3;
-    --content-background: #ffffff;
+:root { 
+    --primary-color: #ee4d4d; /* Rojo: Urgencia y Confianza (Destaca en CTAs y alertas críticas) */
+    --secondary-color: #ffc44d; /* Amarillo: Energía y Enfoque (Para captar la atención en elementos clave) */
+    --accent-color: #0056a3; /* Azul profundo: Contraste y Profesionalismo (Estabilidad y confianza) */
+    --background-color: #f0f4f8; /* Blanco: Claridad y Espacio (Limpieza visual y enfoque en el contenido) */
+    --text-color: #333333; /* Texto oscuro: Claridad y Formalidad (Legible, profesional y neutro) */
+    --footer-bg-color: rgb(20, 33, 53); /* Azul oscuro casi negro: Elegancia y Cierre (para dar un final visual firme y elegante) */
+    
+    /* Gradientes */
+    --header-gradient: linear-gradient(135deg, #ee4d4d, #ffc44d); /* Gradiente que une confianza con enfoque */
+    
+    /* Bordes y Sombras */
+    --border-radius: 12px; /* Esquinas redondeadas: Suavidad y modernidad */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Sombra suave para sensación ligera y profesional */
+    
+    /* Transiciones */
+    --transition-speed: 0.4s;
     
     /* Sidebar */
     --sidebar-width: 280px;
@@ -27,16 +29,6 @@
     
     /* Container */
     --container-padding: 20px; /* Espaciado interno para mantener claridad y orden */
-    
-    /* Footer */
-    --footer-bg: rgb(20, 33, 53); /* Fondo azul oscuro casi negro en footer para elegancia y un cierre visual sólido */
-    --footer-text: #ffffff; /* Texto blanco en el footer para garantizar legibilidad y contraste */
-    --footer-link-hover: #ffc44d; /* Hover en amarillo para los enlaces del footer, captando atención de manera sutil */
-    
-    /* Transición suave */
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
     
     /* Footer */
     --footer-bg: rgb(20, 33, 53); /* Fondo azul oscuro casi negro en footer para elegancia y un cierre visual sólido */
@@ -75,45 +67,86 @@ body {
 
 /* Header */
 header {
-    background: var(--header-gradient);
-    color: white;
-    text-align: center;
-    padding: 3rem 0;
+    background: #ffffff; /* Fondo blanco para un aspecto limpio */
+    color: #333333; /* Color de texto gris oscuro para buena legibilidad */
+    text-align: left; /* Alinear texto a la izquierda */
+    padding: 1.5rem 2rem; /* Ajustar el padding */
     position: relative;
-    overflow: hidden;
+    display: flex; /* Usar flexbox para alinear elementos */
+    justify-content: space-between; /* Espacio entre el logo y el texto */
+    align-items: center; /* Centrar verticalmente */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Añadir sombra suave para profundidad */
+    padding-bottom: 1rem; /* Espacio adicional para la línea inferior */
 }
 
-header::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, rgba(255,255,255,0.3) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.3) 75%, transparent 75%, transparent);
-    animation: headerAnimation 30s linear infinite;
-    opacity: 0.5; /* Aumentar la opacidad para un brillo más evidente */
-}
-
-header {
-    animation: slideInFromTop 1.5s ease-out forwards;
-}
-
-@keyframes headerAnimation {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+header::after {
+    content: ''; /* Crear un pseudo-elemento para la línea inferior */
+    position: absolute; /* Posicionar de forma absoluta */
+    bottom: 0; /* Alinear al fondo */
+    left: 0; /* Alinear a la izquierda */
+    width: 100%; /* Ancho completo */
+    height: 4px; /* Altura de la línea */
+    background: linear-gradient(to right, #ee4d4d, #ffc44d); /* Degradado para la línea */
 }
 
 header h1 {
-    font-size: 3em;
-    margin-bottom: 0.5rem;
+    font-size: 2.8em; /* Tamaño de fuente del encabezado aumentado */
+    margin: 0; /* Eliminar margen */
     position: relative;
-    z-index: 1;
+    z-index: 1; /* Asegurar que el texto esté por encima del fondo */
+    transition: color 0.3s ease; /* Transición suave para el color */
+    margin-left: 80px; /* Desplazar el título más a la derecha */
 }
+
+header h1:hover {
+    color: #ee4d4d; /* Cambiar color a rojo al pasar el ratón */
+}
+
+header img {
+    height: 70px; /* Aumentar altura del logo */
+    z-index: 1; /* Asegurar que el logo esté por encima del fondo */
+    transition: transform 0.3s ease; /* Transición suave para el logo */
+}
+
+header img:hover {
+    transform: scale(1.1); /* Escalar el logo al pasar el ratón */
+}
+
+/* Estilo para dispositivos móviles */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Cambiar a disposición vertical en dispositivos pequeños */
+        align-items: flex-start; /* Alinear los elementos a la izquierda */
+        padding: 1rem; /* Ajustar el padding */
+    }
+
+    header h1 {
+        font-size: 2em; /* Ajustar tamaño del título en móviles */
+        margin-left: 0; /* Eliminar margen izquierdo en móviles */
+    }
+
+    header img {
+        height: 60px; /* Ajustar altura del logo en móviles */
+    }
+}
+
+/* Animación del encabezado */
+header {
+    animation: slideInFromTop 1.5s ease-out forwards; /* Animación al cargar */
+}
+
+/* Estilo para la animación del encabezado */
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%); /* Moverse desde arriba */
+        opacity: 0; /* Comenzar con opacidad 0 */
+    }
+    100% {
+        transform: translateY(0); /* Finalizar en su lugar original */
+        opacity: 1; /* Finalizar con opacidad 1 */
+    }
+}
+
 
 #introduction {
     background-color: white;
