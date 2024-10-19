@@ -1,20 +1,18 @@
-:root { 
-    --primary-color: #ee4d4d; /* Rojo: Urgencia y Confianza (Destaca en CTAs y alertas críticas) */
-    --secondary-color: #ffc44d; /* Amarillo: Energía y Enfoque (Para captar la atención en elementos clave) */
-    --accent-color: #0056a3; /* Azul profundo: Contraste y Profesionalismo (Estabilidad y confianza) */
-    --background-color: #f0f4f8; /* Blanco: Claridad y Espacio (Limpieza visual y enfoque en el contenido) */
-    --text-color: #333333; /* Texto oscuro: Claridad y Formalidad (Legible, profesional y neutro) */
-    --footer-bg-color: rgb(20, 33, 53); /* Azul oscuro casi negro: Elegancia y Cierre (para dar un final visual firme y elegante) */
-    
-    /* Gradientes */
-    --header-gradient: linear-gradient(135deg, #ee4d4d, #ffc44d); /* Gradiente que une confianza con enfoque */
-    
-    /* Bordes y Sombras */
-    --border-radius: 12px; /* Esquinas redondeadas: Suavidad y modernidad */
-    --shadow-color: rgba(0, 0, 0, 0.1); /* Sombra suave para sensación ligera y profesional */
-    
-    /* Transiciones */
-    --transition-speed: 0.4s;
+/* Importación de fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* Variables globales */
+:root {
+    --primary-color: #ee4d4d;
+    --secondary-color: #ffc44d;
+    --background-color: #f0f4f8;
+    --text-color: #333333;
+    --header-gradient: linear-gradient(135deg, #ee4d4d, #ffc44d);
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --accent-color: #0056a3;
+    --content-background: #ffffff;
     
     /* Sidebar */
     --sidebar-width: 280px;
@@ -39,8 +37,6 @@
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-
-  
 
 /* Base styles and reset */
 *, *::before, *::after {
@@ -514,8 +510,6 @@ header {
 
 
 
-
-
 /* Footer */
 #footer-container {
     background: rgb(20, 33, 53); /* Color de fondo específico */
@@ -660,6 +654,8 @@ header {
         font-size: 0.9rem; /* Mantener legibilidad */
     }
 }
+
+
 
 
 
