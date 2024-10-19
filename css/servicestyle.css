@@ -127,12 +127,12 @@ header img:hover {
         font-size: 2em;
         margin: 0;
         text-align: center;
-        margin-top: 1rem; /* Añadir margen superior */
+        margin-top: 50px; /* Ajuste más amplio para que el texto baje más en móviles */
     }
 
     header img {
         height: 60px;
-        margin: 1rem 0 0 0; /* Añadir margen superior */
+        margin-top: 40px; /* Logo más abajo en móviles */
         align-self: flex-end; /* Alinear el logo a la derecha */
     }
 }
