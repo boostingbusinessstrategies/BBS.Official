@@ -124,14 +124,14 @@ header img:hover {
     }
 
     header h1 {
-        font-size: 3.2em; /* Tamaño del texto un poco más grande */
+        font-size: 3.7em; /* Tamaño del texto un poco más grande */
         margin: 0;
         text-align: center;
         margin-top: 120px; /* Ajuste más amplio para que el texto baje más en móviles */
     }
 
     header img {
-        height: 80px; /* Logo más grande en móviles */
+        height: 100px; /* Logo más grande en móviles */
         margin-top: 50px; /* Logo un poco más abajo en móviles */
         align-self: flex-end; /* Alinear el logo a la derecha */
     }
