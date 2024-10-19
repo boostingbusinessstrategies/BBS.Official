@@ -127,7 +127,7 @@ header img:hover {
         font-size: 2.5em;
         margin: 0;
         text-align: center;
-        margin-top: 60px; /* Ajuste más amplio para que el texto baje más en móviles */
+        margin-top: 80px; /* Ajuste más amplio para que el texto baje más en móviles */
     }
 
     header img {
