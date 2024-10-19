@@ -184,8 +184,8 @@ body {
     }
 
     .hero-section .cta-button {
-        font-size: 1.1rem; /* Ajustado para un mejor equilibrio visual */
-        padding: 0.8rem 1.8rem; /* Menos padding para que no se vea tan grande */
+        font-size: 1rem; /* Más pequeño para un mejor equilibrio visual */
+        padding: 0.6rem 1.6rem; /* Ajustado para que no se vea tan grande */
     }
 }
 
@@ -201,8 +201,8 @@ body {
     }
 
     .hero-section .cta-button {
-        font-size: 1rem; /* Ajustado para que se vea proporcionado */
-        padding: 0.6rem 1.4rem; /* Menos padding para un mejor tamaño en móviles */
+        font-size: 0.9rem; /* Un poco más pequeño para mejor proporción */
+        padding: 0.5rem 1.2rem; /* Ajustado para un tamaño más compacto */
     }
 }
 
