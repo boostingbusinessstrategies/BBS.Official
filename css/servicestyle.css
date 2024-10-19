@@ -65,6 +65,8 @@ body {
     padding: var(--container-padding);
 }
 
+
+
 /* Header */
 header {
     background: #ffffff;
@@ -151,7 +153,6 @@ header {
         opacity: 1;
     }
 }
-
 
 
 
