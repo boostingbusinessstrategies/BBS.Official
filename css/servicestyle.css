@@ -67,84 +67,85 @@ body {
 
 /* Header */
 header {
-    background: #ffffff; /* Fondo blanco para un aspecto limpio */
-    color: #333333; /* Color de texto gris oscuro para buena legibilidad */
-    text-align: left; /* Alinear texto a la izquierda */
-    padding: 1.5rem 2rem; /* Ajustar el padding */
+    background: #ffffff;
+    color: #333333;
+    text-align: left;
+    padding: 1.5rem 2rem;
     position: relative;
-    display: flex; /* Usar flexbox para alinear elementos */
-    justify-content: space-between; /* Espacio entre el logo y el texto */
-    align-items: center; /* Centrar verticalmente */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Añadir sombra suave para profundidad */
-    padding-bottom: 1rem; /* Espacio adicional para la línea inferior */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding-bottom: 1rem;
 }
 
 header::after {
-    content: ''; /* Crear un pseudo-elemento para la línea inferior */
-    position: absolute; /* Posicionar de forma absoluta */
-    bottom: 0; /* Alinear al fondo */
-    left: 0; /* Alinear a la izquierda */
-    width: 100%; /* Ancho completo */
-    height: 4px; /* Altura de la línea */
-    background: linear-gradient(to right, #ee4d4d, #ffc44d); /* Degradado para la línea */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #ee4d4d, #ffc44d);
 }
 
 header h1 {
-    font-size: 2.8em; /* Tamaño de fuente del encabezado aumentado */
-    margin: 0; /* Eliminar margen */
+    font-size: 2.8em;
+    margin: 0;
     position: relative;
-    z-index: 1; /* Asegurar que el texto esté por encima del fondo */
-    transition: color 0.3s ease; /* Transición suave para el color */
-    margin-left: 80px; /* Desplazar el título más a la derecha */
+    z-index: 1;
+    transition: color 0.3s ease;
+    margin-left: 80px;
 }
 
 header h1:hover {
-    color: #ee4d4d; /* Cambiar color a rojo al pasar el ratón */
+    color: #ee4d4d;
 }
 
 header img {
-    height: 70px; /* Aumentar altura del logo */
-    z-index: 1; /* Asegurar que el logo esté por encima del fondo */
-    transition: transform 0.3s ease; /* Transición suave para el logo */
+    height: 70px;
+    z-index: 1;
+    transition: transform 0.3s ease;
 }
 
 header img:hover {
-    transform: scale(1.1); /* Escalar el logo al pasar el ratón */
+    transform: scale(1.1);
 }
 
 /* Estilo para dispositivos móviles */
 @media (max-width: 768px) {
     header {
-        flex-direction: column; /* Cambiar a disposición vertical en dispositivos pequeños */
-        align-items: flex-start; /* Alinear los elementos a la izquierda */
-        padding: 1rem; /* Ajustar el padding */
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
     }
 
     header h1 {
-        font-size: 2em; /* Ajustar tamaño del título en móviles */
-        margin-left: 80xp; /* Eliminar margen izquierdo en móviles */
+        font-size: 2em;
+        margin-left: 0;
+        text-align: center;
     }
 
     header img {
-        height: 60px; /* Ajustar altura del logo en móviles */
-        margin-right: 80xp;
+        height: 60px;
+        margin-right: 0;
     }
 }
 
 /* Animación del encabezado */
 header {
-    animation: slideInFromTop 1.5s ease-out forwards; /* Animación al cargar */
+    animation: slideInFromTop 1.5s ease-out forwards;
 }
 
 /* Estilo para la animación del encabezado */
 @keyframes slideInFromTop {
     0% {
-        transform: translateY(-100%); /* Moverse desde arriba */
-        opacity: 0; /* Comenzar con opacidad 0 */
+        transform: translateY(-100%);
+        opacity: 0;
     }
     100% {
-        transform: translateY(0); /* Finalizar en su lugar original */
-        opacity: 1; /* Finalizar con opacidad 1 */
+        transform: translateY(0);
+        opacity: 1;
     }
 }
 
