@@ -475,7 +475,13 @@ p {
 .bbs-logo {
     width: 150px;
     height: auto;
+    transition: transform 0.3s ease; /* Transición suave para el logo */
 }
+
+.bbs-logo:hover {
+    transform: scale(1.1); /* Aumentar tamaño del logo al pasar el ratón */
+}
+
 
 /* Navegación de escritorio */
 .desktop-nav {
