@@ -123,11 +123,11 @@ header img:hover {
         height: auto; /* Ajustar altura para dispositivos móviles */
     }
 
-    header h1 {
-        font-size: 4em; /* Tamaño del texto un poco más grande */
+   header h1 {
+        font-size: 8em; /* Tamaño del texto un poco más grande */
         margin: 0;
         text-align: center;
-        margin-top: 105px; /* Ajuste más amplio para que el texto baje más en móviles */
+        margin-top: 90px; /* Ajuste más amplio para que el texto baje más en móviles */
     }
 
     header img {
