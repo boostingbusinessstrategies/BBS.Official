@@ -1,45 +1,44 @@
+/* Importación de fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* Variables globales */
 :root {
     --primary-color: #ee4d4d;
     --secondary-color: #ffc44d;
     --background-color: #f0f4f8;
     --text-color: #333333;
-    --border-radius: 12px;
+    --header-gradient: linear-gradient(135deg, #ee4d4d, #ffc44d);
+    --border-radius: 8px;
     --transition-speed: 0.3s;
-    --shadow-color: rgba(0, 0, 0, 0.15);
-    --container-padding: 20px;
-    --policy-menu-background: #ffffff;
-    --header-background: linear-gradient(135deg, #ee4d4d, #ffc44d);
-    --menu-item-padding: 15px;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --accent-color: #0056a3;
+    --content-background: #ffffff;
     
-    /* Variables de espaciado */
-    --spacing-large: 45px;
-    --spacing-medium: 30px;
-    --spacing-small: 15px;
-
-  /* Sidebar */
+    /* Sidebar */
     --sidebar-width: 280px;
-    --sidebar-bg: rgba(20, 33, 53, 0.8); /* Fondo oscuro con un poco de transparencia */
-    --sidebar-text: #ffffff; /* Texto blanco para un contraste claro sobre el fondo oscuro */
-    --sidebar-hover: #ee4d4d; /* Hover en rojo para conectar con la urgencia y el enfoque de marca */
-    --sidebar-border: rgba(255, 196, 77, 0.3); /* Borde sutil en amarillo para destacar secciones importantes */
+    --sidebar-bg: rgba(20, 33, 53, 0.8); /* Fondo oscuro y transparente para barra lateral */
+    --sidebar-text: #ffffff; /* Texto blanco en sidebar para contraste */
+    --sidebar-hover: #ee4d4d; /* Hover en rojo para transmitir urgencia y confianza en la navegación */
+    --sidebar-border: rgba(255, 196, 77, 0.3); /* Borde amarillo para resaltar secciones importantes */
   
     /* Toggle Menu */
-    --toggle-bg: rgba(31, 41, 55, 0.9); /* Fondo oscuro y semi-transparente para el menú toggle */
-    --toggle-color: #ffc44d; /* Iconos o texto del toggle en amarillo para captar la atención */
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Transición fluida para una experiencia suave */
+    --toggle-bg: rgba(31, 41, 55, 0.9); /* Fondo oscuro semitransparente en menú toggle */
+    --toggle-color: #ffc44d; /* Íconos o texto del toggle en amarillo para capturar atención */
+    
+    /* Container */
+    --container-padding: 20px; /* Espaciado interno para mantener claridad y orden */
+    
+    /* Footer */
+    --footer-bg: rgb(20, 33, 53); /* Fondo azul oscuro casi negro en footer para elegancia y un cierre visual sólido */
+    --footer-text: #ffffff; /* Texto blanco en el footer para garantizar legibilidad y contraste */
+    --footer-link-hover: #ffc44d; /* Hover en amarillo para los enlaces del footer, captando atención de manera sutil */
+    
+    /* Transición suave */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
+/* Base styles and reset */
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -47,12 +46,26 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Arial', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
-    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
 }
+
+p {
+    margin-bottom: 1.5rem; /* Reducido desde 2.5rem a 1.5rem */
+    font-size: 1.2rem;
+    line-height: 1.6; /* Reducido desde 1.8 a 1.6 */
+}
+
+
+
+
+
+
+
 
 #content {
     padding-top: 60px;
@@ -95,6 +108,7 @@ body {
     color: var(--secondary-color);
     transform: translateY(-3px);
 }
+
 
 h2 {
     margin-top: var(--spacing-large);
@@ -172,64 +186,159 @@ header h1 {
     transform: translateY(-5px);
 }
 
+
+
+
+
+
+/* Footer */
 #footer-container {
-    background: var(--primary-color);
-    color: #ffffff;
-    padding: 40px 20px;
-    text-align: center;
-    margin-top: 60px;
-    box-shadow: 0 -4px 20px var(--shadow-color);
+    background: rgb(20, 33, 53); /* Color de fondo específico */
+    color: var(--footer-text);
+    padding: 4rem 0 2rem;
+    position: relative;
+    overflow: hidden;
 }
 
-.footer-container {
+#footer-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--header-gradient);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+}
+
+.footer-section h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+    position: relative;
+    padding-bottom: 0.5rem;
+    text-align: left; /* Alineación a la izquierda */
+}
+
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background: var(--primary-color);
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-section a {
+    color: var(--footer-text);
+    text-decoration: none; /* Eliminar subrayado */
+    transition: all 0.3s ease;
+    display: inline-block;
+    word-wrap: break-word; /* Para emails largos */
+    overflow-wrap: break-word; /* Ajusta el texto largo */
+    text-align: left; /* Alineación a la izquierda */
+}
+
+.footer-section a:hover {
+    color: var(--secondary-color);
+    transform: translateX(5px);
 }
 
 .social-media {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0 0;
-}
-
-.social-media li {
-    display: inline;
-    margin: 0 10px;
+    display: flex;
+    justify-content: center; /* Centrado de iconos */
+    margin-top: 1.5rem;
 }
 
 .social-media a {
-    color: #fcf9f9;
-    font-size: 1.5em;
-    transition: color var(--transition-speed);
+    color: var(--footer-text);
+    font-size: 1.5rem; /* Aumentado para mejor visibilidad */
+    margin: 0 0.8rem; /* Espaciado horizontal */
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; /* Aumentado para un mejor tamaño */
+    height: 50px; /* Aumentado para un mejor tamaño */
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Añadido un pequeño efecto de sombra */
+    text-decoration: none; /* Eliminar subrayado */
 }
 
 .social-media a:hover {
-    color: var(--secondary-color);
+    color: var(--footer-text);
+    background: var(--primary-color);
+    transform: translateY(-3px);
 }
 
+.footer-bottom {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* Ajustes para pantallas más pequeñas */
 @media (max-width: 768px) {
-    :root {
-        --spacing-large: 35px;
-        --spacing-medium: 25px;
-        --spacing-small: 12px;
+    .footer-content {
+        flex-direction: column;
+        padding: 0 2rem; /* Mantener padding adecuado sin tocar el borde */
     }
     
-    header h1 {
-        font-size: 2.5em;
+    .footer-section {
+        margin-bottom: 2.5rem;
+        text-align: left; /* Alinear a la izquierda en móviles */
     }
 
-    .policy-menu {
-        padding: 10px;
+    .footer-section h3::after {
+        left: 0; /* Asegurarse de que la línea roja esté alineada con el texto */
     }
 
-    .container section {
-        padding: 20px;
+    /* Ajustes específicos para texto largo como el email */
+    .footer-section a {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        font-size: 1rem; /* Mantener tamaño adecuado para móviles */
+        text-align: left; /* Alinear texto a la izquierda en móviles */
     }
 
-    .policy-menu a {
-        font-size: 1.2em;
+    .footer-bottom {
+        padding-top: 1rem;
+        font-size: 0.9rem; /* Mantener legibilidad */
     }
 }
+
+
+
+
 
 
 
