@@ -6,7 +6,7 @@
     <meta name="description" content="Contact BBS for custom database solutions, database extensions, and modifications. Get professional support tailored to your needs.">
     <meta name="keywords" content="contact BBS, database solutions, database extension, database modification, custom database support">
     <title>Contact Us - BBS</title>
-
+    <link rel="icon" href="https://imgur.com/OumtZsL.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="css/contact.css">
@@ -22,6 +22,8 @@
             <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
             <li><a href="services.html"><i class="fas fa-database"></i> Services</a></li>
             <li><a href="order.html"><i class="fas fa-shopping-cart"></i> Order Database</a></li>
+            <li><a href="extensions.html"><i class="fas fa-expand"></i> Database Extensions</a></li>
+            <li><a href="modify.html" class="active"><i class="fas fa-edit"></i> Modify Existing Database</a></li>
             <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
             <li><a href="feedback.html"><i class="fas fa-comments"></i> Feedback</a></li>
             <li><a href="terms.html"><i class="fas fa-file-contract"></i> Terms and Conditions</a></li>
@@ -38,6 +40,9 @@
         <header class="hero-section">
             <h1>Contact Us</h1>
             <p>Your inquiry is important to us. Please fill out the form below to get in touch.</p>
+            <div class="logo-container">
+                <img src="https://imgur.com/6OEF51j.png" alt="BBS Logo" class="bbs-logo">
+            </div>
         </header>
 
         <section id="contact" class="container">
@@ -62,32 +67,7 @@
                         <option value="question">I have a question</option>
                         <option value="support">I need support</option>
                         <option value="feedback">I want to provide feedback</option>
-                        <option value="expand_database">I want to expand my BBS database</option>
-                        <option value="modify_database">I need to modify an existing database from another provider</option>
                     </select>
-
-                    <div id="extension-options" class="form-section">
-                        <label for="database-extension">Database Extension Options</label>
-                        <select id="database-extension" name="database-extension">
-                            <option value="" disabled selected>Select Database Plan</option>
-                            <option value="basic">Basic Plan</option>
-                            <option value="standard">Standard Plan</option>
-                            <option value="business">Business Plan</option>
-                        </select>
-                        <p class="extension-cost-info">Each new full table costs $39, and each column costs $5. Plans Basic and Standard include 2 free modifications, Business offers unlimited modifications for 3 days. For more details, read our <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html#database-extension-policies" target="_blank" style="color: #ee4d4d; font-weight: bold;">Database Extension Policies</a>.</p>
-                    </div>
-
-                    <div id="modification-options" class="form-section">
-                        <label for="existing-database">Modification of Existing Database</label>
-                        <select id="existing-database" name="existing-database">
-                            <option value="" disabled selected>Select Database Condition</option>
-                            <option value="new-unused">New, unused (less than 4000 records) - $119</option>
-                            <option value="small-used">Used, 5-8 tables or 5000+ records - $149</option>
-                            <option value="medium-used">Used, 8-12 tables or 25,000-50,000 records - $849</option>
-                            <option value="large-used">Used, 12+ tables or 60,000+ records - $1999</option>
-                        </select>
-                        <p class="modification-cost-info">All modifications include 7-day warranty. New/unused databases include 5 free modifications, while used databases include 10 free modifications. For more details, read our <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html#existing-database-modifications" target="_blank" style="color: #ee4d4d; font-weight: bold;">Database Modification Policies</a>.</p>
-                    </div>
 
                     <div class="form-section">
                         <label for="contact-message">Tell us more about your inquiry</label>
@@ -99,7 +79,7 @@
                         <label for="terms">I have read and accept the <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a></label>
                     </div>
 
-                    <p>After submitting your request, a member of our customer service team will contact you for payment processing via PayPal only if you require a database extension or modification of an existing one. For general inquiries, you will be assisted by one of our knowledgeable advisors to address your needs without the need for payment.</p>
+                    <p>Thank you for reaching out! One of our dedicated customer support advisors will be in touch shortly to ensure your needs are met with care and expertise.</p>
                     <button type="submit">Send Message</button>
                 </div>
             </form>
@@ -114,14 +94,34 @@
         </section>
 
         <footer id="footer-container">
-            <div class="footer-container">
-                <p style="color: #fffafa;">&copy; 2024 Boosting Business Strategies (BBS). All rights reserved.</p>
-                <p>Follow us on social media:</p>
-                <ul class="social-media">
-                    <li><a href="https://www.facebook.com/profile.php?id=61566338476564&mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="https://www.linkedin.com/in/aaron-obando-55a098308?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin-in"></i></a></li>
-                    <li><a href="https://www.instagram.com/bbs.official.account/"><i class="fab fa-instagram"></i></a></li>
-                </ul>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="order.html">Order Database</a></li>
+                        <li><a href="extensions.html">Database Extensions</a></li>
+                        <li><a href="modify.html">Modify Existing Database</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                        <li><a href="terms.html">Terms and Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: <a href="mailto:boostingbusinessstrategies@gmail.com" target="_blank" style="color: #fffafa; font-weight: bold;">boostingbusinessstrategies@gmail.com</a></p>
+                    <p>WhatsApp Business: <a href="https://wa.me/message/IQIFXFHK7JILI1" target="_blank" style="color: #fffafa; font-weight: bold;">+506 60447382</a></p>
+                </div>
+            </div>
+            <div class="social-media">
+                <a href="https://www.facebook.com/profile.php?id=61566338476564&mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/in/aaron-obando-55a098308?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/bbs.official.account/"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Boosting Business Strategies (BBS). All rights reserved.</p>
                 <p><a href="terms.html" style="color: #fffafa;">Terms and Conditions</a> | <a href="contact.html" style="color: #fffafa;">Contact Us</a></p>
             </div>
         </footer>
