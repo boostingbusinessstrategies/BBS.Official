@@ -243,10 +243,11 @@ h3 {
 }
 
 p {
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem; /* Reducido desde 2.5rem a 1.5rem */
     font-size: 1.2rem;
-    line-height: 1.8;
+    line-height: 1.6; /* Reducido desde 1.8 a 1.6 */
 }
+
 
 .intro-text {
     text-align: center;
