@@ -30,6 +30,32 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log('Sidebar script loaded');
 });
 
+
+
+    document.querySelectorAll('.faq-section h3').forEach(function (question) {
+        question.addEventListener('click', function () {
+            const answer = question.nextElementSibling; // Encuentra el siguiente elemento (el párrafo)
+            question.classList.toggle('active'); // Alterna la clase para la pregunta
+            answer.classList.toggle('active'); // Alterna la clase para la respuesta
+
+            // Opcional: Cerrar otras respuestas si se desea
+            document.querySelectorAll('.faq-section p').forEach(function (p) {
+                if (p !== answer) {
+                    p.classList.remove('active'); // Cierra otras respuestas
+                }
+            });
+
+            document.querySelectorAll('.faq-section h3').forEach(function (h) {
+                if (h !== question) {
+                    h.classList.remove('active'); // Cierra otras preguntas
+                }
+            });
+        });
+    });
+
+
+
+
   function reveal() {
     var reveals = document.querySelectorAll(".reveal");
     for (var i = 0; i < reveals.length; i++) {
