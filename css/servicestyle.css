@@ -653,6 +653,10 @@ header {
         padding-top: 1rem;
         font-size: 0.9rem; /* Mantener legibilidad */
     }
+
+        .footer-content {
+        flex-direction: column;
+    }
 }
 
 
