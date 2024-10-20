@@ -37,17 +37,19 @@
 
     <div id="content">
         <header>
-            <h1>Modify Your Existing Database</h1>
+            <h1>Transform Your Database Today!</h1>
             <div class="logo-container">
                 <img src="https://imgur.com/6OEF51j.png" alt="BBS Logo" class="bbs-logo">
             </div>
         </header>
         <section id="modify-form">
-            <h2>Enhance Your Database Today!</h2>
-            <form id="database-modify-form" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST">
+            <h2>Let Us Enhance Your Database Experience!</h2>
+            <form id="database-modify-form" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_honey" style="display:none">
                 <input type="hidden" name="_token" value="your_token_here">
                 <input type="hidden" name="_next" value="https://www.paypal.me/AaronObando505">
+                <input type="hidden" name="_subject" value="New Database File Received">
+                <input type="hidden" name="_autoresponse" value="Thank you for your submission!">
 
                 <label for="first-name">First Name</label>
                 <input type="text" id="first-name" name="first-name" required aria-label="First Name">
@@ -58,33 +60,43 @@
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required aria-label="Email">
 
-                <label for="current-database">Please upload your existing database:</label>
-                <input type="file" id="current-database" name="current-database" required aria-label="Current Database">
-
                 <label for="modification-details">What modifications do you need?</label>
                 <textarea id="modification-details" name="modification-details" rows="4" placeholder="Describe the modifications needed..." aria-label="Modification Details" required></textarea>
 
-                <p class="note"><small>Before proceeding, please ensure you have backed up your existing database. Modifying your database without careful consideration may lead to unforeseen issues. We only accept MySQL and SQLite databases, and they must be provided in their original export format, compressed into a ZIP file. Please refer to our <a href="terms.html" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a> for more details.</small></p>
+                <p class="note"><small>At BBS, your security and peace of mind are our top priorities. We kindly request that you submit your database through our dedicated customer service channels, either before or after making your payment. Rest assured, our expert team will only begin work once your payment is confirmed, safeguarding your information every step of the way.</small></p>
 
-                <h3 style="color: #2a333a; margin: 20px 0; text-align: left;">Payment Information:</h3>
+                <p class="note"><small>Before you proceed, we encourage you to back up your existing database. Modifying it without careful consideration can lead to unforeseen issues that may impact your operations. We accept MySQL and SQLite databases in their original export format, neatly compressed in a ZIP file.</small></p>
+
+                <p class="note"><small>Your journey towards an optimized database begins with us! For more details about our processes, please refer to our <a href="terms.html" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a>. Together, we can ensure that your database evolves in a secure and efficient manner, unlocking its true potential.</small></p>
+
+
+                <h3 style="color: #2a333a; margin: 20px 0; text-align: left;">Payment Information</h3>
                 <p class="note" style="text-align: left;">
-                    The cost for modifications is based on the complexity and size of your database. Our fees are as follows:
+                    At BBS, we believe in transparency and delivering value through personalized solutions. Our modification fees are designed to match the complexity and size of your database, ensuring you only pay for what you need:
                     <ul>
-                        <li>$149 for databases with 5 to 8 tables (up to 5,000 records)</li>
-                        <li>$849 for databases with 8 to 12 tables (up to 25,000 records)</li>
-                        <li>$1,999 for databases exceeding 12 tables (more than 60,000 records)</li>
+                        <li><strong>$119</strong> for databases with less than 4,000 records</li>
+                        <li><strong>$149</strong> for databases with 5 to 8 tables (up to 5,000 records)</li>
+                        <li><strong>$849</strong> for databases with 8 to 12 tables (up to 25,000 records)</li>
+                        <li><strong>$1,999</strong> for databases exceeding 12 tables (more than 60,000 records)</li>
                     </ul>
-                    Please note that a 10% penalty applies for any refunds, and modifications are subject to our guarantee of 7 days for changes. For more details, consult our <a href="terms.html" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a>.
+                    Your investment with BBS comes with the confidence of our 7-day guarantee, allowing you to request changes that ensure your modifications perfectly align with your goals. Please note that a 10% administrative fee applies to refunds. <br>
+                    For further details, feel free to review our <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html#existing-database-modifications" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a>.
                 </p>
-
+                
                 <div class="checkbox-container">
                     <input type="checkbox" id="terms-checkbox" name="terms-checkbox" required>
                     <label for="terms-checkbox">I have read and accept the <a href="terms.html" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a>.</label>
                 </div>
 
-                <input type="submit" value="Submit & Proceed to PayPal">
+                <input type="submit" value="Submit & Proceed to PayPal" style="background-color: #ee4d4d; color: #fff; border: none; padding: 10px 15px; cursor: pointer; transition: background-color 0.3s;">
             </form>
+            <div class="emotional-response">
+                <p style="color: #333; font-weight: 600; margin-top: 20px;">
+                    We understand how important your data is to you. Our dedicated team at BBS is here to ensure that your modifications are not only accurate but also tailored to meet your unique needs. Let's embark on this journey together and unlock the full potential of your database!
+                </p>
+            </div>
         </section>
+    </div>
 
         <footer id="footer-container">
             <div class="footer-content">
