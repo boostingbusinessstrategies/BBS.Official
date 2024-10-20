@@ -3,17 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contact BBS for custom database solutions, database extensions, and modifications. Get professional support tailored to your needs.">
-    <meta name="keywords" content="contact BBS, database solutions, database extension, database modification, custom database support">
-    <title>Contact Us - BBS</title>
+    <meta name="description" content="Order your custom database solution from BBS for E-commerce or Healthcare needs. Get a tailored database that ensures efficiency and growth.">
+    <meta name="keywords" content="order database, custom database, E-commerce database, healthcare database, database solutions, data management">
+    <title>Order Your Custom Database - BBS</title>
     <link rel="icon" href="https://imgur.com/OumtZsL.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/orderstyle.css">
 </head>
 <body>
-    
-
     <nav id="sidebar">
         <div class="sidebar-header">
             <h3 class="menu-title">BBS Menu</h3>
@@ -34,64 +32,70 @@
     <button id="menu-toggle" class="menu-toggle">
         <i class="fas fa-bars"></i>
     </button>
-
-
+    
     <div id="content">
-        <header class="hero-section">
-            <h1>Contact Us</h1>
-            <p>Your inquiry is important to us. Please fill out the form below to get in touch.</p>
+        <header>
+            <h1>Order Your Custom Database</h1>
             <div class="logo-container">
                 <img src="https://imgur.com/6OEF51j.png" alt="BBS Logo" class="bbs-logo">
             </div>
         </header>
-    </div>
-</div>
-        <section id="contact" class="container">
-            <h2>Contact BBS Support</h2>
-            <form id="contact-form" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST">
+        <section id="order-form">
+            <h2>Get Your Custom Database Today!</h2>
+            <form id="database-form" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST">
                 <input type="hidden" name="_honey" style="display:none">
                 <input type="hidden" name="_token" value="your_token_here">
-                <input type="hidden" name="_next" value="https://boostingbusinessstrategies.github.io/BBS.Official/contact.html">
-
-                <div class="form-section">
-                    <label for="contact-first-name">First Name</label>
-                    <input type="text" id="contact-first-name" name="contact-first-name" required>
-
-                    <label for="contact-last-name">Last Name</label>
-                    <input type="text" id="contact-last-name" name="contact-last-name" required>
-
-                    <label for="contact-email">Email</label>
-                    <input type="email" id="contact-email" name="contact-email" required>
-
-                    <select id="contact-reason" name="contact-reason" required>
-                        <option value="" disabled selected>Select your reason</option>
-                        <option value="question">I have a question</option>
-                        <option value="support">I need support</option>
-                        <option value="feedback">I want to provide feedback</option>
-                    </select>
-
-                    <div class="form-section">
-                        <label for="contact-message">Tell us more about your inquiry</label>
-                        <textarea id="contact-message" name="contact-message" rows="5" placeholder="Please describe your request, question, or feedback here..." required></textarea>
-                    </div>                    
-
-                    <div class="checkbox">
-                        <input type="checkbox" id="terms" name="terms" required>
-                        <label for="terms">I have read and accept the <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a></label>
-                    </div>
-
-                    <p>Thank you for reaching out! One of our dedicated customer support advisors will be in touch shortly to ensure your needs are met with care and expertise.</p>
-                    <button type="submit">Send Message</button>
+                <input type="hidden" name="_next" value="https://www.paypal.me/AaronObando505">
+                
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first-name" required aria-label="First Name">
+                
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last-name" required aria-label="Last Name">
+                
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required aria-label="Email">
+                
+                <label for="database-type">Which type of database do you need?</label>
+                <select id="database-type" name="database-type" required aria-label="Database Type">
+                    <option value="" disabled selected>Select your option</option>
+                    <option value="ecommerce">E-commerce Database</option>
+                    <option value="healthcare">Healthcare Database</option>
+                    <option value="custom">Custom Database for My Business</option>
+                </select>
+                
+                <label for="plan">Which plan best suits your needs?</label>
+                <select id="plan" name="plan" required aria-label="Plan Selection">
+                    <option value="" disabled selected>Select your option</option>
+                    <option value="basic">Basic Plan - $199 (5 to 8 tables)</option>
+                    <option value="standard">Standard Plan - $599 (8 to 13 tables)</option>
+                    <option value="business">Business Plan - $999 (10+ tables)</option>
+                </select>
+                
+                <label for="problems">Tell us about your current problems related to data:</label>
+                <textarea id="problems" name="problems" rows="4" placeholder="Describe your data issues here..." aria-label="Current Data Problems"></textarea>
+                
+                <label for="custom-details">Let us know if you need any specific details in your database (e.g., tables, columns, etc.)</label>
+                <textarea id="custom-details" name="custom-details" rows="4" placeholder="Optional" aria-label="Custom Database Details"></textarea>
+                
+                <p class="note"><small>Please note, you cannot request columns containing sensitive information (such as emails, phone numbers, or Government IDs) due to CCPA, GDPR, and HIPAA regulations. Sensitive data can only be included if you have the necessary legal permissions, particularly when handling health-related data covered under HIPAA. Ensuring compliance with these laws is crucial for maintaining data security and privacy. For more information, read our content policies <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html#database-content-policies" target="_blank" style="color: #ee4d4d; font-weight: bold;">here</a>.</small></p>
+                
+                <h3 style="color: #2a333a; margin: 20px 0; text-align: left;">Payment Information:</h3>
+                    <p class="note" style="text-align: left;">
+                    To proceed with your order, please complete your payment via PayPal: 
+                    <a href="https://www.paypal.me/AaronObando505" target="_blank" style="color: #ee4d4d; font-weight: bold;">PayPal Me</a><br>
+                    Payments will be securely processed through the PayPal account of our founder, Aaron Obando. Please note that this is a one-time payment for our service, with no recurring charges whatsoever. We are so confident in the quality of our databases that if you are not completely satisfied or decide you no longer need the database, we will issue a full refund. This guarantees that your investment is risk-free.<br>
+                    Throughout the entire process, our expert team in Database Development will be available to support you. You will receive continuous communication and exceptional customer service. Upon purchasing, our team of experts will ensure the timely delivery of your custom database within a maximum period of 5 days.<br>
+                    Additionally, we offer a 7-day guarantee period during which you can request up to 3 modifications at no extra cost. Modifications requested outside this period will incur additional charges. Your satisfaction is our top priority, and we strive to exceed your expectations in every possible way.
+                    </p>    
+                
+                <div class="checkbox-container">
+                    <input type="checkbox" id="terms-checkbox" name="terms-checkbox" required>
+                    <label for="terms-checkbox">I have read and accept the <a href="terms.html" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a>.</label>
                 </div>
+                
+                <input type="submit" value="Submit & Proceed to PayPal">
             </form>
-        </section>
-
-        <section id="contact-info">
-            <p>Email: <a href="mailto:boostingbusinessstrategies@gmail.com" target="_blank" style="color: #ee4d4d; font-weight: bold;">boostingbusinessstrategies@gmail.com</a></p>
-            <p>Messenger (founder contact): <a href="https://m.me/contactbbs" target="_blank" style="color: #ee4d4d; font-weight: bold;">contactbbs</a></p>
-            <p>FaceBook: <a href="https://www.facebook.com/profile.php?id=61566338476564&mibextid=ZbWKwL" target="_blank" style="color: #ee4d4d; font-weight: bold;">Boosting Business Strategies</a></p>
-            <p>Instagram: <a href="https://www.instagram.com/bbs.official.account/" target="_blank" style="color: #ee4d4d; font-weight: bold;">bbs.official.account</a> (Direct messages on Instagram are only for inquiries about our services and policies; no files can be sent due to software limitations.)</p>
-            <p>WhatsApp Business: <a href="https://wa.me/message/IQIFXFHK7JILI1" target="_blank" style="color: #ee4d4d; font-weight: bold;">+506 60447382</a></p>
         </section>
     </div>
 </div>
@@ -128,7 +132,6 @@
             </div>
         </footer>
     </div>
-
-    <script src="Javascript\contactscript.js"></script>
+    <script src="Javascript/scripts.js"></script>
 </body>
 </html>
