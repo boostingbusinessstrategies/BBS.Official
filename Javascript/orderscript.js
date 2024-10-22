@@ -1,10 +1,24 @@
 // Function to toggle encryption options based on sensitive data permissions
 function toggleEncryptionOptions(hasSensitiveData) {
-    document.getElementById('encrypt-no').disabled = hasSensitiveData; // Disable 'No sensitive data' option if legal permissions required
-    if (!hasSensitiveData) {
-        document.getElementById('encrypt-no').checked = true; // Auto-check 'No sensitive data' if permissions not required
+    // Get encryption options
+    const encryptYes = document.getElementById('encrypt-yes');
+    const encryptNoOwn = document.getElementById('encrypt-no-own');
+    const encryptNo = document.getElementById('encrypt-no');
+
+    if (hasSensitiveData) {
+        // Enable encryption options when sensitive data is required
+        encryptYes.disabled = false;
+        encryptNoOwn.disabled = false;
+        encryptNo.disabled = true;  // Disable 'No sensitive data' option
+    } else {
+        // Disable all encryption options if no sensitive data is required
+        encryptYes.disabled = true;
+        encryptNoOwn.disabled = true;
+        encryptNo.disabled = true;
+        encryptNo.checked = true;  // Auto-check 'No sensitive data' if permissions not required
     }
 }
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.getElementById('sidebar');
