@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Request database extensions from BBS. Customize your database with additional tables and columns to fit your evolving needs.">
-    <meta name="keywords" content="database extensions, custom database extensions, E-commerce database, healthcare database, database solutions, data management">
-    <title>Database Extensions - BBS</title>
+    <meta name="description" content="Modify your existing databases with BBS. Our expert team provides tailored modifications while ensuring data integrity and compliance.">
+    <meta name="keywords" content="modify database, existing database modifications, database solutions, data management">
+    <title>Modify Your Existing Database - BBS</title>
     <link rel="icon" href="https://imgur.com/OumtZsL.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="css/extensionstyle.css">
+    <link rel="stylesheet" href="css/modifystyle.css">
 </head>
 
 <body>
@@ -24,12 +24,12 @@
             <li><a href="order.html"><i class="fas fa-shopping-cart"></i> Order Database</a></li>
             <li><a href="extensions.html"><i class="fas fa-expand"></i> Database Extensions</a></li>
             <li><a href="modify.html" class="active"><i class="fas fa-edit"></i> Modify Existing Database</a></li>
-            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="support.html"><i class="fas fa-headset"></i> Client Support</a></li>
             <li><a href="feedback.html"><i class="fas fa-comments"></i> Feedback</a></li>
             <li><a href="terms.html"><i class="fas fa-file-contract"></i> Terms and Conditions</a></li>
             <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
         </ul>
-    </nav>
+    </nav>  
 
     <button id="menu-toggle" class="menu-toggle">
         <i class="fas fa-bars"></i>
@@ -37,69 +37,75 @@
 
     <div id="content">
         <header>
-            <h1>Request Database Extensions</h1>
+            <h1>Transform Your Database Today!</h1>
             <div class="logo-container">
                 <img src="https://imgur.com/6OEF51j.png" alt="BBS Logo" class="bbs-logo">
             </div>
         </header>
-        <section id="extension-form">
-            <h2>Enhance Your Database with Extensions!</h2>
-            <form id="database-extension-form" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST">
-                <input type="hidden" name="_honey" style="display:none">
-                <input type="hidden" name="_token" value="your_token_here">
-                <input type="hidden" name="_next" value="https://www.paypal.me/AaronObando505">
-
-                <label for="first-name">First Name</label>
-                <input type="text" id="first-name" name="first-name" required aria-label="First Name">
-
-                <label for="last-name">Last Name</label>
-                <input type="text" id="last-name" name="last-name" required aria-label="Last Name">
-
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required aria-label="Email">
-
-                <label for="current-database">What type of database do you currently have?</label>
-                <select id="current-database" name="current-database" required aria-label="Current Database Type">
-                    <option value="" disabled selected>Select your option</option>
-                    <option value="ecommerce">E-commerce Database</option>
-                    <option value="healthcare">Healthcare Database</option>
-                    <option value="custom">Custom Database</option>
-                </select>
-
-                <label for="extension-plan">Which plan are you subscribed to?</label>
-                <select id="extension-plan" name="extension-plan" required aria-label="Extension Plan Selection">
-                    <option value="" disabled selected>Select your option</option>
-                    <option value="basic">Basic Plan</option>
-                    <option value="standard">Standard Plan</option>
-                    <option value="business">Business Plan</option>
-                </select>
-
-                <label for="tables-requested">How many additional tables do you need?</label>
-                <input type="number" id="tables-requested" name="tables-requested" min="0" aria-label="Additional Tables">
-
-                <label for="columns-requested">How many additional columns do you need?</label>
-                <input type="number" id="columns-requested" name="columns-requested" min="0" aria-label="Additional Columns">
-
-                <label for="custom-details">Please specify any additional requirements or modifications:</label>
-                <textarea id="custom-details" name="custom-details" rows="4" placeholder="Optional" aria-label="Additional Requirements"></textarea>
-
-                <h3 style="color: #2a333a; margin: 20px 0; text-align: left;">Important Policies:</h3>
-                <p class="note">
-                    We understand the importance of flexibility for your business. That's why every plan comes with a 3-day satisfaction guarantee, offering you up to two complimentary modifications within this period. Please keep in mind that if you independently alter the database after the extension, this guarantee may be voided, as we strive to ensure the integrity and security of your data at all times.
-                    <br><strong>Basic Plan:</strong> Includes up to 4 additional tables or 8 extra columns to perfectly match your evolving needs.
-                    <br><strong>Standard Plan:</strong> Includes up to 4 additional tables or 20 extra columns for more extensive database customizations.
-                    <br><strong>Business Plan:</strong> Offers unlimited modifications, ensuring that your database grows seamlessly with your business.
-                    <br>To enhance your database further, you may also request the addition of temporary tables and common table expressions (CTEs) as part of your modifications, allowing for even greater flexibility and efficiency in managing your data.</p>                
+        <section id="modify-form">
+            <div id="introduction">
+                <p>At BBS, we are dedicated to optimizing your database management. Our team of experts is ready to provide personalized modifications tailored to your specific needs. Let's work together to ensure your data operates more efficiently, while always prioritizing its security and effectiveness.</p>
+            </div>
+            
+            <h2>Let Us Enhance Your Database Experience!</h2>
+            
+            <div class="form-container">
+                <form id="database-modify-form" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="_honey" style="display:none">
+                    <input type="hidden" name="_token" value="your_token_here">
+                    <input type="hidden" name="_next" value="https://www.paypal.me/AaronObando505">
+                    <input type="hidden" name="_subject" value="New Database File Received">
+                    <input type="hidden" name="_autoresponse" value="Thank you for your submission!">
+        
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" name="first-name" required aria-label="First Name">
+        
+                    <label for="last-name">Last Name</label>
+                    <input type="text" id="last-name" name="last-name" required aria-label="Last Name">
+        
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required aria-label="Email">
+        
+                    <label for="modification-details">What modifications do you need?</label>
+                    <textarea id="modification-details" name="modification-details" rows="4" placeholder="Describe the modifications needed..." aria-label="Modification Details" required></textarea>
+        
+                    <div class="note">
+                        <small>At BBS, your security and peace of mind are our top priorities. We kindly request that you submit your database through our dedicated customer service channels, either before or after making your payment. Please share your database via a Google Drive or OneDrive link. Rest assured, our expert team will only begin work once your payment is confirmed, safeguarding your information every step of the way.</small>
+                        <small>Before you proceed, we encourage you to back up your existing database. Modifying it without careful consideration can lead to unforeseen issues that may impact your operations. We accept MySQL and SQLite databases in their original export format, neatly compressed in a ZIP file.</small>
+                        <small>Your journey towards an optimized database begins with us! For more details about our processes, please refer to our <a href="terms.html" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a>. Together, we can ensure that your database evolves in a secure and efficient manner, unlocking its true potential.</small>
+                    </div>
+                    
+                    <h3 style="color: #2a333a; margin: 8px 0; text-align: left;">Payment Information</h3>
+                    <div class="note" style="text-align: left;">
+                        We are committed to providing transparent, value-driven solutions tailored to your needs. Our modification fees are structured based on the complexity and size of your database, ensuring that you only pay for the services that best fit your requirements:
+                        <ul>
+                            <li><strong>$119</strong> for databases with fewer than 4,000 records.</li>
+                            <li><strong>$149</strong> for databases with 5 to 8 tables (or up to 5,000 records).</li>
+                            <li><strong>$849</strong> for databases with 8 to 12 tables (or up to 25,000 records).</li>
+                            <li><strong>$1,999</strong> for databases with more than 12 tables (or exceeding 60,000 records).</li>
+                        </ul>
+                        Your investment with BBS is backed by our 7-day satisfaction guarantee, giving you the flexibility to request adjustments to ensure that your modifications perfectly align with your business goals. Please note that a 10% administrative fee will apply to any refunds.
+                        <br>We currently support modifications for MySQL and SQLite databases only. All files should be submitted in their original export format, compressed into a ZIP file, ensuring a smooth process without the need for direct access to your database server. We recommend sending the database in an unencrypted ZIP format to facilitate modifications. If encryption is applied, you may optionally provide a document with the necessary passwords for the encrypted columns. While this is not mandatory—since encryptions usually only apply to certain columns—sharing these passwords will help us work more efficiently with your data, should the need arise.
+                        <br>For more information, feel free to review our <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html#existing-database-modifications" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a>.
+                    </div>
+        
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="terms-checkbox" name="terms-checkbox" required>
+                        <label for="terms-checkbox">I have read and accept the <a href="terms.html" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a>.</label>
+                    </div>
+        
+                    <input type="submit" value="Submit & Proceed to PayPal">
+                </form>
+            </div>
+        
+            <div class="emotional-response">
+                <p style="color: #333; font-weight: 600; margin-top: 20px;">
+                    We understand how important your data is to you. Our dedicated team at BBS is here to ensure that your modifications are not only accurate but also tailored to meet your unique needs. Let's embark on this journey together and unlock the full potential of your database!
                 </p>
-
-                <div class="checkbox-container">
-                    <input type="checkbox" id="terms-checkbox" name="terms-checkbox" required>
-                    <label for="terms-checkbox">I have read and accept the <a href="terms.html" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a>.</label>
-                </div>
-
-                <input type="submit" value="Submit & Proceed to PayPal">
-            </form>
+            </div>
         </section>
+        
+        
 
         <footer id="footer-container">
             <div class="footer-content">
@@ -112,7 +118,7 @@
                         <li><a href="order.html">Order Database</a></li>
                         <li><a href="extensions.html">Database Extensions</a></li>
                         <li><a href="modify.html">Modify Existing Database</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="support.html">Support</a></li>
                         <li><a href="feedback.html">Feedback</a></li>
                         <li><a href="terms.html">Terms and Conditions</a></li>
                     </ul>
@@ -130,11 +136,10 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2024 Boosting Business Strategies (BBS). All rights reserved.</p>
-                <p><a href="terms.html" style="color: #fffafa;">Terms and Conditions</a> | <a href="contact.html" style="color: #fffafa;">Contact Us</a></p>
+                <p><a href="terms.html" style="color: #fffafa;">Terms and Conditions</a> | <a href="Support.html" style="color: #fffafa;">Contact Us</a></p>
             </div>
         </footer>
     </div>
     <script src="Javascript/scripts.js"></script>
 </body>
-
 </html>
