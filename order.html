@@ -7,7 +7,7 @@
     <meta name="keywords" content="order database, custom database, E-commerce database, healthcare database, database solutions, data management">
     <title>Order Your Custom Database - BBS</title>
     <link rel="icon" href="https://imgur.com/OumtZsL.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="css/orderstyle.css">
 </head>
@@ -22,12 +22,12 @@
             <li><a href="order.html"><i class="fas fa-shopping-cart"></i> Order Database</a></li>
             <li><a href="extensions.html"><i class="fas fa-expand"></i> Database Extensions</a></li>
             <li><a href="modify.html" class="active"><i class="fas fa-edit"></i> Modify Existing Database</a></li>
-            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="support.html"><i class="fas fa-headset"></i> Client Support</a></li>
             <li><a href="feedback.html"><i class="fas fa-comments"></i> Feedback</a></li>
             <li><a href="terms.html"><i class="fas fa-file-contract"></i> Terms and Conditions</a></li>
             <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
         </ul>
-    </nav>
+    </nav>  
     
     <button id="menu-toggle" class="menu-toggle">
         <i class="fas fa-bars"></i>
@@ -40,99 +40,149 @@
                 <img src="https://imgur.com/6OEF51j.png" alt="BBS Logo" class="bbs-logo">
             </div>
         </header>
-     </div>
-        <section id="order-form">
-            <h2>Get Your Custom Database Today!</h2>
-            <form id="database-form" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST">
-                <input type="hidden" name="_honey" style="display:none">
-                <input type="hidden" name="_token" value="your_token_here">
-                <input type="hidden" name="_next" value="https://www.paypal.me/AaronObando505">
+    </div>
+    
+    <section id="order-form">
+        <h2 style="color: #2a333a;">Get Your Custom Database Today!</h2>
+        <p>At BBS, we specialize in crafting tailored databases that align perfectly with your business needs. Let us help you elevate your operations with a custom solution designed just for you!</p>
+        <form id="database-form" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST">
+            <input type="hidden" name="_honey" style="display:none">
+            <input type="hidden" name="_token" value="your_token_here">
+            <input type="hidden" name="_next" value="https://www.paypal.me/AaronObando505">
+            
+            
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" name="first-name" required aria-label="First Name" placeholder="Enter your first name">
+            
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" name="last-name" required aria-label="Last Name" placeholder="Enter your last name">
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required aria-label="Email" placeholder="Enter your email address">
+            
+            <label for="database-type">Which type of database do you need?</label>
+            <select id="database-type" name="database-type" required aria-label="Database Type">
+                <option value="" disabled selected>Select your option</option>
+                <option value="ecommerce">E-commerce Database</option>
+                <option value="healthcare">Healthcare Database</option>
+                <option value="custom">Custom Database for My Business</option>
+            </select>
+            
+            <label for="plan">Which plan best suits your needs?</label>
+            <select id="plan" name="plan" required aria-label="Plan Selection">
+                <option value="" disabled selected>Select your option</option>
+                <option value="basic">Basic Plan - $199 (5 to 8 tables)</option>
+                <option value="standard">Standard Plan - $599 (8 to 13 tables)</option>
+                <option value="business">Business Plan - $999 (10+ tables)</option>
+            </select>
+            
+            <label for="problems">Tell us about your current problems related to data:</label>
+            <textarea id="problems" name="problems" rows="4" placeholder="Describe your data issues here..." aria-label="Current Data Problems"></textarea>
+            
+            <label for="custom-details">Let us know if you need any specific details in your database (e.g., tables, columns, etc.)</label>
+            <textarea id="custom-details" name="custom-details" rows="4" placeholder="Optional" aria-label="Custom Database Details"></textarea>
+            
+            <!-- New section: Does your database require sensitive data? -->
+            <label>Does your database require sensitive data?</label>
+            <div class="radio-options">
+                <input type="radio" id="sensitive-yes" name="sensitive-data" value="yes" required onclick="toggleEncryptionOptions(true)">
+                <label for="sensitive-yes">Yes, I have the required legal permissions</label><br>
+            
+                <input type="radio" id="sensitive-no" name="sensitive-data" value="no" required onclick="toggleEncryptionOptions(false)">
+                <label for="sensitive-no">No, I don't need them at the moment</label>
+            </div>
+            
+            <!-- New section: Do you want sensitive data columns to be encrypted? -->
+            <label>Do you want sensitive data columns to be encrypted?</label>
+            <div class="radio-options">
+                <input type="radio" id="encrypt-yes" name="encrypt-sensitive-data" value="yes" required>
+                <label for="encrypt-yes">Yes, I want them encrypted</label><br>
+            
+                <input type="radio" id="encrypt-no-own" name="encrypt-sensitive-data" value="no-own" required>
+                <label for="encrypt-no-own">No, I want to do it myself</label><br>
+            
+                <input type="radio" id="encrypt-no" name="encrypt-sensitive-data" value="no" required>
+                <label for="encrypt-no">No, I don't want to add sensitive data</label>
+            </div>
+            
+            <!-- Note: Ensure the user reads policies -->
+            <p style="font-size: 0.9em; color: #ee4d4d;">
+                Please make sure to read our <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html#encryption-policies" target="_blank" style="color: #ee4d4d; font-weight: bold;">Encryption Policies</a> and <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html#database-content-policies" target="_blank" style="color: #ee4d4d; font-weight: bold;">Content Policies</a> before proceeding.
+            </p>
+
+
+            <p class="note" style="text-align: left;">
+                To proceed with your order, please complete your payment via PayPal: 
+                <a href="https://www.paypal.me/AaronObando505" target="_blank" style="color: #ee4d4d; font-weight: bold;">PayPal Me</a><br><br>
                 
-                <label for="first-name">First Name</label>
-                <input type="text" id="first-name" name="first-name" required aria-label="First Name">
+                <strong>Payment Details:</strong>
+                <ul>
+                    <li>Payments will be securely processed through the PayPal account of our founder, Aaron Obando.</li>
+                    <li>This is a one-time payment for our service, with no recurring charges.</li>
+                    <li>If you are not completely satisfied or decide you no longer need the database, we will issue a full refund, guaranteeing a risk-free investment.</li>
+                </ul><br>
                 
-                <label for="last-name">Last Name</label>
-                <input type="text" id="last-name" name="last-name" required aria-label="Last Name">
+                <strong>Delivery Information:</strong>
+                <ul>
+                    <li>Upon purchasing, our team will ensure the timely delivery of your custom database within a maximum period of 7 business days.</li>
+                    <li>The database will be sent in a ZIP file via a unique shared link through Google Drive or OneDrive, according to your preference.</li>
+                    <li>Along with your database, you will receive a practical guide for encrypting databases in PDF format.</li>
+                    <li>If you request the database to be encrypted, an additional format containing the required passwords for the encrypted columns will also be provided.</li>
+                </ul><br>
                 
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required aria-label="Email">
+                <strong>Modification Guarantee:</strong>
+                <ul>
+                    <li>We offer a 7-day guarantee period during which you can request up to 3 modifications at no extra cost.</li>
+                    <li>Modifications requested outside this period will incur additional charges.</li>
+                </ul>
                 
-                <label for="database-type">Which type of database do you need?</label>
-                <select id="database-type" name="database-type" required aria-label="Database Type">
-                    <option value="" disabled selected>Select your option</option>
-                    <option value="ecommerce">E-commerce Database</option>
-                    <option value="healthcare">Healthcare Database</option>
-                    <option value="custom">Custom Database for My Business</option>
-                </select>
-                
-                <label for="plan">Which plan best suits your needs?</label>
-                <select id="plan" name="plan" required aria-label="Plan Selection">
-                    <option value="" disabled selected>Select your option</option>
-                    <option value="basic">Basic Plan - $199 (5 to 8 tables)</option>
-                    <option value="standard">Standard Plan - $599 (8 to 13 tables)</option>
-                    <option value="business">Business Plan - $999 (10+ tables)</option>
-                </select>
-                
-                <label for="problems">Tell us about your current problems related to data:</label>
-                <textarea id="problems" name="problems" rows="4" placeholder="Describe your data issues here..." aria-label="Current Data Problems"></textarea>
-                
-                <label for="custom-details">Let us know if you need any specific details in your database (e.g., tables, columns, etc.)</label>
-                <textarea id="custom-details" name="custom-details" rows="4" placeholder="Optional" aria-label="Custom Database Details"></textarea>
-                
-                <p class="note"><small>Please note, you cannot request columns containing sensitive information (such as emails, phone numbers, or Government IDs) due to CCPA, GDPR, and HIPAA regulations. Sensitive data can only be included if you have the necessary legal permissions, particularly when handling health-related data covered under HIPAA. Ensuring compliance with these laws is crucial for maintaining data security and privacy. For more information, read our content policies <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html#database-content-policies" target="_blank" style="color: #ee4d4d; font-weight: bold;">here</a>.</small></p>
-                
-                <h3 style="color: #2a333a; margin: 20px 0; text-align: left;">Payment Information:</h3>
-                    <p class="note" style="text-align: left;">
-                    To proceed with your order, please complete your payment via PayPal: 
-                    <a href="https://www.paypal.me/AaronObando505" target="_blank" style="color: #ee4d4d; font-weight: bold;">PayPal Me</a><br>
-                    Payments will be securely processed through the PayPal account of our founder, Aaron Obando. Please note that this is a one-time payment for our service, with no recurring charges whatsoever. We are so confident in the quality of our databases that if you are not completely satisfied or decide you no longer need the database, we will issue a full refund. This guarantees that your investment is risk-free.<br>
-                    Throughout the entire process, our expert team in Database Development will be available to support you. You will receive continuous communication and exceptional customer service. Upon purchasing, our team of experts will ensure the timely delivery of your custom database within a maximum period of 5 days.<br>
-                    Additionally, we offer a 7-day guarantee period during which you can request up to 3 modifications at no extra cost. Modifications requested outside this period will incur additional charges. Your satisfaction is our top priority, and we strive to exceed your expectations in every possible way.
-                    </p>    
-                
-                <div class="checkbox-container">
-                    <input type="checkbox" id="terms-checkbox" name="terms-checkbox" required>
-                    <label for="terms-checkbox">I have read and accept the <a href="terms.html" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a>.</label>
-                </div>
-                
-                <input type="submit" value="Submit & Proceed to PayPal">
-            </form>
-        </section>
+                Your satisfaction is our top priority, and we strive to exceed your expectations in every possible way. For more details, refer to our <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html#database-content-policies" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a>.</small></p>
+            </p>
+    
+            <div class="checkbox-container">
+                <input type="checkbox" id="terms-checkbox" name="terms-checkbox" required>
+                <label for="terms-checkbox">I have read and accept the <a href="terms.html" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a>.</label>
+            </div>
+    
+            <input type="submit" value="Submit & Proceed to PayPal" style="background-color: #ee4d4d; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+        </form>
+    </section>
+    
     </div>
 </div>
         <footer id="footer-container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="order.html">Order Database</a></li>
-                        <li><a href="extensions.html">Database Extensions</a></li>
-                        <li><a href="modify.html">Modify Existing Database</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="feedback.html">Feedback</a></li>
-                        <li><a href="terms.html">Terms and Conditions</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact Us</h3>
-                    <p>Email: <a href="mailto:boostingbusinessstrategies@gmail.com" target="_blank" style="color: #fffafa; font-weight: bold;">boostingbusinessstrategies@gmail.com</a></p>
-                    <p>WhatsApp Business: <a href="https://wa.me/message/IQIFXFHK7JILI1" target="_blank" style="color: #fffafa; font-weight: bold;">+506 60447382</a></p>
-                </div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="order.html">Order Database</a></li>
+                    <li><a href="extensions.html">Database Extensions</a></li>
+                    <li><a href="modify.html">Modify Existing Database</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                    <li><a href="terms.html">Terms and Conditions</a></li>
+                </ul>
             </div>
-            <div class="social-media">
-                <a href="https://www.facebook.com/profile.php?id=61566338476564&mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.linkedin.com/in/aaron-obando-55a098308?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.instagram.com/bbs.official.account/"><i class="fab fa-instagram"></i></a>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: <a href="mailto:boostingbusinessstrategies@gmail.com" target="_blank" style="color: #fffafa; font-weight: bold;">boostingbusinessstrategies@gmail.com</a></p>
+                <p>WhatsApp Business: <a href="https://wa.me/message/IQIFXFHK7JILI1" target="_blank" style="color: #fffafa; font-weight: bold;">+506 60447382</a></p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Boosting Business Strategies (BBS). All rights reserved.</p>
-                <p><a href="terms.html" style="color: #fffafa;">Terms and Conditions</a> | <a href="contact.html" style="color: #fffafa;">Contact Us</a></p>
-            </div>
-        </footer>
+        </div>
+        <div class="social-media">
+            <a href="https://www.facebook.com/profile.php?id=61566338476564&mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/in/aaron-obando-55a098308?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/bbs.official.account/"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Boosting Business Strategies (BBS). All rights reserved.</p>
+            <p><a href="terms.html" style="color: #fffafa;">Terms and Conditions</a> | <a href="Support.html" style="color: #fffafa;">Contact Us</a></p>
+        </div>
+    </footer>
     </div>
-    <script src="Javascript/scripts.js"></script>
+    <script src="Javascript/orderscript.js"></script>
 </body>
 </html>
