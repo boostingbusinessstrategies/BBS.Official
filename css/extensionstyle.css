@@ -1,42 +1,39 @@
-/* Importación de fuentes */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
 /* Variables globales */
 :root {
-    --primary-color: #ee4d4d;
-    --secondary-color: #ffc44d;
-    --background-color: #f0f4f8;
-    --text-color: #333333;
+    --primary-color: #ee4d4d; /* Rojo vibrante */
+    --secondary-color: #ffc44d; /* Amarillo energético */
+    --background-color: #f0f4f8; /* Gris claro para el fondo */
+    --text-color: #333333; /* Gris oscuro para el texto */
+    --border-radius: 8px; /* Bordes redondeados */
+    --transition-speed: 0.3s; /* Velocidad de transición */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Color de sombra */
+    --accent-color: #0056a3; /* Azul profundo para acentos */
+    --content-background: #ffffff; /* Fondo blanco para el contenido */
     --header-gradient: linear-gradient(135deg, #ee4d4d, #ffc44d);
-    --border-radius: 8px;
-    --transition-speed: 0.3s;
-    --shadow-color: rgba(0, 0, 0, 0.1);
-    --accent-color: #0056a3;
-    --content-background: #ffffff;
     
     /* Sidebar */
-    --sidebar-width: 280px;
-    --sidebar-bg: rgba(20, 33, 53, 0.8); /* Fondo oscuro y transparente para barra lateral */
-    --sidebar-text: #ffffff; /* Texto blanco en sidebar para contraste */
-    --sidebar-hover: #ee4d4d; /* Hover en rojo para transmitir urgencia y confianza en la navegación */
+    --sidebar-width: 280px; /* Ancho de la barra lateral */
+    --sidebar-bg: rgba(20, 33, 53, 0.8); /* Fondo oscuro y transparente para la barra lateral */
+    --sidebar-text: #ffffff; /* Texto blanco en la barra lateral */
+    --sidebar-hover: #ee4d4d; /* Color de hover en la barra lateral */
     --sidebar-border: rgba(255, 196, 77, 0.3); /* Borde amarillo para resaltar secciones importantes */
   
     /* Toggle Menu */
     --toggle-bg: rgba(31, 41, 55, 0.9); /* Fondo oscuro semitransparente en menú toggle */
-    --toggle-color: #ffc44d; /* Íconos o texto del toggle en amarillo para capturar atención */
+    --toggle-color: #ffc44d; /* Color de los íconos en el toggle */
     
     /* Container */
     --container-padding: 20px; /* Espaciado interno para mantener claridad y orden */
     
     /* Footer */
-    --footer-bg: rgb(20, 33, 53); /* Fondo azul oscuro casi negro en footer para elegancia y un cierre visual sólido */
-    --footer-text: #ffffff; /* Texto blanco en el footer para garantizar legibilidad y contraste */
-    --footer-link-hover: #ffc44d; /* Hover en amarillo para los enlaces del footer, captando atención de manera sutil */
+    --footer-bg: rgb(20, 33, 53); /* Fondo azul oscuro en el footer */
+    --footer-text: #ffffff; /* Texto blanco en el footer */
+    --footer-link-hover: #ffc44d; /* Color de hover en los enlaces del footer */
+    --footer-gradient: linear-gradient(135deg, #ee4d4d, #ffc44d);
     
     /* Transición suave */
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 
 /* Base styles and reset */
 *, *::before, *::after {
@@ -47,6 +44,7 @@
 
 body {
     font-family: 'Arial', sans-serif;
+    font-size: 16px;
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
@@ -55,10 +53,401 @@ body {
 }
 
 p {
-    margin-bottom: 1.5rem; /* Reducido desde 2.5rem a 1.5rem */
-    font-size: 1.2rem;
-    line-height: 1.6; /* Reducido desde 1.8 a 1.6 */
+    margin-bottom: 1.5rem; /* Margen inferior para párrafos */
+    font-size: 1rem; /* Tamaño de fuente */
+    line-height: 1.6; /* Altura de línea */
 }
+
+
+/* Header */
+header {
+    background: #ffffff;
+    color: #333333;
+    text-align: left;
+    padding: 1.5rem 2rem;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding-bottom: 1rem;
+    transition: background 0.3s ease;
+}
+
+header:hover {
+    background: #f9f9f9; /* Cambio suave de fondo al pasar el mouse */
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #ee4d4d, #ffc44d);
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+    margin-left: 80px;
+}
+
+header h1:hover {
+    color: #ee4d4d;
+}
+
+header img {
+    height: 70px;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+header img:hover {
+    transform: scale(1.1);
+}
+
+/* Estilo para dispositivos móviles */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        height: auto;
+    }
+
+    header h1 {
+        font-size: 3em;
+        margin: 0;
+        text-align: center;
+        margin-top: 60px;
+    }
+
+    header img {
+        height: 80px;
+        margin-top: 30px;
+        align-self: center;
+    }
+}
+
+/* Animación del encabezado */
+header {
+    animation: slideInFromTop 1s ease-out forwards;
+}
+
+/* Estilo para la animación del encabezado */
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Introduction Section */
+#introduction {
+    background-color: var(--content-background);
+    padding: 3.5rem var(--container-padding);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    margin: 2.5rem auto;
+    max-width: 1200px;
+    position: relative;
+    overflow: hidden;
+}
+
+#introduction::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        var(--primary-color), 
+        var(--secondary-color)
+    );
+}
+
+#introduction p {
+    color: var(--text-color);
+    font-size: 1.25rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    letter-spacing: -0.01em;
+}
+
+/* Extension Form Section */
+#extension-form {
+    background-color: var(--content-background);
+    padding: 3rem var(--container-padding);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    max-width: 1200px;
+    margin: 2rem auto; /* Cambiado a 2rem para un espacio más uniforme */
+    position: relative; /* Añadido para mantener el contexto de los elementos pseudo */
+}
+
+#extension-form h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+#extension-form h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--secondary-color);
+    border-radius: 2px;
+}
+
+/* Form Elements */
+#database-extension-form {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-group {
+    position: relative;
+}
+
+label {
+    font-weight: 600;
+    color: var(--text-color);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="number"]:hover,
+select:hover,
+textarea:hover {
+    border-color: rgba(238, 77, 77, 0.3);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(238, 77, 77, 0.1);
+}
+
+/* Select Styling */
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ee4d4d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    padding-right: 2.5rem;
+}
+
+/* Note Box Styles
+-------------------------------------------------- */
+.note {
+    background: linear-gradient(
+      45deg,
+      rgba(238, 77, 77, 0.03),
+      rgba(255, 196, 77, 0.03)
+    );
+    border-left: 4px solid var(--primary-color);
+    border-radius: 0 12px 12px 0;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 1rem 0;
+    padding: 1.5rem;
+  }
+  
+  /* List Styles
+  -------------------------------------------------- */
+  .note ul {
+    list-style-type: disc;
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+  
+  .note li {
+    margin-bottom: 0.75rem;
+    padding-left: 0.5rem;
+  }
+  
+  .note li:last-child {
+    margin-bottom: 0;
+  }
+  
+  .note small {
+    display: block;
+    margin-bottom: 1rem;
+  }
+  
+  .note small:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Text Emphasis
+  -------------------------------------------------- */
+  .note strong {
+    color: var(--primary-color);
+    font-weight: 600;
+  }
+  
+  /* Spacing Adjustments
+  -------------------------------------------------- */
+  h3 + .note {
+    margin-top: 0.5rem;
+  }
+  
+  .note > *:first-child {
+    margin-top: 0;
+  }
+  
+  .note > *:last-child {
+    margin-bottom: 0;
+  }
+  
+/* Checkbox Container */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+}
+
+.checkbox-container input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary-color);
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.checkbox-container input[type="checkbox"]:checked {
+    background-color: var(--primary-color);
+}
+
+.checkbox-container input[type="checkbox"]:checked::before {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.checkbox-container label {
+    margin: 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Submit Button */
+input[type="submit"] {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-color), #f95d5d);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+    margin: 2rem auto 0;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(238, 77, 77, 0.2);
+}
+
+input[type="submit"]:hover {
+    background: linear-gradient(135deg, #f95d5d, var(--primary-color));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(238, 77, 77, 0.3);
+}
+
+input[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(238, 77, 77, 0.2);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #introduction,
+    #extension-form {
+        padding: 2rem var(--container-padding);
+        margin: 1rem;
+    }
+
+    #introduction p {
+        font-size: 1.1rem;
+    }
+
+    #extension-form h2 {
+        font-size: 1.75rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    select,
+    textarea {
+        padding: 0.875rem 1rem;
+    }
+
+      .note {
+        padding: 1.25rem;
+    }
+}
+
 
 
 
@@ -71,6 +460,8 @@ p {
     padding: 4rem 0 2rem;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.2); /* Añadir sombra sutil en la parte superior */
+    z-index: 1; /* Asegúrate de que esté por encima de otros elementos */
 }
 
 #footer-container::before {
@@ -80,7 +471,8 @@ p {
     left: 0;
     right: 0;
     height: 4px;
-    background: var(--header-gradient);
+    background: var(--footer-gradient); /* Color de fondo temporal (cambiar a var(--header-gradient) una vez que verifiques) */
+    z-index: 2; /* Asegurarse de que la barra esté por encima del contenedor del footer */
 }
 
 .footer-content {
@@ -100,7 +492,7 @@ p {
 }
 
 .footer-section h3 {
-    font-size: 1.4rem;
+    font-size: 1.5rem; /* Aumentar el tamaño del título para mejor legibilidad */
     margin-bottom: 1.5rem;
     color: var(--secondary-color);
     position: relative;
@@ -135,6 +527,7 @@ p {
     word-wrap: break-word; /* Para emails largos */
     overflow-wrap: break-word; /* Ajusta el texto largo */
     text-align: left; /* Alineación a la izquierda */
+    padding: 0.25rem 0; /* Espaciado vertical adicional para enlaces */
 }
 
 .footer-section a:hover {
@@ -217,6 +610,11 @@ p {
 
 
 
+
+
+
+
+
 #sidebar {
     width: var(--sidebar-width);
     height: 100vh;
@@ -233,11 +631,13 @@ p {
     border-right: 1px solid var(--sidebar-border);
     transition: left 0.5s ease, opacity 0.5s ease;
     opacity: 0;
+    /* Asegúrate de que la opacidad inicial sea 0 */
 }
 
 #sidebar.active {
     left: 0;
     opacity: 1;
+    animation: slideIn 0.5s forwards, fadeIn 0.5s forwards, glow 3s infinite; /* Agregar animación */
 }
 
 #menu-toggle {
@@ -278,14 +678,6 @@ p {
 
 #menu-toggle.active i {
     transform: rotate(360deg);
-}
-
-#menu-toggle i {
-    animation: rotateWheel 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-}
-
-#menu-toggle.active i {
-    animation: rotateWheel 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) reverse;
 }
 
 #sidebar .sidebar-header {
@@ -394,6 +786,7 @@ p {
     100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.3); }
 }
 
+/* Animate the glow effect */
 #sidebar.active {
     animation: slideIn 0.5s forwards, fadeIn 0.5s forwards, glow 3s infinite;
 }
