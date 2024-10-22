@@ -8,7 +8,7 @@
     <meta name="keywords" content="database extensions, custom database extensions, E-commerce database, healthcare database, database solutions, data management">
     <title>Database Extensions - BBS</title>
     <link rel="icon" href="https://imgur.com/OumtZsL.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="css/extensionstyle.css">
 </head>
@@ -24,12 +24,12 @@
             <li><a href="order.html"><i class="fas fa-shopping-cart"></i> Order Database</a></li>
             <li><a href="extensions.html"><i class="fas fa-expand"></i> Database Extensions</a></li>
             <li><a href="modify.html" class="active"><i class="fas fa-edit"></i> Modify Existing Database</a></li>
-            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="support.html"><i class="fas fa-headset"></i> Client Support</a></li>
             <li><a href="feedback.html"><i class="fas fa-comments"></i> Feedback</a></li>
             <li><a href="terms.html"><i class="fas fa-file-contract"></i> Terms and Conditions</a></li>
             <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
         </ul>
-    </nav>
+    </nav>  
 
     <button id="menu-toggle" class="menu-toggle">
         <i class="fas fa-bars"></i>
@@ -42,22 +42,28 @@
                 <img src="https://imgur.com/6OEF51j.png" alt="BBS Logo" class="bbs-logo">
             </div>
         </header>
+    </div>
+</div>
+        <section id="introduction">
+            <p>At BBS, we strive to provide flexible and reliable database solutions tailored to your business needs. Use the form below to request an extension for your current database and take the next step in optimizing your data management.</p>
+        </section>
+    
         <section id="extension-form">
             <h2>Enhance Your Database with Extensions!</h2>
             <form id="database-extension-form" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST">
                 <input type="hidden" name="_honey" style="display:none">
                 <input type="hidden" name="_token" value="your_token_here">
                 <input type="hidden" name="_next" value="https://www.paypal.me/AaronObando505">
-
+    
                 <label for="first-name">First Name</label>
                 <input type="text" id="first-name" name="first-name" required aria-label="First Name">
-
+    
                 <label for="last-name">Last Name</label>
                 <input type="text" id="last-name" name="last-name" required aria-label="Last Name">
-
+    
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required aria-label="Email">
-
+    
                 <label for="current-database">What type of database do you currently have?</label>
                 <select id="current-database" name="current-database" required aria-label="Current Database Type">
                     <option value="" disabled selected>Select your option</option>
@@ -65,7 +71,7 @@
                     <option value="healthcare">Healthcare Database</option>
                     <option value="custom">Custom Database</option>
                 </select>
-
+    
                 <label for="extension-plan">Which plan are you subscribed to?</label>
                 <select id="extension-plan" name="extension-plan" required aria-label="Extension Plan Selection">
                     <option value="" disabled selected>Select your option</option>
@@ -73,65 +79,76 @@
                     <option value="standard">Standard Plan</option>
                     <option value="business">Business Plan</option>
                 </select>
-
+    
                 <label for="tables-requested">How many additional tables do you need?</label>
                 <input type="number" id="tables-requested" name="tables-requested" min="0" aria-label="Additional Tables">
-
+    
                 <label for="columns-requested">How many additional columns do you need?</label>
                 <input type="number" id="columns-requested" name="columns-requested" min="0" aria-label="Additional Columns">
-
+    
                 <label for="custom-details">Please specify any additional requirements or modifications:</label>
                 <textarea id="custom-details" name="custom-details" rows="4" placeholder="Optional" aria-label="Additional Requirements"></textarea>
+    
+                <div class="note">
+                    <small>At BBS, your security and peace of mind are our top priorities. We kindly request that you submit your database through our dedicated customer service channels, either before or after making your payment. Please share your database via a Google Drive or OneDrive link. Rest assured, our expert team will only begin work once your payment is confirmed, safeguarding your information every step of the way.</small>
+                    <small>Before you proceed, we encourage you to back up your existing database. Modifying it without careful consideration can lead to unforeseen issues that may impact your operations. We accept MySQL and SQLite databases in their original export format, neatly compressed in a ZIP file.</small>
+                    <small>Your journey towards an optimized database begins with us! For more details about our processes, please refer to our <a href="terms.html" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a>. Together, we can ensure that your database evolves in a secure and efficient manner, unlocking its true potential.</small>
+                </div>
 
-                <h3 style="color: #2a333a; margin: 20px 0; text-align: left;">Important Policies:</h3>
-                <p class="note">
-                    Each plan includes a 3-day guarantee, allowing clients up to two free modifications within this period. Please note, if you modify the database independently after the extension, this guarantee may be nullified.
-                    <br><strong>Basic Plan:</strong> Up to 4 additional tables or 8 additional columns.
-                    <br><strong>Standard Plan:</strong> Up to 4 additional tables or 20 additional columns.
-                    <br><strong>Business Plan:</strong> Unlimited modifications.
-                </p>
+                <h3>Important Policies:</h3>
+                <div class="note">
+                    We understand the importance of flexibility for your business. That's why every plan comes with a 3-day satisfaction guarantee, offering you up to two complimentary modifications within this period. Please keep in mind that if you independently alter the database after the extension, this guarantee may be voided, as we strive to ensure the integrity and security of your data at all times.
+                    <ul>
+                        <li><strong>Basic Plan:</strong> Includes up to 4 additional tables or 8 extra columns to perfectly match your evolving needs.</li>
+                        <li><strong>Standard Plan:</strong> Includes up to 4 additional tables or 20 extra columns for more extensive database customizations.</li>
+                        <li><strong>Business Plan:</strong> Offers unlimited modifications, ensuring that your database grows seamlessly with your business.</li>
+                    </ul>
+                    To enhance your database further, you may also request the addition of temporary tables and common table expressions (CTEs) as part of your modifications, allowing for even greater flexibility and efficiency in managing your data.
+                </div>
 
                 <div class="checkbox-container">
                     <input type="checkbox" id="terms-checkbox" name="terms-checkbox" required>
                     <label for="terms-checkbox">I have read and accept the <a href="terms.html" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a>.</label>
                 </div>
-
+    
                 <input type="submit" value="Submit & Proceed to PayPal">
             </form>
         </section>
+    </div>
+    
 
-        <footer id="footer-container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="order.html">Order Database</a></li>
-                        <li><a href="extensions.html">Database Extensions</a></li>
-                        <li><a href="modify.html">Modify Existing Database</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="feedback.html">Feedback</a></li>
-                        <li><a href="terms.html">Terms and Conditions</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact Us</h3>
-                    <p>Email: <a href="mailto:boostingbusinessstrategies@gmail.com" target="_blank" style="color: #fffafa; font-weight: bold;">boostingbusinessstrategies@gmail.com</a></p>
-                    <p>WhatsApp Business: <a href="https://wa.me/message/IQIFXFHK7JILI1" target="_blank" style="color: #fffafa; font-weight: bold;">+506 60447382</a></p>
-                </div>
+    <footer id="footer-container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="order.html">Order Database</a></li>
+                    <li><a href="extensions.html">Database Extensions</a></li>
+                    <li><a href="modify.html">Modify Existing Database</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                    <li><a href="terms.html">Terms and Conditions</a></li>
+                </ul>
             </div>
-            <div class="social-media">
-                <a href="https://www.facebook.com/profile.php?id=61566338476564&mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.linkedin.com/in/aaron-obando-55a098308?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.instagram.com/bbs.official.account/"><i class="fab fa-instagram"></i></a>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: <a href="mailto:boostingbusinessstrategies@gmail.com" target="_blank" style="color: #fffafa; font-weight: bold;">boostingbusinessstrategies@gmail.com</a></p>
+                <p>WhatsApp Business: <a href="https://wa.me/message/IQIFXFHK7JILI1" target="_blank" style="color: #fffafa; font-weight: bold;">+506 60447382</a></p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Boosting Business Strategies (BBS). All rights reserved.</p>
-                <p><a href="terms.html" style="color: #fffafa;">Terms and Conditions</a> | <a href="contact.html" style="color: #fffafa;">Contact Us</a></p>
-            </div>
-        </footer>
+        </div>
+        <div class="social-media">
+            <a href="https://www.facebook.com/profile.php?id=61566338476564&mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/in/aaron-obando-55a098308?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/bbs.official.account/"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Boosting Business Strategies (BBS). All rights reserved.</p>
+            <p><a href="terms.html" style="color: #fffafa;">Terms and Conditions</a> | <a href="Support.html" style="color: #fffafa;">Contact Us</a></p>
+        </div>
+    </footer>
     </div>
     <script src="Javascript/scripts.js"></script>
 </body>
