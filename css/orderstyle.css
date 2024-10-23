@@ -242,7 +242,6 @@ select {
 }
 
 
-
 .radio-options {
     display: flex;
     flex-direction: column; /* Organizar los radios verticalmente */
@@ -253,9 +252,11 @@ select {
     border: 1px solid var(--border-color);
 }
 
+/* Asegurar que las opciones de radio sean responsivas */
 .radio-options .radio-item {
     display: flex;
     align-items: center; /* Centrar verticalmente el texto con el radio */
+    flex-wrap: wrap; /* Permitir que se envuelvan en pantallas pequeñas */
 }
 
 .radio-options input[type="radio"] {
@@ -272,6 +273,7 @@ select {
     margin-right: 0.5rem; /* Espacio entre el radio y el texto */
 }
 
+/* Estilo del radio seleccionado */
 .radio-options input[type="radio"]:checked {
     background-color: var(--primary-color); /* Color de fondo al seleccionar */
     border-color: var(--primary-color); /* Color de borde al seleccionar */
@@ -296,12 +298,26 @@ select {
     transition: color 0.3s; /* Transición suave para el color del texto */
 }
 
+/* Cambiar color del texto al pasar el mouse */
 .radio-options label:hover {
-    color: var(--primary-color); /* Cambiar color del texto al pasar el mouse */
+    color: var(--primary-color);
 }
 
+/* Estilos responsivos para dispositivos móviles */
+@media (max-width: 600px) {
+    .radio-options {
+        padding: 0.5rem; /* Reducir espaciado interno */
+    }
 
+    .radio-options input[type="radio"] {
+        width: 20px; /* Reducir tamaño del radio */
+        height: 20px; /* Reducir tamaño del radio */
+    }
 
+    .radio-options label {
+        font-size: 14px; /* Reducir tamaño de texto en móviles */
+    }
+}
 
 /* Optimized Checkbox Container */
 .checkbox-container {
@@ -331,7 +347,7 @@ select {
     background-color: white;
 }
 
-/* Ajustar alineación del checkbox si es necesario */
+/* Estilo del checkbox seleccionado */
 .checkbox-container input[type="checkbox"]:checked {
     background-color: var(--primary-color);
 }
@@ -359,6 +375,22 @@ select {
     color: var(--text-color);
     line-height: 1.4;
     padding: 0.25rem 0; /* Espaciado adicional para mejor lectura */
+}
+
+/* Estilos responsivos para dispositivos móviles */
+@media (max-width: 600px) {
+    .checkbox-container {
+        padding: 0.5rem; /* Reducir espaciado interno */
+    }
+
+    .checkbox-container input[type="checkbox"] {
+        width: 20px; /* Reducir tamaño del checkbox */
+        height: 20px; /* Reducir tamaño del checkbox */
+    }
+
+    .checkbox-container label {
+        font-size: 14px; /* Reducir tamaño de texto en móviles */
+    }
 }
 
 
