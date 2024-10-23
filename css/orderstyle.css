@@ -228,7 +228,7 @@ textarea {
     min-height: clamp(80px, 15vh, 120px);
     resize: vertical;
     /* Prevent iOS zoom */
-    font-size: 16px;
+    font-size: 10px;
 }
 
 /* Select Styles */
@@ -303,8 +303,8 @@ select {
 /* Media Queries para pantallas pequeñas */
 @media (max-width: 600px) {
     .radio-options input[type="radio"] {
-        width: 20px; /* Ajustar ancho del radio */
-        height: 20px; /* Ajustar alto del radio */
+        width: 5px; /* Ajustar ancho del radio */
+        height: 5px; /* Ajustar alto del radio */
     }
 
     .radio-options label {
@@ -374,8 +374,8 @@ select {
 /* Media Queries para pantallas pequeñas */
 @media (max-width: 600px) {
     .checkbox-container input[type="checkbox"] {
-        width: 20px; /* Ajustar ancho del checkbox */
-        height: 20px; /* Ajustar alto del checkbox */
+        width: 8px; /* Ajustar ancho del checkbox */
+        height: 8px; /* Ajustar alto del checkbox */
     }
 
     .checkbox-container label {
