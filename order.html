@@ -85,25 +85,33 @@
             <!-- New section: Does your database require sensitive data? -->
             <label><strong>Does your database require sensitive data?</strong></label>
             <div class="radio-options">
-                <input type="radio" id="sensitive-yes" name="sensitive-data" value="yes" required onclick="toggleEncryptionOptions(true)">
-                <label for="sensitive-yes">Yes, I have the required legal permissions</label><br>
-            
-                <input type="radio" id="sensitive-no" name="sensitive-data" value="no" required onclick="toggleEncryptionOptions(false)">
-                <label for="sensitive-no">No, I don't need them at the moment</label>
+                <div class="radio-item">
+                    <input type="radio" id="sensitive-yes" name="sensitive-data" value="yes" required onclick="toggleEncryptionOptions(true)">
+                    <label for="sensitive-yes">Yes, I have the required legal permissions</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" id="sensitive-no" name="sensitive-data" value="no" required onclick="toggleEncryptionOptions(false)">
+                    <label for="sensitive-no">No, I don't need them at the moment</label>
+                </div>
             </div>
-            
-            <!-- New section: Do you want sensitive data columns to be encrypted? -->
-            <label><strong>Do you want sensitive data columns to be encrypted?</strong></label>
-            <div class="radio-options">
-                <input type="radio" id="encrypt-yes" name="encrypt-sensitive-data" value="yes" required>
-                <label for="encrypt-yes">Yes, I want them encrypted</label><br>
-            
-                <input type="radio" id="encrypt-no-own" name="encrypt-sensitive-data" value="no-own" required>
-                <label for="encrypt-no-own">No, I want to do it myself</label><br>
-            
-                <input type="radio" id="encrypt-no" name="encrypt-sensitive-data" value="no" required>
-                <label for="encrypt-no">No, I don't want to add sensitive data</label>
-            </div>
+
+          <!-- New section: Do you want sensitive data columns to be encrypted? -->
+
+          <label><strong>Do you want sensitive data columns to be encrypted?</strong></label>
+          <div class="radio-options">
+              <div class="radio-item">
+                  <input type="radio" id="encrypt-yes" name="encrypt-sensitive-data" value="yes" required>
+                  <label for="encrypt-yes">Yes, I want them encrypted</label>
+              </div>
+              <div class="radio-item">
+                  <input type="radio" id="encrypt-no-own" name="encrypt-sensitive-data" value="no-own" required>
+                  <label for="encrypt-no-own">No, I want to do it myself</label>
+              </div>
+              <div class="radio-item">
+                  <input type="radio" id="encrypt-no" name="encrypt-sensitive-data" value="no" required>
+                  <label for="encrypt-no">No, I don't want to add sensitive data</label>
+              </div>
+          </div>
             
             <p class="note" style="text-align: left;">
                 To proceed with your order, please complete your payment via PayPal: 
