@@ -10,6 +10,10 @@
     --accent-color: #0056a3; /* Azul profundo para acentos */
     --content-background: #ffffff; /* Fondo blanco para el contenido */
     --header-gradient: linear-gradient(135deg, #ee4d4d, #ffc44d);
+    --border-color: #d1d5db;
+    --focus-ring: rgba(20, 33, 53, 0.8);
+    --input-background: #f9fafb;
+    
     
     /* Sidebar */
     --sidebar-width: 280px; /* Ancho de la barra lateral */
@@ -91,7 +95,7 @@ header::after {
 }
 
 header h1 {
-    font-size: 2.5em;
+    font-size: 2.2em;
     margin: 0;
     position: relative;
     z-index: 1;
@@ -153,270 +157,324 @@ header {
     }
 }
 
-/* Layout & Container Styles
+/* Form Layout & Container Styles
 -------------------------------------------------- */
 #modify-form {
-    background-color: var(--content-background);
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-    margin: 2.5rem auto;
-    max-width: 1200px;
-    overflow: hidden;
-    padding: 3.5rem var(--container-padding);
-    position: relative;
-  }
-  
-  #modify-form::before {
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    content: '';
-    height: 4px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-  }
-  
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  margin: 2.5rem auto;
+  max-width: 800px;
+  overflow: hidden;
+  padding: clamp(1rem, 3vw, 3rem);
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#modify-form::before {
+  background: linear-gradient(135deg, var(--primary-color), #f95d5d);
+  content: '';
+  height: 4px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.form-container {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  margin: 2rem auto;
+  max-width: 800px;
+  padding: clamp(1rem, 3vw, 3rem);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Typography
+-------------------------------------------------- */
+#modify-form p {
+  color: var(--text-color);
+  font-size: clamp(0.875rem, 2vw, 1.25rem);
+  letter-spacing: -0.01em;
+  line-height: 1.8;
+  margin: 0 auto;
+  max-width: 800px;
+  text-align: center;
+}
+
+#modify-form h2 {
+  color: var(--primary-color);
+  font-size: clamp(1.75rem, 3vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 2rem 0 1rem;
+  text-align: center;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+#modify-form h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background-color: var(--secondary-color);
+  border-radius: 2px;
+}
+
+h3 {
+  color: var(--text-color);
+  font-size: clamp(1.2rem, 2vw, 1.75rem);
+  font-weight: 700;
+  margin: 1rem 0;
+  text-align: left;
+}
+
+/* Form Elements & Layout
+-------------------------------------------------- */
+#database-modify-form {
+  display: grid;
+  gap: 1.5rem;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+
+#database-modify-form h2 {
+  color: var(--primary-color);
+  font-size: clamp(1.75rem, 3vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 2rem 0 1rem;
+  text-align: center;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+#database-modify-form h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background-color: var(--secondary-color);
+  border-radius: 2px;
+}
+
+label {
+  display: block;
+  font-size: clamp(0.8125rem, 2vw, 0.875rem);
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+label:hover {
+  color: var(--primary-color);
+}
+
+/* Inputs & Textarea */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: clamp(0.5rem, 2vw, 0.75rem) clamp(0.75rem, 2vw, 1rem);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--input-background);
+  color: var(--text-color);
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="number"]:hover,
+select:hover,
+textarea:hover {
+  border-color: var(--primary-color);
+  background-color: #ffffff;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--focus-ring);
+  box-shadow: 0 0 0 3px var(--focus-ring);
+  background-color: #ffffff;
+}
+
+textarea {
+  min-height: clamp(80px, 20vw, 100px);
+  resize: vertical;
+}
+
+/* Note Box
+-------------------------------------------------- */
+.note {
+  background: linear-gradient(45deg, rgba(238, 77, 77, 0.03), rgba(255, 196, 77, 0.03));
+  border-left: 4px solid var(--primary-color);
+  border-radius: 0 12px 12px 0;
+  color: var(--text-color);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 1rem 0;
+  padding: 1.5rem;
+}
+
+.note ul {
+  list-style-type: disc;
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.note li {
+  margin-bottom: 0.75rem;
+  padding-left: 0.5rem;
+}
+
+.note li:last-child {
+  margin-bottom: 0;
+}
+
+.note small {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.note small:last-child {
+  margin-bottom: 0;
+}
+
+/* Text Emphasis */
+.note strong {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Checkbox Styles
+-------------------------------------------------- */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+}
+
+.checkbox-container input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--primary-color);
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.checkbox-container input[type="checkbox"]:checked {
+  background-color: var(--primary-color);
+}
+
+.checkbox-container input[type="checkbox"]:checked::before {
+  content: '✓';
+  position: absolute;
+  color: white;
+  font-size: 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.checkbox-container label {
+  margin: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Submit Button
+-------------------------------------------------- */
+input[type="submit"] {
+  display: block;
+  background: linear-gradient(135deg, var(--primary-color), #f95d5d);
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+  margin: 2rem auto 0;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(238, 77, 77, 0.2);
+}
+
+input[type="submit"]:hover {
+  background: linear-gradient(135deg, #f95d5d, var(--primary-color));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(238, 77, 77, 0.3);
+}
+
+input[type="submit"]:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(238, 77, 77, 0.2);
+}
+
+/* Media Queries
+-------------------------------------------------- */
+@media (max-width: 768px) {
+  #modify-form,
   .form-container {
-    background-color: var(--content-background);
-    border-radius: var(--border-radius);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    margin: 2rem auto;
-    max-width: 1200px;
-    padding: 3rem var(--container-padding);
-  }
-  
-  /* Typography
-  -------------------------------------------------- */
-  #modify-form p {
-    color: var(--text-color);
-    font-size: 1.25rem;
-    letter-spacing: -0.01em;
-    line-height: 1.8;
-    margin: 0 auto;
-    max-width: 800px;
-    text-align: center;
-  }
-  
-  #modify-form h2 {
-    color: var(--primary-color);
-    font-size: 2rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    margin: 2rem 0 1rem;
-    text-align: center;
-  }
-  
-  h3 {
-    color: #2a333a;
-    font-size: 1.75rem;
-    font-weight: 700;
-    margin: 1rem 0;
-    text-align: left;
+    margin: 1rem;
+    padding: 2rem var(--container-padding);
   }
 
-  /* Form Elements
-  -------------------------------------------------- */
-  #database-modify-form {
-    display: grid;
-    gap: 1.5rem;
-    margin: 0 auto;
-    max-width: 800px;
+  #modify-form p {
+    font-size: 1.1rem;
   }
-  
-  /* Labels */
-  label {
-    color: var(--text-color);
-    display: block;
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+
+  #modify-form h2 {
+    font-size: 1.75rem;
   }
-  
-  /* Inputs & Textarea */
+
   input[type="text"],
   input[type="email"],
+  input[type="number"],
+  select,
   textarea {
-    background-color: #ffffff;
-    border: 2px solid rgba(0, 0, 0, 0.08);
-    border-radius: 12px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-    font-size: 1rem;
-    padding: 1rem 1.25rem;
-    transition: all 0.3s ease;
-    width: 100%;
-  }
-  
-  input[type="text"]:hover,
-  input[type="email"]:hover,
-  textarea:hover {
-    border-color: rgba(238, 77, 77, 0.3);
-  }
-  
-  input[type="text"]:focus,
-  input[type="email"]:focus,
-  textarea:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 4px rgba(238, 77, 77, 0.1);
-    outline: none;
-  }
-  
-  /* Note Box
-  -------------------------------------------------- */
-  .note {
-    background: linear-gradient(45deg, rgba(238, 77, 77, 0.03), rgba(255, 196, 77, 0.03));
-    border-left: 4px solid var(--primary-color);
-    border-radius: 0 12px 12px 0;
-    color: var(--text-color);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin: 1rem 0;  /* Reduced from 2rem to 1rem */
-    padding: 1.5rem;
-  }
-  
-  .note small {
-    display: block;
-    margin-bottom: 1rem;
-  }
-  
-  .note small:last-child {
-    margin-bottom: 0;
-  }
-  
-  .note ul {
-    margin: 1rem 0;
-    padding-left: 1.5rem;
-  }
-  
-  .note li {
-    margin-bottom: 0.5rem;
-  }
-  
-  .note li:last-child {
-    margin-bottom: 0;
-  }
-  
-  .note br {
-    margin-top: 1rem;
-    display: block;
-  }
-  
-  /* Note with left alignment */
-  .note[style*="text-align: left"] {
-    margin-top: 0.5rem;  /* Reduced space after h3 */
-  }
-  
- /* Text Emphasis
-  -------------------------------------------------- */
-  .note strong {
-    color: var(--primary-color);
-    font-weight: 600;
+    padding: 0.875rem 1rem;
   }
 
-  /* Checkbox Styles
-  -------------------------------------------------- */
-  .checkbox-container {
-    align-items: center;
-    display: flex;
-    gap: 0.75rem;
-    padding: 0.5rem 0;
+  h3 {
+    font-size: 1.5rem;
+    margin: 0.75rem 0;
   }
-  
-  .checkbox-container input[type="checkbox"] {
-    appearance: none;
-    border: 2px solid var(--primary-color);
-    border-radius: 6px;
-    cursor: pointer;
-    height: 20px;
-    position: relative;
-    transition: all 0.2s ease;
-    width: 20px;
-  }
-  
-  .checkbox-container input[type="checkbox"]:checked {
-    background-color: var(--primary-color);
-  }
-  
-  .checkbox-container input[type="checkbox"]:checked::before {
-    color: white;
-    content: '✓';
-    font-size: 14px;
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  .checkbox-container label {
-    cursor: pointer;
-    margin: 0;
-    user-select: none;
-  }
-  
-  /* Submit Button
-  -------------------------------------------------- */
-  input[type="submit"] {
-    background: linear-gradient(135deg, var(--primary-color), #f95d5d);
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(238, 77, 77, 0.2);
-    color: white;
-    cursor: pointer;
-    display: block;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin: 2rem auto 0;
-    max-width: 300px;
-    overflow: hidden;
-    padding: 1rem 2rem;
-    position: relative;
-    text-align: center;
-    transition: all 0.3s ease;
-    width: 100%;
-  }
-  
-  input[type="submit"]:hover {
-    background: linear-gradient(135deg, #f95d5d, var(--primary-color));
-    box-shadow: 0 6px 20px rgba(238, 77, 77, 0.3);
-    transform: translateY(-2px);
-  }
-  
-  input[type="submit"]:active {
-    box-shadow: 0 2px 10px rgba(238, 77, 77, 0.2);
-    transform: translateY(0);
-  }
-  
-  /* Media Queries
-  -------------------------------------------------- */
-  @media (max-width: 768px) {
-    #modify-form,
-    .form-container {
-      margin: 1rem;
-      padding: 2rem var(--container-padding);
-    }
-  
-    #modify-form p {
-      font-size: 1.1rem;
-    }
-  
-    #modify-form h2 {
-      font-size: 1.75rem;
-    }
-  
-    input[type="text"],
-    input[type="email"],
-    textarea {
-      padding: 0.875rem 1rem;
-    }
-  
-    h3 {
-        font-size: 1.5rem;
-        margin: 0.75rem 0;
-    }
     
-      .note {
-        padding: 1.25rem;
-    }
+  .note {
+    padding: 1.25rem;
   }
+}
 
 
 
