@@ -242,18 +242,19 @@ select {
     font-weight: normal;
 }
 
-/* Checkbox Container */
+/* Checkbox Styles
+-------------------------------------------------- */
 .checkbox-container {
     display: flex;
     align-items: center;
-    gap: clamp(0.5rem, 2vw, 1rem);
-    padding: clamp(0.75rem, 2vw, 1rem) 0;
+    gap: 0.25rem; /* Reducimos el espacio entre el checkbox y el label */
+    padding: 0.5rem 0;
 }
 
 .checkbox-container input[type="checkbox"] {
     appearance: none;
-    width: clamp(20px, 5vw, 24px);
-    height: clamp(20px, 5vw, 24px);
+    width: 1.25rem; /* Usamos rem en lugar de px */
+    height: 1.25rem;
     border: 2px solid var(--primary-color);
     border-radius: 6px;
     cursor: pointer;
@@ -269,7 +270,7 @@ select {
     content: '✓';
     position: absolute;
     color: white;
-    font-size: clamp(14px, 3vw, 16px);
+    font-size: 0.875rem; /* Ajuste proporcional */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -279,9 +280,38 @@ select {
     margin: 0;
     cursor: pointer;
     user-select: none;
-    font-size: clamp(0.875rem, 2vw, 1rem);
-    color: var(--text-color);
 }
+
+/* Media Queries para Responsividad */
+
+@media (max-width: 768px) {
+    .checkbox-container {
+        gap: 0.2rem; /* Reducimos aún más el espacio en pantallas medianas */
+        padding: 0.4rem 0;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+        width: 1rem; /* Reducir el tamaño del checkbox en pantallas pequeñas */
+        height: 1rem;
+    }
+
+    .checkbox-container input[type="checkbox"]:checked::before {
+        font-size: 0.75rem; /* Ajuste del icono de check en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .checkbox-container {
+        gap: 0.2rem; /* Mantener poco espacio en pantallas pequeñas */
+        flex-direction: column; /* Cambiar a columna solo si es necesario */
+    }
+
+    .checkbox-container label {
+        text-align: left; /* Texto alineado a la izquierda */
+    }
+}
+
+
 
 /* Submit Button */
 input[type="submit"] {
