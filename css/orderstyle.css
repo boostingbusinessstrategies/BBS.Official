@@ -243,9 +243,10 @@ select {
 
 
 
-.radio-options {
+/* Estilos generales */
+.radio-options, .checkbox-container {
     display: flex;
-    flex-direction: column; /* Organizar los radios verticalmente */
+    flex-direction: column; /* Organizar los elementos verticalmente */
     gap: 0.5rem; /* Espaciado entre opciones */
     padding: 1rem; /* Espaciado interno */
     background-color: var(--input-background);
@@ -253,93 +254,56 @@ select {
     border: 1px solid var(--border-color);
 }
 
-.radio-options .radio-item {
+.radio-options .radio-item, .checkbox-container .checkbox-item {
     display: flex;
-    align-items: center; /* Centrar verticalmente el texto con el radio */
+    align-items: center; /* Centrar verticalmente el texto con el radio/checkbox */
 }
 
+/* Estilos para Radio Buttons */
 .radio-options input[type="radio"] {
-    appearance: none; /* Eliminar el estilo predeterminado */
-    -webkit-appearance: none; /* Compatibilidad con WebKit */
+    appearance: none;
+    -webkit-appearance: none;
     width: 24px; /* Ancho del radio */
     height: 24px; /* Alto del radio */
-    border: 2px solid var(--primary-color); /* Borde del radio */
+    border: 2px solid var(--primary-color);
     border-radius: 50%; /* Hacerlo circular */
-    cursor: pointer; /* Cambiar el cursor al pasar sobre el radio */
-    position: relative; /* Posicionamiento relativo para el pseudo-elemento */
-    outline: none; /* Eliminar el contorno predeterminado */
-    transition: background-color 0.3s, border-color 0.3s; /* Transiciones suaves */
+    cursor: pointer;
+    position: relative;
     margin-right: 0.5rem; /* Espacio entre el radio y el texto */
+    background-color: white;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
 .radio-options input[type="radio"]:checked {
-    background-color: var(--primary-color); /* Color de fondo al seleccionar */
-    border-color: var(--primary-color); /* Color de borde al seleccionar */
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
 }
 
 .radio-options input[type="radio"]:checked::before {
-    content: ''; /* Crear un círculo interior */
+    content: '';
     position: absolute;
     width: 12px; /* Ancho del círculo interior */
     height: 12px; /* Alto del círculo interior */
-    border-radius: 50%; /* Hacerlo circular */
-    background-color: white; /* Color blanco */
-    top: 50%; /* Centrar verticalmente */
-    left: 50%; /* Centrar horizontalmente */
-    transform: translate(-50%, -50%); /* Ajustar la posición al centro */
+    border-radius: 50%;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.radio-options label {
-    cursor: pointer; /* Cambiar el cursor al pasar sobre la etiqueta */
-    font-size: 16px; /* Tamaño del texto */
-    color: var(--text-color); /* Color del texto */
-    transition: color 0.3s; /* Transición suave para el color del texto */
-}
-
-.radio-options label:hover {
-    color: var(--primary-color); /* Cambiar color del texto al pasar el mouse */
-}
-
-/* Media Queries para pantallas pequeñas */
-@media (max-width: 600px) {
-    .radio-options input[type="radio"] {
-        width: 5px; /* Ajustar ancho del radio */
-        height: 5px; /* Ajustar alto del radio */
-    }
-
-    .radio-options label {
-        font-size: 14px; /* Ajustar tamaño del texto */
-    }
-}
-
-
-
-
-.checkbox-container {
-    display: flex;
-    align-items: center; /* Cambiar a center para alineación vertical */
-    gap: 0.75rem;
-    padding: 0.75rem;
-    min-height: 44px;
-    position: relative;
-    width: 100%;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-}
-
-/* Optimized Checkbox Input */
+/* Estilos para Checkboxes */
 .checkbox-container input[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none;
-    width: 24px;
-    height: 24px;
+    width: 24px; /* Ancho del checkbox */
+    height: 24px; /* Alto del checkbox */
     border: 2px solid var(--primary-color);
     border-radius: 4px;
     cursor: pointer;
     position: relative;
-    margin: 0; /* Mantener margen a 0 */
-    flex-shrink: 0;
+    margin-right: 0.5rem; /* Espacio entre el checkbox y el texto */
     background-color: white;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
 .checkbox-container input[type="checkbox"]:checked {
@@ -357,31 +321,30 @@ select {
     line-height: 1;
 }
 
-/* Optimized Checkbox Label */
-.checkbox-container label {
-    margin: 0;
+/* Estilos para las etiquetas */
+.radio-options label, .checkbox-container label {
     cursor: pointer;
     font-size: 16px;
-    flex: 1;
-    min-width: 0;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
     color: var(--text-color);
-    line-height: 1.4;
-    padding: 0.25rem 0; /* Espaciado adicional para mejor lectura */
+    transition: color 0.3s;
+}
+
+.radio-options label:hover, .checkbox-container label:hover {
+    color: var(--primary-color);
 }
 
 /* Media Queries para pantallas pequeñas */
 @media (max-width: 600px) {
-    .checkbox-container input[type="checkbox"] {
-        width: 8px; /* Ajustar ancho del checkbox */
-        height: 8px; /* Ajustar alto del checkbox */
+    .radio-options input[type="radio"], .checkbox-container input[type="checkbox"] {
+        width: 20px; /* Ajustar ancho del radio/checkbox */
+        height: 20px; /* Ajustar alto del radio/checkbox */
     }
 
-    .checkbox-container label {
+    .radio-options label, .checkbox-container label {
         font-size: 14px; /* Ajustar tamaño del texto */
     }
 }
+
 
 
 
