@@ -33,16 +33,16 @@
         <i class="fas fa-bars"></i>
     </button>
     
+    <div id="order-background"></div>
+
     <div id="content">
-        <header>
-            <h1>Order Your Custom Database</h1>
-            <div class="logo-container">
-                <img src="https://imgur.com/6OEF51j.png" alt="BBS Logo" class="bbs-logo">
-            </div>
-        </header>
-    </div>
-    
-    <section id="order-form">
+        <div class="logo-container">
+            <img src="https://imgur.com/6OEF51j.png" alt="Logo" class="bbs-logo">
+        </div>
+        <h1>Order Your Custom Database</h1>
+        <form id="order-form">
+     
+    <section id="order">
         <h2 style="color: #2a333a;">Get Your Custom Database Today!</h2>
         <p>At BBS, we specialize in crafting tailored databases that align perfectly with your business needs. Let us help you elevate your operations with a custom solution designed just for you!</p>
         <form id="database-form" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST">
@@ -83,7 +83,7 @@
             <textarea id="custom-details" name="custom-details" rows="4" placeholder="Optional" aria-label="Custom Database Details"></textarea>
             
             <!-- New section: Does your database require sensitive data? -->
-            <label>Does your database require sensitive data?</label>
+            <label><strong>Does your database require sensitive data?</strong></label>
             <div class="radio-options">
                 <input type="radio" id="sensitive-yes" name="sensitive-data" value="yes" required onclick="toggleEncryptionOptions(true)">
                 <label for="sensitive-yes">Yes, I have the required legal permissions</label><br>
@@ -93,7 +93,7 @@
             </div>
             
             <!-- New section: Do you want sensitive data columns to be encrypted? -->
-            <label>Do you want sensitive data columns to be encrypted?</label>
+            <label><strong>Do you want sensitive data columns to be encrypted?</strong></label>
             <div class="radio-options">
                 <input type="radio" id="encrypt-yes" name="encrypt-sensitive-data" value="yes" required>
                 <label for="encrypt-yes">Yes, I want them encrypted</label><br>
@@ -105,49 +105,27 @@
                 <label for="encrypt-no">No, I don't want to add sensitive data</label>
             </div>
             
-            <!-- Note: Ensure the user reads policies -->
-            <p style="font-size: 0.9em; color: #ee4d4d;">
-                Please make sure to read our <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html#encryption-policies" target="_blank" style="color: #ee4d4d; font-weight: bold;">Encryption Policies</a> and <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html#database-content-policies" target="_blank" style="color: #ee4d4d; font-weight: bold;">Content Policies</a> before proceeding.
-            </p>
-
-
             <p class="note" style="text-align: left;">
                 To proceed with your order, please complete your payment via PayPal: 
                 <a href="https://www.paypal.me/AaronObando505" target="_blank" style="color: #ee4d4d; font-weight: bold;">PayPal Me</a><br><br>
-                
-                <strong>Payment Details:</strong>
-                <ul>
-                    <li>Payments will be securely processed through the PayPal account of our founder, Aaron Obando.</li>
-                    <li>This is a one-time payment for our service, with no recurring charges.</li>
-                    <li>If you are not completely satisfied or decide you no longer need the database, we will issue a full refund, guaranteeing a risk-free investment.</li>
-                </ul><br>
-                
-                <strong>Delivery Information:</strong>
-                <ul>
-                    <li>Upon purchasing, our team will ensure the timely delivery of your custom database within a maximum period of 7 business days.</li>
-                    <li>The database will be sent in a ZIP file via a unique shared link through Google Drive or OneDrive, according to your preference.</li>
-                    <li>Along with your database, you will receive a practical guide for encrypting databases in PDF format.</li>
-                    <li>If you request the database to be encrypted, an additional format containing the required passwords for the encrypted columns will also be provided.</li>
-                </ul><br>
-                
-                <strong>Modification Guarantee:</strong>
-                <ul>
-                    <li>We offer a 7-day guarantee period during which you can request up to 3 modifications at no extra cost.</li>
-                    <li>Modifications requested outside this period will incur additional charges.</li>
-                </ul>
-                
-                Your satisfaction is our top priority, and we strive to exceed your expectations in every possible way. For more details, refer to our <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html#database-content-policies" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a>.</small></p>
+            
+                Payments will be securely processed through the PayPal account of our founder, Aaron Obando. This is a one-time payment for our service, with no recurring charges. If you are not completely satisfied or decide you no longer need the database, we will issue a full refund, guaranteeing a risk-free investment.<br><br>
+            
+                <strong>Delivery Information:</strong> Upon purchasing, our team will ensure the timely delivery of your custom database within a maximum period of 7 business days. The database will be sent in a ZIP file via a unique shared link through Google Drive or OneDrive, according to your preference. Along with your database, you will receive a practical guide for encrypting databases in PDF format. If you request the database to be encrypted, an additional format containing the required passwords for the encrypted columns will also be provided.<br><br>
+            
+                <strong>Modification Guarantee:</strong> We offer a 7-day guarantee period during which you can request up to 3 modifications at no extra cost. Modifications requested outside this period will incur additional charges.<br><br>
+            
+                Your satisfaction is our top priority, and we strive to exceed your expectations in every possible way. For more details, refer to our <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html#database-content-policies" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a>.
             </p>
+        
     
             <div class="checkbox-container">
                 <input type="checkbox" id="terms-checkbox" name="terms-checkbox" required>
                 <label for="terms-checkbox">I have read and accept the <a href="terms.html" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a>.</label>
             </div>
-    
             <input type="submit" value="Submit & Proceed to PayPal" style="background-color: #ee4d4d; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
         </form>
     </section>
-    
     </div>
 </div>
         <footer id="footer-container">
