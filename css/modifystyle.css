@@ -280,10 +280,14 @@ textarea {
   resize: vertical;
 }
 
-/* Note Box
+/* Note Box Styles
 -------------------------------------------------- */
 .note {
-  background: linear-gradient(45deg, rgba(238, 77, 77, 0.03), rgba(255, 196, 77, 0.03));
+  background: linear-gradient(
+    45deg,
+    rgba(238, 77, 77, 0.03),
+    rgba(255, 196, 77, 0.03)
+  );
   border-left: 4px solid var(--primary-color);
   border-radius: 0 12px 12px 0;
   color: var(--text-color);
@@ -291,6 +295,97 @@ textarea {
   line-height: 1.6;
   margin: 1rem 0;
   padding: 1.5rem;
+}
+
+/* List Styles
+-------------------------------------------------- */
+h3 {
+  font-size: 1.2rem;
+}
+
+.note ul {
+  list-style-type: disc;
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.note li {
+  margin-bottom: 0.75rem;
+  padding-left: 0.5rem;
+}
+
+.note li:last-child {
+  margin-bottom: 0;
+}
+
+.note small {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.note small:last-child {
+  margin-bottom: 0;
+}
+
+/* Text Emphasis
+-------------------------------------------------- */
+.note strong {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Spacing Adjustments
+-------------------------------------------------- */
+h3 + .note {
+  margin-top: 0.2rem;
+}
+
+.note > *:first-child {
+  margin-top: 0;
+}
+
+.note > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Checkbox Container */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+}
+
+.checkbox-container input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--primary-color);
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.checkbox-container input[type="checkbox"]:checked {
+  background-color: var(--primary-color);
+}
+
+.checkbox-container input[type="checkbox"]:checked::before {
+  content: '✓';
+  position: absolute;
+  color: white;
+  font-size: 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.checkbox-container label {
+  margin: 0;
+  cursor: pointer;
+  user-select: none;
 }
 
 /* Submit Button
