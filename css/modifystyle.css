@@ -150,7 +150,7 @@ header img:hover {
 
 /* Animación del encabezado */
 header {
-    animation: slideInFromTop 1s ease-out forwards;
+    animation: slideInFromTop 1.3s ease-out forwards;
 }
 
 /* Estilo para la animación del encabezado */
@@ -165,354 +165,225 @@ header {
     }
 }
 
-/* Form Layout & Container Styles
--------------------------------------------------- */
+
+/* Modern Container Styling */
 #modify-form {
-  background-color: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-  margin: 2.5rem auto;
-  max-width: 800px;
-  overflow: hidden;
-  padding: clamp(1rem, 3vw, 3rem);
-  position: relative;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  max-width: 900px; /* Reducir la anchura máxima para una mejor experiencia visual */
+  margin: 2rem auto;
+  padding: 2.5rem; /* Aumentar el padding para un mejor espaciado interno */
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Suavizar la sombra */
 }
 
-#modify-form::before {
-  background: linear-gradient(135deg, var(--primary-color), #f95d5d);
-  content: '';
-  height: 4px;
-  left: 0;
-  position: absolute;
-  top: 0;
+/* Introduction Section */
+#introduction {
+  margin-bottom: 2rem;
+}
+
+#introduction p {
+  color: #333;
+  line-height: 1.8; /* Aumentar el interlineado para mayor legibilidad */
+  text-align: center;
+}
+
+/* Headings */
+h2 {
+  color: #0056a3;
+  font-size: 2rem; /* Aumentar el tamaño de la fuente para un mejor impacto */
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  color: #2a333a;
+  margin: 10px 0; /* Ajustar el margen para un mejor espaciado */
+  text-align: left;
+  font-size: 1.6rem; /* Aumentar el tamaño de la fuente para un mejor impacto */
+}
+
+
+/* Form Container */
+.form-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Headings */
+h2 {
+  color: #0056a3;
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  color: #2a333a;
+  margin: 8px 0;
+  text-align: left;
+  font-size: 1.5rem;
+}
+
+/* Form Elements */
+#database-modify-form {
   width: 100%;
 }
 
-.form-container {
-  background-color: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-  margin: 2rem auto;
-  max-width: 800px;
-  padding: clamp(1rem, 3vw, 3rem);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-/* Typography
--------------------------------------------------- */
-#modify-form p {
-  color: var(--text-color);
-  font-size: clamp(0.875rem, 2vw, 1.25rem);
-  letter-spacing: -0.01em;
-  line-height: 1.8;
-  margin: 0 auto;
-  max-width: 800px;
-  text-align: center;
-}
-
-#modify-form h2 {
-  color: var(--primary-color);
-  font-size: clamp(1.75rem, 3vw, 2rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  margin: 2rem 0 1rem;
-  text-align: center;
-  position: relative;
-  padding-bottom: 1rem;
-}
-
-#modify-form h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background-color: var(--secondary-color);
-  border-radius: 2px;
-}
-
-h3 {
-  color: var(--text-color);
-  font-size: clamp(1.2rem, 2vw, 1.75rem);
-  font-weight: 700;
-  margin: 1rem 0;
-  text-align: left;
-}
-
-/* Form Elements & Layout
--------------------------------------------------- */
-#database-modify-form {
-  display: grid;
-  gap: 1.5rem;
-  margin: 0 auto;
-  max-width: 800px;
-}
-
-label {
-  display: block;
-  font-size: clamp(0.8125rem, 2vw, 0.875rem);
-  font-weight: 600;
-  color: var(--text-color);
-  margin-bottom: 0.5rem;
-  line-height: 1.4;
-  letter-spacing: 0.5px;
-  transition: color 0.3s ease;
-}
-
-label:hover {
-  color: var(--primary-color);
-}
-
-/* Input Styles */
+/* Input Fields */
 input[type="text"],
 input[type="email"],
-input[type="number"],
-select,
 textarea {
-    width: 100%;
-    padding: clamp(0.625rem, 1.5vw, 0.75rem);
-    border: 1px solid rgba(20, 33, 53, 0.3); /* Usando un color de borde con opacidad */
-    border-radius: var(--border-radius);
-    background-color: var(--content-background); /* Usar el fondo blanco definido */
-    color: var(--text-color);
-    font-size: clamp(0.875rem, 1.5vw, 1rem);
-    margin-bottom: clamp(1rem, 2vw, 1.5rem);
-    transition: all var(--transition-speed) ease; /* Usando la variable de transición definida */
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Color de sombra más sutil */
-    min-height: 44px; /* Mejora los objetivos táctiles */
-    font-size: 16px; /* Previene el zoom en iOS */
+  width: 100%;
+  padding: 12px 16px;
+  margin: 8px 0 20px;
+  border: 2px solid #f0f4f8;
+  border-radius: 8px;
+  background: #ffffff;
+  transition: all 0.3s ease;
+  font-size: 1rem;
 }
 
-/* Hover States */
-input[type="text"]:hover,
-input[type="email"]:hover,
-input[type="number"]:hover,
-select:hover,
-textarea:hover {
-    border-color: var(--primary-color);
-    background-color: var(--background-color); /* Usar gris claro para el fondo al pasar el mouse */
-}
-
-/* Focus States */
 input[type="text"]:focus,
 input[type="email"]:focus,
-input[type="number"]:focus,
-select:focus,
 textarea:focus {
-    outline: none;
-    border-color: var(--accent-color); /* Usar el color de acento en lugar de un color de enfoque */
-    box-shadow: 0 0 0 3px rgba(0, 86, 163, 0.3); /* Sombra de enfoque más sutil */
-    background-color: #ffffff; /* Fondo blanco al enfocar */
+  border-color: #0056a3;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 86, 163, 0.1);
 }
 
-/* Optimize hover for non-touch devices */
-@media (hover: hover) {
-    input[type="text"]:hover,
-    input[type="email"]:hover,
-    select:hover,
-    textarea:hover {
-        border-color: var(--primary-color);
-        background-color: var(--background-color); /* Usar gris claro para el fondo al pasar el mouse */
-    }
+/* Labels */
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #142135;
+  font-weight: 500;
 }
 
-
-textarea {
-  min-height: clamp(80px, 20vw, 100px);
-  resize: vertical;
-}
-
-/* Note Box Styles
--------------------------------------------------- */
+/* Note Sections */
 .note {
-  background: linear-gradient(
-    45deg,
-    rgba(238, 77, 77, 0.03),
-    rgba(255, 196, 77, 0.03)
-  );
-  border-left: 4px solid var(--primary-color);
-  border-radius: 0 12px 12px 0;
-  color: var(--text-color);
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin: 1rem 0;
+  background: #f8f9fa;
   padding: 1.5rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+  font-size: 0.95rem;
+  border-left: 4px solid #ffc44d;
 }
 
-/* List Styles
--------------------------------------------------- */
-h3 {
-  font-size: 1.2rem;
+.note small {
+  display: block;
+  margin-bottom: 1rem;
+  line-height: 1.5;
 }
 
 .note ul {
-  list-style-type: disc;
   margin: 1rem 0;
   padding-left: 1.5rem;
 }
 
 .note li {
-  margin-bottom: 0.75rem;
-  padding-left: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.note li:last-child {
-  margin-bottom: 0;
-}
-
-.note small {
-  display: block;
-  font-size: 0.85rem;
-  margin-bottom: 1rem;
-}
-
-.note small:last-child {
-  margin-bottom: 0;
-}
-
-/* Text Emphasis
--------------------------------------------------- */
-.note strong {
-  color: var(--primary-color);
+/* Links */
+.note a {
+  color: #ee4d4d;
+  text-decoration: none;
   font-weight: 600;
+  transition: color 0.3s ease;
 }
 
-/* Spacing Adjustments
--------------------------------------------------- */
-h3 + .note {
-  margin-top: 0.2rem;
-}
-
-.note > *:first-child {
-  margin-top: 0;
-}
-
-.note > *:last-child {
-  margin-bottom: 0;
+.note a:hover {
+  color: #ff6b6b;
+  text-decoration: underline;
 }
 
 /* Checkbox Container */
 .checkbox-container {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.5rem 0;
+  margin: 1.5rem 0;
+  gap: 0.5rem;
 }
 
 .checkbox-container input[type="checkbox"] {
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--primary-color);
-  border-radius: 6px;
+  width: 18px;
+  height: 18px;
   cursor: pointer;
-  position: relative;
-  transition: all 0.2s ease;
-}
-
-.checkbox-container input[type="checkbox"]:checked {
-  background-color: var(--primary-color);
-}
-
-.checkbox-container input[type="checkbox"]:checked::before {
-  content: '✓';
-  position: absolute;
-  color: white;
-  font-size: 14px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: 0;
 }
 
 .checkbox-container label {
   margin: 0;
-  cursor: pointer;
-  user-select: none;
+  line-height: 1;
 }
 
-/* Submit Button
--------------------------------------------------- */
+/* Submit Button */
 input[type="submit"] {
-  display: block;
-  background: linear-gradient(135deg, var(--primary-color), #f95d5d);
+  background: linear-gradient(135deg, #ee4d4d 0%, #ff6b6b 100%);
   color: white;
-  padding: 1rem 2rem;
+  padding: 16px 32px;
   border: none;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 1.1rem;
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  font-weight: 600;
   width: 100%;
-  max-width: 300px;
-  margin: 2rem auto 0;
+  transition: all 0.3s ease;
+  margin-top: 1.5rem;
 }
 
-/* Media Queries
--------------------------------------------------- */
+input[type="submit"]:hover {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee4d4d 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(238, 77, 77, 0.2);
+}
+
+/* Error States */
+input:invalid,
+textarea:invalid {
+  border-color: #ee4d4d;
+}
+
+.error-message {
+  color: #ee4d4d;
+  font-size: 0.9rem;
+  margin-top: -15px;
+  margin-bottom: 15px;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  #modify-form,
+  #modify-form {
+      margin: 1rem;
+      padding: 1rem;
+  }
+
   .form-container {
-    margin: 1rem;
-    padding: 2rem var(--container-padding);
+      padding: 1rem;
   }
 
-  #modify-form h2 {
-    font-size: 1.75rem;
-  }
-
-  input[type="text"],
-  input[type="email"],
-  input[type="number"],
-  select,
-  textarea {
-    padding: 0.875rem 1rem;
-  }
-
-  h3 {
-    font-size: 1.5rem;
-    margin: 0.75rem 0;
-  }
-
-  .note {
-    padding: 1.25rem;
-  }
-}
-
-@media (max-width: 480px) {
-  #modify-form,
-  .form-container {
-    margin: 0.5rem;
-    padding: 1.5rem 1rem;
-  }
-
-  #modify-form h2 {
-    font-size: 1.5rem;
-    margin: 1.5rem 0;
+  h2 {
+      font-size: 1.5rem;
   }
 
   input[type="submit"] {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-  }
-
-  .note {
-    padding: 1rem;
-  }
-
-  input[type="text"],
-  input[type="email"],
-  input[type="number"],
-  select,
-  textarea {
-    font-size: 0.875rem;
-    padding: 0.75rem;
+      padding: 14px 28px;
   }
 }
 
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#modify-form {
+  animation: fadeIn 0.8s ease-out;
+}
 
 
 
