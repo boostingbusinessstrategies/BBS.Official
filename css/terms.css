@@ -1,42 +1,39 @@
-/* Importación de fuentes */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
 /* Variables globales */
 :root {
-    --primary-color: #ee4d4d;
-    --secondary-color: #ffc44d;
-    --background-color: #f0f4f8;
-    --text-color: #333333;
+    --primary-color: #ee4d4d; /* Rojo vibrante */
+    --secondary-color: #ffc44d; /* Amarillo energético */
+    --background-color: #f0f4f8; /* Gris claro para el fondo */
+    --text-color: #333333; /* Gris oscuro para el texto */
+    --border-radius: 8px; /* Bordes redondeados */
+    --transition-speed: 0.3s; /* Velocidad de transición */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Color de sombra */
+    --accent-color: #0056a3; /* Azul profundo para acentos */
+    --content-background: #ffffff; /* Fondo blanco para el contenido */
     --header-gradient: linear-gradient(135deg, #ee4d4d, #ffc44d);
-    --border-radius: 8px;
-    --transition-speed: 0.3s;
-    --shadow-color: rgba(0, 0, 0, 0.1);
-    --accent-color: #0056a3;
-    --content-background: #ffffff;
     
     /* Sidebar */
-    --sidebar-width: 280px;
-    --sidebar-bg: rgba(20, 33, 53, 0.8); /* Fondo oscuro y transparente para barra lateral */
-    --sidebar-text: #ffffff; /* Texto blanco en sidebar para contraste */
-    --sidebar-hover: #ee4d4d; /* Hover en rojo para transmitir urgencia y confianza en la navegación */
+    --sidebar-width: 280px; /* Ancho de la barra lateral */
+    --sidebar-bg: rgba(20, 33, 53, 0.8); /* Fondo oscuro y transparente para la barra lateral */
+    --sidebar-text: #ffffff; /* Texto blanco en la barra lateral */
+    --sidebar-hover: #ee4d4d; /* Color de hover en la barra lateral */
     --sidebar-border: rgba(255, 196, 77, 0.3); /* Borde amarillo para resaltar secciones importantes */
   
     /* Toggle Menu */
     --toggle-bg: rgba(31, 41, 55, 0.9); /* Fondo oscuro semitransparente en menú toggle */
-    --toggle-color: #ffc44d; /* Íconos o texto del toggle en amarillo para capturar atención */
+    --toggle-color: #ffc44d; /* Color de los íconos en el toggle */
     
     /* Container */
     --container-padding: 20px; /* Espaciado interno para mantener claridad y orden */
     
     /* Footer */
-    --footer-bg: rgb(20, 33, 53); /* Fondo azul oscuro casi negro en footer para elegancia y un cierre visual sólido */
-    --footer-text: #ffffff; /* Texto blanco en el footer para garantizar legibilidad y contraste */
-    --footer-link-hover: #ffc44d; /* Hover en amarillo para los enlaces del footer, captando atención de manera sutil */
+    --footer-bg: rgb(20, 33, 53); /* Fondo azul oscuro en el footer */
+    --footer-text: #ffffff; /* Texto blanco en el footer */
+    --footer-link-hover: #ffc44d; /* Color de hover en los enlaces del footer */
+    --footer-gradient: linear-gradient(135deg, #ee4d4d, #ffc44d);
     
     /* Transición suave */
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 
 /* Base styles and reset */
 *, *::before, *::after {
@@ -45,142 +42,348 @@
     padding: 0;
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    line-height: 1.6;
+/* Reset y estilos base */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
+html, body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Actualizada a la fuente deseada */
+    font-size: 16px; /* Tamaño de fuente */
+    background-color: var(--background-color); /* Usa la variable para el color de fondo */
+    color: var(--text-color); /* Usa la variable para el color del texto */
+    line-height: 1.6; /* Opcional: para mejorar la legibilidad */
+    margin: 0; /* Asegura que no haya márgenes por defecto */
+    padding: 0; /* Asegura que no haya padding por defecto */
+}
+
 
 p {
-    margin-bottom: 1.5rem; /* Reducido desde 2.5rem a 1.5rem */
-    font-size: 1.2rem;
-    line-height: 1.6; /* Reducido desde 1.8 a 1.6 */
+    margin-bottom: 1.5rem; /* Margen inferior para párrafos */
+    font-size: 1rem; /* Tamaño de fuente */
+    line-height: 1.6; /* Altura de línea */
 }
 
 
-
-
-
-
-
-
-#content {
-    padding-top: 60px;
-    animation: fadeInUp 0.8s ease-out;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: var(--container-padding);
-}
-
-.policy-menu {
-    list-style: none;
-    padding: 20px;
-    background-color: var(--policy-menu-background);
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 15px var(--shadow-color);
-    margin-bottom: 40px;
+/* Header */
+header {
+    background: #ffffff;
+    color: #333333;
+    text-align: left;
+    padding: 1.5rem 2rem;
+    position: relative;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding-bottom: 1rem;
+    transition: background 0.3s ease;
 }
+
+header:hover {
+    background: #f9f9f9; /* Cambio suave de fondo al pasar el mouse */
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #ee4d4d, #ffc44d);
+}
+
+header h1 {
+    font-size: 2.2em;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+    margin-left: 80px;
+}
+
+header h1:hover {
+    color: #ee4d4d;
+}
+
+header img {
+    height: 70px;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+header img:hover {
+    transform: scale(1.1);
+}
+
+/* Estilo para dispositivos móviles */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        height: auto;
+    }
+
+    header h1 {
+        font-size: 3em;
+        margin: 0;
+        text-align: center;
+        margin-top: 60px;
+    }
+    
+    header img {
+        height: 80px;
+        margin-top: 30px;
+        align-self: center;
+    }
+}
+
+/* Animación del encabezado */
+header {
+    animation: slideInFromTop 1.3s ease-out forwards;
+}
+
+/* Estilo para la animación del encabezado */
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Base gradient suave */
+body {
+    background: linear-gradient(135deg, #e1f5fe 0%, #ffffff 100%);
+    
+    /* Patrón de ondas y efectos usando múltiples gradientes */
+    background-image: 
+        radial-gradient(circle at 90% 10%, 
+            rgba(33, 150, 243, 0.1) 0%,  
+            transparent 70%),
+        radial-gradient(circle at 10% 50%, 
+            rgba(76, 175, 80, 0.1) 0%,  
+            transparent 60%),
+        radial-gradient(circle at 50% 90%, 
+            rgba(255, 204, 128, 0.1) 0%,  
+            transparent 65%),
+        linear-gradient(135deg, 
+            rgba(20, 33, 53, 0.05) 25%,  
+            transparent 25%,
+            transparent 50%, 
+            rgba(20, 33, 53, 0.05) 50%, 
+            rgba(20, 33, 53, 0.05) 75%,
+            transparent 75%,
+            transparent),
+        radial-gradient(circle at 50% 0%, 
+            rgba(255, 255, 255, 0.6) 0%,  
+            transparent 60%),
+        linear-gradient(135deg, 
+            #b3e5fc 0%, 
+            #ffffff 50%,
+            #b3e5fc 100%);
+    
+    background-size: 
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        40px 40px, 
+        100% 100%,
+        100% 100%;
+    
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    animation: backgroundShift 30s ease-in-out infinite alternate; 
+}
+
+@keyframes backgroundShift {
+    0% {
+        background-position: 
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%;
+    }
+    100% {
+        background-position: 
+            100% 100%,
+            -20% 100%,
+            100% -20%,
+            40px 40px,
+            0% 0%,
+            0% 0%;
+    }
+}
+
+
+
+/* Menu Container */
+.policy-menu {
+    list-style-type: none;
+    padding: 0;
+    max-width: 900px;
+    margin: 40px auto; /* Agrega margen arriba y abajo */
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    animation: fadeIn 0.8s ease-out 0.2s backwards;
+}
+
 
 .policy-menu li {
-    margin: 10px;
+    margin: 15px 0;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    animation: slideIn 0.5s ease-out backwards;
+    background-color: #f0f4f8;
+    cursor: pointer;
+}
+
+.policy-menu li:hover {
+    background: #f8f9fa;
+    transform: translateX(10px);
 }
 
 .policy-menu a {
     text-decoration: none;
-    color: var(--primary-color);
+    color: #0056a3;
     font-weight: 600;
-    transition: color var(--transition-speed), transform var(--transition-speed);
-    padding: var(--menu-item-padding);
+    font-size: 1.1rem;
     display: block;
-    border-radius: var(--border-radius);
-    box-shadow: 0 2px 5px var(--shadow-color);
+    transition: all 0.3s ease;
+    padding: 5px 0;
 }
 
 .policy-menu a:hover {
-    color: var(--secondary-color);
-    transform: translateY(-3px);
+    color: #ee4d4d;
+    transform: translateX(5px);
 }
 
+/* Accordion Style */
+.policy-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    background-color: #ffffff;
+    padding: 0 20px;
+    margin: 10px 0;
+    border-left: 4px solid #ee4d4d;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
+}
 
+.policy-content.expanded {
+    max-height: none; /* Se ajusta dinámicamente al contenido */
+    transition: max-height 0.6s ease-in;
+}
+
+.policy-content p {
+    margin: 15px 0;
+}
+
+/* Headings Styling */
 h2 {
-    margin-top: var(--spacing-large);
-    margin-bottom: var(--spacing-medium);
-    color: #444444;
-    font-size: 2.2em;
+    color: #0056a3;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 15px;
+    animation: fadeIn 0.8s ease-out;
 }
 
-h2:first-child {
-    margin-top: 0;
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(135deg, #0056a3 0%, #ee4d4d 100%);
+    border-radius: 2px;
 }
 
 h3 {
-    margin-top: var(--spacing-large);
-    margin-bottom: var(--spacing-small);
-    color: #444444;
-    font-size: 1.8em;
+    color: #2a333a;
+    font-size: 1.8rem;
+    margin: 2rem 0 1rem;
+    padding-left: 15px;
+    border-left: 4px solid #ee4d4d;
+    animation: slideIn 0.6s ease-out;
 }
 
-h2 + h3 {
-    margin-top: var(--spacing-medium);
+/* Animations */
+@keyframes fadeIn {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-p + h2 {
-    margin-top: var(--spacing-large);
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
-p + h3 {
-    margin-top: var(--spacing-large);
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-p:last-child {
-    margin-bottom: 0;
+/* Responsive Design */
+@media (max-width: 768px) {
+    .policy-menu {
+        margin: 0 1rem;
+        padding: 1.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    .policy-menu li {
+        padding: 8px 15px;
+    }
+
+    .policy-menu a {
+        font-size: 1rem;
+    }
 }
 
-p:has(+ h3) {
-    margin-bottom: var(--spacing-medium);
-}
 
-/* Header Section */
-header.hero-section, header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 120px 20px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: #ffffff;
-    border-radius: var(--border-radius);
-    transition: background var(--transition-speed);
-    box-shadow: 0 4px 20px var(--shadow-color);
-    animation: fadeInUp 0.5s ease;
-}
-
-header h1 {
-    font-size: 3.5em;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.container section {
-    background: #ffffff;
-    border-radius: var(--border-radius);
-    padding: 40px;
-    margin-bottom: 40px;
-    box-shadow: 0 4px 15px var(--shadow-color);
-    transition: transform var(--transition-speed);
-}
-
-.container section:hover {
-    transform: translateY(-5px);
-}
 
 
 
@@ -194,6 +397,8 @@ header h1 {
     padding: 4rem 0 2rem;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.2); /* Añadir sombra sutil en la parte superior */
+    z-index: 1; /* Asegúrate de que esté por encima de otros elementos */
 }
 
 #footer-container::before {
@@ -203,7 +408,8 @@ header h1 {
     left: 0;
     right: 0;
     height: 4px;
-    background: var(--header-gradient);
+    background: var(--footer-gradient); /* Color de fondo temporal (cambiar a var(--header-gradient) una vez que verifiques) */
+    z-index: 2; /* Asegurarse de que la barra esté por encima del contenedor del footer */
 }
 
 .footer-content {
@@ -223,7 +429,7 @@ header h1 {
 }
 
 .footer-section h3 {
-    font-size: 1.4rem;
+    font-size: 1.5rem; /* Aumentar el tamaño del título para mejor legibilidad */
     margin-bottom: 1.5rem;
     color: var(--secondary-color);
     position: relative;
@@ -258,6 +464,7 @@ header h1 {
     word-wrap: break-word; /* Para emails largos */
     overflow-wrap: break-word; /* Ajusta el texto largo */
     text-align: left; /* Alineación a la izquierda */
+    padding: 0.25rem 0; /* Espaciado vertical adicional para enlaces */
 }
 
 .footer-section a:hover {
@@ -339,7 +546,6 @@ header h1 {
 
 
 
-
 #sidebar {
     width: var(--sidebar-width);
     height: 100vh;
@@ -356,11 +562,13 @@ header h1 {
     border-right: 1px solid var(--sidebar-border);
     transition: left 0.5s ease, opacity 0.5s ease;
     opacity: 0;
+    /* Asegúrate de que la opacidad inicial sea 0 */
 }
 
 #sidebar.active {
     left: 0;
     opacity: 1;
+    animation: slideIn 0.5s forwards, fadeIn 0.5s forwards, glow 3s infinite; /* Agregar animación */
 }
 
 #menu-toggle {
@@ -401,14 +609,6 @@ header h1 {
 
 #menu-toggle.active i {
     transform: rotate(360deg);
-}
-
-#menu-toggle i {
-    animation: rotateWheel 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-}
-
-#menu-toggle.active i {
-    animation: rotateWheel 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) reverse;
 }
 
 #sidebar .sidebar-header {
@@ -517,6 +717,7 @@ header h1 {
     100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.3); }
 }
 
+/* Animate the glow effect */
 #sidebar.active {
     animation: slideIn 0.5s forwards, fadeIn 0.5s forwards, glow 3s infinite;
 }
