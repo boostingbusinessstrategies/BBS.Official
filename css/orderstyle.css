@@ -9,10 +9,12 @@
     --shadow-color: rgba(0, 0, 0, 0.1); /* Color de sombra */
     --accent-color: #0056a3; /* Azul profundo para acentos */
     --content-background: #ffffff; /* Fondo blanco para el contenido */
+    --header-gradient: linear-gradient(135deg, #ee4d4d, #ffc44d);
     --border-color: #d1d5db;
     --focus-ring: rgba(20, 33, 53, 0.8);
     --input-background: #f9fafb;
-    
+
+
     /* Sidebar */
     --sidebar-width: 280px; /* Ancho de la barra lateral */
     --sidebar-bg: rgba(20, 33, 53, 0.8); /* Fondo oscuro y transparente para la barra lateral */
@@ -44,495 +46,285 @@ p {
     font-size: 1rem; /* Tamaño de fuente */
     line-height: 1.6; /* Altura de línea */
 }
+  
+  
 
-
-
-
-
-/* Reset & Base Styles */
-*, *::before, *::after {
-    box-sizing: border-box;
+/* Reset and Base Styles */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    font-size: 16px;
-    color: var(--text-color);
+    background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%);
+    color: #333333;
     line-height: 1.6;
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background-color: var(--background-color);
 }
 
-
-/* Layout */
+/* Modern Container Styling */
 #content {
-    position: relative;
-    min-height: 100vh;
-    padding: clamp(2rem, 6vw, 4rem);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
-/* Typography */
-h1 {
-    color: white;
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 800;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-h2 {
-    color: var(--primary-color);
-    margin-bottom: 2rem;
-    font-size: clamp(1.25rem, 3vw, 1.75rem);
-    font-weight: 700;
-    position: relative;
-    padding-bottom: 0.5rem;
-}
-
-h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 60px;
-    height: 3px;
-    background: var(--primary-color);
-    border-radius: 2px;
-}
-
-
-/* Logo */
+/* Logo Container */
 .logo-container {
-    margin: 1rem 0;
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
 }
 
 .bbs-logo {
-    width: clamp(100px, 30vw, 150px);
+    max-width: 200px;
     height: auto;
-    filter: drop-shadow(var(--shadow-sm));
-    transition: transform var(--transition-speed);
+    transition: transform 0.3s ease;
 }
 
 .bbs-logo:hover {
     transform: scale(1.05);
 }
 
-/* Background */
-#order-background {
-    background-image: url('https://imgur.com/mbZluQ3.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    filter: blur(6px) brightness(0.66);
-    z-index: -1;
-    transform: scale(1.1);
+/* Headings */
+h1, h2 {
+    color: #142135;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #142135, #0056a3);
+    background-clip: text; /* Para navegadores que soporten esta propiedad */
+    -webkit-background-clip: text; /* Para navegadores basados en WebKit */
+    -webkit-text-fill-color: transparent; /* Para Safari y Chrome */
+    margin-bottom: 2rem;
 }
 
 
-/* Enhanced Form Container */
-#order-form {
-    background-color: #ffffff;
-    border-radius: clamp(8px, 2vw, 16px);
-    padding: clamp(1rem, 5vw, 3rem);
-    width: min(100%, 800px);
+
+h2 {
+    font-size: 1.8rem;
+    color: #0056a3;
+}
+
+/* Form Styling */
+#database-form {
+    max-width: 800px;
     margin: 0 auto;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-/* Form Controls */
-.form-group {
-    margin-bottom: clamp(1rem, 3vw, 1.5rem);
-}
-
-/* Label Styles */
-label {
-    font-size: clamp(0.875rem, 1.5vw, 0.925rem);
-    font-weight: 600;
-    color: var(--text-color);
-    margin-bottom: 0.5rem; /* Este margen se puede ajustar o eliminar */
-}
-
-/* Input Styles */
+/* Input Fields */
 input[type="text"],
 input[type="email"],
-input[type="number"],
 select,
 textarea {
     width: 100%;
-    padding: clamp(0.625rem, 1.5vw, 0.75rem);
-    border: 1px solid rgba(20, 33, 53, 0.3); /* Usando un color de borde con opacidad */
-    border-radius: var(--border-radius);
-    background-color: var(--content-background); /* Usar el fondo blanco definido */
-    color: var(--text-color);
-    font-size: clamp(0.875rem, 1.5vw, 1rem);
-    margin-bottom: clamp(1rem, 2vw, 1.5rem);
-    transition: all var(--transition-speed) ease; /* Usando la variable de transición definida */
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Color de sombra más sutil */
-    min-height: 44px; /* Mejora los objetivos táctiles */
-    font-size: 16px; /* Previene el zoom en iOS */
+    padding: 12px 16px;
+    margin: 8px 0 20px;
+    border: 2px solid #f0f4f8;
+    border-radius: 8px;
+    background: #ffffff;
+    transition: all 0.3s ease;
+    font-size: 1rem;
 }
 
-/* Hover States */
-input[type="text"]:hover,
-input[type="email"]:hover,
-input[type="number"]:hover,
-select:hover,
-textarea:hover {
-    border-color: var(--primary-color);
-    background-color: var(--background-color); /* Usar gris claro para el fondo al pasar el mouse */
-}
-
-/* Focus States */
 input[type="text"]:focus,
 input[type="email"]:focus,
-input[type="number"]:focus,
 select:focus,
 textarea:focus {
+    border-color: #0056a3;
     outline: none;
-    border-color: var(--accent-color); /* Usar el color de acento en lugar de un color de enfoque */
-    box-shadow: 0 0 0 3px rgba(0, 86, 163, 0.3); /* Sombra de enfoque más sutil */
-    background-color: #ffffff; /* Fondo blanco al enfocar */
+    box-shadow: 0 0 0 3px rgba(0, 86, 163, 0.1);
 }
 
-/* Optimize hover for non-touch devices */
-@media (hover: hover) {
-    input[type="text"]:hover,
-    input[type="email"]:hover,
-    select:hover,
-    textarea:hover {
-        border-color: var(--primary-color);
-        background-color: var(--background-color); /* Usar gris claro para el fondo al pasar el mouse */
-    }
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #142135;
+    font-weight: 500;
+    margin-top: 0; /* Asegúrate de que no haya margen superior aquí */
 }
 
-/* Textarea Styles */
-textarea {
-    min-height: clamp(80px, 15vh, 120px);
-    resize: vertical;
-    /* Prevent iOS zoom */
-    font-size: 10px;
-}
-
-/* Select Styles */
+/* Select Styling */
 select {
     appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23142135' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right 1rem center;
     background-size: 1em;
-    padding-right: 2.5rem;
 }
 
-
-
-/* Estilos generales */
-.radio-options, .checkbox-container {
+/* Para los radio buttons */
+.radio-item {
     display: flex;
-    flex-direction: column; /* Organizar los elementos verticalmente */
-    gap: 0.5rem; /* Espaciado entre opciones */
-    padding: 1rem; /* Espaciado interno */
-    background-color: var(--input-background);
-    border-radius: var(--border-radius);
-    border: 1px solid var(--border-color);
+    align-items: center;
+    margin: 10px 0;
+    padding: 2px 0;
 }
 
-.radio-options .radio-item, .checkbox-container .checkbox-item {
-    display: flex;
-    align-items: center; /* Centrar verticalmente el texto con el radio/checkbox */
-}
-
-/* Estilos para Radio Buttons */
-.radio-options input[type="radio"] {
-    appearance: none;
-    -webkit-appearance: none;
-    width: 24px; /* Ancho del radio */
-    height: 24px; /* Alto del radio */
-    border: 2px solid var(--primary-color);
-    border-radius: 50%; /* Hacerlo circular */
+.radio-item input[type="radio"] {
+    margin-right: 10px;
     cursor: pointer;
-    position: relative;
-    margin-right: 0.5rem; /* Espacio entre el radio y el texto */
-    background-color: white;
-    transition: background-color 0.3s, border-color 0.3s;
 }
 
-.radio-options input[type="radio"]:checked {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
+.radio-item label {
+    margin: 0; /* Elimina cualquier margen del label */
+    line-height: 1; /* Ajusta la altura de línea */
 }
 
-.radio-options input[type="radio"]:checked::before {
-    content: '';
-    position: absolute;
-    width: 12px; /* Ancho del círculo interior */
-    height: 12px; /* Alto del círculo interior */
-    border-radius: 50%;
-    background-color: white;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+/* Para el checkbox */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0;
+    gap: 0.5rem;
 }
 
-/* Estilos para Checkboxes */
 .checkbox-container input[type="checkbox"] {
-    appearance: none;
-    -webkit-appearance: none;
-    width: 24px; /* Ancho del checkbox */
-    height: 24px; /* Alto del checkbox */
-    border: 2px solid var(--primary-color);
-    border-radius: 4px;
+    width: 18px;
+    height: 18px;
     cursor: pointer;
-    position: relative;
-    margin-right: 0.5rem; /* Espacio entre el checkbox y el texto */
-    background-color: white;
-    transition: background-color 0.3s, border-color 0.3s;
+    margin: 0; /* Asegura que no haya márgenes adicionales */
 }
 
-.checkbox-container input[type="checkbox"]:checked {
-    background-color: var(--primary-color);
+.checkbox-container label {
+    margin: 0; /* Elimina cualquier margen del label */
+    line-height: 1; /* Ajusta la altura de línea */
 }
-
-.checkbox-container input[type="checkbox"]:checked::before {
-    content: '✓';
-    position: absolute;
-    color: white;
-    font-size: 16px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    line-height: 1;
-}
-
-/* Estilos para las etiquetas */
-.radio-options label, .checkbox-container label {
-    cursor: pointer;
-    font-size: 16px;
-    color: var(--text-color);
-    transition: color 0.3s;
-}
-
-.radio-options label:hover, .checkbox-container label:hover {
-    color: var(--primary-color);
-}
-
-/* Media Queries para pantallas pequeñas */
-@media (max-width: 600px) {
-    .radio-options input[type="radio"], .checkbox-container input[type="checkbox"] {
-        width: 20px; /* Ajustar ancho del radio/checkbox */
-        height: 20px; /* Ajustar alto del radio/checkbox */
-    }
-
-    .radio-options label, .checkbox-container label {
-        font-size: 14px; /* Ajustar tamaño del texto */
-    }
-}
-
-
 
 
 
 /* Submit Button */
 input[type="submit"] {
-    display: block;
-    background: linear-gradient(135deg, var(--primary-color), #f95d5d);
+    background: linear-gradient(135deg, #ee4d4d 0%, #ff6b6b 100%);
     color: white;
-    padding: clamp(0.875rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+    padding: 16px 32px;
     border: none;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: clamp(1rem, 2vw, 1.2rem);
+    border-radius: 8px;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: min(100%, 320px);
-    margin: 1.5rem auto;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(238, 77, 77, 0.2);
-    /* Improve touch target */
-    min-height: 44px;
-    /* Prevent iOS double-tap */
-    touch-action: manipulation;
+    font-size: 1.1rem;
+    font-weight: 600;
+    width: 100%;
+    transition: all 0.3s ease;
+    margin-top: 1.5rem;
 }
 
-/* Note Box Styles */
+input[type="submit"]:hover {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee4d4d 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(238, 77, 77, 0.2);
+}
+
+/* Note Section */
 .note {
-    background: linear-gradient(
-        45deg,
-        rgba(238, 77, 77, 0.03),
-        rgba(255, 196, 77, 0.03)
-    );
-    border-left: 4px solid var(--primary-color);
-    border-radius: 0 12px 12px 0;
-    color: var(--text-color);
-    font-size: clamp(0.875rem, 2vw, 0.95rem);
-    line-height: 1.6;
-    margin: clamp(0.75rem, 2vw, 1rem) 0;
-    padding: clamp(1rem, 3vw, 1.5rem);
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+    font-size: 0.95rem;
+    border-left: 4px solid #ffc44d;
 }
 
-/* Media Queries */
+.note a {
+    color: #ee4d4d;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.note a:hover {
+    color: #ff6b6b;
+    text-decoration: underline;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
     #content {
+        margin: 1rem;
         padding: 1rem;
     }
-    
-    #order-form {
-        padding: clamp(1rem, 4vw, 1.5rem);
-        margin: 0 0.5rem;
+
+    h1 {
+        font-size: 2rem;
     }
-    
-    .radio-options label {
-        flex-basis: 100%;
+
+    h2 {
+        font-size: 1.5rem;
     }
-    
-    /* Improve touch targets on mobile */
-    input[type="checkbox"],
-    input[type="radio"] {
-        transform: scale(1.1);
+
+    #database-form {
+        padding: 1rem;
     }
-    
-    /* Prevent iOS zoom */
-    input[type="text"],
-    input[type="email"],
-    textarea,
-    select {
-        font-size: 16px;
+
+    input[type="submit"] {
+        padding: 14px 28px;
     }
 }
 
-/* High DPI Screens */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .checkbox-container input[type="checkbox"] {
-        border-width: 1.5px;
-    }
+/* Loading State */
+input[type="submit"].loading {
+    background: #cccccc;
+    cursor: not-allowed;
+    position: relative;
 }
 
-/* Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation: none !important;
-        transition: none !important;
-    }
+input[type="submit"].loading::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #ffffff;
+    border-top: 3px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
 }
 
-/* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-    .checkbox-container input[type="checkbox"] {
-        background-color: transparent;
-    }
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-/* Touch Device Optimizations */
-@media (pointer: coarse) {
-    input,
-    select,
-    textarea,
-    button {
-        font-size: 16px;
-        min-height: 44px;
-    }
-    
-    .checkbox-container,
-    .radio-options label {
-        min-height: 44px;
-    }
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Note Box Styles
--------------------------------------------------- */
-.note {
-    background: linear-gradient(
-      45deg,
-      rgba(238, 77, 77, 0.03),
-      rgba(255, 196, 77, 0.03)
-    );
-    border-left: 4px solid var(--primary-color);
-    border-radius: 0 12px 12px 0;
-    color: var(--text-color);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin: 1rem 0;
-    padding: 1.5rem;
-  }
-  
-  /* List Styles
-  -------------------------------------------------- */
-h3 {
-    font-size: 1.2rem;
+#content {
+    animation: fadeIn 0.8s ease-out;
 }
 
-  .note ul {
-    list-style-type: disc;
-    margin: 1rem 0;
-    padding-left: 1.5rem;
-  }
-  
-  .note li {
-    margin-bottom: 0.75rem;
-    padding-left: 0.5rem;
-  }
-  
-  .note li:last-child {
-    margin-bottom: 0;
-  }
-  
-  .note small {
-    display: block;
-    font-size: 0.85rem;
-    margin-bottom: 1rem;
-  }
-  
-  .note small:last-child {
-    margin-bottom: 0;
-  }
+/* Focus States for Accessibility */
+:focus {
+    outline: 3px solid rgba(0, 86, 163, 0.5);
+    outline-offset: 2px;
+}
 
-  /* Text Emphasis
-  -------------------------------------------------- */
-  .note strong {
-    color: var(--primary-color);
-    font-weight: 600;
-  }
-  
-  /* Spacing Adjustments
-  -------------------------------------------------- */
-  h3 + .note {
-    margin-top: 0.2rem;
-  }
-  
-  .note > *:first-child {
-    margin-top: 0;
-  }
-  
-  .note > *:last-child {
-    margin-bottom: 0;
-  }
-  
+/* Error States */
+input:invalid,
+select:invalid,
+textarea:invalid {
+    border-color: #ee4d4d;
+}
 
-
-
-
-
-
-
-
-
+.error-message {
+    color: #ee4d4d;
+    font-size: 0.9rem;
+    margin-top: -15px;
+    margin-bottom: 15px;
+}
 
 
 
