@@ -1,42 +1,39 @@
-/* Importación de fuentes */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
 /* Variables globales */
 :root {
-    --primary-color: #ee4d4d;
-    --secondary-color: #ffc44d;
-    --background-color: #f0f4f8;
-    --text-color: #333333;
+    --primary-color: #ee4d4d; /* Rojo vibrante */
+    --secondary-color: #ffc44d; /* Amarillo energético */
+    --background-color: #f0f4f8; /* Gris claro para el fondo */
+    --text-color: #333333; /* Gris oscuro para el texto */
+    --border-radius: 8px; /* Bordes redondeados */
+    --transition-speed: 0.3s; /* Velocidad de transición */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Color de sombra */
+    --accent-color: #0056a3; /* Azul profundo para acentos */
+    --content-background: #ffffff; /* Fondo blanco para el contenido */
     --header-gradient: linear-gradient(135deg, #ee4d4d, #ffc44d);
-    --border-radius: 8px;
-    --transition-speed: 0.3s;
-    --shadow-color: rgba(0, 0, 0, 0.1);
-    --accent-color: #0056a3;
-    --content-background: #ffffff;
     
     /* Sidebar */
-    --sidebar-width: 280px;
-    --sidebar-bg: rgba(20, 33, 53, 0.8); /* Fondo oscuro y transparente para barra lateral */
-    --sidebar-text: #ffffff; /* Texto blanco en sidebar para contraste */
-    --sidebar-hover: #ee4d4d; /* Hover en rojo para transmitir urgencia y confianza en la navegación */
+    --sidebar-width: 280px; /* Ancho de la barra lateral */
+    --sidebar-bg: rgba(20, 33, 53, 0.8); /* Fondo oscuro y transparente para la barra lateral */
+    --sidebar-text: #ffffff; /* Texto blanco en la barra lateral */
+    --sidebar-hover: #ee4d4d; /* Color de hover en la barra lateral */
     --sidebar-border: rgba(255, 196, 77, 0.3); /* Borde amarillo para resaltar secciones importantes */
   
     /* Toggle Menu */
     --toggle-bg: rgba(31, 41, 55, 0.9); /* Fondo oscuro semitransparente en menú toggle */
-    --toggle-color: #ffc44d; /* Íconos o texto del toggle en amarillo para capturar atención */
+    --toggle-color: #ffc44d; /* Color de los íconos en el toggle */
     
     /* Container */
     --container-padding: 20px; /* Espaciado interno para mantener claridad y orden */
     
     /* Footer */
-    --footer-bg: rgb(20, 33, 53); /* Fondo azul oscuro casi negro en footer para elegancia y un cierre visual sólido */
-    --footer-text: #ffffff; /* Texto blanco en el footer para garantizar legibilidad y contraste */
-    --footer-link-hover: #ffc44d; /* Hover en amarillo para los enlaces del footer, captando atención de manera sutil */
+    --footer-bg: rgb(20, 33, 53); /* Fondo azul oscuro en el footer */
+    --footer-text: #ffffff; /* Texto blanco en el footer */
+    --footer-link-hover: #ffc44d; /* Color de hover en los enlaces del footer */
+    --footer-gradient: linear-gradient(135deg, #ee4d4d, #ffc44d);
     
     /* Transición suave */
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 
 /* Base styles and reset */
 *, *::before, *::after {
@@ -45,24 +42,233 @@
     padding: 0;
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    line-height: 1.6;
+/* Reset y estilos base */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
+html, body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Actualizada a la fuente deseada */
+    font-size: 16px; /* Tamaño de fuente */
+    background-color: var(--background-color); /* Usa la variable para el color de fondo */
+    color: var(--text-color); /* Usa la variable para el color del texto */
+    line-height: 1.6; /* Opcional: para mejorar la legibilidad */
+    margin: 0; /* Asegura que no haya márgenes por defecto */
+    padding: 0; /* Asegura que no haya padding por defecto */
+}
+
 
 p {
-    margin-bottom: 1.5rem; /* Reducido desde 2.5rem a 1.5rem */
-    font-size: 1.2rem;
-    line-height: 1.6; /* Reducido desde 1.8 a 1.6 */
+    margin-bottom: 1.5rem; /* Margen inferior para párrafos */
+    font-size: 1rem; /* Tamaño de fuente */
+    line-height: 1.6; /* Altura de línea */
 }
 
 
 
-
+/* Modern Container Styling */
+.feedback-section {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Introduction Text */
+  .feedback-section > p {
+    color: #333;
+    line-height: 1.8;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Headings */
+  .feedback-section h2 {
+    color: #0056a3;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .feedback-section h3 {
+    color: #2a333a;
+    margin: 10px 0;
+    text-align: left;
+    font-size: 1.6rem;
+  }
+  
+  /* Form Container */
+  .feedback-form-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Form Groups */
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Form Elements */
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    margin: 8px 0;
+    border: 2px solid #f0f4f8;
+    border-radius: 8px;
+    background: #ffffff;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: #0056a3;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 86, 163, 0.1);
+  }
+  
+  /* Labels */
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #142135;
+    font-weight: 500;
+  }
+  
+  /* Checkbox Styling */
+  .form-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    margin-right: 8px;
+  }
+  
+  .form-group input[type="checkbox"] + label {
+    display: inline;
+    vertical-align: middle;
+  }
+  
+  /* Submit Button */
+  .submit-button {
+    background: linear-gradient(135deg, #ee4d4d 0%, #ff6b6b 100%);
+    color: white;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    width: 100%;
+    transition: all 0.3s ease;
+    margin-top: 1.5rem;
+  }
+  
+  .submit-button:hover {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee4d4d 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(238, 77, 77, 0.2);
+  }
+  
+  /* Feedback Display Section */
+  .feedback-display-container {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 15px;
+  }
+  
+  .feedback-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Show More Button */
+  .show-more-btn {
+    background: #0056a3;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 1.5rem;
+    width: 100%;
+    transition: all 0.3s ease;
+  }
+  
+  .show-more-btn:hover {
+    background: #003d73;
+    transform: translateY(-2px);
+  }
+  
+  /* Admin Controls (Hidden by Default) */
+  .admin-controls {
+    margin-bottom: 2rem;
+  }
+  
+  .admin-button {
+    background: #2a333a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    margin-right: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .admin-button:hover {
+    background: #142135;
+  }
+  
+  /* Error States */
+  .form-group input:invalid,
+  .form-group textarea:invalid {
+    border-color: #ee4d4d;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .feedback-section {
+      margin: 1rem;
+      padding: 1rem;
+    }
+  
+    .feedback-form-container {
+      padding: 1rem;
+    }
+  
+    .feedback-section h2 {
+      font-size: 1.5rem;
+    }
+  
+    .submit-button {
+      padding: 14px 28px;
+    }
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .feedback-section {
+    animation: fadeIn 0.8s ease-out;
+  }
 
 
 
@@ -70,202 +276,182 @@ p {
 
 /* Header */
 header {
-    background: var(--header-gradient);
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-    box-shadow: 0 2px 5px var(--shadow-color);
-    animation: slideDown 0.5s ease;
+    background: #ffffff;
+    color: #333333;
+    text-align: left;
+    padding: 1.5rem 2rem;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding-bottom: 1rem;
+    transition: background 0.3s ease;
 }
 
-@keyframes slideDown {
-    from {
-        transform: translateY(-20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+header:hover {
+    background: #f9f9f9; /* Cambio suave de fondo al pasar el mouse */
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #ee4d4d, #ffc44d);
 }
 
 header h1 {
+    font-size: 2.2em;
     margin: 0;
-    font-size: 2.5em;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+    margin-left: 80px;
 }
 
-/* Section Styles */
-.section {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 30px var(--shadow-color);
-    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-    animation: fadeInUp 0.5s ease;
+header h1:hover {
+    color: #ee4d4d;
 }
 
-@keyframes fadeInUp {
-    from {
-        transform: translateY(20px);
+header img {
+    height: 70px;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+header img:hover {
+    transform: scale(1.1);
+}
+
+/* Estilo para dispositivos móviles */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        height: auto;
+    }
+
+    header h1 {
+        font-size: 3em;
+        margin: 0;
+        text-align: center;
+        margin-top: 60px;
+    }
+    
+    header img {
+        height: 80px;
+        margin-top: 30px;
+        align-self: center;
+    }
+}
+
+/* Animación del encabezado */
+header {
+    animation: slideInFromTop 1.3s ease-out forwards;
+}
+
+/* Estilo para la animación del encabezado */
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
         opacity: 0;
     }
-    to {
+    100% {
         transform: translateY(0);
         opacity: 1;
     }
 }
 
-.section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 50px var(--shadow-color);
+
+
+body {
+    /* Base gradient suave */
+    background: linear-gradient(135deg, #e8f0ff 0%, #ffffff 100%);
+    
+    /* Patrón de ondas y efectos usando múltiples gradientes */
+    background-image: 
+        /* Onda superior derecha - verde claro */
+        radial-gradient(circle at 90% 10%, 
+            rgba(76, 175, 80, 0.05) 0%,  /* Reducción de opacidad */
+            transparent 70%),
+        
+        /* Onda central izquierda - naranja */
+        radial-gradient(circle at 10% 50%, 
+            rgba(255, 152, 0, 0.05) 0%,  /* Reducción de opacidad */
+            transparent 60%),
+        
+        /* Onda inferior central - púrpura */
+        radial-gradient(circle at 50% 90%, 
+            rgba(103, 58, 183, 0.05) 0%,  /* Reducción de opacidad */
+            transparent 65%),
+            
+        /* Patrón diagonal más visible */
+        linear-gradient(135deg, 
+            rgba(20, 33, 53, 0.03) 25%,  /* Reducción de opacidad */
+            transparent 25%,
+            transparent 50%, 
+            rgba(20, 33, 53, 0.03) 50%, 
+            rgba(20, 33, 53, 0.03) 75%,
+            transparent 75%,
+            transparent),
+    
+        /* Efecto de luz superior */
+        radial-gradient(circle at 50% 0%, 
+            rgba(255, 255, 255, 0.4) 0%,  /* Reducción de opacidad */
+            transparent 60%),
+            
+        /* Base gradient mejorado con más contraste */
+        linear-gradient(135deg, 
+            #d0e8ff 0%, 
+            #ffffff 50%,
+            #d0e8ff 100%);
+            
+    /* Tamaño del patrón diagonal reducido para más detalle */
+    background-size: 
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        40px 40px, /* Ajustado para más detalle */
+        100% 100%,
+        100% 100%;
+    
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    
+    /* Animación más suave y sutil */
+    animation: backgroundShift 30s ease-in-out infinite alternate; /* Se incrementó el tiempo para suavizar la animación */
 }
 
-.section h2 {
-    font-size: 2.8em;
-    margin-bottom: 20px;
-}
-
-.section p {
-    font-size: 1.1em;
-    margin-bottom: 15px;
-}
-
-
-/* Estilo del botón de envío */
-.submit-button {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    box-shadow: 0 2px 5px var(--shadow-color);
-    transition: background-color var(--transition-speed), transform var(--transition-speed);
-    font-weight: 600;
-}
-
-.submit-button:hover {
-    background-color: #d43c3c;
-    transform: translateY(-3px);
-}
-
-
-/* Inputs y Textareas */
-.feedback-form-container input,
-.feedback-form-container select,
-.feedback-form-container textarea {
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: var(--border-radius);
-    border: 1px solid #ccc;
-    transition: border-color var(--transition-speed);
-    width: 100%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.feedback-form-container input:focus,
-.feedback-form-container select:focus,
-.feedback-form-container textarea:focus {
-    border-color: var(--primary-color);
-    outline: none;
-}
-
-/* Contenedores */
-.feedback-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-}
-
-.feedback-form-container,
-.feedback-display-container {
-    background-color: #fff;
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 30px var(--shadow-color);
-    margin: 20px 0;
-    padding: 20px;
-    width: 100%;
-}
-
-.feedback-display-container {
-    animation: fadeInUp 0.5s ease;
-}
-
-@media (min-width: 768px) {
-    .feedback-section {
-        flex-direction: row;
+@keyframes backgroundShift {
+    0% {
+        background-position: 
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%;
     }
-
-    .feedback-form-container,
-    .feedback-display-container {
-        width: 48%;
-    }
-
-    .feedback-display-container {
-        margin-left: 20px;
+    100% {
+        background-position: 
+            100% 100%,
+            -20% 100%,
+            100% -20%,
+            40px 40px,
+            0% 0%,
+            0% 0%;
     }
 }
 
-@media (min-width: 1200px) {
-    .feedback-form-container,
-    .feedback-display-container {
-        width: 45%;
-    }
-}
 
-/* Botón "Mostrar más" */
-.show-more-btn {
-    background: var(--primary-color);
-    color: #fff;
-    border: none;
-    padding: 12px 25px; /* Espaciado aumentado */
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    transition: background var(--transition-speed), transform 0.3s ease; /* Transiciones suaves */
-    margin-top: 20px; /* Margen superior aumentado */
-}
 
-.show-more-btn:hover {
-    background: darken(var(--primary-color), 10%); /* Efecto en hover */
-    transform: scale(1.05); /* Aumento al pasar el ratón */
-}
 
-/* Botón "Mostrar más" */
-.show-more-btn {
-    background-color: var(--primary-color); /* Color primario */
-    color: white;
-    border: none;
-    padding: 12px 25px; /* Espaciado aumentado */
-    border-radius: 8px; /* Bordes más redondeados */
-    cursor: pointer;
-    margin-top: 25px; /* Margen superior aumentado */
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Espacio entre el texto y el icono */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
-}
 
-.show-more-btn:hover {
-    background-color: darken(var(--primary-color), 10%); /* Efecto en hover */
-    transform: scale(1.05); /* Aumento al pasar el ratón */
-}
 
-/* Mejoras del grupo de formularios */
-.form-group {
-    margin-bottom: 25px; /* Margen inferior aumentado */
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px; /* Margen inferior aumentado */
-    font-weight: 600; /* Negrita */
-    color: var(--text-color); /* Color de texto */
-}
 
 
 
@@ -284,6 +470,8 @@ header h1 {
     padding: 4rem 0 2rem;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.2); /* Añadir sombra sutil en la parte superior */
+    z-index: 1; /* Asegúrate de que esté por encima de otros elementos */
 }
 
 #footer-container::before {
@@ -293,7 +481,8 @@ header h1 {
     left: 0;
     right: 0;
     height: 4px;
-    background: var(--header-gradient);
+    background: var(--footer-gradient); /* Color de fondo temporal (cambiar a var(--header-gradient) una vez que verifiques) */
+    z-index: 2; /* Asegurarse de que la barra esté por encima del contenedor del footer */
 }
 
 .footer-content {
@@ -313,7 +502,7 @@ header h1 {
 }
 
 .footer-section h3 {
-    font-size: 1.4rem;
+    font-size: 1.5rem; /* Aumentar el tamaño del título para mejor legibilidad */
     margin-bottom: 1.5rem;
     color: var(--secondary-color);
     position: relative;
@@ -348,6 +537,7 @@ header h1 {
     word-wrap: break-word; /* Para emails largos */
     overflow-wrap: break-word; /* Ajusta el texto largo */
     text-align: left; /* Alineación a la izquierda */
+    padding: 0.25rem 0; /* Espaciado vertical adicional para enlaces */
 }
 
 .footer-section a:hover {
@@ -446,11 +636,13 @@ header h1 {
     border-right: 1px solid var(--sidebar-border);
     transition: left 0.5s ease, opacity 0.5s ease;
     opacity: 0;
+    /* Asegúrate de que la opacidad inicial sea 0 */
 }
 
 #sidebar.active {
     left: 0;
     opacity: 1;
+    animation: slideIn 0.5s forwards, fadeIn 0.5s forwards, glow 3s infinite; /* Agregar animación */
 }
 
 #menu-toggle {
@@ -491,14 +683,6 @@ header h1 {
 
 #menu-toggle.active i {
     transform: rotate(360deg);
-}
-
-#menu-toggle i {
-    animation: rotateWheel 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-}
-
-#menu-toggle.active i {
-    animation: rotateWheel 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) reverse;
 }
 
 #sidebar .sidebar-header {
@@ -607,6 +791,7 @@ header h1 {
     100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.3); }
 }
 
+/* Animate the glow effect */
 #sidebar.active {
     animation: slideIn 0.5s forwards, fadeIn 0.5s forwards, glow 3s infinite;
 }
