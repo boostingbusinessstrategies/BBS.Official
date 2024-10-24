@@ -9,7 +9,7 @@
     <title>Customer Feedback - BBS</title>
     <link rel="icon" href="https://imgur.com/OumtZsL.png" type="image/png">
     <!-- Fonts and styles -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="css/feedback.css">
 </head>
@@ -26,12 +26,12 @@
             <li><a href="order.html"><i class="fas fa-shopping-cart"></i> Order Database</a></li>
             <li><a href="extensions.html"><i class="fas fa-expand"></i> Database Extensions</a></li>
             <li><a href="modify.html" class="active"><i class="fas fa-edit"></i> Modify Existing Database</a></li>
-            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="support.html"><i class="fas fa-headset"></i> Client Support</a></li>
             <li><a href="feedback.html"><i class="fas fa-comments"></i> Feedback</a></li>
             <li><a href="terms.html"><i class="fas fa-file-contract"></i> Terms and Conditions</a></li>
             <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
         </ul>
-    </nav>
+    </nav>  
     
     <button id="menu-toggle" class="menu-toggle">
         <i class="fas fa-bars"></i>
@@ -115,13 +115,12 @@
                         <label for="feedback-comment">Leave a comment:</label>
                         <textarea id="feedback-comment" name="feedback-comment" rows="4" placeholder="Leave your feedback here..." required aria-label="Comment"></textarea>
                     </div>
-                    
-                    </div>
+                </div>
 
-                    <div class="form-group">
-                        <input type="checkbox" id="terms-checkbox" name="terms-checkbox" required>
-                        <label for="terms-checkbox">I have read and accepted the <a href="terms.html">Terms and Conditions</a>.</label>
-                    </div>
+                    <div class="checkbox-container">
+                            <input type="checkbox" id="terms-checkbox" name="terms-checkbox" required>
+                            <label for="terms-checkbox">I have read and accept the <a href="terms.html" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a>.</label>
+                        </div>
 
                     <button type="submit" class="submit-button">
                         <i class="fas fa-paper-plane"></i> Submit Feedback
@@ -150,7 +149,7 @@
                         <li><a href="order.html">Order Database</a></li>
                         <li><a href="extensions.html">Database Extensions</a></li>
                         <li><a href="modify.html">Modify Existing Database</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="support.html">Support</a></li>
                         <li><a href="feedback.html">Feedback</a></li>
                         <li><a href="terms.html">Terms and Conditions</a></li>
                     </ul>
@@ -168,7 +167,7 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2024 Boosting Business Strategies (BBS). All rights reserved.</p>
-                <p><a href="terms.html" style="color: #fffafa;">Terms and Conditions</a> | <a href="contact.html" style="color: #fffafa;">Contact Us</a></p>
+                <p><a href="terms.html" style="color: #fffafa;">Terms and Conditions</a> | <a href="Support.html" style="color: #fffafa;">Contact Us</a></p>
             </div>
         </footer>
     </div>
