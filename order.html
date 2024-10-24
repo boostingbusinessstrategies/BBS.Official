@@ -7,7 +7,7 @@
     <meta name="keywords" content="order database, custom database, E-commerce database, healthcare database, database solutions, data management">
     <title>Order Your Custom Database - BBS</title>
     <link rel="icon" href="https://imgur.com/OumtZsL.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="css/orderstyle.css">
 </head>
@@ -81,36 +81,47 @@
             
             <label for="custom-details">Let us know if you need any specific details in your database (e.g., tables, columns, etc.)</label>
             <textarea id="custom-details" name="custom-details" rows="4" placeholder="Optional" aria-label="Custom Database Details"></textarea>
-            
-       <!-- New section: Does your database require sensitive data? -->
-       <label><strong>Does your database require sensitive data?</strong></label>
-       <div class="radio-options">
-           <div class="radio-item">
-               <input type="radio" id="sensitive-yes" name="sensitive-data" value="yes" required onclick="toggleEncryptionOptions(true)">
-               <label for="sensitive-yes">Yes, I have the required legal permissions</label>
-           </div>
-           <div class="radio-item">
-               <input type="radio" id="sensitive-no" name="sensitive-data" value="no" required onclick="toggleEncryptionOptions(false)">
-               <label for="sensitive-no">No, I don't need them at the moment</label>
-           </div>
-       </div>
-       
-       <!-- New section: Do you want sensitive data columns to be encrypted? -->
-       <label><strong>Do you want sensitive data columns to be encrypted?</strong></label>
-       <div class="radio-options">
-           <div class="radio-item">
-               <input type="radio" id="encrypt-yes" name="encrypt-sensitive-data" value="yes" required>
-               <label for="encrypt-yes">Yes, I want them encrypted</label>
-           </div>
-           <div class="radio-item">
-               <input type="radio" id="encrypt-no-own" name="encrypt-sensitive-data" value="no-own" required>
-               <label for="encrypt-no-own">No, I want to do it myself</label>
-           </div>
-           <div class="radio-item">
-               <input type="radio" id="encrypt-no" name="encrypt-sensitive-data" value="no" required>
-               <label for="encrypt-no">No, I don't want to add sensitive data</label>
-           </div>
-       </div>
+        
+
+
+            <!-- New section: Does your database require sensitive data? -->
+            <label><strong>Does your database require sensitive data?</strong></label>
+            <div class="radio-options">
+                <div class="radio-item">
+                    <input type="radio" id="sensitive-yes" name="sensitive-data" value="yes" required onclick="toggleEncryptionOptions(true)">
+                    <label for="sensitive-yes">Yes, I have the required legal permissions</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" id="sensitive-no" name="sensitive-data" value="no" required onclick="toggleEncryptionOptions(false)">
+                    <label for="sensitive-no">No, I don't need them at the moment</label>
+                </div>
+            </div>
+
+
+            <label><strong>Do you want sensitive data columns to be encrypted?</strong></label>
+            <div class="radio-options">
+                <div class="radio-item">
+                    <input type="radio" id="encrypt-yes" name="encrypt-sensitive-data" value="yes" required>
+                    <label for="encrypt-yes">Yes, I want them encrypted</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" id="encrypt-no-own" name="encrypt-sensitive-data" value="no-own" required>
+                    <label for="encrypt-no-own">No, I want to do it myself</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" id="encrypt-no" name="encrypt-sensitive-data" value="no" required>
+                    <label for="encrypt-no">No, I don't want to add sensitive data</label>
+                </div>
+            </div>
+
+ 
+
+
+
+
+
+
+
 
 
             <p class="note" style="text-align: left;">
