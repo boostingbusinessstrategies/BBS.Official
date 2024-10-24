@@ -39,6 +39,87 @@
     --transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+
+body {
+    /* Base gradient suave */
+    background: linear-gradient(135deg, #e8f0ff 0%, #ffffff 100%);
+    
+    /* Patrón de ondas y efectos usando múltiples gradientes */
+    background-image: 
+        /* Onda superior derecha - verde claro */
+        radial-gradient(circle at 90% 10%, 
+            rgba(76, 175, 80, 0.1) 0%, 
+            transparent 70%),
+        
+        /* Onda central izquierda - naranja */
+        radial-gradient(circle at 10% 50%, 
+            rgba(255, 152, 0, 0.1) 0%, 
+            transparent 60%),
+        
+        /* Onda inferior central - púrpura */
+        radial-gradient(circle at 50% 90%, 
+            rgba(103, 58, 183, 0.1) 0%, 
+            transparent 65%),
+            
+        /* Patrón diagonal más visible */
+        linear-gradient(135deg, 
+            rgba(20, 33, 53, 0.05) 25%, 
+            transparent 25%,
+            transparent 50%, 
+            rgba(20, 33, 53, 0.05) 50%, 
+            rgba(20, 33, 53, 0.05) 75%,
+            transparent 75%,
+            transparent),
+    
+        /* Efecto de luz superior */
+        radial-gradient(circle at 50% 0%, 
+            rgba(255, 255, 255, 0.5) 0%, 
+            transparent 60%),
+            
+        /* Base gradient mejorado con más contraste */
+        linear-gradient(135deg, 
+            #d0e8ff 0%, 
+            #ffffff 50%,
+            #d0e8ff 100%);
+            
+    /* Tamaño del patrón diagonal reducido para más detalle */
+    background-size: 
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        40px 40px, /* Ajustado para más detalle */
+        100% 100%,
+        100% 100%;
+    
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    
+    /* Animación más suave y sutil */
+    animation: backgroundShift 30s ease-in-out infinite alternate; /* Se incrementó el tiempo para suavizar la animación */
+}
+
+@keyframes backgroundShift {
+    0% {
+        background-position: 
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%;
+    }
+    100% {
+        background-position: 
+            100% 100%,
+            -20% 100%,
+            100% -20%,
+            40px 40px,
+            0% 0%,
+            0% 0%;
+    }
+}
+
+
 /* Base styles and reset */
 *, *::before, *::after {
     box-sizing: border-box;
