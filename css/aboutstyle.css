@@ -1,40 +1,43 @@
-/* Importación de fuentes */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 /* Variables globales */
 :root {
-    --primary-color: #ee4d4d;
-    --secondary-color: #ffc44d;
-    --background-color: #f0f4f8;
-    --text-color: #333333;
+    --primary-color: #ee4d4d; /* Rojo vibrante */
+    --secondary-color: #ffc44d; /* Amarillo energético */
+    --background-color: #f0f4f8; /* Gris claro para el fondo */
+    --text-color: #333333; /* Gris oscuro para el texto */
+    --border-radius: 8px; /* Bordes redondeados */
+    --transition-speed: 0.3s; /* Velocidad de transición */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Color de sombra */
+    --accent-color: #0056a3; /* Azul profundo para acentos */
+    --content-background: #ffffff; /* Fondo blanco para el contenido */
     --header-gradient: linear-gradient(135deg, #ee4d4d, #ffc44d);
-    --border-radius: 8px;
-    --transition-speed: 0.3s;
-    --shadow-color: rgba(0, 0, 0, 0.1);
-    --accent-color: #0056a3;
-    --content-background: #ffffff;
+    --border-color: #d1d5db;
+    --focus-ring: rgba(20, 33, 53, 0.8);
+    --input-background: #f9fafb;
+    
     
     /* Sidebar */
-    --sidebar-width: 280px;
-    --sidebar-bg: rgba(20, 33, 53, 0.8); /* Fondo oscuro y transparente para barra lateral */
-    --sidebar-text: #ffffff; /* Texto blanco en sidebar para contraste */
-    --sidebar-hover: #ee4d4d; /* Hover en rojo para transmitir urgencia y confianza en la navegación */
+    --sidebar-width: 280px; /* Ancho de la barra lateral */
+    --sidebar-bg: rgba(20, 33, 53, 0.8); /* Fondo oscuro y transparente para la barra lateral */
+    --sidebar-text: #ffffff; /* Texto blanco en la barra lateral */
+    --sidebar-hover: #ee4d4d; /* Color de hover en la barra lateral */
     --sidebar-border: rgba(255, 196, 77, 0.3); /* Borde amarillo para resaltar secciones importantes */
   
     /* Toggle Menu */
     --toggle-bg: rgba(31, 41, 55, 0.9); /* Fondo oscuro semitransparente en menú toggle */
-    --toggle-color: #ffc44d; /* Íconos o texto del toggle en amarillo para capturar atención */
+    --toggle-color: #ffc44d; /* Color de los íconos en el toggle */
     
     /* Container */
     --container-padding: 20px; /* Espaciado interno para mantener claridad y orden */
     
     /* Footer */
-    --footer-bg: rgb(20, 33, 53); /* Fondo azul oscuro casi negro en footer para elegancia y un cierre visual sólido */
-    --footer-text: #ffffff; /* Texto blanco en el footer para garantizar legibilidad y contraste */
-    --footer-link-hover: #ffc44d; /* Hover en amarillo para los enlaces del footer, captando atención de manera sutil */
+    --footer-bg: rgb(20, 33, 53); /* Fondo azul oscuro en el footer */
+    --footer-text: #ffffff; /* Texto blanco en el footer */
+    --footer-link-hover: #ffc44d; /* Color de hover en los enlaces del footer */
+    --footer-gradient: linear-gradient(135deg, #ee4d4d, #ffc44d);
     
     /* Transición suave */
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
@@ -45,19 +48,110 @@
     padding: 0;
 }
 
+
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
+  /* Base gradient suave */
+  background: linear-gradient(135deg, #f9fbe7 0%, #ffffff 100%);
+  
+  /* Patrón de ondas y efectos usando múltiples gradientes */
+  background-image: 
+      /* Onda superior derecha - aqua */
+      radial-gradient(circle at 90% 10%, 
+          rgba(0, 188, 212, 0.1) 0%, 
+          transparent 70%),
+      
+      /* Onda central izquierda - rosa */
+      radial-gradient(circle at 10% 50%, 
+          rgba(233, 30, 99, 0.1) 0%, 
+          transparent 60%),
+      
+      /* Onda inferior central - amarillo */
+      radial-gradient(circle at 50% 90%, 
+          rgba(255, 235, 59, 0.1) 0%, 
+          transparent 65%),
+          
+      /* Patrón diagonal más visible */
+      linear-gradient(135deg, 
+          rgba(20, 33, 53, 0.05) 25%, 
+          transparent 25%,
+          transparent 50%, 
+          rgba(20, 33, 53, 0.05) 50%, 
+          rgba(20, 33, 53, 0.05) 75%,
+          transparent 75%,
+          transparent),
+  
+      /* Efecto de luz superior */
+      radial-gradient(circle at 50% 0%, 
+          rgba(255, 255, 255, 0.5) 0%, 
+          transparent 60%),
+          
+      /* Base gradient mejorado con más contraste */
+      linear-gradient(135deg, 
+          #e1f5fe 0%, 
+          #ffffff 50%,
+          #e1f5fe 100%);
+          
+  /* Tamaño del patrón diagonal reducido para más detalle */
+  background-size: 
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      40px 40px, /* Ajustado para más detalle */
+      100% 100%,
+      100% 100%;
+  
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  
+  /* Animación más suave y sutil */
+  animation: backgroundShift 30s ease-in-out infinite alternate; /* Se incrementó el tiempo para suavizar la animación */
 }
+
+@keyframes backgroundShift {
+  0% {
+      background-position: 
+          0% 0%,
+          0% 0%,
+          0% 0%,
+          0% 0%,
+          0% 0%,
+          0% 0%;
+  }
+  100% {
+      background-position: 
+          100% 100%,
+          -20% 100%,
+          100% -20%,
+          40px 40px,
+          0% 0%,
+          0% 0%;
+  }
+}
+
+
+
+/* Reset y estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Actualizada a la fuente deseada */
+  font-size: 16px; /* Tamaño de fuente */
+  background-color: var(--background-color); /* Usa la variable para el color de fondo */
+  color: var(--text-color); /* Usa la variable para el color del texto */
+  line-height: 1.6; /* Opcional: para mejorar la legibilidad */
+  margin: 0; /* Asegura que no haya márgenes por defecto */
+  padding: 0; /* Asegura que no haya padding por defecto */
+}
+
 
 p {
-    margin-bottom: 1.5rem; /* Reducido desde 2.5rem a 1.5rem */
-    font-size: 1.2rem;
-    line-height: 1.6; /* Reducido desde 1.8 a 1.6 */
+    margin-bottom: 1.5rem; /* Margen inferior para párrafos */
+    font-size: 1rem; /* Tamaño de fuente */
+    line-height: 1.6; /* Altura de línea */
 }
 
 
@@ -70,59 +164,374 @@ p {
 
 
 
-/* Container */
-#content {
-    max-width: 1400px; /* Aumentado el ancho máximo del contenedor */
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Header Section */
+/* Header */
 header {
-    text-align: center;
-    padding: 60px 20px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: #ffffff;
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 10px var(--shadow-color);
-}
-
-h1 {
-    font-size: 2.5em;
-    margin: 0;
-}
-
-/* Section Styles */
-section {
-    margin: 40px 0;
-    padding: 20px;
     background: #ffffff;
-    border-radius: var(--border-radius);
-    box-shadow: 0 2px 5px var(--shadow-color);
-    animation: slideIn 0.5s ease;
+    color: #333333;
+    text-align: left;
+    padding: 1.5rem 2rem;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding-bottom: 1rem;
+    transition: background 0.3s ease;
 }
 
-@keyframes slideIn {
-    from {
-        transform: translateY(20px);
+header:hover {
+    background: #f9f9f9; /* Cambio suave de fondo al pasar el mouse */
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #ee4d4d, #ffc44d);
+}
+
+header h1 {
+    font-size: 2.2em;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+    margin-left: 80px;
+}
+
+header h1:hover {
+    color: #ee4d4d;
+}
+
+header img {
+    height: 70px;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+header img:hover {
+    transform: scale(1.1);
+}
+
+/* Estilo para dispositivos móviles */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        height: auto;
+    }
+
+    header h1 {
+        font-size: 3em;
+        margin: 0;
+        text-align: center;
+        margin-top: 60px;
+    }
+    
+    header img {
+        height: 80px;
+        margin-top: 30px;
+        align-self: center;
+    }
+}
+
+/* Animación del encabezado */
+header {
+    animation: slideInFromTop 1.3s ease-out forwards;
+}
+
+/* Estilo para la animación del encabezado */
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
         opacity: 0;
     }
-    to {
+    100% {
         transform: translateY(0);
         opacity: 1;
     }
 }
 
-h2 {
-    color: #444444;
-    font-size: 1.8em;
-    margin-bottom: 10px;
+
+
+
+
+
+
+
+/* Base gradient suave */
+body {
+    background: linear-gradient(135deg, #e1f5fe 0%, #ffffff 100%);
+    
+    /* Patrón de ondas y efectos usando múltiples gradientes */
+    background-image: 
+        /* Onda superior derecha - azul claro */
+        radial-gradient(circle at 90% 10%, 
+            rgba(33, 150, 243, 0.1) 0%,  
+            transparent 70%),
+        
+        /* Onda central izquierda - verde suave */
+        radial-gradient(circle at 10% 50%, 
+            rgba(76, 175, 80, 0.1) 0%,  
+            transparent 60%),
+        
+        /* Onda inferior central - melocotón */
+        radial-gradient(circle at 50% 90%, 
+            rgba(255, 204, 128, 0.1) 0%,  
+            transparent 65%),
+            
+        /* Patrón diagonal más visible */
+        linear-gradient(135deg, 
+            rgba(20, 33, 53, 0.05) 25%,  
+            transparent 25%,
+            transparent 50%, 
+            rgba(20, 33, 53, 0.05) 50%, 
+            rgba(20, 33, 53, 0.05) 75%,
+            transparent 75%,
+            transparent),
+    
+        /* Efecto de luz superior */
+        radial-gradient(circle at 50% 0%, 
+            rgba(255, 255, 255, 0.6) 0%,  
+            transparent 60%),
+            
+        /* Base gradient mejorado con más contraste */
+        linear-gradient(135deg, 
+            #b3e5fc 0%, 
+            #ffffff 50%,
+            #b3e5fc 100%);
+    
+    /* Tamaño del patrón diagonal reducido para más detalle */
+    background-size: 
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        40px 40px, 
+        100% 100%,
+        100% 100%;
+    
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    
+    /* Animación más suave y sutil */
+    animation: backgroundShift 30s ease-in-out infinite alternate; 
 }
 
-/* Highlighted Text */
+@keyframes backgroundShift {
+    0% {
+        background-position: 
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%;
+    }
+    100% {
+        background-position: 
+            100% 100%,
+            -20% 100%,
+            100% -20%,
+            40px 40px,
+            0% 0%,
+            0% 0%;
+    }
+}
+
+/* Modern Container Styling */
+#about-bbs,
+#our-mission,
+#our-team,
+#our-approach {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: #ffffff; /* Fondo blanco para el contenido */
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Section Headings */
+h2 {
+  color: #0056a3; /* Azul profundo */
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+/* Add decorative underline to headings */
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(135deg, #ee4d4d 0%, #ffc44d 100%); /* Rojo vibrante a amarillo */
+  border-radius: 2px;
+}
+
+/* Paragraph Styling */
+p {
+    margin-bottom: 1.5rem; /* Margen inferior para párrafos */
+    font-size: 1rem; /* Tamaño de fuente */
+    line-height: 1.6; /* Altura de línea */
+    color: #333333; /* Gris oscuro */
+}
+
+
+/* Highlight Styling */
 .highlight {
-    font-weight: bold;
-    color: #444444;
+  color: #ee4d4d; /* Rojo vibrante */
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+}
+
+/* Subtle highlight effect */
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(238, 77, 77, 0.2);
+  transition: height 0.3s ease;
+}
+
+.highlight:hover::after {
+  height: 8px;
+}
+
+/* Section Specific Styling */
+#about-bbs {
+  background: linear-gradient(to bottom right, #ffffff, #f0f4f8); /* Fondo claro */
+  border-left: 4px solid #ee4d4d; /* Rojo vibrante */
+}
+
+#our-mission {
+  background: linear-gradient(to bottom right, #ffffff, #f0f4f8); /* Fondo claro */
+  border-left: 4px solid #0056a3; /* Azul profundo */
+}
+
+#our-team {
+  background: linear-gradient(to bottom right, #ffffff, #f0f4f8); /* Fondo claro */
+  border-left: 4px solid #ffc44d; /* Amarillo energético */
+}
+
+#our-approach {
+  background: linear-gradient(to bottom right, #ffffff, #f0f4f8); /* Fondo claro */
+  border-left: 4px solid #4CAF50; /* Verde (puedes cambiar este color si no es parte de la paleta de BBS) */
+}
+
+/* Section Hover Effects */
+#about-bbs:hover,
+#our-mission:hover,
+#our-team:hover,
+#our-approach:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #about-bbs,
+  #our-mission,
+  #our-team,
+  #our-approach {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 1rem;
+    text-align: left;
+  }
+
+  h2::after {
+    width: 60px;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* Print Styles */
+@media print {
+  #about-bbs,
+  #our-mission,
+  #our-team,
+  #our-approach {
+    box-shadow: none;
+    margin: 1rem 0;
+    padding: 1rem 0;
+    break-inside: avoid;
+  }
+
+  .highlight::after {
+    display: none;
+  }
+
+  h2::after {
+    display: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .highlight {
+    color: #d32f2f;
+    text-decoration: underline;
+  }
+
+  h2 {
+    color: #003366;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  #about-bbs,
+  #our-mission,
+  #our-team,
+  #our-approach {
+    background: #1a1a1a;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  p {
+    color: #e0e0e0;
+  }
+
+  h2 {
+    color: #66b2ff;
+  }
+
+  .highlight {
+    color: #ff8080;
+  }
 }
 
 
@@ -140,6 +549,8 @@ h2 {
     padding: 4rem 0 2rem;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.2); /* Añadir sombra sutil en la parte superior */
+    z-index: 1; /* Asegúrate de que esté por encima de otros elementos */
 }
 
 #footer-container::before {
@@ -149,7 +560,8 @@ h2 {
     left: 0;
     right: 0;
     height: 4px;
-    background: var(--header-gradient);
+    background: var(--footer-gradient); /* Color de fondo temporal (cambiar a var(--header-gradient) una vez que verifiques) */
+    z-index: 2; /* Asegurarse de que la barra esté por encima del contenedor del footer */
 }
 
 .footer-content {
@@ -169,7 +581,7 @@ h2 {
 }
 
 .footer-section h3 {
-    font-size: 1.4rem;
+    font-size: 1.5rem; /* Aumentar el tamaño del título para mejor legibilidad */
     margin-bottom: 1.5rem;
     color: var(--secondary-color);
     position: relative;
@@ -204,6 +616,7 @@ h2 {
     word-wrap: break-word; /* Para emails largos */
     overflow-wrap: break-word; /* Ajusta el texto largo */
     text-align: left; /* Alineación a la izquierda */
+    padding: 0.25rem 0; /* Espaciado vertical adicional para enlaces */
 }
 
 .footer-section a:hover {
@@ -239,7 +652,7 @@ h2 {
     transform: translateY(-3px);
 }
 
-.footer-bottom {
+.footer-copy {
     text-align: center;
     margin-top: 3rem;
     padding-top: 2rem;
@@ -272,11 +685,13 @@ h2 {
         text-align: left; /* Alinear texto a la izquierda en móviles */
     }
 
-    .footer-bottom {
+    .footer-copy {
         padding-top: 1rem;
         font-size: 0.9rem; /* Mantener legibilidad */
     }
 }
+
+
 
 
 
@@ -302,11 +717,13 @@ h2 {
     border-right: 1px solid var(--sidebar-border);
     transition: left 0.5s ease, opacity 0.5s ease;
     opacity: 0;
+    /* Asegúrate de que la opacidad inicial sea 0 */
 }
 
 #sidebar.active {
     left: 0;
     opacity: 1;
+    animation: slideIn 0.5s forwards, fadeIn 0.5s forwards, glow 3s infinite; /* Agregar animación */
 }
 
 #menu-toggle {
@@ -347,14 +764,6 @@ h2 {
 
 #menu-toggle.active i {
     transform: rotate(360deg);
-}
-
-#menu-toggle i {
-    animation: rotateWheel 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-}
-
-#menu-toggle.active i {
-    animation: rotateWheel 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) reverse;
 }
 
 #sidebar .sidebar-header {
@@ -463,6 +872,7 @@ h2 {
     100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.3); }
 }
 
+/* Animate the glow effect */
 #sidebar.active {
     animation: slideIn 0.5s forwards, fadeIn 0.5s forwards, glow 3s infinite;
 }
