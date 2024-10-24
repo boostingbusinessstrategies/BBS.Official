@@ -58,10 +58,85 @@ p {
 }
 
 body {
+    /* Base gradient suave */
     background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%);
-    color: #333333;
-    line-height: 1.6;
+    
+    /* Patrón de ondas y efectos usando múltiples gradientes */
+    background-image: 
+        /* Onda superior derecha - rojo */
+        radial-gradient(circle at 90% 10%, 
+            rgba(238, 77, 77, 0.1) 0%, 
+            transparent 70%),
+        
+        /* Onda central izquierda - amarillo */
+        radial-gradient(circle at 10% 50%, 
+            rgba(255, 196, 77, 0.1) 0%, 
+            transparent 60%),
+        
+        /* Onda inferior central - azul */
+        radial-gradient(circle at 50% 90%, 
+            rgba(0, 86, 163, 0.1) 0%, 
+            transparent 65%),
+            
+        /* Patrón diagonal más visible */
+        linear-gradient(135deg, 
+            rgba(20, 33, 53, 0.05) 25%, 
+            transparent 25%,
+            transparent 50%, 
+            rgba(20, 33, 53, 0.05) 50%, 
+            rgba(20, 33, 53, 0.05) 75%,
+            transparent 75%,
+            transparent),
+    
+        /* Efecto de luz superior */
+        radial-gradient(circle at 50% 0%, 
+            rgba(255, 255, 255, 0.5) 0%, 
+            transparent 60%),
+            
+        /* Base gradient mejorado con más contraste */
+        linear-gradient(135deg, 
+            #e6edf3 0%, 
+            #ffffff 50%,
+            #e6edf3 100%);
+            
+    /* Tamaño del patrón diagonal reducido para más detalle */
+    background-size: 
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        40px 40px, /* Ajustado para más detalle */
+        100% 100%,
+        100% 100%;
+    
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    
+    /* Animación más suave y sutil */
+    animation: backgroundShift 30s ease-in-out infinite alternate; /* Se incrementó el tiempo para suavizar la animación */
 }
+
+@keyframes backgroundShift {
+    0% {
+        background-position: 
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%;
+    }
+    100% {
+        background-position: 
+            100% 100%,
+            -20% 100%,
+            100% -20%,
+            40px 40px,
+            0% 0%,
+            0% 0%;
+    }
+}
+
+    
 
 /* Modern Container Styling */
 #content {
