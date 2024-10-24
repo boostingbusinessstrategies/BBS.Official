@@ -7,9 +7,9 @@
     <meta name="keywords" content="contact BBS, database solutions, database extension, database modification, custom database support">
     <title>Contact Us - BBS</title>
     <link rel="icon" href="https://imgur.com/OumtZsL.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/support.css">
 </head>
 <body>
     
@@ -24,12 +24,12 @@
             <li><a href="order.html"><i class="fas fa-shopping-cart"></i> Order Database</a></li>
             <li><a href="extensions.html"><i class="fas fa-expand"></i> Database Extensions</a></li>
             <li><a href="modify.html" class="active"><i class="fas fa-edit"></i> Modify Existing Database</a></li>
-            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="support.html"><i class="fas fa-headset"></i> Client Support</a></li>
             <li><a href="feedback.html"><i class="fas fa-comments"></i> Feedback</a></li>
             <li><a href="terms.html"><i class="fas fa-file-contract"></i> Terms and Conditions</a></li>
             <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
         </ul>
-    </nav>
+    </nav>  
     
     <button id="menu-toggle" class="menu-toggle">
         <i class="fas fa-bars"></i>
@@ -38,97 +38,120 @@
 
     <div id="content">
         <header class="hero-section">
-            <h1>Contact Us</h1>
-            <p>Your inquiry is important to us. Please fill out the form below to get in touch.</p>
+            <h1>Customer Support</h1>
             <div class="logo-container">
                 <img src="https://imgur.com/6OEF51j.png" alt="BBS Logo" class="bbs-logo">
             </div>
         </header>
     </div>
-</div>
-        <section id="contact" class="container">
-            <h2>Contact BBS Support</h2>
-            <form id="contact-form" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST">
-                <input type="hidden" name="_honey" style="display:none">
-                <input type="hidden" name="_token" value="your_token_here">
-                <input type="hidden" name="_next" value="https://boostingbusinessstrategies.github.io/BBS.Official/contact.html">
+    
+    </div>
+    <section id="contact" class="container">
+        <h2>Contact BBS Support</h2>
+        <p>Your inquiry is important to us. Please fill out the form below to report any issues and request assistance</p> 
+        <form id="contact-form" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST">
+            <input type="hidden" name="_honey" style="display:none">
+            <input type="hidden" name="_token" value="your_token_here">
+            <input type="hidden" name="_next" value="https://boostingbusinessstrategies.github.io/BBS.Official/contact.html">
+    
+            <div class="form-section">
+                <label for="contact-first-name">First Name</label>
+                <input type="text" id="contact-first-name" name="contact-first-name" required>
+    
+                <label for="contact-last-name">Last Name</label>
+                <input type="text" id="contact-last-name" name="contact-last-name" required>
+    
+                <label for="contact-email">Email</label>
+                <input type="email" id="contact-email" name="contact-email" required>
 
-                <div class="form-section">
-                    <label for="contact-first-name">First Name</label>
-                    <input type="text" id="contact-first-name" name="contact-first-name" required>
-
-                    <label for="contact-last-name">Last Name</label>
-                    <input type="text" id="contact-last-name" name="contact-last-name" required>
-
-                    <label for="contact-email">Email</label>
-                    <input type="email" id="contact-email" name="contact-email" required>
-
+                <div class="contact-support">
+                    <label for="contact-reason">Please select your reason for contacting us:</label>
                     <select id="contact-reason" name="contact-reason" required>
                         <option value="" disabled selected>Select your reason</option>
                         <option value="question">I have a question</option>
                         <option value="support">I need support</option>
                         <option value="feedback">I want to provide feedback</option>
                     </select>
-
-                    <div class="form-section">
-                        <label for="contact-message">Tell us more about your inquiry</label>
-                        <textarea id="contact-message" name="contact-message" rows="5" placeholder="Please describe your request, question, or feedback here..." required></textarea>
-                    </div>                    
-
-                    <div class="checkbox">
-                        <input type="checkbox" id="terms" name="terms" required>
-                        <label for="terms">I have read and accept the <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a></label>
-                    </div>
-
-                    <p>Thank you for reaching out! One of our dedicated customer support advisors will be in touch shortly to ensure your needs are met with care and expertise.</p>
-                    <button type="submit">Send Message</button>
                 </div>
-            </form>
+                
+                <div class="form-section">
+                    <label for="contact-message">Tell us more about your inquiry</label>
+                    <textarea id="contact-message" name="contact-message" rows="5" placeholder="Please describe your request, question, or feedback here..." required></textarea>
+                </div>
+    
+                <div class="checkbox">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I have read and accept the <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a></label>
+                </div>
+    
+                <p>Thank you for reaching out! One of our dedicated customer support advisors will be in touch shortly via email to ensure your needs are met with care and expertise.</p>
+                <button type="submit">Send Message</button>
+            </div>
+        </form>
+    
+        <section id="policy" class="policy-section">
+            <h3>Customer Service Policy</h3>
+            <p>Our customers will have free, open, and professional access to customer support for any inquiries related to our services, to request assistance, and to provide feedback on our offerings. We are committed to ensuring respect for their rights, integrity, and safety during communication with us.</p>
+            <p>We will not respond to any customer attempting to engage in conversations unrelated to our services with suspicious intentions. Additionally, we will not engage with customers seeking discounts or using offensive language, nor will we tolerate any forms of spam, harassment, blackmail, political or religious propaganda, threats, or other illegal, offensive, or unethical actions.</p>
+            <p>Our commitment is to uphold these principles rigorously to ensure our clients have the best experience possible. We strive to maintain a pleasant environment for all users, applying the highest ethical and moral standards, while respecting, valuing, and treating each client in a professional, friendly, respectful, and trustworthy manner.</p>
         </section>
+    
+        <section id="hours" class="hours-section">
+            <h3>Customer Service Hours</h3>
+            <ul>
+                <li><strong>Regular Business Hours:</strong> Monday to Friday: 9:00 AM - 5:00 PM (Pacific Time) / 12:00 PM - 8:00 PM (Eastern Time)</li>
+                <li><strong>Saturdays:</strong> Reduced hours: 10:00 AM - 2:00 PM (Pacific Time) / 1:00 PM - 5:00 PM (Eastern Time)</li>
+                <li><strong>Holidays:</strong> Holiday hours are similar to Saturday hours: 10:00 AM - 2:00 PM (Pacific Time) / 1:00 PM - 5:00 PM (Eastern Time)</li>
+                <li><strong>After-Hours Support:</strong> Messages sent outside of regular business hours will receive a response within 24 to 48 hours on the next business day.</li>
+            </ul>
+            <p>We are committed to addressing your needs and providing efficient support and assistance whenever required. This level of support reflects our dedication to client satisfaction.</p>
+        </section>
+    </section>
+    
 
         <section id="contact-info">
             <p>Email: <a href="mailto:boostingbusinessstrategies@gmail.com" target="_blank" style="color: #ee4d4d; font-weight: bold;">boostingbusinessstrategies@gmail.com</a></p>
             <p>Messenger (founder contact): <a href="https://m.me/contactbbs" target="_blank" style="color: #ee4d4d; font-weight: bold;">contactbbs</a></p>
             <p>FaceBook: <a href="https://www.facebook.com/profile.php?id=61566338476564&mibextid=ZbWKwL" target="_blank" style="color: #ee4d4d; font-weight: bold;">Boosting Business Strategies</a></p>
-            <p>Instagram: <a href="https://www.instagram.com/bbs.official.account/" target="_blank" style="color: #ee4d4d; font-weight: bold;">bbs.official.account</a> (Direct messages on Instagram are only for inquiries about our services and policies; no files can be sent due to software limitations.)</p>
+            <p>Instagram: <a href="https://www.instagram.com/bbs.official.account/" target="_blank" style="color: #ee4d4d; font-weight: bold;">bbs.official.account</a></p>
             <p>WhatsApp Business: <a href="https://wa.me/message/IQIFXFHK7JILI1" target="_blank" style="color: #ee4d4d; font-weight: bold;">+506 60447382</a></p>
         </section>
     </div>
 </div>
         <footer id="footer-container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="order.html">Order Database</a></li>
-                        <li><a href="extensions.html">Database Extensions</a></li>
-                        <li><a href="modify.html">Modify Existing Database</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="feedback.html">Feedback</a></li>
-                        <li><a href="terms.html">Terms and Conditions</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact Us</h3>
-                    <p>Email: <a href="mailto:boostingbusinessstrategies@gmail.com" target="_blank" style="color: #fffafa; font-weight: bold;">boostingbusinessstrategies@gmail.com</a></p>
-                    <p>WhatsApp Business: <a href="https://wa.me/message/IQIFXFHK7JILI1" target="_blank" style="color: #fffafa; font-weight: bold;">+506 60447382</a></p>
-                </div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="order.html">Order Database</a></li>
+                    <li><a href="extensions.html">Database Extensions</a></li>
+                    <li><a href="modify.html">Modify Existing Database</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                    <li><a href="terms.html">Terms and Conditions</a></li>
+                </ul>
             </div>
-            <div class="social-media">
-                <a href="https://www.facebook.com/profile.php?id=61566338476564&mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.linkedin.com/in/aaron-obando-55a098308?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.instagram.com/bbs.official.account/"><i class="fab fa-instagram"></i></a>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: <a href="mailto:boostingbusinessstrategies@gmail.com" target="_blank" style="color: #fffafa; font-weight: bold;">boostingbusinessstrategies@gmail.com</a></p>
+                <p>WhatsApp Business: <a href="https://wa.me/message/IQIFXFHK7JILI1" target="_blank" style="color: #fffafa; font-weight: bold;">+506 60447382</a></p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Boosting Business Strategies (BBS). All rights reserved.</p>
-                <p><a href="terms.html" style="color: #fffafa;">Terms and Conditions</a> | <a href="contact.html" style="color: #fffafa;">Contact Us</a></p>
-            </div>
-        </footer>
+        </div>
+        <div class="social-media">
+            <a href="https://www.facebook.com/profile.php?id=61566338476564&mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/in/aaron-obando-55a098308?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/bbs.official.account/"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Boosting Business Strategies (BBS). All rights reserved.</p>
+            <p><a href="terms.html" style="color: #fffafa;">Terms and Conditions</a> | <a href="Support.html" style="color: #fffafa;">Contact Us</a></p>
+        </div>
+    </footer>
     </div>
 
-    <script src="Javascript\contactscript.js"></script>
+    <script src="Javascript\supportscript.js"></script>
 </body>
 </html>
