@@ -444,6 +444,10 @@ h3 {
         color: #e0e0e0; /* Texto claro */
     }
 
+    .service-card h3 {
+        color: #0086fc; /* Color de subtítulos en modo oscuro */
+    }
+
     .service-card:hover {
         box-shadow: 0 15px 30px rgba(255, 255, 255, 0.2); /* Sombra más clara al pasar el mouse */
     }
