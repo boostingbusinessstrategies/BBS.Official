@@ -608,7 +608,7 @@ textarea:invalid {
 /* Estilos en modo nocturno */
 @media (prefers-color-scheme: dark) {
     .container {
-        background: #1a1a1a; /* Fondo oscuro */
+        background: rgba(20, 33, 53, 0.8); /* Fondo oscuro para contenedor de formulario */
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         color: #e0e0e0; /* Texto claro */
     }
@@ -647,11 +647,16 @@ textarea:invalid {
     }
 
     .policy-section,
-    .hours-section,
+    .hours-section {
+        background: rgba(255, 255, 255, 0.1); /* Fondo claro con transparencia */
+        border-left: 4px solid #ffc44d; /* Borde claro */
+        color: #ffffff; /* Color de enlaces en notas */
+    }
+
     #contact-info {
-        background: #2b2f38; /* Fondo oscuro para secciones */
-        border-left: 4px solid #ffc44d; /* Mantener borde claro */
-        color: #e0e0e0; /* Texto claro */
+        background: rgba(20, 33, 53, 0.9); /* Fondo oscuro */
+        border-left: 4px solid #ffc44d; /* Borde claro */
+        color: #ffffff; /* Color de enlaces en notas */
     }
 
     a {
