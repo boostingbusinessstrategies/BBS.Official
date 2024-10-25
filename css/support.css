@@ -510,7 +510,7 @@ a:hover {
 
 /* Contact Info Section */
 #contact-info {
-    margin-top: 2rem;
+    margin: 10px auto; /* Agrega margen arriba y abajo */
     padding: 1.5rem;
     background: #f8f9fa;
     border-radius: 8px;
