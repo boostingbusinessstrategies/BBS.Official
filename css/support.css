@@ -49,7 +49,6 @@
 html, body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 100%; /* Tamaño base */
-    background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
     margin: 0;
