@@ -384,7 +384,7 @@ body {
   .feedback-section > p {
     color: #333;
     line-height: 1.8;
-    text-align: center;
+    text-align: justify;
     margin-bottom: 1.5rem;
   }
   
