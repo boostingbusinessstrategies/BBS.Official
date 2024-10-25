@@ -613,7 +613,11 @@ textarea:invalid {
         color: #e0e0e0; /* Texto claro */
     }
 
-    h2, h3 {
+    h2 {
+        color: #ffc44d; /* Color de encabezados en modo oscuro */
+    }
+    
+    h3 {
         color: #e0e0e0; /* Texto claro */
     }
 
