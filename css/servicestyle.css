@@ -917,6 +917,7 @@ section a:hover {
     /* Asegúrate de que la opacidad inicial sea 0 */
 }
 
+
 #sidebar.active {
     left: 0;
     opacity: 1;
@@ -1072,4 +1073,43 @@ section a:hover {
 /* Animate the glow effect */
 #sidebar.active {
     animation: slideIn 0.5s forwards, fadeIn 0.5s forwards, glow 3s infinite;
+}
+
+
+
+
+
+
+
+
+
+/* Anula animaciones en pantallas pequeñas */
+@media (max-width: 768px) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Anula animaciones si el usuario prefiere reducir movimiento */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+
+/* Desactiva las animaciones para todos los elementos */
+.low-performance * {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* Mantiene las animaciones de los textos intactas */
+.low-performance p,
+.low-performance h1, h2, h3, h4,
+.low-performance a {
+    animation: initial !important;
+    transition: initial !important;
 }
