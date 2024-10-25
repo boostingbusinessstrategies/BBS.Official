@@ -588,7 +588,7 @@ h3 {
         text-align: left; /* Alinear a la izquierda en móviles */
     }
 
-    .footer-section h3::after {
+    .footer-section h4::after {
         left: 0; /* Asegurarse de que la línea roja esté alineada con el texto */
     }
 
