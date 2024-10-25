@@ -469,50 +469,51 @@ body {
 /* Estilos en modo nocturno */
 @media (prefers-color-scheme: dark) {
     .policy-menu {
-        background: #1a1a1a; /* Fondo oscuro */
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada */
+        background: #1a1a1a;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
     .policy-menu li {
-        background-color: #2b2f38; /* Fondo de los elementos del menú */
-        color: #e0e0e0; /* Texto claro */
+        background-color: #2b2f38;
+        color: #e0e0e0;
+        border: 1px solid rgba(255, 255, 255, 0.15); /* Borde sutil en modo nocturno */
     }
 
     .policy-menu li:hover {
-        background: #37474f; /* Color de fondo al pasar el mouse */
+        background: #37474f;
     }
 
     .policy-menu a {
-        color: #66b2ff; /* Color de los enlaces en modo nocturno */
+        color: #66b2ff;
     }
 
     .policy-menu a:hover {
-        color: #ff8080; /* Color claro al pasar el mouse */
+        color: #ff8080;
     }
 
     .policy-content {
-        background-color: #1c1f26; /* Fondo de contenido */
-        color: #e0e0e0; /* Texto claro */
+        background-color: #1c1f26;
+        color: #e0e0e0;
     }
 
     .policy-content p {
-        color: #333333; /* Texto de párrafos más oscuro */
+        color: #333333;
     }
 
     .policy-content li {
-        color: #e0e0e0; /* Texto de los elementos de la lista */
+        color: #e0e0e0;
     }
 
     .policy-content li:hover {
-        background-color: #37474f; /* Color de fondo al pasar el mouse en la lista */
+        background-color: #37474f;
     }
 
     h2 {
-        color: #66b2ff; /* Color de los encabezados */
+        color: #66b2ff;
     }
 
     h3 {
-        color: #e0e0e0; /* Color de los subtítulos */
+        color: #e0e0e0;
     }
 }
 
@@ -523,6 +524,7 @@ body {
     border-radius: 8px;
     transition: all 0.3s ease;
     animation: slideIn 0.5s ease-out backwards;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Borde sutil en modo día */
 }
 
 .policy-menu li:hover {
@@ -560,7 +562,7 @@ body {
 }
 
 .policy-content.expanded {
-    max-height: none; /* Se ajusta dinámicamente al contenido */
+    max-height: none;
     transition: max-height 0.6s ease-in;
 }
 
@@ -637,7 +639,7 @@ h3 {
 /* Responsive Design */
 @media (max-width: 768px) {
     .policy-menu {
-        margin: 20px 1rem; /* Ajuste el margen superior e inferior en pantallas pequeñas */
+        margin: 20px 1rem;
         padding: 1.5rem;
     }
     
@@ -660,7 +662,7 @@ h3 {
 
 @media (max-width: 576px) {
     .policy-menu {
-        margin: 15px 0.5rem; /* Reduce aún más el margen en dispositivos móviles más pequeños */
+        margin: 15px 0.5rem;
         padding: 1.2rem;
     }
     
