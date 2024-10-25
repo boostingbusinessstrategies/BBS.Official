@@ -446,7 +446,8 @@ textarea:invalid {
   }
 
   .form-container {
-      padding: 1rem;
+    margin: 1rem;
+    padding: 1rem;
   }
 
   h2 {
@@ -509,7 +510,7 @@ textarea:invalid {
     padding: 0 1rem;
 }
 
-.footer-section h3 {
+.footer-section h4 {
     font-size: 1.5rem; /* Aumentar el tamaño del título para mejor legibilidad */
     margin-bottom: 1.5rem;
     color: var(--secondary-color);
@@ -518,7 +519,7 @@ textarea:invalid {
     text-align: left; /* Alineación a la izquierda */
 }
 
-.footer-section h3::after {
+.footer-section h4::after {
     content: '';
     position: absolute;
     left: 0;
@@ -602,7 +603,7 @@ textarea:invalid {
         text-align: left; /* Alinear a la izquierda en móviles */
     }
 
-    .footer-section h3::after {
+    .footer-section h4::after {
         left: 0; /* Asegurarse de que la línea roja esté alineada con el texto */
     }
 
@@ -699,7 +700,7 @@ textarea:invalid {
     margin-bottom: 2rem;
 }
 
-#sidebar .sidebar-header h3 {
+#sidebar .sidebar-header h4 {
     color: #fff;
     font-size: 1.75rem;
     font-weight: 700;
