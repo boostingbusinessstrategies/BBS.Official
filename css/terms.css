@@ -35,6 +35,8 @@
     --transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+
+
 /* Base styles and reset */
 *, *::before, *::after {
     box-sizing: border-box;
@@ -61,53 +63,53 @@ p {
 /* Media Queries optimizadas */
 @media (max-width: 1200px) {
     html, body {
-        font-size: 98%; /* Reducción mínima */
+        font-size: 100%; /* Mantener tamaño estándar */
     }
 }
 
 @media (max-width: 992px) {
     html, body {
-        font-size: 95%; /* Mantener tamaño legible en pantallas medianas */
+        font-size: 98%; /* Mantener tamaño legible en pantallas medianas */
     }
     
     p {
+        font-size: 1.05rem; /* Aumenta el tamaño de texto */
         margin-bottom: 1.4rem;
     }
 }
 
 @media (max-width: 768px) {
     html, body {
-        font-size: 92%; /* Ajuste ligero para tablets */
+        font-size: 96%; /* Ajuste ligero para tablets */
     }
     
     p {
-        font-size: 1rem; /* Mantener tamaño estándar */
+        font-size: 1.02rem; /* Mantener texto legible */
         margin-bottom: 1.3rem;
     }
 }
 
 @media (max-width: 576px) {
     html, body {
-        font-size: 90%; /* Ajuste moderado */
+        font-size: 94%; /* Ajuste moderado */
     }
     
     p {
-        font-size: 0.98rem;
+        font-size: 1rem; /* Tamaño base para móviles */
         margin-bottom: 1.2rem;
     }
 }
 
 @media (max-width: 400px) {
     html, body {
-        font-size: 88%; /* Ajuste mínimo */
+        font-size: 92%; /* Ajuste mínimo */
     }
     
     p {
-        font-size: 0.95rem;
+        font-size: 0.98rem; /* Texto más grande en móviles pequeños */
         margin-bottom: 1.1rem;
     }
 }
-
 
 
 
@@ -164,26 +166,35 @@ header img:hover {
     transform: scale(1.1);
 }
 
-/* Estilo para dispositivos móviles */
-@media (max-width: 768px) {
+
+
+/* Header - Modo nocturno */
+@media (prefers-color-scheme: dark) {
     header {
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem;
-        height: auto;
+        background: #142135; /* Fondo oscuro */
+        color: #ffffff; /* Texto claro */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Sombra más pronunciada */
+        transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    header:hover {
+        background: #1e2a3d; /* Cambio suave al pasar el mouse */
+    }
+
+    header::after {
+        background: linear-gradient(to right, #ffc44d, #ee4d4d); /* Gradiente invertido */
     }
 
     header h1 {
-        font-size: 3em;
-        margin: 0;
-        text-align: center;
-        margin-top: 60px;
+        color: #ffffff;
     }
-    
+
+    header h1:hover {
+        color: #ffc44d; /* Color claro en hover */
+    }
+
     header img {
-        height: 80px;
-        margin-top: 30px;
-        align-self: center;
+        filter: brightness(0.8); /* Oscurecer ligeramente la imagen */
     }
 }
 
@@ -203,6 +214,50 @@ header {
         opacity: 1;
     }
 }
+
+/* Estilo para dispositivos móviles */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        height: auto;
+        background: #ffffff;
+        color: #333333;
+    }
+
+    header h1 {
+        font-size: 3em;
+        margin: 0;
+        text-align: center;
+        margin-top: 60px;
+    }
+    
+    header img {
+        height: 80px;
+        margin-top: 30px;
+        align-self: center;
+    }
+
+    /* Modo nocturno en dispositivos móviles */
+    @media (prefers-color-scheme: dark) {
+        header {
+            background: #142135;
+            color: #ffffff;
+        }
+        
+        header h1 {
+            color: #ffffff;
+        }
+    }
+}
+
+
+
+
+
+
+
 
 /* Base gradient suave */
 body {
@@ -270,6 +325,79 @@ body {
 }
 
 
+/* Base gradient suave - Modo nocturno */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #1c1f26 0%, #2b2f38 100%);
+        
+        /* Patrón de ondas y efectos adaptado para modo nocturno */
+        background-image: 
+            radial-gradient(circle at 90% 10%, 
+                rgba(45, 98, 137, 0.2) 0%,  
+                transparent 70%),
+            radial-gradient(circle at 10% 50%, 
+                rgba(76, 175, 80, 0.15) 0%,  
+                transparent 60%),
+            radial-gradient(circle at 50% 90%, 
+                rgba(255, 152, 0, 0.1) 0%,  
+                transparent 65%),
+            linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.03) 25%,  
+                transparent 25%,
+                transparent 50%, 
+                rgba(255, 255, 255, 0.03) 50%, 
+                rgba(255, 255, 255, 0.03) 75%,
+                transparent 75%,
+                transparent),
+            radial-gradient(circle at 50% 0%, 
+                rgba(255, 255, 255, 0.1) 0%,  
+                transparent 60%),
+            linear-gradient(135deg, 
+                #37474f 0%, 
+                #263238 50%,
+                #37474f 100%);
+        
+        background-size: 
+            100% 100%,
+            100% 100%,
+            100% 100%,
+            40px 40px, 
+            100% 100%,
+            100% 100%;
+        
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        animation: backgroundShift 30s ease-in-out infinite alternate; 
+    }
+}
+
+/* Animación de fondo */
+@keyframes backgroundShift {
+    0% {
+        background-position: 
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%;
+    }
+    100% {
+        background-position: 
+            100% 100%,
+            -20% 100%,
+            100% -20%,
+            40px 40px,
+            0% 0%,
+            0% 0%;
+    }
+}
+
+
+
+
+
+
 
 /* Menu Container */
 .policy-menu {
@@ -284,15 +412,117 @@ body {
     animation: fadeIn 0.8s ease-out 0.2s backwards;
 }
 
+/* Estilos en modo nocturno */
+@media (prefers-color-scheme: dark) {
+    .policy-menu {
+        background: #1a1a1a; /* Fondo oscuro */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada */
+    }
 
+    .policy-menu li {
+        background-color: #2b2f38; /* Fondo de los elementos del menú */
+        color: #e0e0e0; /* Texto claro */
+    }
+
+    .policy-menu li:hover {
+        background: #37474f; /* Color de fondo al pasar el mouse */
+    }
+
+    .policy-menu a {
+        color: #66b2ff; /* Color de los enlaces en modo nocturno */
+    }
+
+    .policy-menu a:hover {
+        color: #ff8080; /* Color claro al pasar el mouse */
+    }
+
+    .policy-content {
+        background-color: #1c1f26; /* Fondo de contenido */
+        color: #e0e0e0; /* Texto claro */
+    }
+
+    h2 {
+        color: #66b2ff; /* Color de los encabezados */
+    }
+
+    h3 {
+        color: #e0e0e0; /* Color de los subtítulos */
+    }
+}
+
+
+
+
+/* Menu Container */
+.policy-menu {
+    list-style-type: none;
+    padding: 0;
+    max-width: 900px;
+    margin: 40px auto; /* Agrega margen arriba y abajo */
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    animation: fadeIn 0.8s ease-out 0.2s backwards;
+}
+
+/* Estilos en modo nocturno */
+@media (prefers-color-scheme: dark) {
+    .policy-menu {
+        background: #1a1a1a; /* Fondo oscuro */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada */
+    }
+
+    .policy-menu li {
+        background-color: #2b2f38; /* Fondo de los elementos del menú */
+        color: #e0e0e0; /* Texto claro */
+    }
+
+    .policy-menu li:hover {
+        background: #37474f; /* Color de fondo al pasar el mouse */
+    }
+
+    .policy-menu a {
+        color: #66b2ff; /* Color de los enlaces en modo nocturno */
+    }
+
+    .policy-menu a:hover {
+        color: #ff8080; /* Color claro al pasar el mouse */
+    }
+
+    .policy-content {
+        background-color: #1c1f26; /* Fondo de contenido */
+        color: #e0e0e0; /* Texto claro */
+    }
+
+    .policy-content p {
+        color: #333333; /* Texto de párrafos más oscuro */
+    }
+
+    .policy-content li {
+        color: #e0e0e0; /* Texto de los elementos de la lista */
+    }
+
+    .policy-content li:hover {
+        background-color: #37474f; /* Color de fondo al pasar el mouse en la lista */
+    }
+
+    h2 {
+        color: #66b2ff; /* Color de los encabezados */
+    }
+
+    h3 {
+        color: #e0e0e0; /* Color de los subtítulos */
+    }
+}
+
+/* Item de menú */
 .policy-menu li {
     margin: 15px 0;
     padding: 12px 20px;
     border-radius: 8px;
     transition: all 0.3s ease;
     animation: slideIn 0.5s ease-out backwards;
-    background-color: #f0f4f8;
-    cursor: pointer;
 }
 
 .policy-menu li:hover {
@@ -450,8 +680,6 @@ h3 {
         font-size: 0.95rem;
     }
 }
-
-
 
 
 
