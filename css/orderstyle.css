@@ -571,7 +571,7 @@ textarea {
     background: #2b2f38; /* Fondo oscuro para inputs */
     transition: all 0.3s ease;
     font-size: 1rem;
-    color: #ffffff;
+    color: #e0e0e0; /* Texto claro */
 }
 
 /* Select Styling for Night Mode */
@@ -589,17 +589,11 @@ select {
     transition: all 0.3s ease; /* Transición suave */
 }
 
-
-    ::placeholder {
-        color: #ffffff; /* Color de etiquetas en modo oscuro */
-    }
-       
-
     /* Labels */
     label {
         display: block;
         margin-bottom: 8px;
-        color: #ffffff;
+        color: #ffffff; /* Texto claro */
         font-weight: 500;
         margin-top: 0; /* Asegúrate de que no haya margen superior aquí */
     }
