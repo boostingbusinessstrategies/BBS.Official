@@ -462,6 +462,27 @@ body {
     vertical-align: middle;
   }
   
+
+/* Checkbox Container */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0;
+    gap: 0.5rem;
+  }
+  
+  .checkbox-container input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    margin: 0;
+  }
+  
+  .checkbox-container label {
+    margin: 0;
+    line-height: 1;
+  }
+
   /* Submit Button */
   .submit-button {
     background: linear-gradient(135deg, #ee4d4d 0%, #ff6b6b 100%);
