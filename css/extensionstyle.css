@@ -602,9 +602,9 @@ body {
     input[type="number"],
     select,
     textarea {
-        background: rgba(255, 255, 255, 0.1); /* Fondo claro con transparencia */
-        border: 2px solid rgba(255, 255, 255, 0.2); /* Borde más claro */
-        color: #ffffff; /* Color del texto de los campos */
+        background: #2b2f38; /* Fondo oscuro para inputs */
+        border: 2px solid #444; /* Borde oscuro */
+        color: #e0e0e0; /* Texto claro */
     }
 
     ::placeholder {
@@ -645,6 +645,12 @@ body {
 
     .error-message {
         color: #ee4d4d; /* Color de mensajes de error en modo oscuro */
+    }
+
+    /* Estados de error */
+    .form-group input:invalid,
+    .form-group textarea:invalid {
+        border-color: #ee4d4d; /* Color de borde en error */
     }
 }
 
