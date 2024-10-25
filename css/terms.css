@@ -51,20 +51,70 @@
 
 html, body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Actualizada a la fuente deseada */
-    font-size: 16px; /* Tamaño de fuente */
+    font-size: 100%; /* Ajuste basado en el tamaño de la pantalla */
     background-color: var(--background-color); /* Usa la variable para el color de fondo */
     color: var(--text-color); /* Usa la variable para el color del texto */
-    line-height: 1.6; /* Opcional: para mejorar la legibilidad */
-    margin: 0; /* Asegura que no haya márgenes por defecto */
-    padding: 0; /* Asegura que no haya padding por defecto */
+    line-height: 1.6; /* Para mejorar la legibilidad */
+    margin: 0;
+    padding: 0;
 }
-
 
 p {
     margin-bottom: 1.5rem; /* Margen inferior para párrafos */
-    font-size: 1rem; /* Tamaño de fuente */
+    font-size: 1rem; /* Tamaño de fuente estándar */
     line-height: 1.6; /* Altura de línea */
 }
+
+/* Media Queries para hacer el diseño responsive */
+@media (max-width: 1200px) {
+    html, body {
+        font-size: 90%; /* Reduce el tamaño de fuente en pantallas grandes pero no enormes */
+    }
+}
+
+@media (max-width: 992px) {
+    html, body {
+        font-size: 85%; /* Ajuste para tablets */
+    }
+    
+    p {
+        margin-bottom: 1.2rem; /* Ajusta el espacio en dispositivos más pequeños */
+    }
+}
+
+@media (max-width: 768px) {
+    html, body {
+        font-size: 80%; /* Ajuste para pantallas medianas o tablets en modo retrato */
+    }
+    
+    p {
+        font-size: 0.9rem; /* Ajusta el tamaño del texto */
+        margin-bottom: 1rem; /* Reduce el margen entre párrafos */
+    }
+}
+
+@media (max-width: 576px) {
+    html, body {
+        font-size: 75%; /* Ajuste para pantallas pequeñas */
+    }
+    
+    p {
+        font-size: 0.85rem; /* Aún más pequeño en pantallas pequeñas */
+        margin-bottom: 0.8rem; /* Ajusta el margen para dispositivos móviles */
+    }
+}
+
+@media (max-width: 400px) {
+    html, body {
+        font-size: 70%; /* Ajuste para pantallas muy pequeñas */
+    }
+    
+    p {
+        font-size: 0.8rem; /* Ajuste final para móviles muy pequeños */
+        margin-bottom: 0.7rem; /* Ajusta el margen para pantallas pequeñas */
+    }
+}
+
 
 
 /* Header */
