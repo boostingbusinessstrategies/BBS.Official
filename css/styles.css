@@ -583,7 +583,7 @@ h3 {
 }
 
 .bbs-logo {
-    width: 150px;
+    width: 150px; /* Tamaño inicial del logo */
     height: auto;
     transition: transform 0.3s ease; /* Transición suave para el logo */
 }
@@ -591,6 +591,14 @@ h3 {
 .bbs-logo:hover {
     transform: scale(1.1); /* Aumentar tamaño del logo al pasar el ratón */
 }
+
+/* Hacer que el logo sea más pequeño en pantallas pequeñas */
+@media (max-width: 768px) {
+    .bbs-logo {
+        width: 100px; /* Tamaño reducido del logo en pantallas pequeñas */
+    }
+}
+
 
 
 /* Navegación de escritorio */
