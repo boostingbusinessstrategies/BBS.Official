@@ -51,3 +51,18 @@ document.addEventListener('DOMContentLoaded', function() {
   
     console.log('Sidebar script loaded');
   });
+
+
+  
+
+  if (navigator.hardwareConcurrency <= 2 || navigator.deviceMemory <= 2) {
+    document.documentElement.classList.add('low-performance');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const isLowPerformance = navigator.hardwareConcurrency <= 2 || navigator.deviceMemory <= 2;
+    
+    if (isLowPerformance) {
+        document.documentElement.classList.add('low-performance');
+    }
+});
