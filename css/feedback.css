@@ -506,7 +506,7 @@ body {
   
   /* Feedback Display Section */
   .feedback-display-container {
-    margin-top: 3rem;
+    margin: 10px auto; /* Agrega margen arriba y abajo */
     padding: 2rem;
     background: #f8f9fa;
     border-radius: 15px;
