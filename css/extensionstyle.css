@@ -127,28 +127,70 @@ body {
     padding: 0;
 }
 
-/* Reset y estilos base */
-* {
+html, body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Fuente actualizada */
+    font-size: 100%; /* Tamaño de fuente base */
+    background-color: var(--background-color); /* Usa la variable para color de fondo */
+    color: var(--text-color); /* Usa la variable para color del texto */
+    line-height: 1.6; /* Mejora de la legibilidad */
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
-
-html, body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Actualizada a la fuente deseada */
-    font-size: 16px; /* Tamaño de fuente */
-    background-color: var(--background-color); /* Usa la variable para el color de fondo */
-    color: var(--text-color); /* Usa la variable para el color del texto */
-    line-height: 1.6; /* Opcional: para mejorar la legibilidad */
-    margin: 0; /* Asegura que no haya márgenes por defecto */
-    padding: 0; /* Asegura que no haya padding por defecto */
-}
-
 
 p {
     margin-bottom: 1.5rem; /* Margen inferior para párrafos */
-    font-size: 1rem; /* Tamaño de fuente */
-    line-height: 1.6; /* Altura de línea */
+    font-size: 1rem; /* Tamaño de fuente estándar */
+    line-height: 1.6;
+}
+
+/* Media Queries optimizadas */
+@media (max-width: 1200px) {
+    html, body {
+        font-size: 95%; /* Reducción ligera para pantallas grandes */
+    }
+}
+
+@media (max-width: 992px) {
+    html, body {
+        font-size: 90%; /* Ajuste para pantallas medianas */
+    }
+    
+    p {
+        margin-bottom: 1.4rem; /* Ajuste del espacio entre párrafos */
+    }
+}
+
+@media (max-width: 768px) {
+    html, body {
+        font-size: 85%; /* Ajuste para tablets y pantallas medianas */
+    }
+    
+    p {
+        font-size: 0.95rem; /* Mantener texto legible */
+        margin-bottom: 1.2rem; /* Margen ajustado */
+    }
+}
+
+@media (max-width: 576px) {
+    html, body {
+        font-size: 80%; /* Ajuste moderado para pantallas pequeñas */
+    }
+    
+    p {
+        font-size: 0.9rem; /* Mantener legibilidad en móviles */
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    html, body {
+        font-size: 78%; /* Ajuste mínimo para móviles muy pequeños */
+    }
+    
+    p {
+        font-size: 0.85rem; /* Reducción mínima para evitar textos muy pequeños */
+        margin-bottom: 0.9rem;
+    }
 }
 
 
@@ -494,7 +536,7 @@ header {
     padding: 0 1rem;
 }
 
-.footer-section h3 {
+.footer-section h4 {
     font-size: 1.5rem; /* Aumentar el tamaño del título para mejor legibilidad */
     margin-bottom: 1.5rem;
     color: var(--secondary-color);
@@ -503,7 +545,7 @@ header {
     text-align: left; /* Alineación a la izquierda */
 }
 
-.footer-section h3::after {
+.footer-section h4::after {
     content: '';
     position: absolute;
     left: 0;
@@ -587,7 +629,7 @@ header {
         text-align: left; /* Alinear a la izquierda en móviles */
     }
 
-    .footer-section h3::after {
+    .footer-section h4::after {
         left: 0; /* Asegurarse de que la línea roja esté alineada con el texto */
     }
 
@@ -690,7 +732,7 @@ header {
     margin-bottom: 2rem;
 }
 
-#sidebar .sidebar-header h3 {
+#sidebar .sidebar-header h4 {
     color: #fff;
     font-size: 1.75rem;
     font-weight: 700;
