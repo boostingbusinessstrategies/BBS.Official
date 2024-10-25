@@ -58,53 +58,78 @@ p {
     line-height: 1.6;
 }
 
+
+
+/* Base styles and reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 100%; /* Tamaño base */
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
 /* Media Queries optimizadas */
 @media (max-width: 1200px) {
     html, body {
-        font-size: 95%; /* Reducción ligera para pantallas grandes */
+        font-size: 98%; /* Reducción mínima */
     }
 }
 
 @media (max-width: 992px) {
     html, body {
-        font-size: 90%; /* Ajuste para pantallas medianas */
+        font-size: 95%; /* Mantener tamaño legible en pantallas medianas */
     }
     
     p {
-        margin-bottom: 1.4rem; /* Ajuste del espacio entre párrafos */
+        margin-bottom: 1.4rem;
     }
 }
 
 @media (max-width: 768px) {
     html, body {
-        font-size: 85%; /* Ajuste para tablets y pantallas medianas */
+        font-size: 92%; /* Ajuste ligero para tablets */
     }
     
     p {
-        font-size: 0.95rem; /* Mantener texto legible */
-        margin-bottom: 1.2rem; /* Margen ajustado */
+        font-size: 1rem; /* Mantener tamaño estándar */
+        margin-bottom: 1.3rem;
     }
 }
 
 @media (max-width: 576px) {
     html, body {
-        font-size: 80%; /* Ajuste moderado para pantallas pequeñas */
+        font-size: 90%; /* Ajuste moderado */
     }
     
     p {
-        font-size: 0.9rem; /* Mantener legibilidad en móviles */
-        margin-bottom: 1rem;
+        font-size: 0.98rem;
+        margin-bottom: 1.2rem;
     }
 }
 
 @media (max-width: 400px) {
     html, body {
-        font-size: 78%; /* Ajuste mínimo para móviles muy pequeños */
+        font-size: 88%; /* Ajuste mínimo */
     }
     
     p {
-        font-size: 0.85rem; /* Reducción mínima para evitar textos muy pequeños */
-        margin-bottom: 0.9rem;
+        font-size: 0.95rem;
+        margin-bottom: 1.1rem;
     }
 }
 
