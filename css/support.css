@@ -626,14 +626,6 @@ textarea:invalid {
         color: #e0e0e0; /* Texto claro */
     }
 
-    input[type="text"]:focus,
-    input[type="email"]:focus,
-    select:focus,
-    textarea:focus {
-        border-color: #66b2ff; /* Borde claro en foco */
-        box-shadow: 0 0 0 3px rgba(102, 178, 255, 0.2); /* Sombra clara en foco */
-    }
-
     label {
         color: #e0e0e0; /* Texto claro para etiquetas */
     }
