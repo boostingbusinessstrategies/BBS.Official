@@ -453,12 +453,32 @@ h3 {
     }
 
     .cta-button {
-        background-color: #66b2ff; /* Color de botón en modo oscuro */
+        background-color: var(--accent-color); /* Color de botón en modo oscuro */
     }
 
     .section {
         background-color: #1c1f26; /* Fondo de la sección */
         color: #e0e0e0; /* Color de texto en secciones */
+    }
+
+    .hero-section .cta-button {
+        background-color: var(--accent-color); /* Fondo con transparencia en modo oscuro */
+        color: #ffffff; /* Color de texto claro */
+        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1); /* Sombra más clara */
+    }
+
+    .hero-section .cta-button:hover {
+        background-color: rgba(255, 196, 77, 0.9); /* Fondo más claro al pasar el mouse */
+        color: black; /* Color de texto en hover */
+        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3); /* Sombra en hover */
+    }
+
+    .hero-section .cta-button::before {
+        background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    }
+
+    .hero-section .cta-button:hover::before {
+        background: linear-gradient(120deg, transparent, rgba(255, 196, 77, 0.6), transparent); /* Cambia el gradiente al pasar el mouse */
     }
 }
 
