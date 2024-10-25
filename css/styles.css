@@ -927,13 +927,18 @@ h3 {
 
 
 
-
-
 /* Anula animaciones en pantallas pequeñas */
 @media (max-width: 768px) {
     * {
         animation: none !important;
         transition: none !important;
+    }
+
+    /* Excepción para los textos del header en pantallas pequeñas */
+    .hero-section h1,
+    .hero-section p {
+        animation: fadeInDown 1s ease-out !important; /* Mantiene la animación del título */
+        transition: initial !important; /* Mantiene la transición */
     }
 }
 
@@ -945,17 +950,15 @@ h3 {
     }
 }
 
-
 /* Desactiva las animaciones para todos los elementos */
 .low-performance * {
     animation: none !important;
     transition: none !important;
 }
 
-/* Mantiene las animaciones de los textos intactas */
-.low-performance p,
-.low-performance h1, h2, h3, h4,
-.low-performance a {
-    animation: initial !important;
-    transition: initial !important;
+/* Excepción para los textos del hero (mantiene las animaciones en h1 y p) */
+.low-performance .hero-section h1,
+.low-performance .hero-section p {
+    animation: fadeInDown 1s ease-out !important; /* Agregar la animación del header */
+    transition: initial !important; /* Mantiene la transición */
 }
