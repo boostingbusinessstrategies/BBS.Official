@@ -504,6 +504,11 @@ header {
         color: #ffffff; /* Texto resaltado en color claro */
     }
 
+    #introduction strong {
+        color: #0086fc;
+        font-weight: 600;
+    }
+
     .service-card {
         background-color: #2a2a2a; /* Fondo oscuro para tarjetas de servicio */
         box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1); /* Sombra más suave */
@@ -738,7 +743,7 @@ section a:hover {
 
     /* Color de strong en modo oscuro */
     section ul li strong {
-        color: #007acc; /* Color azul más claro para strong en modo oscuro */
+        color: #0086fc; /* Color azul más claro para strong en modo oscuro */
     }
 }
 
