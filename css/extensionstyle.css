@@ -40,86 +40,6 @@
 }
 
 
-body {
-    /* Base gradient suave */
-    background: linear-gradient(135deg, #e8f0ff 0%, #ffffff 100%);
-    
-    /* Patrón de ondas y efectos usando múltiples gradientes */
-    background-image: 
-        /* Onda superior derecha - verde claro */
-        radial-gradient(circle at 90% 10%, 
-            rgba(76, 175, 80, 0.1) 0%, 
-            transparent 70%),
-        
-        /* Onda central izquierda - naranja */
-        radial-gradient(circle at 10% 50%, 
-            rgba(255, 152, 0, 0.1) 0%, 
-            transparent 60%),
-        
-        /* Onda inferior central - púrpura */
-        radial-gradient(circle at 50% 90%, 
-            rgba(103, 58, 183, 0.1) 0%, 
-            transparent 65%),
-            
-        /* Patrón diagonal más visible */
-        linear-gradient(135deg, 
-            rgba(20, 33, 53, 0.05) 25%, 
-            transparent 25%,
-            transparent 50%, 
-            rgba(20, 33, 53, 0.05) 50%, 
-            rgba(20, 33, 53, 0.05) 75%,
-            transparent 75%,
-            transparent),
-    
-        /* Efecto de luz superior */
-        radial-gradient(circle at 50% 0%, 
-            rgba(255, 255, 255, 0.5) 0%, 
-            transparent 60%),
-            
-        /* Base gradient mejorado con más contraste */
-        linear-gradient(135deg, 
-            #d0e8ff 0%, 
-            #ffffff 50%,
-            #d0e8ff 100%);
-            
-    /* Tamaño del patrón diagonal reducido para más detalle */
-    background-size: 
-        100% 100%,
-        100% 100%,
-        100% 100%,
-        40px 40px, /* Ajustado para más detalle */
-        100% 100%,
-        100% 100%;
-    
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    
-    /* Animación más suave y sutil */
-    animation: backgroundShift 30s ease-in-out infinite alternate; /* Se incrementó el tiempo para suavizar la animación */
-}
-
-@keyframes backgroundShift {
-    0% {
-        background-position: 
-            0% 0%,
-            0% 0%,
-            0% 0%,
-            0% 0%,
-            0% 0%,
-            0% 0%;
-    }
-    100% {
-        background-position: 
-            100% 100%,
-            -20% 100%,
-            100% -20%,
-            40px 40px,
-            0% 0%,
-            0% 0%;
-    }
-}
-
-
 
 /* Base styles and reset */
 *, *::before, *::after {
@@ -131,7 +51,6 @@ body {
 html, body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 100%; /* Tamaño base */
-    background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
     margin: 0;
@@ -147,52 +66,54 @@ p {
 /* Media Queries optimizadas */
 @media (max-width: 1200px) {
     html, body {
-        font-size: 98%; /* Reducción mínima */
+        font-size: 100%; /* Mantener tamaño estándar */
     }
 }
 
 @media (max-width: 992px) {
     html, body {
-        font-size: 95%; /* Mantener tamaño legible en pantallas medianas */
+        font-size: 98%; /* Mantener tamaño legible en pantallas medianas */
     }
     
     p {
+        font-size: 1.05rem; /* Aumenta el tamaño de texto */
         margin-bottom: 1.4rem;
     }
 }
 
 @media (max-width: 768px) {
     html, body {
-        font-size: 92%; /* Ajuste ligero para tablets */
+        font-size: 96%; /* Ajuste ligero para tablets */
     }
     
     p {
-        font-size: 1rem; /* Mantener tamaño estándar */
+        font-size: 1.02rem; /* Mantener texto legible */
         margin-bottom: 1.3rem;
     }
 }
 
 @media (max-width: 576px) {
     html, body {
-        font-size: 90%; /* Ajuste moderado */
+        font-size: 94%; /* Ajuste moderado */
     }
     
     p {
-        font-size: 0.98rem;
+        font-size: 1rem; /* Tamaño base para móviles */
         margin-bottom: 1.2rem;
     }
 }
 
 @media (max-width: 400px) {
     html, body {
-        font-size: 88%; /* Ajuste mínimo */
+        font-size: 92%; /* Ajuste mínimo */
     }
     
     p {
-        font-size: 0.95rem;
+        font-size: 0.98rem; /* Texto más grande en móviles pequeños */
         margin-bottom: 1.1rem;
     }
 }
+
 
 
 
@@ -248,26 +169,35 @@ header img:hover {
     transform: scale(1.1);
 }
 
-/* Estilo para dispositivos móviles */
-@media (max-width: 768px) {
+
+
+/* Header - Modo nocturno */
+@media (prefers-color-scheme: dark) {
     header {
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem;
-        height: auto;
+        background: #142135; /* Fondo oscuro */
+        color: #ffffff; /* Texto claro */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Sombra más pronunciada */
+        transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    header:hover {
+        background: #1e2a3d; /* Cambio suave al pasar el mouse */
+    }
+
+    header::after {
+        background: linear-gradient(to right, #ffc44d, #ee4d4d); /* Gradiente invertido */
     }
 
     header h1 {
-        font-size: 3em;
-        margin: 0;
-        text-align: center;
-        margin-top: 60px;
+        color: #ffffff;
     }
-    
+
+    header h1:hover {
+        color: #ffc44d; /* Color claro en hover */
+    }
+
     header img {
-        height: 80px;
-        margin-top: 30px;
-        align-self: center;
+        filter: brightness(0.8); /* Oscurecer ligeramente la imagen */
     }
 }
 
@@ -286,8 +216,163 @@ header {
         transform: translateY(0);
         opacity: 1;
     }
-
 }
+
+/* Estilo para dispositivos móviles */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        height: auto;
+        background: #ffffff;
+        color: #333333;
+    }
+
+    header h1 {
+        font-size: 3em;
+        margin: 0;
+        text-align: center;
+        margin-top: 60px;
+    }
+    
+    header img {
+        height: 80px;
+        margin-top: 30px;
+        align-self: center;
+    }
+
+    /* Modo nocturno en dispositivos móviles */
+    @media (prefers-color-scheme: dark) {
+        header {
+            background: #142135;
+            color: #ffffff;
+        }
+        
+        header h1 {
+            color: #ffffff;
+        }
+    }
+}
+
+
+
+
+
+/* Base gradient suave - Pestaña de Extensión de Bases de Datos */
+body {
+    background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
+
+    /* Patrón de ondas y efectos usando múltiples gradientes */
+    background-image: 
+        radial-gradient(circle at 90% 10%, 
+            rgba(33, 150, 243, 0.1) 0%,  
+            transparent 70%),
+        radial-gradient(circle at 10% 50%, 
+            rgba(255, 193, 7, 0.1) 0%,  
+            transparent 60%),
+        radial-gradient(circle at 50% 90%, 
+            rgba(76, 175, 80, 0.1) 0%,  
+            transparent 65%),
+        linear-gradient(135deg, 
+            rgba(20, 33, 53, 0.05) 25%,  
+            transparent 25%,
+            transparent 50%, 
+            rgba(20, 33, 53, 0.05) 50%, 
+            rgba(20, 33, 53, 0.05) 75%,
+            transparent 75%,
+            transparent),
+        radial-gradient(circle at 50% 0%, 
+            rgba(255, 255, 255, 0.6) 0%,  
+            transparent 60%),
+        linear-gradient(135deg, 
+            #bbdefb 0%, 
+            #ffffff 50%,
+            #bbdefb 100%);
+    
+    background-size: 
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        40px 40px, 
+        100% 100%,
+        100% 100%;
+    
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    animation: backgroundShift 30s ease-in-out infinite alternate; 
+}
+
+@keyframes backgroundShift {
+    0% {
+        background-position: 
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%;
+    }
+    100% {
+        background-position: 
+            100% 100%,
+            -20% 100%,
+            100% -20%,
+            40px 40px,
+            0% 0%,
+            0% 0%;
+    }
+}
+
+/* Base gradient suave - Modo nocturno para la pestaña de Extensión de Bases de Datos */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #1c1f26 0%, #2b2f38 100%);
+        
+        /* Patrón de ondas y efectos adaptado para modo nocturno */
+        background-image: 
+            radial-gradient(circle at 90% 10%, 
+                rgba(33, 150, 243, 0.2) 0%,  
+                transparent 70%),
+            radial-gradient(circle at 10% 50%, 
+                rgba(255, 193, 7, 0.2) 0%,  
+                transparent 60%),
+            radial-gradient(circle at 50% 90%, 
+                rgba(76, 175, 80, 0.15) 0%,  
+                transparent 65%),
+            linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.03) 25%,  
+                transparent 25%,
+                transparent 50%, 
+                rgba(255, 255, 255, 0.03) 50%, 
+                rgba(255, 255, 255, 0.03) 75%,
+                transparent 75%,
+                transparent),
+            radial-gradient(circle at 50% 0%, 
+                rgba(255, 255, 255, 0.1) 0%,  
+                transparent 60%),
+            linear-gradient(135deg, 
+                #37474f 0%, 
+                #263238 50%,
+                #37474f 100%);
+        
+        background-size: 
+            100% 100%,
+            100% 100%,
+            100% 100%,
+            40px 40px, 
+            100% 100%,
+            100% 100%;
+        
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        animation: backgroundShift 30s ease-in-out infinite alternate; 
+    }
+}
+
+
+
+
 
 
 
@@ -356,16 +441,6 @@ header {
     background: #ffffff;
     transition: all 0.3s ease;
     font-size: 1rem;
-  }
-  
-  input[type="text"]:focus,
-  input[type="email"]:focus,
-  input[type="number"]:focus,
-  select:focus,
-  textarea:focus {
-    border-color: #0056a3;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 86, 163, 0.1);
   }
   
   /* Labels */
@@ -494,6 +569,86 @@ header {
   #modify-form {
     animation: fadeIn 0.8s ease-out;
   }
+
+
+/* Modo nocturno para el formulario de modificación */
+@media (prefers-color-scheme: dark) {
+    #modify-form {
+        background: rgba(20, 33, 53, 0.9); /* Fondo oscuro */
+        box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1); /* Sombra más clara */
+        color: #ffffff; /* Color de texto por defecto */
+    }
+
+
+    #extension-form {
+        background: rgba(20, 33, 53, 0.8); /* Fondo oscuro para contenedor de formulario */
+        color: #ffffff; /* Color de enlaces en notas */
+    }
+
+    #introduction p {
+        color: #ffffff; /* Color de texto claro */
+    }
+
+    h2 {
+        color: #ffc44d; /* Color de encabezados en modo oscuro */
+    }
+
+    h3 {
+        color: #ffffff; /* Color de subtítulos en modo oscuro */
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    select,
+    textarea {
+        background: rgba(255, 255, 255, 0.1); /* Fondo claro con transparencia */
+        border: 2px solid rgba(255, 255, 255, 0.2); /* Borde más claro */
+        color: #ffffff; /* Color del texto de los campos */
+    }
+
+    ::placeholder {
+        color: #ffffff; /* Color de etiquetas en modo oscuro */
+    }
+
+    label {
+        color: #ffffff; /* Color de etiquetas en modo oscuro */
+    }
+
+    .note {
+        background: rgba(255, 255, 255, 0.1); /* Fondo claro con transparencia */
+        border-left: 4px solid #ffc44d; /* Borde claro */
+        color: #ffffff; /* Color de texto en notas */
+    }
+
+    .note small,
+    .note li {
+        color: #ffffff; /* Color de texto claro en notas */
+    }
+
+    .note a {
+        color: #ffc44d; /* Color de enlaces en notas */
+    }
+
+    .note a:hover {
+        color: #ff6b6b; /* Color de enlace en hover */
+    }
+
+    input[type="submit"] {
+        background: linear-gradient(135deg, #ee4d4d 0%, #ff6b6b 100%); /* Color del botón en modo oscuro */
+        color: white; /* Asegurarse de que el texto del botón sea legible */
+    }
+
+    input[type="submit"]:hover {
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee4d4d 100%); /* Color del botón en hover */
+    }
+
+    .error-message {
+        color: #ee4d4d; /* Color de mensajes de error en modo oscuro */
+    }
+}
+
+
 
 
 
