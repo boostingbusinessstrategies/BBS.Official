@@ -36,6 +36,9 @@
 }
 
 
+
+
+
 /* Base styles and reset */
 *, *::before, *::after {
     box-sizing: border-box;
@@ -46,12 +49,21 @@
 html, body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 100%; /* Tamaño base */
-    background-color: var(--background-color);
-    color: var(--text-color);
+    background-color: var(--background-color); /* Color de fondo en modo claro */
+    color: var(--text-color); /* Color de texto en modo claro */
     line-height: 1.6;
     margin: 0;
     padding: 0;
 }
+
+/* Modo nocturno */
+@media (prefers-color-scheme: dark) {
+    html, body {
+        background-color: #1a1a1a; /* Fondo oscuro para el modo nocturno */
+        color: #e0e0e0; /* Color de texto claro para el modo nocturno */
+    }
+}
+
 
 p {
     margin-bottom: 1.5rem;
@@ -62,62 +74,56 @@ p {
 /* Media Queries optimizadas */
 @media (max-width: 1200px) {
     html, body {
-        font-size: 98%; /* Reducción mínima */
+        font-size: 100%; /* Mantener tamaño estándar */
     }
 }
 
 @media (max-width: 992px) {
     html, body {
-        font-size: 95%; /* Mantener tamaño legible en pantallas medianas */
+        font-size: 98%; /* Mantener tamaño legible en pantallas medianas */
     }
     
     p {
+        font-size: 1.05rem; /* Aumenta el tamaño de texto */
         margin-bottom: 1.4rem;
     }
 }
 
 @media (max-width: 768px) {
     html, body {
-        font-size: 92%; /* Ajuste ligero para tablets */
+        font-size: 96%; /* Ajuste ligero para tablets */
     }
     
     p {
-        font-size: 1rem; /* Mantener tamaño estándar */
+        font-size: 1.02rem; /* Mantener texto legible */
         margin-bottom: 1.3rem;
     }
 }
 
 @media (max-width: 576px) {
     html, body {
-        font-size: 90%; /* Ajuste moderado */
+        font-size: 94%; /* Ajuste moderado */
     }
     
     p {
-        font-size: 0.98rem;
+        font-size: 1rem; /* Tamaño base para móviles */
         margin-bottom: 1.2rem;
     }
 }
 
 @media (max-width: 400px) {
     html, body {
-        font-size: 88%; /* Ajuste mínimo */
+        font-size: 92%; /* Ajuste mínimo */
     }
     
     p {
-        font-size: 0.95rem;
+        font-size: 0.98rem; /* Texto más grande en móviles pequeños */
         margin-bottom: 1.1rem;
     }
 }
 
 
 
-
-/* Container */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: var(--container-padding);
-}
 
 /* Header */
 header {
@@ -171,26 +177,35 @@ header img:hover {
     transform: scale(1.1);
 }
 
-/* Estilo para dispositivos móviles */
-@media (max-width: 768px) {
+
+
+/* Header - Modo nocturno */
+@media (prefers-color-scheme: dark) {
     header {
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem;
-        height: auto;
+        background: #142135; /* Fondo oscuro */
+        color: #ffffff; /* Texto claro */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Sombra más pronunciada */
+        transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    header:hover {
+        background: #1e2a3d; /* Cambio suave al pasar el mouse */
+    }
+
+    header::after {
+        background: linear-gradient(to right, #ffc44d, #ee4d4d); /* Gradiente invertido */
     }
 
     header h1 {
-        font-size: 3em;
-        margin: 0;
-        text-align: center;
-        margin-top: 60px;
+        color: #ffffff;
     }
-    
+
+    header h1:hover {
+        color: #ffc44d; /* Color claro en hover */
+    }
+
     header img {
-        height: 80px;
-        margin-top: 30px;
-        align-self: center;
+        filter: brightness(0.8); /* Oscurecer ligeramente la imagen */
     }
 }
 
@@ -211,9 +226,56 @@ header {
     }
 }
 
+/* Estilo para dispositivos móviles */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        height: auto;
+        background: #ffffff;
+        color: #333333;
+    }
+
+    header h1 {
+        font-size: 3em;
+        margin: 0;
+        text-align: center;
+        margin-top: 60px;
+    }
+    
+    header img {
+        height: 80px;
+        margin-top: 30px;
+        align-self: center;
+    }
+
+    /* Modo nocturno en dispositivos móviles */
+    @media (prefers-color-scheme: dark) {
+        header {
+            background: #142135;
+            color: #ffffff;
+        }
+        
+        header h1 {
+            color: #ffffff;
+        }
+    }
+}
 
 
 
+
+
+
+
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--container-padding);
+}
 
 /* Container General */
 #introduction.int-container {
@@ -417,6 +479,48 @@ header {
 
 
 
+/* Modo nocturno para el contenedor */
+@media (prefers-color-scheme: dark) {
+    .container,
+    #introduction.int-container,
+    .services-section {
+        background-color: #1a1a1a; /* Fondo oscuro */
+        color: #ffffff; /* Texto claro */
+    }
+
+    #introduction h2,
+    .services-section h2 {
+        color: #ffc44d; /* Color de título más claro */
+    }
+
+    #introduction p,
+    .service-card p,
+    .service-card ul li {
+        color: #e0e0e0; /* Color de texto más claro para párrafos */
+    }
+
+    #introduction .highlight {
+        background-color: rgba(255, 196, 77, 0.25); /* Resaltado más suave */
+        color: #ffffff; /* Texto resaltado en color claro */
+    }
+
+    .service-card {
+        background-color: #2a2a2a; /* Fondo oscuro para tarjetas de servicio */
+        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1); /* Sombra más suave */
+    }
+
+    .service-card h3 {
+        color: #ffc44d; /* Títulos de servicio más claros */
+    }
+
+    .service-card ul li::before {
+        color: #ffc44d; /* Color de los puntos en la lista de servicios */
+    }
+
+    .service-card ul li strong {
+        color: #ffffff; /* Texto en negrita claro */
+    }
+}
 
 
 
@@ -459,7 +563,23 @@ header {
 }
 
 
+/* Modo nocturno para el botón de más información */
+@media (prefers-color-scheme: dark) {
+    .more-info-button {
+        background-color: var(--accent-color); /* Color de fondo en modo nocturno */
+        color: #ffffff; /* Color de texto claro */
+    }
 
+    .more-info-button:hover {
+        background-color: var(--primary-color); /* Mantener el mismo color primario en hover */
+        color: white; /* Asegurar que el texto sea blanco */
+        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2); /* Sombra más clara para el efecto */
+    }
+
+    .more-info-button::before {
+        background: linear-gradient(120deg, transparent, rgba(0, 0, 0, 0.3), transparent); /* Sombra oscura para el hover */
+    }
+}
 
 
 
@@ -582,6 +702,45 @@ section a:hover {
     }
 }
 
+/* Modo nocturno para secciones */
+@media (prefers-color-scheme: dark) {
+    section.container {
+        background-color: rgba(20, 33, 53, 0.9); /* Fondo oscuro */
+        color: #ffffff; /* Color de texto claro */
+        box-shadow: 0 5px 20px rgba(255, 255, 255, 0.1); /* Sombra más clara */
+    }
+
+    section.container:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2); /* Sombra más clara en hover */
+    }
+
+    section h2 {
+        color: #ffc44d; /* Color de títulos en modo oscuro */
+    }
+
+    section p,
+    section ul li {
+        color: #ffffff; /* Color de párrafos y listas en modo oscuro */
+    }
+
+    section ul li::before {
+        color: #ffc44d; /* Color de los puntos en listas en modo oscuro */
+    }
+
+    section a {
+        color: #ffc44d; /* Color de enlaces en modo oscuro */
+    }
+
+    section a:hover {
+        color: #ee4d4d; /* Color de enlaces en hover en modo oscuro */
+    }
+
+    /* Color de strong en modo oscuro */
+    section ul li strong {
+        color: #007acc; /* Color azul más claro para strong en modo oscuro */
+    }
+}
 
 
 
@@ -590,7 +749,7 @@ section a:hover {
 
 /* Estilo General para la Sección FAQ */
 #faq {
-    background-color: #f0f4f8;
+    background-color: #f0f4f8; /* Fondo claro */
     padding: 5rem 3rem;
     border-radius: 8px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
@@ -600,43 +759,26 @@ section a:hover {
 /* Título de FAQ */
 .faq-title {
     text-align: center;
-    color: #ee4d4d;
+    color: #ee4d4d; /* Color del título */
     font-size: 2.5rem;
     font-weight: 600;
     margin-bottom: 3rem;
-    position: relative;
-}
-
-.faq-title::after {
-    content: '';
-    width: 60px;
-    height: 3px;
-    background: #ee4d4d;
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
 /* Sección de Preguntas y Respuestas */
 .faq-section {
     margin: 1.5rem 0;
-    background-color: #ffffff;
+    background-color: #ffffff; /* Fondo de las secciones */
     border-radius: 8px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
     overflow: hidden;
 }
 
-.faq-section:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
-}
-
 /* Preguntas */
 .faq-section h3 {
     font-size: 1.4rem;
-    color: #0056a3;
+    color: #0056a3; /* Color de las preguntas */
     margin: 0;
     padding: 1.5rem 2rem;
     cursor: pointer;
@@ -645,69 +787,88 @@ section a:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #ffffff;
-}
-
-.faq-section h3:hover {
-    color: #ee4d4d;
-    background-color: #f9f9f9;
+    background-color: #ffffff; /* Fondo de pregunta */
 }
 
 /* Signo + y - */
-.faq-section h3::after {
-    content: '+';
-    font-size: 1.6rem;
-    color: #ee4d4d;
+.faq-section h3 .sign {
+    font-size: 2rem; /* Aumentar tamaño del signo */
+    color: #ee4d4d; /* Color del signo */
+    margin-left: auto; /* Empuja el signo a la derecha */
     transition: all 0.3s ease;
+    display: inline-block; /* Para que funcione con el flexbox */
 }
 
-.faq-section h3.active {
-    color: #ee4d4d;
-    background-color: #f9f9f9;
-}
-
-.faq-section h3.active::after {
-    content: '\2212';  /* Unicode para el signo menos */
-    transform: translateY(-2px);
+/* Hover sobre preguntas */
+.faq-section h3:hover {
+    color: #ee4d4d; /* Color en hover */
+    background-color: #f9f9f9; /* Fondo en hover */
 }
 
 /* Respuestas */
 .faq-section p {
     font-size: 1.1rem;
     line-height: 1.7;
-    color: #333333;
+    color: #333333; /* Color del texto de respuesta */
     margin: 0;
     padding: 0 2rem;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
+    max-height: 0; /* Altura inicial */
+    overflow: hidden; /* Ocultar */
+    opacity: 0; /* Invisibilidad inicial */
     transition: all 0.5s ease;
 }
 
 /* Respuesta activa */
 .faq-section p.active {
-    padding: 1.5rem 2rem;
-    max-height: 1000px; /* Este valor puede ser ajustado si es necesario */
-    opacity: 1;
+    padding: 1.5rem 2rem; /* Padding en respuesta activa */
+    max-height: 1000px; /* Altura máxima */
+    opacity: 1; /* Visibilidad */
 }
 
 /* Estilo Responsive */
 @media (max-width: 768px) {
     #faq {
-        padding: 4rem 1.5rem;
+        padding: 4rem 1.5rem; /* Ajustar padding */
     }
     .faq-title {
-        font-size: 2.2rem;
+        font-size: 2.2rem; /* Ajustar tamaño del título */
     }
     .faq-section h3 {
-        font-size: 1.2rem;
-        padding: 1.2rem 1.5rem;
+        font-size: 1.2rem; /* Ajustar tamaño de preguntas */
+        padding: 1.2rem 1.5rem; /* Ajustar padding de preguntas */
     }
     .faq-section p {
-        font-size: 1rem;
+        font-size: 1rem; /* Ajustar tamaño de respuestas */
     }
-    .faq-section p.active {
-        padding: 1.2rem 1.5rem;
+}
+
+/* Modo nocturno para la sección FAQ */
+@media (prefers-color-scheme: dark) {
+    #faq {
+        background-color: rgba(20, 33, 53, 0.9); /* Fondo oscuro */
+        box-shadow: 0 5px 20px rgba(255, 255, 255, 0.1); /* Sombra más clara */
+    }
+
+    .faq-title {
+        color: #ffc44d; /* Color del título en modo oscuro */
+    }
+
+    .faq-section {
+        background-color: rgba(255, 255, 255, 0.1); /* Fondo de preguntas en modo oscuro */
+    }
+
+    .faq-section h3 {
+        color: #ffc44d; /* Color de las preguntas en modo oscuro */
+        background-color: rgba(20, 33, 53, 0.7); /* Fondo de pregunta en modo oscuro */
+    }
+
+    .faq-section h3:hover {
+        color: #ee4d4d; /* Color en hover en modo oscuro */
+        background-color: rgba(255, 255, 255, 0.1); /* Fondo en hover */
+    }
+
+    .faq-section p {
+        color: #ffffff; /* Color de las respuestas en modo oscuro */
     }
 }
 
@@ -719,7 +880,7 @@ section a:hover {
 
 .faq-section {
     animation: fadeIn 0.5s ease-out forwards;
-    opacity: 0;
+    opacity: 0; /* Invisibilidad inicial */
 }
 
 .faq-section:nth-child(1) { animation-delay: 0.1s; }
@@ -728,8 +889,20 @@ section a:hover {
 .faq-section:nth-child(4) { animation-delay: 0.4s; }
 .faq-section:nth-child(5) { animation-delay: 0.5s; }
 
+.answer {
+    display: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
 
-    
+.answer.active {
+    display: block;
+    max-height: 100px; /* Ajusta este valor según el contenido */
+    opacity: 1;
+}
+
 
 
 
@@ -1069,50 +1242,42 @@ section a:hover {
 
 
 
-
-
-
-
-
 /* Anula animaciones en pantallas pequeñas */
 @media (max-width: 768px) {
-    * {
+    *:not(.faq-section):not(.faq-section *):not(.reveal) { /* Excluye la sección FAQ y elementos con 'reveal' */
         animation: none !important;
         transition: none !important;
+    }
+
+    /* Permite transiciones en las preguntas y respuestas FAQ */
+    .faq-section h3,
+    .faq-section p {
+        transition: max-height 0.3s ease, opacity 0.3s ease !important;
     }
 }
 
 /* Anula animaciones si el usuario prefiere reducir movimiento */
 @media (prefers-reduced-motion: reduce) {
-    * {
+    *:not(.faq-section):not(.faq-section *):not(.reveal) { /* Excluye la sección FAQ y elementos con 'reveal' */
         animation: none !important;
         transition: none !important;
     }
 }
 
-/* Desactiva las animaciones para todos los elementos */
-.low-performance * {
+/* Desactiva las animaciones para todos los elementos de baja performance */
+.low-performance *:not(.faq-section):not(.faq-section *):not(.reveal) { /* Excluye la sección FAQ y elementos con 'reveal' */
     animation: none !important;
     transition: none !important;
 }
 
-/* Mantiene las animaciones de los textos intactas */
-.low-performance p,
-.low-performance h1, h2, h3, h4,
-.low-performance a {
-    animation: initial !important;
-    transition: initial !important;
-}
-
 /* Permite transiciones en la sección FAQ */
-.low-performance *:not(.faq-section *),
-.low-performance .faq-section h3.active,
-.low-performance .faq-section p.active {
-    animation: initial !important;
-    transition: initial !important;
-}
-
-/* Evita la desactivación completa de transiciones en elementos FAQ */
+.low-performance .faq-section h3,
 .low-performance .faq-section p {
     transition: max-height 0.3s ease, opacity 0.3s ease !important;
+}
+
+/* Permite animaciones y transiciones en todos los elementos FAQ */
+.low-performance .faq-section * {
+    animation: initial !important; /* Asegúrate de incluir la animación */
+    transition: initial !important; /* Asegúrate de incluir la transición */
 }
