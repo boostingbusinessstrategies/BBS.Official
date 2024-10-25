@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore BBS's custom database services for E-commerce and Healthcare industries. Discover reliable, secure, and scalable database solutions tailored to your business needs.">
-    <meta name="keywords" content="database services, E-commerce databases, healthcare databases, custom data solutions, data management, secure databases, scalable databases">
-    <title>BBS Services - Custom Database Solutions for E-commerce and Healthcare</title>
+    <meta name="description" content="Contact BBS for custom database solutions, database extensions, and modifications. Get professional support tailored to your needs.">
+    <meta name="keywords" content="contact BBS, database solutions, database extension, database modification, custom database support">
+    <title>Contact Us - BBS</title>
     <link rel="icon" href="https://imgur.com/OumtZsL.png" type="image/png">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/servicestyle.css">
+    <link rel="stylesheet" href="css/support.css">
 </head>
 <body>
+    
+
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h4 class="menu-title">BBS Menu</h4>
+            <h3 class="menu-title">BBS Menu</h3>
         </div>
         <ul class="components">
             <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
@@ -35,183 +34,94 @@
     <button id="menu-toggle" class="menu-toggle">
         <i class="fas fa-bars"></i>
     </button>
-    
+
+
     <div id="content">
-        <header>
-            <h1>Our Services</h1>
+        <header class="hero-section">
+            <h1>Customer Support</h1>
             <div class="logo-container">
                 <img src="https://imgur.com/6OEF51j.png" alt="BBS Logo" class="bbs-logo">
             </div>
         </header>
     </div>
     
-        <section id="introduction" class="int-container">
-            <h2>Your Trusted Partner in Database Solutions</h2>
-            <p>Welcome to Boosting Business Strategies (BBS), where our mission is to deliver <span class="highlight">exceptional experiences</span> through tailored database solutions. We understand that every business is unique, which is why we craft <span class="highlight">customized database solutions</span> designed specifically for your industry’s challenges and aspirations. Our focus on <strong>speed, security, and reliability</strong> empowers you to concentrate on what truly matters—growing your business.</p>
-            <p>In a rapidly evolving marketplace, we recognize the hurdles businesses face today. That's why we offer robust, scalable solutions tailored to enhance efficiency and productivity. Whether you're a startup, a medium-sized enterprise, or a large corporation, we bring our expertise and unwavering commitment to help you reach new heights.</p>
-            <p>Partnering with us means gaining a <strong>dedicated ally</strong> who is genuinely invested in your success. Our experts collaborate closely with you to uncover specific needs, enabling you to overcome obstacles and seize opportunities with confidence. From ensuring stringent data security and compliance with GDPR and CCPA regulations to seamless integration with platforms like AWS and Oracle, our solutions offer peace of mind and a competitive edge.</p>
-            <p>We prioritize your unique journey by providing personalized approaches that guarantee your database not only meets your current needs but also adapts for future growth. With a commitment to <strong>speed</strong> to minimize downtime, <strong>security</strong> to protect your data, and <strong>reliability</strong> for uninterrupted operations, you can trust that your data management is in capable hands.</p>
-            <p>Discover the BBS difference and explore how our custom database solutions can transform your business. Let us guide you through the complexities of data management with ease, efficiency, and exceptional support. Together, we will build a solid foundation for lasting success and sustainable growth, turning your data into a powerful asset for innovation.</p>
+    </div>
+    <section id="contact" class="container">
+        <h2>Contact BBS Support</h2>
+        <p>Your inquiry is important to us. Please fill out the form below to report any issues and request assistance</p> 
+        <form id="contact-form" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST">
+            <input type="hidden" name="_honey" style="display:none">
+            <input type="hidden" name="_token" value="your_token_here">
+            <input type="hidden" name="_next" value="https://boostingbusinessstrategies.github.io/BBS.Official/contact.html">
+    
+            <div class="form-section">
+                <label for="contact-first-name">First Name</label>
+                <input type="text" id="contact-first-name" name="contact-first-name" required>
+    
+                <label for="contact-last-name">Last Name</label>
+                <input type="text" id="contact-last-name" name="contact-last-name" required>
+    
+                <label for="contact-email">Email</label>
+                <input type="email" id="contact-email" name="contact-email" required>
+
+                <div class="contact-support">
+                    <label for="contact-reason">Please select your reason for contacting us:</label>
+                    <select id="contact-reason" name="contact-reason" required>
+                        <option value="" disabled selected>Select your reason</option>
+                        <option value="question">I have a question</option>
+                        <option value="support">I need support</option>
+                        <option value="feedback">I want to provide feedback</option>
+                    </select>
+                </div>
+                
+                <div class="form-section">
+                    <label for="contact-message">Tell us more about your inquiry</label>
+                    <textarea id="contact-message" name="contact-message" rows="5" placeholder="Please describe your request, question, or feedback here..." required></textarea>
+                </div>
+    
+                <div class="checkbox">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I have read and accept the <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a></label>
+                </div>
+    
+                <p>Thank you for reaching out! One of our dedicated customer support advisors will be in touch shortly via email to ensure your needs are met with care and expertise.</p>
+                <button type="submit">Send Message</button>
+            </div>
+        </form>
+    
+        <section id="policy" class="policy-section">
+            <h3>Customer Service Policy</h3>
+            <p>Our customers will have free, open, and professional access to customer support for any inquiries related to our services, to request assistance, and to provide feedback on our offerings. We are committed to ensuring respect for their rights, integrity, and safety during communication with us.</p>
+            <p>We will not respond to any customer attempting to engage in conversations unrelated to our services with suspicious intentions. Additionally, we will not engage with customers seeking discounts or using offensive language, nor will we tolerate any forms of spam, harassment, blackmail, political or religious propaganda, threats, or other illegal, offensive, or unethical actions.</p>
+            <p>Our commitment is to uphold these principles rigorously to ensure our clients have the best experience possible. We strive to maintain a pleasant environment for all users, applying the highest ethical and moral standards, while respecting, valuing, and treating each client in a professional, friendly, respectful, and trustworthy manner.</p>
+        </section>
+    
+        <section id="hours" class="hours-section">
+            <h3>Customer Service Hours</h3>
+            <ul>
+                <li><strong>Regular Business Hours:</strong> Monday to Friday: 9:00 AM - 5:00 PM (Pacific Time) / 12:00 PM - 8:00 PM (Eastern Time)</li>
+                <li><strong>Saturdays:</strong> Reduced hours: 10:00 AM - 2:00 PM (Pacific Time) / 1:00 PM - 5:00 PM (Eastern Time)</li>
+                <li><strong>Holidays:</strong> Holiday hours are similar to Saturday hours: 10:00 AM - 2:00 PM (Pacific Time) / 1:00 PM - 5:00 PM (Eastern Time)</li>
+                <li><strong>After-Hours Support:</strong> Messages sent outside of regular business hours will receive a response within 24 to 48 hours on the next business day.</li>
+            </ul>
+            <p>We are committed to addressing your needs and providing efficient support and assistance whenever required. This level of support reflects our dedication to client satisfaction.</p>
+        </section>
+    </section>
+    
+
+        <section id="contact-info">
+            <p>Email: <a href="mailto:boostingbusinessstrategies@gmail.com" target="_blank" style="color: #ee4d4d; font-weight: bold;">boostingbusinessstrategies@gmail.com</a></p>
+            <p>Messenger (founder contact): <a href="https://m.me/contactbbs" target="_blank" style="color: #ee4d4d; font-weight: bold;">contactbbs</a></p>
+            <p>FaceBook: <a href="https://www.facebook.com/profile.php?id=61566338476564&mibextid=ZbWKwL" target="_blank" style="color: #ee4d4d; font-weight: bold;">Boosting Business Strategies</a></p>
+            <p>Instagram: <a href="https://www.instagram.com/bbs.official.account/" target="_blank" style="color: #ee4d4d; font-weight: bold;">bbs.official.account</a></p>
+            <p>WhatsApp Business: <a href="https://wa.me/message/IQIFXFHK7JILI1" target="_blank" style="color: #ee4d4d; font-weight: bold;">+506 60447382</a></p>
         </section>
     </div>
-    
-        
-    <div class="services-section">
-        <div class="container">
-            <h2>Our Comprehensive Services</h2>
-    
-            <div class="service-card reveal">
-                <h3>Database Development</h3>
-                <p>At BBS, we offer meticulously tailored development services that align with your business needs. Our focus is on seamless integration and optimized performance, ensuring databases that enhance efficiency and drive success:</p>
-                <ul>
-                    <li><strong>Small Businesses:</strong> We provide user-friendly databases for quick implementation, enabling immediate productivity improvements and a strong focus on growth.</li>
-                    <li><strong>Medium-Sized Enterprises:</strong> Our robust systems handle complex data efficiently, offering the scalability and reliability necessary to support your expanding data demands.</li>
-                    <li><strong>Large Corporations:</strong> We design scalable solutions that evolve with your business, ensuring your data management infrastructure remains ahead of your needs.</li>
-                </ul>
-                <a href="order.html" class="more-info-button">Start Building Your Success Today!</a>
-            </div>            
-    
-            <div class="service-card reveal">
-                <h3>Custom Solutions</h3>
-                <p>Every business is unique, and our solutions reflect that. At BBS, we specialize in creating tailored database solutions that align perfectly with your business goals:</p>
-                <ul>
-                    <li><strong>Tailored Design:</strong> We collaborate with you to understand your requirements, designing databases that effectively tackle your unique challenges.</li>
-                    <li><strong>Seamless Integration:</strong> Our solutions integrate effortlessly with your existing systems, ensuring a smooth transition with minimal operational disruption.</li>
-                    <li><strong>Future-Proofing:</strong> We build databases that are designed for today and scalable for tomorrow, accommodating future growth and evolving business needs.</li>
-                </ul>
-                <a href="order.html" class="more-info-button">Unlock Your Unique Solution Now!</a>
-            </div>
-            
-            <div class="service-card reveal">
-                <h3>Flexible Database Extensions</h3>
-                <p>Enhance your existing databases with our flexible extension options, designed to empower your business to grow and evolve seamlessly. Tailor your database to adapt to changing demands and unlock new opportunities for success:</p>
-                <ul>
-                    <li><strong>Basic Plan:</strong> Ideal for small businesses seeking to expand their data capacity effortlessly. This plan offers up to 4 additional tables and columns for seamless enhancements, enabling quick adjustments as your business grows.</li>
-                    <li><strong>Standard Plan:</strong> Designed for medium-sized operations looking to enhance their database capabilities, including up to 20 more columns and 4 tables to accommodate growing data requirements and operational needs.</li>
-                    <li><strong>Business Plan:</strong> Comprehensive solutions for large enterprises, ensuring unlimited scalability to meet extensive and complex data needs, allowing you to focus on strategic growth.</li>
-                    <li><strong>New Functionalities:</strong> Implement temporary tables and common table expressions (CTEs) to streamline data handling and improve performance, ensuring your database is optimized for current operations.</li>
-                    <li><strong>Data Security:</strong> We prioritize the protection of sensitive information, offering encryption options when necessary to ensure your data remains secure during modifications.</li>
-                    <li><strong>Performance Improvements:</strong> Optimize existing databases to handle increased loads and improve response times.</li>
-                </ul>
-                <p>Our extension options are user-friendly, enabling you to modify and enhance your database effortlessly. Don’t let your database limit your potential—<strong>partner with us</strong> to expand your database today!</p>
-                <a href="extensions.html" class="more-info-button">Elevate Your Database Experience Today!</a>
-            </div>
-            
-            
-            <div class="service-card reveal">
-                <h3>Database Modification Services</h3>
-                <p>At BBS, we understand that businesses often have existing databases that require enhancements or adjustments. Our Database Modification Services cater to your specific needs, whether you're dealing with new databases, outdated systems, or those with existing data:</p>
-                <ul>
-                    <li><strong>Revitalizing Existing Databases:</strong> We can breathe new life into outdated databases, optimizing their performance and ensuring they meet current business requirements.</li>
-                    <li><strong>Data Migration:</strong> Seamlessly transition data from outdated systems to modern solutions, preserving data integrity and minimizing downtime.</li>
-                    <li><strong>Enhancements and Upgrades:</strong> We offer tailored modifications to improve functionality, security, and user experience, ensuring your databases remain competitive.</li>
-                </ul>
-                <a href="modify.html" class="more-info-button">Transform Your Database Experience Now!</a>
-            </div>
-            
-            <div class="service-card reveal">
-                <h3>Client Support</h3>
-                <p>At BBS, we believe in continuous support to ensure your databases remain compliant and operationally efficient. Our dedicated support team is ready to assist you with any inquiries or issues, ensuring prompt and effective solutions:</p>
-                <ul>
-                    <li><strong>Availability from Monday to Saturday:</strong> Our support team is dedicated to helping you navigate any challenges you face, ensuring your business operations run smoothly.</li>
-                    <li><strong>Expert Guidance:</strong> We provide professional advice to help you maximize the potential of your database solutions.</li>
-                    <li><strong>Proactive Monitoring:</strong> Our proactive monitoring services detect and resolve potential issues before they impact your operations, ensuring uninterrupted performance.</li>
-                </ul>
-                <a href="contact.html" class="more-info-button">Get Support When You Need It Most!</a>
-            </div>
-        </div>
-    </div>
-            <section id="privacy-commitment" class="container">
-                <h2>Your Privacy is Our Priority</h2>
-                <p>At BBS, we are dedicated to protecting your data with the utmost care. We adhere to stringent security protocols to ensure your information remains secure at all times. Our team is committed to maintaining compliance with relevant data protection regulations, including GDPR and CCPA, providing you peace of mind.</p>
-                <p>We implement comprehensive security measures to guard against unauthorized access and data breaches, ensuring your business data remains confidential. Trust BBS to prioritize your privacy and safeguard your valuable information, so you can focus on what truly matters.</p>
-            </section>
-        </div>
-            <section id="industry-options" class="container">
-                <h2>Industry-Specific Solutions</h2>
-                <p>We offer industry-specific database solutions tailored to meet the unique needs of various sectors. Whether you operate in E-commerce, healthcare, finance, education, retail, or beyond, our databases are designed to align with your industry's requirements, providing you with the tools necessary to excel.</p>
-                <p>With our deep understanding of industry-specific challenges, we deliver databases that enhance efficiency and streamline operations. <strong>Let BBS be your trusted partner</strong> in achieving success with a custom database solution designed specifically for your industry. <a href="order.html" target="_blank" style="color: #ee4d4d; font-weight: bold;">Request your custom solution today!</a></p>
-            </section>
-        </div>
-            <section id="commitment" class="container">
-                <h2>Our Commitment to Excellence</h2>
-                <p>At BBS, we are dedicated to delivering not just database solutions but an exceptional customer experience. Every client is valued and supported throughout their journey with us. Our <strong>professional approach</strong> and fast delivery times ensure a smooth and rewarding experience tailored to your needs.</p>
-                
-                <h3>Our Customer Policies</h3>
-                <ul>
-                    <br><strong>Client Support Hours:</strong> Our team is available Monday to Saturday to assist you with your needs:</br>
-                        <ul>
-                            <li><strong>Monday to Friday:</strong> 9:00 AM - 5:00 PM (Pacific Time)</li>
-                            <li><strong>Monday to Friday:</strong> 12:00 PM - 8:00 PM (Eastern Time)</li>
-                            <li><strong>Saturday:</strong> 10:00 AM - 2:00 PM (Pacific Time)</li>
-                            <li><strong>Saturday:</strong> 1:00 PM - 5:00 PM (Eastern Time)</li>
-                        </ul>
-                    </li>
-                    <li><strong>Revisions Policy:</strong> We believe in your satisfaction! Enjoy up to 3 free revisions within 7 days of delivery, ensuring your database meets your expectations. Depending on the service, you may receive a guarantee of 3 to 10 days and 2 to 10 modifications.</li>
-                    <li><strong>Data Security:</strong> Your peace of mind is our priority. We strictly adhere to GDPR and CCPA regulations to protect your business data and ensure confidentiality.</li>
-                    <li><strong>Fast Delivery:</strong> We value your time. Standard development is completed within 2 business days for a quick turnaround, allowing you to focus on what matters most.</li>
-                </ul>
-                <p>Your success is our mission, and we’re here to support you every step of the way, ensuring a partnership built on trust and excellence.</p>
-            </section>
-        </div>
-    </div>
-
-    <section id="faq">
-        <h2 class="faq-title">Frequently Asked Questions</h2>
-        <div class="faq-separator"></div>
-        <div class="faq-section">
-            <h3>What types of databases do you offer?</h3>
-            <p>We specialize in providing custom databases primarily built with MySQL, ensuring robust performance and scalability. Our databases seamlessly integrate with platforms like AWS and Oracle to offer you comprehensive and flexible solutions tailored to your specific needs. Whether you need a simple setup for a small business or a complex system for a large corporation, we have you covered with our expertise and commitment.</p>
-            
-            <h3>How long does development take?</h3>
-            <p>Our standard development time is typically 2 business days. However, the actual time frame may vary depending on the complexity of your project. We prioritize delivering high-quality solutions quickly to keep your business running smoothly, ensuring minimal downtime and maximum productivity.</p>
-            
-            <h3>What payment methods are accepted?</h3>
-            <p>We accept payments via PayPal and credit/debit cards processed through PayPal. Transactions are securely handled through the PayPal account of Aaron Obando, our founder, ensuring a reliable and safe payment experience for you.</p>
-            
-            <h3>Can I request changes after delivery?</h3>
-            <p>Absolutely! We offer up to 3 free revisions within a 7-day period to ensure your complete satisfaction with our services. Depending on your service plan, you may also be entitled to additional modifications, ranging from 2 to 10, and a guarantee period extending from 3 to 10 days. We want to ensure you are fully satisfied with the final product!</p>
-            
-            <h3>Do you support editing existing MySQL databases?</h3>
-            <p>Yes, we can edit existing MySQL databases, including those not originally developed by us. The cost for modification depends on the complexity and data volume of the database, with service fees ranging from $119 to $1,999. This flexibility allows us to tailor your existing database to better meet your evolving business needs.</p>
-            
-            <h3>Is my data secure?</h3>
-            <p>Your data security is our top priority. We strictly comply with GDPR and CCPA regulations, ensuring your data is handled with the highest level of confidentiality and protection. Our comprehensive security measures safeguard against unauthorized access and data breaches, giving you peace of mind.</p>
-            
-            <h3>What are your support options?</h3>
-            <p>We offer continuous, high-quality support to ensure your databases remain operational and efficient. Our dedicated support team is available Monday to Friday, from 9:00 AM to 5:00 PM (Pacific Time) and 12:00 PM to 8:00 PM (Eastern Time), as well as on Saturdays from 10:00 AM to 2:00 PM (Pacific Time) and 1:00 PM to 5:00 PM (Eastern Time). We're here to help you every step of the way!</p>
-            
-            <h3>Do you provide assistance with modifications?</h3>
-            <p>Yes, we provide support for modifications to your databases, although we do not offer data entry or query services. Our goal is to ensure your database continues to meet your business requirements, offering you the flexibility and support needed to adapt to your evolving needs.</p>
-            
-            <h3>Can you develop SQLite databases?</h3>
-            <p>Yes, we can develop SQLite databases. Although SQLite offers less flexibility compared to MySQL, it can still be an excellent choice for smaller projects or applications with limited database needs. We ensure that our SQLite solutions are tailored to meet your specific business requirements.</p>
-            
-            <h3>Do you have a satisfaction guarantee?</h3>
-            <p>Yes, we are committed to your satisfaction. We offer a satisfaction guarantee on all our database projects, including up to 3 free revisions within a 7-day period, to ensure you are completely satisfied with the final product. Your satisfaction is our unwavering commitment.</p>
-            
-            <h3>What happens if I need further modifications after the guarantee period?</h3>
-            <p>If you require additional modifications after the guarantee period, we are happy to assist for a reasonable fee. Our goal is to provide ongoing support and ensure that your database continues to serve your business needs effectively, dedicated to your long-term success.</p>
-            
-            <h3>What is the guarantee period for extensions?</h3>
-            <p>The guarantee period for extensions varies by plan. For Basic and Standard plans, you receive 3 days of guarantee with up to 2 modifications per order. In the Business plan, you have unlimited changes during the 3-day guarantee period. Modifications of databases from other providers or developers come with a 7-day guarantee with up to 10 modifications if they are complex and have more than 5,000 records. For databases with 0 to 4,000 records, the guarantee period is 7 days with up to 5 modifications.</p>
-            
-            <h3>How will my database be delivered?</h3>
-            <p>Your database will be delivered via email, providing a shareable link through Google Drive or One Drive, according to your preference. You will have 7 days to access the order and confirm receipt. If we do not hear from you within that time, we will send reminders to help you remember to download it.</p>
-            
-            <h3>Do you use encryption for sensitive data?</h3>
-            <p>Yes, we utilize AES_ENCRYPT to encrypt columns containing sensitive data in MySQL databases when necessary. We will also provide you with the passwords and a PDF guide with practical instructions on database encryption.</p>
-            
-            <h3>What do I need to do to send my database for modifications and expansions?</h3>
-            <p>Please send your database using a shareable link from Google Drive or One Drive for security purposes. This ensures that your data is handled securely during the modification and expansion process.</p>
-        </div>
-    </section>    
 </div>
-        
-    <footer id="footer-container">
+        <footer id="footer-container">
         <div class="footer-content">
             <div class="footer-section">
-                <h4>Quick Links</h4>
+                <h3>Quick Links</h3>
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
@@ -225,7 +135,7 @@
                 </ul>
             </div>
             <div class="footer-section">
-                <h4>Contact Us</h4>
+                <h3>Contact Us</h3>
                 <p>Email: <a href="mailto:boostingbusinessstrategies@gmail.com" target="_blank" style="color: #fffafa; font-weight: bold;">boostingbusinessstrategies@gmail.com</a></p>
                 <p>WhatsApp Business: <a href="https://wa.me/message/IQIFXFHK7JILI1" target="_blank" style="color: #fffafa; font-weight: bold;">+506 60447382</a></p>
             </div>
@@ -240,7 +150,8 @@
             <p><a href="terms.html" style="color: #fffafa;">Terms and Conditions</a> | <a href="Support.html" style="color: #fffafa;">Contact Us</a></p>
         </div>
     </footer>
-</div>
-<script src="Javascript/servicescript.js"></script>
+    </div>
+
+    <script src="Javascript\scripts.js"></script>
 </body>
 </html>
