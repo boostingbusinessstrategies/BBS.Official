@@ -548,7 +548,7 @@ body {
     padding: 0 1rem;
 }
 
-.footer-section h3 {
+.footer-section h4 {
     font-size: 1.5rem; /* Aumentar el tamaño del título para mejor legibilidad */
     margin-bottom: 1.5rem;
     color: var(--secondary-color);
@@ -557,7 +557,7 @@ body {
     text-align: left; /* Alineación a la izquierda */
 }
 
-.footer-section h3::after {
+.footer-section h4::after {
     content: '';
     position: absolute;
     left: 0;
@@ -641,7 +641,7 @@ body {
         text-align: left; /* Alinear a la izquierda en móviles */
     }
 
-    .footer-section h3::after {
+    .footer-section h4::after {
         left: 0; /* Asegurarse de que la línea roja esté alineada con el texto */
     }
 
@@ -658,7 +658,6 @@ body {
         font-size: 0.9rem; /* Mantener legibilidad */
     }
 }
-
 
 
 
@@ -739,7 +738,7 @@ body {
     margin-bottom: 2rem;
 }
 
-#sidebar .sidebar-header h3 {
+#sidebar .sidebar-header h4 {
     color: #fff;
     font-size: 1.75rem;
     font-weight: 700;
@@ -1016,4 +1015,38 @@ body {
 
 .admin-button:hover {
     background-color: #34495e;
+}
+
+
+
+
+/* Anula animaciones en pantallas pequeñas */
+@media (max-width: 768px) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Anula animaciones si el usuario prefiere reducir movimiento */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+
+/* Desactiva las animaciones para todos los elementos */
+.low-performance * {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* Mantiene las animaciones de los textos intactas */
+.low-performance p,
+.low-performance h1, h2, h3, h4,
+.low-performance a {
+    animation: initial !important;
+    transition: initial !important;
 }
