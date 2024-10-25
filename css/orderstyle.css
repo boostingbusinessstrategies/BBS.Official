@@ -276,7 +276,7 @@ h1, h2 {
 h1 {
     font-size: 2.5rem;
     font-weight: 700;
-    background: linear-gradient(90deg, #142135, #0056a3);
+    background: linear-gradient(90deg, #1b2b47, #003b73, #2c4f77); /* Gradiente en azul oscuro premium con tres tonos */
     background-clip: text; /* Para navegadores que soporten esta propiedad */
     -webkit-background-clip: text; /* Para navegadores basados en WebKit */
     -webkit-text-fill-color: transparent; /* Para Safari y Chrome */
@@ -336,11 +336,12 @@ label {
 /* Select Styling */
 select {
     appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23142135' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230056a3' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Flecha personalizada en SVG */
     background-repeat: no-repeat;
-    background-position: right 1rem center;
-    background-size: 1em;
+    background-position: right 16px center;
+    padding-right: 36px; 
 }
+
 
 /* Para los radio buttons */
 .radio-item {
@@ -503,8 +504,8 @@ textarea:invalid {
         max-width: 1200px;
         margin: 40px auto;
         padding: 2rem;
-        color: #050505da;
-        background: #8aabbd; /* Azul grisáceo más oscuro */
+        color: #ffffff;
+        background: linear-gradient(135deg, rgba(40, 55, 75, 0.65), rgba(20, 33, 53, 0.75));
         border-radius: 20px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra más clara */
     }
@@ -528,7 +529,7 @@ textarea:invalid {
 
     /* Headings */
     h1, h2 {
-        color: #142135;
+        color: #ffffff;
         text-align: center;
         margin-bottom: 1.5rem;
     }
@@ -536,7 +537,7 @@ textarea:invalid {
     h1 {
         font-size: 2.5rem;
         font-weight: 700;
-        background: linear-gradient(90deg, #142135, #0056a3);
+        background: linear-gradient(90deg, #3a5d8a, #76a1cf, #b3d1f3); /* Gradiente en azul premium con tres tonos */
         background-clip: text; /* Para navegadores que soporten esta propiedad */
         -webkit-background-clip: text; /* Para navegadores basados en WebKit */
         -webkit-text-fill-color: transparent; /* Para Safari y Chrome */
@@ -545,7 +546,7 @@ textarea:invalid {
 
     h2 {
         font-size: 1.8rem;
-        color: #0056a3;
+        color: #0086fc;;
     }
 
     /* Form Styling */
@@ -558,35 +559,47 @@ textarea:invalid {
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     }
 
-    /* Input Fields */
-    input[type="text"],
-    input[type="email"],
-    select,
-    textarea {
-        width: 100%;
-        padding: 12px 16px;
-        margin: 8px 0 20px;
-        border: 2px solid #f0f4f8;
-        border-radius: 8px;
-        background: #ffffff; /* Mantiene el fondo blanco en los inputs */
-        transition: all 0.3s ease;
-        font-size: 1rem;
-    }
+   /* Input Fields */
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 12px 16px;
+    margin: 8px 0 20px;
+    border: 2px solid #444; /* Borde oscuro */
+    border-radius: 8px;
+    background: #2b2f38; /* Fondo oscuro para inputs */
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    color: #ffffff;
+}
 
-    input[type="text"]:focus,
-    input[type="email"]:focus,
-    select:focus,
-    textarea:focus {
-        border-color: #0056a3;
-        outline: none;
-        box-shadow: 0 0 0 3px rgba(0, 86, 163, 0.1);
+/* Select Styling for Night Mode */
+select {
+    appearance: none;
+    background: #2b2f38; /* Fondo oscuro para inputs */
+    border: 2px solid #444; /* Borde oscuro */
+    color: #e0e0e0; /* Texto claro */
+    padding: 12px 16px; /* Padding para el contenido */
+    border-radius: 8px; /* Bordes redondeados */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23e0e0e0' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Flecha personalizada en SVG */
+    background-repeat: no-repeat;
+    background-position: right 16px center; /* Posición de la flecha */
+    padding-right: 36px; /* Espacio para la flecha */
+    transition: all 0.3s ease; /* Transición suave */
+}
+
+
+    ::placeholder {
+        color: #ffffff; /* Color de etiquetas en modo oscuro */
     }
+       
 
     /* Labels */
     label {
         display: block;
         margin-bottom: 8px;
-        color: #142135;
+        color: #ffffff;
         font-weight: 500;
         margin-top: 0; /* Asegúrate de que no haya margen superior aquí */
     }
@@ -625,6 +638,28 @@ textarea:invalid {
         margin-top: -15px;
         margin-bottom: 15px;
     }
+
+      /* Note Sections */
+  .note {
+        background: rgba(255, 255, 255, 0.1); /* Fondo claro con transparencia */
+        border-left: 4px solid #ffc44d; /* Borde claro */
+        color: #ffffff; /* Color de enlaces en notas */
+  }
+  
+  .note small {
+    display: block;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  
+  .note ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+  
+  .note li {
+    margin-bottom: 0.5rem;
+  }
 }
 
 
