@@ -38,6 +38,7 @@
 
 
 
+
 /* Base styles and reset */
 *, *::before, *::after {
     box-sizing: border-box;
@@ -48,7 +49,6 @@
 html, body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 100%; /* Tamaño base */
-    background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
     margin: 0;
@@ -64,50 +64,305 @@ p {
 /* Media Queries optimizadas */
 @media (max-width: 1200px) {
     html, body {
-        font-size: 98%; /* Reducción mínima */
+        font-size: 100%; /* Mantener tamaño estándar */
     }
 }
 
 @media (max-width: 992px) {
     html, body {
-        font-size: 95%; /* Mantener tamaño legible en pantallas medianas */
+        font-size: 98%; /* Mantener tamaño legible en pantallas medianas */
     }
     
     p {
+        font-size: 1.05rem; /* Aumenta el tamaño de texto */
         margin-bottom: 1.4rem;
     }
 }
 
 @media (max-width: 768px) {
     html, body {
-        font-size: 92%; /* Ajuste ligero para tablets */
+        font-size: 96%; /* Ajuste ligero para tablets */
     }
     
     p {
-        font-size: 1rem; /* Mantener tamaño estándar */
+        font-size: 1.02rem; /* Mantener texto legible */
         margin-bottom: 1.3rem;
     }
 }
 
 @media (max-width: 576px) {
     html, body {
-        font-size: 90%; /* Ajuste moderado */
+        font-size: 94%; /* Ajuste moderado */
     }
     
     p {
-        font-size: 0.98rem;
+        font-size: 1rem; /* Tamaño base para móviles */
         margin-bottom: 1.2rem;
     }
 }
 
 @media (max-width: 400px) {
     html, body {
-        font-size: 88%; /* Ajuste mínimo */
+        font-size: 92%; /* Ajuste mínimo */
     }
     
     p {
-        font-size: 0.95rem;
+        font-size: 0.98rem; /* Texto más grande en móviles pequeños */
         margin-bottom: 1.1rem;
+    }
+}
+
+
+
+
+/* Header */
+header {
+    background: #ffffff;
+    color: #333333;
+    text-align: left;
+    padding: 1.5rem 2rem;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding-bottom: 1rem;
+    transition: background 0.3s ease;
+}
+
+header:hover {
+    background: #f9f9f9; /* Cambio suave de fondo al pasar el mouse */
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #ee4d4d, #ffc44d);
+}
+
+header h1 {
+    font-size: 2.2em;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+    margin-left: 80px;
+}
+
+header h1:hover {
+    color: #ee4d4d;
+}
+
+header img {
+    height: 70px;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+header img:hover {
+    transform: scale(1.1);
+}
+
+
+
+/* Header - Modo nocturno */
+@media (prefers-color-scheme: dark) {
+    header {
+        background: #142135; /* Fondo oscuro */
+        color: #ffffff; /* Texto claro */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Sombra más pronunciada */
+        transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    header:hover {
+        background: #1e2a3d; /* Cambio suave al pasar el mouse */
+    }
+
+    header::after {
+        background: linear-gradient(to right, #ffc44d, #ee4d4d); /* Gradiente invertido */
+    }
+
+    header h1 {
+        color: #ffffff;
+    }
+
+    header h1:hover {
+        color: #ffc44d; /* Color claro en hover */
+    }
+
+    header img {
+        filter: brightness(0.8); /* Oscurecer ligeramente la imagen */
+    }
+}
+
+/* Animación del encabezado */
+header {
+    animation: slideInFromTop 1.3s ease-out forwards;
+}
+
+/* Estilo para la animación del encabezado */
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Estilo para dispositivos móviles */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        height: auto;
+        background: #ffffff;
+        color: #333333;
+    }
+
+    header h1 {
+        font-size: 3em;
+        margin: 0;
+        text-align: center;
+        margin-top: 60px;
+    }
+    
+    header img {
+        height: 80px;
+        margin-top: 30px;
+        align-self: center;
+    }
+
+    /* Modo nocturno en dispositivos móviles */
+    @media (prefers-color-scheme: dark) {
+        header {
+            background: #142135;
+            color: #ffffff;
+        }
+        
+        header h1 {
+            color: #ffffff;
+        }
+    }
+}
+
+
+
+/* Base gradient suave - Pestaña de Feedback */
+body {
+    background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%);
+
+    /* Patrón de ondas y efectos usando múltiples gradientes */
+    background-image: 
+        radial-gradient(circle at 90% 10%, 
+            rgba(76, 175, 80, 0.1) 0%,  
+            transparent 70%),
+        radial-gradient(circle at 10% 50%, 
+            rgba(255, 193, 7, 0.1) 0%,  
+            transparent 60%),
+        radial-gradient(circle at 50% 90%, 
+            rgba(33, 150, 243, 0.1) 0%,  
+            transparent 65%),
+        linear-gradient(135deg, 
+            rgba(20, 33, 53, 0.05) 25%,  
+            transparent 25%,
+            transparent 50%, 
+            rgba(20, 33, 53, 0.05) 50%, 
+            rgba(20, 33, 53, 0.05) 75%,
+            transparent 75%,
+            transparent),
+        radial-gradient(circle at 50% 0%, 
+            rgba(255, 255, 255, 0.6) 0%,  
+            transparent 60%),
+        linear-gradient(135deg, 
+            #c8e6c9 0%, 
+            #ffffff 50%,
+            #c8e6c9 100%);
+    
+    background-size: 
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        40px 40px, 
+        100% 100%,
+        100% 100%;
+    
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    animation: backgroundShift 30s ease-in-out infinite alternate; 
+}
+
+@keyframes backgroundShift {
+    0% {
+        background-position: 
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%;
+    }
+    100% {
+        background-position: 
+            100% 100%,
+            -20% 100%,
+            100% -20%,
+            40px 40px,
+            0% 0%,
+            0% 0%;
+    }
+}
+
+/* Base gradient suave - Modo nocturno para la pestaña de Feedback */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #1c1f26 0%, #2b2f38 100%);
+        
+        /* Patrón de ondas y efectos adaptado para modo nocturno */
+        background-image: 
+            radial-gradient(circle at 90% 10%, 
+                rgba(76, 175, 80, 0.2) 0%,  
+                transparent 70%),
+            radial-gradient(circle at 10% 50%, 
+                rgba(255, 193, 7, 0.2) 0%,  
+                transparent 60%),
+            radial-gradient(circle at 50% 90%, 
+                rgba(33, 150, 243, 0.15) 0%,  
+                transparent 65%),
+            linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.03) 25%,  
+                transparent 25%,
+                transparent 50%, 
+                rgba(255, 255, 255, 0.03) 50%, 
+                rgba(255, 255, 255, 0.03) 75%,
+                transparent 75%,
+                transparent),
+            radial-gradient(circle at 50% 0%, 
+                rgba(255, 255, 255, 0.1) 0%,  
+                transparent 60%),
+            linear-gradient(135deg, 
+                #37474f 0%, 
+                #263238 50%,
+                #37474f 100%);
+        
+        background-size: 
+            100% 100%,
+            100% 100%,
+            100% 100%,
+            40px 40px, 
+            100% 100%,
+            100% 100%;
+        
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        animation: backgroundShift 30s ease-in-out infinite alternate; 
     }
 }
 
@@ -318,181 +573,90 @@ p {
   }
 
 
-
-
-
-/* Header */
-header {
-    background: #ffffff;
-    color: #333333;
-    text-align: left;
-    padding: 1.5rem 2rem;
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding-bottom: 1rem;
-    transition: background 0.3s ease;
-}
-
-header:hover {
-    background: #f9f9f9; /* Cambio suave de fondo al pasar el mouse */
-}
-
-header::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(to right, #ee4d4d, #ffc44d);
-}
-
-header h1 {
-    font-size: 2.2em;
-    margin: 0;
-    position: relative;
-    z-index: 1;
-    transition: color 0.3s ease;
-    margin-left: 80px;
-}
-
-header h1:hover {
-    color: #ee4d4d;
-}
-
-header img {
-    height: 70px;
-    z-index: 1;
-    transition: transform 0.3s ease;
-}
-
-header img:hover {
-    transform: scale(1.1);
-}
-
-/* Estilo para dispositivos móviles */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem;
-        height: auto;
+/* Modo nocturno para la sección de retroalimentación */
+@media (prefers-color-scheme: dark) {
+    .feedback-section,
+    .feedback-form-container {
+        background: rgba(20, 33, 53, 0.9); /* Fondo oscuro */
+        color: #ffffff; /* Color de texto por defecto */
+        box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1); /* Sombra más clara */
     }
 
-    header h1 {
-        font-size: 3em;
-        margin: 0;
-        text-align: center;
-        margin-top: 60px;
+    /* Introducción */
+    .feedback-section > p {
+        color: #ffffff; /* Color de texto claro */
     }
-    
-    header img {
-        height: 80px;
-        margin-top: 30px;
-        align-self: center;
-    }
-}
 
-/* Animación del encabezado */
-header {
-    animation: slideInFromTop 1.3s ease-out forwards;
-}
-
-/* Estilo para la animación del encabezado */
-@keyframes slideInFromTop {
-    0% {
-        transform: translateY(-100%);
-        opacity: 0;
+    /* Encabezados */
+    .feedback-section h2 {
+        color: #ffc44d; /* Color de encabezados en modo oscuro */
     }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
+
+    .feedback-section h3 {
+        color: #ffffff; /* Color de subtítulos en modo oscuro */
+    }
+
+    /* Elementos del formulario */
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group select,
+    .form-group textarea {
+        background: #2b2f38; /* Fondo oscuro para inputs */
+        border: 2px solid #444; /* Borde oscuro */
+        color: #e0e0e0; /* Texto claro */
+    }
+
+    /* Etiquetas */
+    .form-group label {
+        color: #ffffff; /* Color de etiquetas en modo oscuro */
+    }
+
+    /* Botón de envío */
+    .submit-button {
+        background: linear-gradient(135deg, #ee4d4d 0%, #ff6b6b 100%); /* Color del botón en modo oscuro */
+    }
+
+    .submit-button:hover {
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee4d4d 100%); /* Color del botón en hover */
+        box-shadow: 0 5px 15px rgba(238, 77, 77, 0.2); /* Sombra en hover */
+    }
+
+    /* Sección de visualización de retroalimentación */
+    .feedback-display-container {
+        background: rgba(255, 255, 255, 0.1); /* Fondo claro con transparencia */
+        color: #ffffff; /* Color del texto de los campos */
+    }
+
+    /* Botón de mostrar más */
+    .show-more-btn {
+        background: #0056a3; /* Color del botón de mostrar más */
+    }
+
+    .show-more-btn:hover {
+        background: #003d73; /* Color de fondo en hover */
+    }
+
+    /* Controles de administrador */
+    .admin-button {
+        background: #2a333a; /* Color de botones de administrador */
+    }
+
+    .admin-button:hover {
+        background: #142135; /* Color en hover */
+    }
+
+    /* Estados de error */
+    .form-group input:invalid,
+    .form-group textarea:invalid {
+        border-color: #ee4d4d; /* Color de borde en error */
     }
 }
 
 
 
-body {
-    /* Base gradient suave */
-    background: linear-gradient(135deg, #e8f0ff 0%, #ffffff 100%);
-    
-    /* Patrón de ondas y efectos usando múltiples gradientes */
-    background-image: 
-        /* Onda superior derecha - verde claro */
-        radial-gradient(circle at 90% 10%, 
-            rgba(76, 175, 80, 0.05) 0%,  /* Reducción de opacidad */
-            transparent 70%),
-        
-        /* Onda central izquierda - naranja */
-        radial-gradient(circle at 10% 50%, 
-            rgba(255, 152, 0, 0.05) 0%,  /* Reducción de opacidad */
-            transparent 60%),
-        
-        /* Onda inferior central - púrpura */
-        radial-gradient(circle at 50% 90%, 
-            rgba(103, 58, 183, 0.05) 0%,  /* Reducción de opacidad */
-            transparent 65%),
-            
-        /* Patrón diagonal más visible */
-        linear-gradient(135deg, 
-            rgba(20, 33, 53, 0.03) 25%,  /* Reducción de opacidad */
-            transparent 25%,
-            transparent 50%, 
-            rgba(20, 33, 53, 0.03) 50%, 
-            rgba(20, 33, 53, 0.03) 75%,
-            transparent 75%,
-            transparent),
-    
-        /* Efecto de luz superior */
-        radial-gradient(circle at 50% 0%, 
-            rgba(255, 255, 255, 0.4) 0%,  /* Reducción de opacidad */
-            transparent 60%),
-            
-        /* Base gradient mejorado con más contraste */
-        linear-gradient(135deg, 
-            #d0e8ff 0%, 
-            #ffffff 50%,
-            #d0e8ff 100%);
-            
-    /* Tamaño del patrón diagonal reducido para más detalle */
-    background-size: 
-        100% 100%,
-        100% 100%,
-        100% 100%,
-        40px 40px, /* Ajustado para más detalle */
-        100% 100%,
-        100% 100%;
-    
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    
-    /* Animación más suave y sutil */
-    animation: backgroundShift 30s ease-in-out infinite alternate; /* Se incrementó el tiempo para suavizar la animación */
-}
 
-@keyframes backgroundShift {
-    0% {
-        background-position: 
-            0% 0%,
-            0% 0%,
-            0% 0%,
-            0% 0%,
-            0% 0%,
-            0% 0%;
-    }
-    100% {
-        background-position: 
-            100% 100%,
-            -20% 100%,
-            100% -20%,
-            40px 40px,
-            0% 0%,
-            0% 0%;
-    }
-}
+
+
 
 
 
@@ -685,6 +849,7 @@ body {
     /* Asegúrate de que la opacidad inicial sea 0 */
 }
 
+
 #sidebar.active {
     left: 0;
     opacity: 1;
@@ -841,6 +1006,49 @@ body {
 #sidebar.active {
     animation: slideIn 0.5s forwards, fadeIn 0.5s forwards, glow 3s infinite;
 }
+
+
+
+
+
+
+
+
+
+/* Anula animaciones en pantallas pequeñas */
+@media (max-width: 768px) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Anula animaciones si el usuario prefiere reducir movimiento */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+
+/* Desactiva las animaciones para todos los elementos */
+.low-performance * {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* Mantiene las animaciones de los textos intactas */
+.low-performance p,
+.low-performance h1, h2, h3, h4,
+.low-performance a {
+    animation: initial !important;
+    transition: initial !important;
+}
+
+
+
+
 
 
 
