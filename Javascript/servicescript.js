@@ -72,3 +72,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
   window.addEventListener("scroll", reveal);
   reveal(); // Call once to check for elements in view on page load
+
+
+
+
+
+
+  if (navigator.hardwareConcurrency <= 2 || navigator.deviceMemory <= 2) {
+    document.documentElement.classList.add('low-performance');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const isLowPerformance = navigator.hardwareConcurrency <= 2 || navigator.deviceMemory <= 2;
+    
+    if (isLowPerformance) {
+        document.documentElement.classList.add('low-performance');
+    }
+});
