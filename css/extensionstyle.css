@@ -612,10 +612,6 @@ body {
         color: #e0e0e0; /* Texto claro */
     }
 
-    ::placeholder {
-        color: #ffffff; /* Color de etiquetas en modo oscuro */
-    }
-
     label {
         color: #ffffff; /* Color de etiquetas en modo oscuro */
     }
