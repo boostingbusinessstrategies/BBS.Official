@@ -406,10 +406,10 @@ h3 {
 /* Responsive Design */
 @media (max-width: 768px) {
     .policy-menu {
-        margin: 0 1rem;
+        margin: 20px 1rem; /* Ajuste el margen superior e inferior en pantallas pequeñas */
         padding: 1.5rem;
     }
-
+    
     h2 {
         font-size: 2rem;
     }
@@ -424,6 +424,29 @@ h3 {
 
     .policy-menu a {
         font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .policy-menu {
+        margin: 15px 0.5rem; /* Reduce aún más el margen en dispositivos móviles más pequeños */
+        padding: 1.2rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+    }
+
+    .policy-menu li {
+        padding: 6px 12px;
+    }
+
+    .policy-menu a {
+        font-size: 0.95rem;
     }
 }
 
