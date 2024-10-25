@@ -37,29 +37,6 @@
 
 
 
-/* Base styles and reset */
-*, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html, body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Fuente actualizada */
-    font-size: 100%; /* Tamaño de fuente base */
-    background-color: var(--background-color); /* Usa la variable para color de fondo */
-    color: var(--text-color); /* Usa la variable para color del texto */
-    line-height: 1.6; /* Mejora de la legibilidad */
-    margin: 0;
-    padding: 0;
-}
-
-p {
-    margin-bottom: 1.5rem; /* Margen inferior para párrafos */
-    font-size: 1rem; /* Tamaño de fuente estándar */
-    line-height: 1.6;
-}
-
 
 
 /* Base styles and reset */
@@ -88,53 +65,53 @@ p {
 /* Media Queries optimizadas */
 @media (max-width: 1200px) {
     html, body {
-        font-size: 98%; /* Reducción mínima */
+        font-size: 100%; /* Mantener tamaño estándar */
     }
 }
 
 @media (max-width: 992px) {
     html, body {
-        font-size: 95%; /* Mantener tamaño legible en pantallas medianas */
+        font-size: 98%; /* Mantener tamaño legible en pantallas medianas */
     }
     
     p {
+        font-size: 1.05rem; /* Aumenta el tamaño de texto */
         margin-bottom: 1.4rem;
     }
 }
 
 @media (max-width: 768px) {
     html, body {
-        font-size: 92%; /* Ajuste ligero para tablets */
+        font-size: 96%; /* Ajuste ligero para tablets */
     }
     
     p {
-        font-size: 1rem; /* Mantener tamaño estándar */
+        font-size: 1.02rem; /* Mantener texto legible */
         margin-bottom: 1.3rem;
     }
 }
 
 @media (max-width: 576px) {
     html, body {
-        font-size: 90%; /* Ajuste moderado */
+        font-size: 94%; /* Ajuste moderado */
     }
     
     p {
-        font-size: 0.98rem;
+        font-size: 1rem; /* Tamaño base para móviles */
         margin-bottom: 1.2rem;
     }
 }
 
 @media (max-width: 400px) {
     html, body {
-        font-size: 88%; /* Ajuste mínimo */
+        font-size: 92%; /* Ajuste mínimo */
     }
     
     p {
-        font-size: 0.95rem;
+        font-size: 0.98rem; /* Texto más grande en móviles pequeños */
         margin-bottom: 1.1rem;
     }
 }
-
 
 
 
@@ -191,26 +168,35 @@ header img:hover {
     transform: scale(1.1);
 }
 
-/* Estilo para dispositivos móviles */
-@media (max-width: 768px) {
+
+
+/* Header - Modo nocturno */
+@media (prefers-color-scheme: dark) {
     header {
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem;
-        height: auto;
+        background: #142135; /* Fondo oscuro */
+        color: #ffffff; /* Texto claro */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Sombra más pronunciada */
+        transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    header:hover {
+        background: #1e2a3d; /* Cambio suave al pasar el mouse */
+    }
+
+    header::after {
+        background: linear-gradient(to right, #ffc44d, #ee4d4d); /* Gradiente invertido */
     }
 
     header h1 {
-        font-size: 3em;
-        margin: 0;
-        text-align: center;
-        margin-top: 60px;
+        color: #ffffff;
     }
-    
+
+    header h1:hover {
+        color: #ffc44d; /* Color claro en hover */
+    }
+
     header img {
-        height: 80px;
-        margin-top: 30px;
-        align-self: center;
+        filter: brightness(0.8); /* Oscurecer ligeramente la imagen */
     }
 }
 
@@ -231,66 +217,88 @@ header {
     }
 }
 
+/* Estilo para dispositivos móviles */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        height: auto;
+        background: #ffffff;
+        color: #333333;
+    }
 
-
-
-
-body {
-    /* Base gradient suave */
-    background: linear-gradient(135deg, #e1f5fe 0%, #ffffff 100%);
+    header h1 {
+        font-size: 3em;
+        margin: 0;
+        text-align: center;
+        margin-top: 60px;
+    }
     
+    header img {
+        height: 80px;
+        margin-top: 30px;
+        align-self: center;
+    }
+
+    /* Modo nocturno en dispositivos móviles */
+    @media (prefers-color-scheme: dark) {
+        header {
+            background: #142135;
+            color: #ffffff;
+        }
+        
+        header h1 {
+            color: #ffffff;
+        }
+    }
+}
+
+
+
+
+/* Base gradient suave - Pestaña de Soporte */
+body {
+    background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%);
+
     /* Patrón de ondas y efectos usando múltiples gradientes */
     background-image: 
-        /* Onda superior derecha - azul claro */
         radial-gradient(circle at 90% 10%, 
-            rgba(33, 150, 243, 0.1) 0%,  /* Azul claro para transmitir confianza */
+            rgba(76, 175, 80, 0.1) 0%,  
             transparent 70%),
-        
-        /* Onda central izquierda - verde suave */
         radial-gradient(circle at 10% 50%, 
-            rgba(76, 175, 80, 0.1) 0%,  /* Verde suave para amabilidad */
+            rgba(33, 150, 243, 0.1) 0%,  
             transparent 60%),
-        
-        /* Onda inferior central - melocotón */
         radial-gradient(circle at 50% 90%, 
-            rgba(255, 204, 128, 0.1) 0%,  /* Color melocotón cálido */
+            rgba(255, 204, 128, 0.1) 0%,  
             transparent 65%),
-            
-        /* Patrón diagonal más visible */
         linear-gradient(135deg, 
-            rgba(20, 33, 53, 0.05) 25%,  /* Ligera reducción de opacidad */
+            rgba(20, 33, 53, 0.05) 25%,  
             transparent 25%,
             transparent 50%, 
             rgba(20, 33, 53, 0.05) 50%, 
             rgba(20, 33, 53, 0.05) 75%,
             transparent 75%,
             transparent),
-    
-        /* Efecto de luz superior */
         radial-gradient(circle at 50% 0%, 
-            rgba(255, 255, 255, 0.6) 0%,  /* Suave efecto de luz */
+            rgba(255, 255, 255, 0.6) 0%,  
             transparent 60%),
-            
-        /* Base gradient mejorado con más contraste */
         linear-gradient(135deg, 
-            #b3e5fc 0%, 
+            #c8e6c9 0%, 
             #ffffff 50%,
-            #b3e5fc 100%);
-            
-    /* Tamaño del patrón diagonal reducido para más detalle */
+            #c8e6c9 100%);
+    
     background-size: 
         100% 100%,
         100% 100%,
         100% 100%,
-        40px 40px, /* Ajustado para más detalle */
+        40px 40px, 
         100% 100%,
         100% 100%;
     
     background-attachment: fixed;
     background-repeat: no-repeat;
-    
-    /* Animación más suave y sutil */
-    animation: backgroundShift 30s ease-in-out infinite alternate; /* Se incrementó el tiempo para suavizar la animación */
+    animation: backgroundShift 30s ease-in-out infinite alternate; 
 }
 
 @keyframes backgroundShift {
@@ -314,6 +322,53 @@ body {
     }
 }
 
+/* Base gradient suave - Modo nocturno para la pestaña de Soporte */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #1c1f26 0%, #2b2f38 100%);
+        
+        /* Patrón de ondas y efectos adaptado para modo nocturno */
+        background-image: 
+            radial-gradient(circle at 90% 10%, 
+                rgba(76, 175, 80, 0.2) 0%,  
+                transparent 70%),
+            radial-gradient(circle at 10% 50%, 
+                rgba(33, 150, 243, 0.15) 0%,  
+                transparent 60%),
+            radial-gradient(circle at 50% 90%, 
+                rgba(255, 152, 0, 0.1) 0%,  
+                transparent 65%),
+            linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.03) 25%,  
+                transparent 25%,
+                transparent 50%, 
+                rgba(255, 255, 255, 0.03) 50%, 
+                rgba(255, 255, 255, 0.03) 75%,
+                transparent 75%,
+                transparent),
+            radial-gradient(circle at 50% 0%, 
+                rgba(255, 255, 255, 0.1) 0%,  
+                transparent 60%),
+            linear-gradient(135deg, 
+                #37474f 0%, 
+                #263238 50%,
+                #37474f 100%);
+        
+        background-size: 
+            100% 100%,
+            100% 100%,
+            100% 100%,
+            40px 40px, 
+            100% 100%,
+            100% 100%;
+        
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        animation: backgroundShift 30s ease-in-out infinite alternate; 
+    }
+}
+
+
 
 /* Modern Container Styling */
 .container {
@@ -323,37 +378,37 @@ body {
     background: #ffffff;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Section Headings */
-  h2 {
+}
+
+/* Section Headings */
+h2 {
     color: #0056a3;
     font-size: 2rem;
     text-align: center;
     margin-bottom: 1.5rem;
-  }
-  
-  h3 {
+}
+
+h3 {
     color: #2a333a;
     margin: 10px 0;
     text-align: left;
     font-size: 1.6rem;
-  }
-  
-  /* Form Elements */
-  #contact-form {
+}
+
+/* Form Elements */
+#contact-form {
     width: 100%;
-  }
-  
-  .form-section {
+}
+
+.form-section {
     margin-bottom: 2rem;
-  }
-  
-  /* Input Fields */
-  input[type="text"],
-  input[type="email"],
-  select,
-  textarea {
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="email"],
+select,
+textarea {
     width: 100%;
     padding: 12px 16px;
     margin: 8px 0 20px;
@@ -362,47 +417,47 @@ body {
     background: #ffffff;
     transition: all 0.3s ease;
     font-size: 1rem;
-  }
-  
-  input[type="text"]:focus,
-  input[type="email"]:focus,
-  select:focus,
-  textarea:focus {
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus {
     border-color: #0056a3;
     outline: none;
     box-shadow: 0 0 0 3px rgba(0, 86, 163, 0.1);
-  }
-  
-  /* Labels */
-  label {
+}
+
+/* Labels */
+label {
     display: block;
     margin-bottom: 8px;
     color: #142135;
     font-weight: 500;
-  }
-  
-  /* Checkbox Styling */
-  .checkbox {
+}
+
+/* Checkbox Styling */
+.checkbox {
     display: flex;
     align-items: center;
     margin: 1.5rem 0;
     gap: 0.5rem;
-  }
-  
-  .checkbox input[type="checkbox"] {
+}
+
+.checkbox input[type="checkbox"] {
     width: 18px;
     height: 18px;
     cursor: pointer;
     margin: 0;
-  }
-  
-  .checkbox label {
+}
+
+.checkbox label {
     margin: 0;
     line-height: 1.4;
-  }
-  
-  /* Submit Button */
-  button[type="submit"] {
+}
+
+/* Submit Button */
+button[type="submit"] {
     background: linear-gradient(135deg, #ee4d4d 0%, #ff6b6b 100%);
     color: white;
     padding: 16px 32px;
@@ -414,46 +469,46 @@ body {
     width: 100%;
     transition: all 0.3s ease;
     margin-top: 1.5rem;
-  }
-  
-  button[type="submit"]:hover {
+}
+
+button[type="submit"]:hover {
     background: linear-gradient(135deg, #ff6b6b 0%, #ee4d4d 100%);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(238, 77, 77, 0.2);
-  }
-  
-  /* Policy and Hours Sections */
-  .policy-section,
-  .hours-section {
+}
+
+/* Policy and Hours Sections */
+.policy-section,
+.hours-section {
     margin-top: 3rem;
     padding: 1.5rem;
     background: #f8f9fa;
     border-radius: 8px;
     border-left: 4px solid #ffc44d;
-  }
-  
-  .hours-section ul {
+}
+
+.hours-section ul {
     list-style: none;
     padding-left: 0;
-  }
-  
-  .hours-section li {
+}
+
+.hours-section li {
     margin-bottom: 1rem;
-  }
-  
-  /* Links */
-  a {
+}
+
+/* Links */
+a {
     color: #ee4d4d;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
-  }
-  
-  a:hover {
+}
+
+a:hover {
     color: #ff6b6b;
     text-decoration: underline;
-  }
-  
+}
+
 /* Contact Info Section */
 #contact-info {
     margin-top: 2rem;
@@ -506,52 +561,113 @@ body {
     }
 }
 
-
-
-  /* Error States */
-  input:invalid,
-  textarea:invalid {
+/* Error States */
+input:invalid,
+textarea:invalid {
     border-color: #ee4d4d;
-  }
-  
-  .error-message {
+}
+
+.error-message {
     color: #ee4d4d;
     font-size: 0.9rem;
     margin-top: -15px;
     margin-bottom: 15px;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
     .container {
-      margin: 1rem;
-      padding: 1rem;
+        margin: 1rem;
+        padding: 1rem;
     }
-  
+
     h2 {
-      font-size: 1.5rem;
+        font-size: 1.5rem;
     }
-  
+
     button[type="submit"] {
-      padding: 14px 28px;
+        padding: 14px 28px;
     }
     
     .policy-section,
     .hours-section,
     #contact-info {
-      padding: 1rem;
+        padding: 1rem;
     }
-  }
-  
-  /* Animations */
-  @keyframes fadeIn {
+}
+
+/* Animations */
+@keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
-  }
-  
-  .container {
+}
+
+.container {
     animation: fadeIn 0.8s ease-out;
-  }
+}
+
+/* Estilos en modo nocturno */
+@media (prefers-color-scheme: dark) {
+    .container {
+        background: #1a1a1a; /* Fondo oscuro */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        color: #e0e0e0; /* Texto claro */
+    }
+
+    h2, h3 {
+        color: #e0e0e0; /* Texto claro */
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+        background: #2b2f38; /* Fondo oscuro para inputs */
+        border: 2px solid #444; /* Borde oscuro */
+        color: #e0e0e0; /* Texto claro */
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    select:focus,
+    textarea:focus {
+        border-color: #66b2ff; /* Borde claro en foco */
+        box-shadow: 0 0 0 3px rgba(102, 178, 255, 0.2); /* Sombra clara en foco */
+    }
+
+    label {
+        color: #e0e0e0; /* Texto claro para etiquetas */
+    }
+
+    button[type="submit"] {
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee4d4d 100%);
+    }
+
+    button[type="submit"]:hover {
+        background: linear-gradient(135deg, #ee4d4d 0%, #ff6b6b 100%);
+    }
+
+    .policy-section,
+    .hours-section,
+    #contact-info {
+        background: #2b2f38; /* Fondo oscuro para secciones */
+        border-left: 4px solid #ffc44d; /* Mantener borde claro */
+        color: #e0e0e0; /* Texto claro */
+    }
+
+    a {
+        color: #66b2ff; /* Color de enlaces en modo oscuro */
+    }
+
+    a:hover {
+        color: #ff8080; /* Color claro al pasar el mouse */
+    }
+
+    .error-message {
+        color: #ff6b6b; /* Mensajes de error claros en modo oscuro */
+    }
+}
+
 
 
 
