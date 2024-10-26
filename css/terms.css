@@ -397,14 +397,12 @@ body {
 
 
 
-
-
 /* Menu Container */
 .policy-menu {
     list-style-type: none;
     padding: 0;
     max-width: 900px;
-    margin: 40px auto; /* Agrega margen arriba y abajo */
+    margin: 40px auto;
     background: #ffffff;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -412,120 +410,15 @@ body {
     animation: fadeIn 0.8s ease-out 0.2s backwards;
 }
 
-/* Estilos en modo nocturno */
-@media (prefers-color-scheme: dark) {
-    .policy-menu {
-        background: #1a1a1a; /* Fondo oscuro */
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada */
-    }
-
-    .policy-menu li {
-        background-color: #2b2f38; /* Fondo de los elementos del menú */
-        color: #e0e0e0; /* Texto claro */
-    }
-
-    .policy-menu li:hover {
-        background: #37474f; /* Color de fondo al pasar el mouse */
-    }
-
-    .policy-menu a {
-        color: #66b2ff; /* Color de los enlaces en modo nocturno */
-    }
-
-    .policy-menu a:hover {
-        color: #ff8080; /* Color claro al pasar el mouse */
-    }
-
-    .policy-content {
-        background-color: #1c1f26; /* Fondo de contenido */
-        color: #e0e0e0; /* Texto claro */
-    }
-
-    h2 {
-        color: #66b2ff; /* Color de los encabezados */
-    }
-
-    h3 {
-        color: #e0e0e0; /* Color de los subtítulos */
-    }
-}
-
-
-
-
-/* Menu Container */
-.policy-menu {
-    list-style-type: none;
-    padding: 0;
-    max-width: 900px;
-    margin: 40px auto; /* Agrega margen arriba y abajo */
-    background: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    padding: 2.5rem;
-    animation: fadeIn 0.8s ease-out 0.2s backwards;
-}
-
-/* Estilos en modo nocturno */
-@media (prefers-color-scheme: dark) {
-    .policy-menu {
-        background: #1a1a1a;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    }
-
-    .policy-menu li {
-        background-color: #2b2f38;
-        color: #e0e0e0;
-        border: 1px solid rgba(255, 255, 255, 0.15); /* Borde sutil en modo nocturno */
-    }
-
-    .policy-menu li:hover {
-        background: #37474f;
-    }
-
-    .policy-menu a {
-        color: #0086fc;
-    }
-
-    .policy-menu a:hover {
-        color: #ff8080;
-    }
-
-    .policy-content {
-        background-color: #1c1f26;
-        color: #e0e0e0;
-    }
-
-    .policy-content p {
-        color: #333333;
-    }
-
-    .policy-content li {
-        color: #e0e0e0;
-    }
-
-    .policy-content li:hover {
-        background-color: #37474f;
-    }
-
-    h2 {
-        color: #66b2ff;
-    }
-
-    h3 {
-        color: #e0e0e0;
-    }
-}
-
-/* Item de menú */
+/* Menu Item */
 .policy-menu li {
     margin: 15px 0;
     padding: 12px 20px;
     border-radius: 8px;
+    background-color: #dadbdf38;
+    border: 1px solid rgba(0, 0, 0, 0.11);
     transition: all 0.3s ease;
     animation: slideIn 0.5s ease-out backwards;
-    background-color: #dadbdf38;
-    border: 1px solid rgba(0, 0, 0, 0.11); /* Borde sutil en modo día */
 }
 
 .policy-menu li:hover {
@@ -539,8 +432,8 @@ body {
     font-weight: 600;
     font-size: 1.1rem;
     display: block;
-    transition: all 0.3s ease;
     padding: 5px 0;
+    transition: all 0.3s ease;
 }
 
 .policy-menu a:hover {
@@ -603,6 +496,53 @@ h3 {
     animation: slideIn 0.6s ease-out;
 }
 
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+    .policy-menu {
+        background: #121212;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    }
+
+    .policy-menu li {
+        background-color: #1e1e1e;
+        color: #e0e0e0;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .policy-menu li:hover {
+        background: #2a2f33;
+    }
+
+    .policy-menu a {
+        color: #66b2ff;
+    }
+
+    .policy-menu a:hover {
+        color: #ff6666;
+    }
+
+    .policy-content {
+        background-color: #16181d;
+        color: #e0e0e0;
+    }
+
+    .policy-content p, .policy-content li {
+        color: #cccccc;
+    }
+
+    .policy-content li:hover {
+        background-color: #2a2f33;
+    }
+
+    h2 {
+        color: #66b2ff;
+    }
+
+    h3 {
+        color: #cccccc;
+    }
+}
+
 /* Animations */
 @keyframes fadeIn {
     from { 
@@ -623,17 +563,6 @@ h3 {
     to {
         opacity: 1;
         transform: translateX(0);
-    }
-}
-
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
     }
 }
 
@@ -683,6 +612,7 @@ h3 {
         font-size: 0.95rem;
     }
 }
+
 
 
 
