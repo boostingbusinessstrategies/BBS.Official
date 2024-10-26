@@ -565,6 +565,36 @@ h3 {
     border: none;
 }
 
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    .features-list li {
+        background-color: #1f1f2e; /* Fondo oscuro de los elementos */
+        color: #e0e0e0; /* Texto claro */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Sombra oscura */
+    }
+
+    .features-list li::before {
+        color: #ff8080; /* Color del check en modo nocturno */
+    }
+
+    #database-form input,
+    #database-form textarea {
+        background-color: #2b2b38; /* Fondo de los campos */
+        color: #e0e0e0; /* Texto claro */
+        border: 2px solid #6c757d; /* Borde oscuro */
+    }
+
+    #database-form input:focus,
+    #database-form textarea:focus {
+        border-color: #66b2ff; /* Color de borde en foco */
+    }
+
+    #database-form button {
+        background-color: #37474f; /* Fondo del botón en modo nocturno */
+        color: #e0e0e0; /* Texto claro del botón */
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .main-content {
@@ -596,6 +626,7 @@ h3 {
         break-inside: avoid;
     }
 }
+
 
 
 .logo-container {
@@ -1037,6 +1068,3 @@ h3 {
     animation: fadeInDown 1s ease-out !important; /* Agregar la animación del header */
     transition: initial !important; /* Mantiene la transición */
 }
-
-
-
