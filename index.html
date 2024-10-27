@@ -7,6 +7,7 @@
     <meta name="keywords" content="database provider, custom databases, E-commerce databases, healthcare databases, tech gadgets, medical clinics, data solutions, database development, data management">
     <title>Boosting Business Strategies (BBS) - Custom Database Solutions</title>
     <link rel="icon" href="https://imgur.com/OumtZsL.png" type="image/png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.css">
@@ -175,10 +176,6 @@
             </div>
         </div>
     </div>
-</div>
-
-
-
 
         <section id="services" class="section">
             <h2>Custom Database Solutions that Drive Success</h2>
@@ -308,128 +305,5 @@
     </footer>
     </div>
     <script src="Javascript/scripts.js"></script>
-
-<!-- Asegúrate de incluir la librería de Chart.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        function getChartConfig(isDark) {
-            return {
-                color: isDark ? '#ffffff' : '#111827',
-                borderColor: '#ffc44d',
-                gridColor: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
-                backgroundColor: 'rgba(255, 196, 77, 0.1)'
-            };
-        }
-
-        function createChart(canvasId, data, type = 'line') {
-            const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const colors = getChartConfig(isDark);
-            const ctx = document.getElementById(canvasId).getContext('2d');
-
-            return new Chart(ctx, {
-                type: type,
-                data: {
-                    labels: data.labels,
-                    datasets: [{
-                        label: data.label,
-                        data: data.values,
-                        borderColor: colors.borderColor,
-                        backgroundColor: colors.backgroundColor,
-                        fill: true,
-                        tension: 0.4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false }
-                    },
-                    scales: {
-                        x: {
-                            grid: { color: colors.gridColor },
-                            ticks: { color: colors.color }
-                        },
-                        y: {
-                            grid: { color: colors.gridColor },
-                            ticks: {
-                                color: colors.color,
-                                callback: value => data.format ? data.format(value) : value
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        // Data for each chart
-        const revenueData = {
-            label: 'Monthly Revenue',
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-            values: [120000, 150000, 130000, 170000, 200000, 180000, 220000],
-            format: value => '$' + value.toLocaleString()
-        };
-
-        const stockData = {
-            label: 'Stock Level',
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-            values: [500, 450, 600, 550, 700, 650, 800],
-            format: value => value.toLocaleString() + ' units'
-        };
-
-        const satisfactionData = {
-            label: 'Patient Satisfaction',
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-            values: [85, 87, 86, 89, 90, 92, 91],
-            format: value => value + '%'
-        };
-
-        const efficiencyData = {
-            label: 'Operational Efficiency',
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-            values: [75, 78, 80, 82, 83, 85, 84],
-            format: value => value + '%'
-        };
-
-        // Create line charts
-        const revenueChart = createChart('revenueChart', revenueData);
-        const stockChart = createChart('stockChart', stockData);
-        const satisfactionChart = createChart('satisfactionChart', satisfactionData);
-        const efficiencyChart = createChart('efficiencyChart', efficiencyData);
-
-        // Carousel automation for panels
-        const panels = document.querySelectorAll('.panel');
-        let currentIndex = 0;
-
-        function showNextPanel() {
-            panels[currentIndex].classList.remove('active');
-            currentIndex = (currentIndex + 1) % panels.length;
-            panels[currentIndex].classList.add('active');
-        }
-
-        setInterval(showNextPanel, 5000);
-
-        function handleResize() {
-            const dashboardContainer = document.querySelector('.dashboard-ecosystem');
-            
-            // Verifica el ancho de la ventana
-            if (window.innerWidth <= 768) {
-                dashboardContainer.style.visibility = 'hidden'; // Oculta el contenedor en pantallas pequeñas
-                dashboardContainer.style.height = '0'; // Ajusta la altura para no ocupar espacio
-            } else {
-                dashboardContainer.style.visibility = 'visible'; // Muestra el contenedor en pantallas grandes
-                dashboardContainer.style.height = 'auto'; // Restablece la altura
-            }
-        }
-
-        // Escucha el evento de redimensión de la ventana
-        window.addEventListener('resize', handleResize);
-        
-        // Llama a la función una vez al cargar la página para establecer el estado inicial
-        handleResize();
-    });
-</script>
 </body>
 </html>
