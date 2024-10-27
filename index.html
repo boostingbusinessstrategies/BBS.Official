@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/dashboards.css">
+    <link rel="stylesheet" href="css/mobiledashboard.css">
 </head>
 <body>
     <nav id="sidebar">
@@ -64,33 +65,34 @@
         </section>
         
 
-<!-- Dashboard Integration -->
-<div class="dashboard-container">
-    <div class="container">
+
+        <!-- Dashboard Integration -->
+<div class="dashboard-ecosystem">
+    <div class="main-area">
         <div class="dashboard-title">
-            <h1>Professional Dashboard Results Powered by BBS Data</h1>
+            <h1>Professional Dashboard Results Powered by BBS Databases</h1>
             <p>Real-time metrics and actionable insights from E-commerce and Private Healthcare</p>
         </div>
 
-        <div class="carousel">
-            <!-- Card 1: Revenue Overview -->
-            <div class="card active">
-                <h3 class="card-title">E-commerce Revenue Overview</h3>
-                <div class="chart-container">
+        <div class="carousel-container">
+            <!-- Panel 1: Revenue Overview -->
+            <div class="panel active" style="--i: 0;">
+                <h3 class="panel-title">E-commerce Revenue Overview</h3>
+                <div class="chart-space">
                     <canvas id="revenueChart"></canvas>
                 </div>
                 <div class="metrics-grid">
-                    <div class="metric-card">
+                    <div class="metric-box">
                         <p class="metric-label">Total Revenue</p>
                         <p class="metric-value">$1,970,000</p>
                         <p class="metric-change change-positive">↑ 12.4% vs last month</p>
                     </div>
-                    <div class="metric-card">
+                    <div class="metric-box">
                         <p class="metric-label">Units Sold</p>
                         <p class="metric-value">15.8K</p>
                         <p class="metric-change change-positive">↑ 8.2% vs last month</p>
                     </div>
-                    <div class="metric-card">
+                    <div class="metric-box">
                         <p class="metric-label">Avg. Order Value</p>
                         <p class="metric-value">$124</p>
                         <p class="metric-change change-positive">↑ 4.3% vs last month</p>
@@ -98,24 +100,24 @@
                 </div>
             </div>
 
-            <!-- Card 2: Stock Overview -->
-            <div class="card">
-                <h3 class="card-title">E-commerce Stock Overview</h3>
-                <div class="chart-container">
+            <!-- Panel 2: Stock Overview -->
+            <div class="panel" style="--i: 1;">
+                <h3 class="panel-title">E-commerce Stock Overview</h3>
+                <div class="chart-space">
                     <canvas id="stockChart"></canvas>
                 </div>
                 <div class="metrics-grid">
-                    <div class="metric-card">
+                    <div class="metric-box">
                         <p class="metric-label">Current Stock Value</p>
                         <p class="metric-value">$500,000</p>
                         <p class="metric-change change-positive">↑ 5% vs last month</p>
                     </div>
-                    <div class="metric-card">
+                    <div class="metric-box">
                         <p class="metric-label">Stock Turnover Rate</p>
                         <p class="metric-value">30 days</p>
                         <p class="metric-change change-positive">↓ 2 days vs last month</p>
                     </div>
-                    <div class="metric-card">
+                    <div class="metric-box">
                         <p class="metric-label">Out of Stock Items</p>
                         <p class="metric-value">15</p>
                         <p class="metric-change change-negative">↑ 3 items</p>
@@ -123,24 +125,24 @@
                 </div>
             </div>
 
-            <!-- Card 3: Patient Satisfaction -->
-            <div class="card">
-                <h3 class="card-title">Private Clinic Patient Satisfaction</h3>
-                <div class="chart-container">
+            <!-- Panel 3: Patient Satisfaction -->
+            <div class="panel" style="--i: 2;">
+                <h3 class="panel-title">Private Clinic Patient Satisfaction</h3>
+                <div class="chart-space">
                     <canvas id="satisfactionChart"></canvas>
                 </div>
                 <div class="metrics-grid">
-                    <div class="metric-card">
+                    <div class="metric-box">
                         <p class="metric-label">Patient Satisfaction Rate</p>
                         <p class="metric-value">92%</p>
                         <p class="metric-change change-positive">↑ 3% vs last month</p>
                     </div>
-                    <div class="metric-card">
+                    <div class="metric-box">
                         <p class="metric-label">Net Promoter Score</p>
                         <p class="metric-value">80</p>
                         <p class="metric-change change-positive">↑ 2 points vs last month</p>
                     </div>
-                    <div class="metric-card">
+                    <div class="metric-box">
                         <p class="metric-label">Cancellation Rate</p>
                         <p class="metric-value">4%</p>
                         <p class="metric-change change-negative">↑ 1% vs last month</p>
@@ -148,24 +150,24 @@
                 </div>
             </div>
 
-            <!-- Card 4: Operational Efficiency -->
-            <div class="card">
-                <h3 class="card-title">Private Clinic Operational Efficiency</h3>
-                <div class="chart-container">
+            <!-- Panel 4: Operational Efficiency -->
+            <div class="panel" style="--i: 3;">
+                <h3 class="panel-title">Private Clinic Operational Efficiency</h3>
+                <div class="chart-space">
                     <canvas id="efficiencyChart"></canvas>
                 </div>
                 <div class="metrics-grid">
-                    <div class="metric-card">
+                    <div class="metric-box">
                         <p class="metric-label">Average Wait Time</p>
                         <p class="metric-value">15 min</p>
                         <p class="metric-change change-positive">↓ 2 min vs last month</p>
                     </div>
-                    <div class="metric-card">
+                    <div class="metric-box">
                         <p class="metric-label">Patient Throughput</p>
                         <p class="metric-value">30/day</p>
                         <p class="metric-change change-positive">↑ 5% vs last month</p>
                     </div>
-                    <div class="metric-card">
+                    <div class="metric-box">
                         <p class="metric-label">Staff Efficiency</p>
                         <p class="metric-value">85%</p>
                         <p class="metric-change change-positive">↑ 3% vs last month</p>
@@ -173,7 +175,10 @@
                 </div>
             </div>
         </div>
-    
+    </div>
+</div>
+
+
 
 
         <section id="services" class="section">
@@ -228,7 +233,7 @@
                 <li>Reliable support and maintenance available Monday to Saturday, ensuring peace of mind for you.</li>
             </ul>
         </section>
-        
+
         <section id="about" class="section">
             <h2>Discover Boosting Business Strategies</h2>
             <p>At Boosting Business Strategies (BBS), we believe in the transformative power of data. We are dedicated to empowering e-commerce and healthcare businesses with high-quality database solutions tailored to your unique challenges. Our expert team goes beyond just providing services; we partner with you to streamline your operations, enhance decision-making, and drive sustainable growth.</p>
@@ -304,8 +309,11 @@
     </footer>
     </div>
     <script src="Javascript/scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <script>
+
+<!-- Asegúrate de incluir la librería de Chart.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+
+<script>
     document.addEventListener('DOMContentLoaded', function() {
         function getChartConfig(isDark) {
             return {
@@ -315,12 +323,12 @@
                 backgroundColor: 'rgba(255, 196, 77, 0.1)'
             };
         }
-    
+
         function createChart(canvasId, data, type = 'line') {
             const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             const colors = getChartConfig(isDark);
             const ctx = document.getElementById(canvasId).getContext('2d');
-            
+
             return new Chart(ctx, {
                 type: type,
                 data: {
@@ -356,7 +364,7 @@
                 }
             });
         }
-    
+
         // Data for each chart
         const revenueData = {
             label: 'Monthly Revenue',
@@ -364,103 +372,69 @@
             values: [120000, 150000, 130000, 170000, 200000, 180000, 220000],
             format: value => '$' + value.toLocaleString()
         };
-    
+
         const stockData = {
             label: 'Stock Level',
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
             values: [500, 450, 600, 550, 700, 650, 800],
             format: value => value.toLocaleString() + ' units'
         };
-    
+
         const satisfactionData = {
             label: 'Patient Satisfaction',
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
             values: [85, 87, 86, 89, 90, 92, 91],
             format: value => value + '%'
         };
-    
+
         const efficiencyData = {
             label: 'Operational Efficiency',
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
             values: [75, 78, 80, 82, 83, 85, 84],
             format: value => value + '%'
         };
-    
-        // Create charts
+
+        // Create line charts
         const revenueChart = createChart('revenueChart', revenueData);
         const stockChart = createChart('stockChart', stockData);
         const satisfactionChart = createChart('satisfactionChart', satisfactionData);
         const efficiencyChart = createChart('efficiencyChart', efficiencyData);
-    
-        // Function to resize charts
-        function resizeCharts() {
-            [revenueChart, stockChart, satisfactionChart, efficiencyChart].forEach(chart => {
-                if (chart) {
-                    chart.resize(); // Redimensionar el gráfico
-                }
-            });
-        }
-    
-        // Carousel automation for cards
-        const cards = document.querySelectorAll('.card');
+
+        // Carousel automation for panels
+        const panels = document.querySelectorAll('.panel');
         let currentIndex = 0;
-    
-        function showNextCard() {
-            cards[currentIndex].classList.remove('active');
-            currentIndex = (currentIndex + 1) % cards.length;
-            cards[currentIndex].classList.add('active');
+
+        function showNextPanel() {
+            panels[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % panels.length;
+            panels[currentIndex].classList.add('active');
         }
-    
-        setInterval(showNextCard, 5000);
-    
-        // Responsive mode adjustment
-        function adjustForScreenSize() {
-            const isSmallScreen = window.innerWidth <= 768;
-            if (isSmallScreen) {
-                // Apply specific styles or layout for vertical mode on small screens
-                document.querySelector('.dashboard-container').classList.add('vertical-layout');
+
+        setInterval(showNextPanel, 5000);
+
+        function handleResize() {
+            const dashboardContainer = document.querySelector('.dashboard-ecosystem');
+            
+            // Verifica el ancho de la ventana
+            if (window.innerWidth <= 768) {
+                dashboardContainer.style.visibility = 'hidden'; // Oculta el contenedor en pantallas pequeñas
+                dashboardContainer.style.height = '0'; // Ajusta la altura para no ocupar espacio
             } else {
-                document.querySelector('.dashboard-container').classList.remove('vertical-layout');
+                dashboardContainer.style.visibility = 'visible'; // Muestra el contenedor en pantallas grandes
+                dashboardContainer.style.height = 'auto'; // Restablece la altura
             }
         }
-    
-        // Initial adjustment and resize event listener
-        adjustForScreenSize();
-        window.addEventListener('resize', () => {
-            adjustForScreenSize();
-            resizeCharts();
-        });
-    
- // Modify carousel behavior for mobile
- function adjustForMobile() {
-        const isMobile = window.innerWidth <= 768;
-        const cards = document.querySelectorAll('.card');
+
+        // Escucha el evento de redimensión de la ventana
+        window.addEventListener('resize', handleResize);
         
-        if (isMobile) {
-            // Disable carousel on mobile
-            cards.forEach(card => {
-                card.classList.add('active');
-            });
-        } else {
-            // Re-enable carousel on desktop
-            cards.forEach((card, index) => {
-                if (index !== 0) {
-                    card.classList.remove('active');
-                }
-            });
-        }
-    }
-
-    // Call on load and resize
-    window.addEventListener('load', adjustForMobile);
-    window.addEventListener('resize', adjustForMobile);
-
-        // Update charts when theme changes
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-            resizeCharts();
-        });
+        // Llama a la función una vez al cargar la página para establecer el estado inicial
+        handleResize();
     });
-    </script>
+</script>
+
+
+    
     
 
 
