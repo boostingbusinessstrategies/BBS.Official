@@ -1,7 +1,5 @@
-/* dashboard.css anterior que funciona en pc pero en pantallas pequeñas se crashea */
-
 /* Variables específicas para el dashboard */
-.dashboard-container {
+.dashboard-ecosystem {
     --card-background: #f3f4f6;
     --metric-background: #ffffff;
     --text-primary: #111827;
@@ -14,7 +12,7 @@
 
 /* Modo oscuro */
 @media (prefers-color-scheme: dark) {
-    .dashboard-container {
+    .dashboard-ecosystem {
         --background: #1a1a1a;
         --card-background: #2b2b2b;
         --metric-background: #333333;
@@ -28,7 +26,7 @@
 }
 
 /* Estilos generales del dashboard */
-.dashboard-container {
+.dashboard-ecosystem {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background: var(--background);
     color: var(--text-primary);
@@ -37,33 +35,33 @@
     transition: background-color 0.3s ease;
 }
 
-.dashboard-container .container {
+.dashboard-ecosystem .main-area {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.dashboard-container .dashboard-title {
+.dashboard-ecosystem .dashboard-title {
     text-align: center;
     margin-bottom: 2rem;
 }
 
-.dashboard-container .dashboard-title h1 {
+.dashboard-ecosystem .dashboard-title h1 {
     font-size: 2.5rem;
     font-weight: 800;
-    background: linear-gradient(to right, #ffc44d, #4d9fff);
+    background: #0056a3; 
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     margin-bottom: 0.5rem;
 }
 
-.dashboard-container .dashboard-title p {
+.dashboard-ecosystem .dashboard-title p {
     font-size: 1.125rem;
     color: var(--text-secondary);
 }
 
 /* Carrusel */
-.dashboard-container .carousel {
+.dashboard-ecosystem .carousel-container {
     position: relative;
     overflow: hidden;
     height: 600px;
@@ -73,31 +71,36 @@
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Tarjetas del carrusel */
-.dashboard-container .card {
+/* Paneles del carrusel */
+.dashboard-ecosystem .panel {
     position: absolute;
     width: 100%;
     height: 100%;
     padding: 2rem;
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    display: none;
-    flex-direction: column;
-}
-
-.dashboard-container .card.active {
-    opacity: 1;
+    transform: translateY(20px) scale(0.95); /* Desplazamiento hacia abajo y ligera reducción de tamaño */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Transiciones para opacidad y transformación */
     display: flex;
-    z-index: 1;
+    flex-direction: column;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
-.dashboard-container .card-title {
+/* Estado activo del panel */
+.dashboard-ecosystem .panel.active {
+    opacity: 1; /* Panel visible */
+    transform: translateY(0) scale(1); /* Regresa a su posición original y tamaño completo */
+    z-index: 1; /* Asegura que el panel activo esté en el frente */
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15); /* Sombra más prominente al estar activo */
+}
+
+.dashboard-ecosystem .panel-title {
     font-size: 1.5rem;
     color: var(--text-primary);
     margin-bottom: 1.5rem;
 }
 
-.dashboard-container .chart-container {
+.dashboard-ecosystem .chart-space {
     flex-grow: 1;
     position: relative;
     height: 300px !important;
@@ -105,7 +108,7 @@
 }
 
 /* Grid de métricas */
-.dashboard-container .metrics-grid {
+.dashboard-ecosystem .metrics-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
@@ -113,7 +116,7 @@
 }
 
 /* Tarjetas de métricas */
-.dashboard-container .metric-card {
+.dashboard-ecosystem .metric-box {
     background: var(--metric-background);
     padding: 1.5rem;
     border-radius: 0.75rem;
@@ -123,12 +126,12 @@
 }
 
 /* Efecto en hover */
-.dashboard-container .metric-card:hover {
+.dashboard-ecosystem .metric-box:hover {
     transform: translateY(-5px); /* Eleva la tarjeta */
     border-color: var(--highlight-border); /* Borde de color resaltado */
 }
 
-.dashboard-container .metric-label {
+.dashboard-ecosystem .metric-label {
     font-size: 0.875rem;
     color: var(--text-secondary);
     text-transform: uppercase;
@@ -136,153 +139,49 @@
     margin-bottom: 0.5rem;
 }
 
-.dashboard-container .metric-value {
+.dashboard-ecosystem .metric-value {
     font-size: 2rem;
     font-weight: bold;
     color: var(--text-primary);
     margin-bottom: 0.5rem;
 }
 
-.dashboard-container .metric-change {
+.dashboard-ecosystem .metric-change {
     font-size: 0.875rem;
     padding: 0.25rem 0.75rem;
     border-radius: 1rem;
     display: inline-block;
 }
 
-.dashboard-container .change-positive {
+.dashboard-ecosystem .change-positive {
     background: rgba(52, 211, 153, 0.1);
     color: #34d399;
 }
 
-.dashboard-container .change-negative {
+.dashboard-ecosystem .change-negative {
     background: rgba(239, 68, 68, 0.1);
     color: #ef4444;
 }
 
 /* Brillo y realce de texto en modo nocturno */
 @media (prefers-color-scheme: dark) {
-    .dashboard-container .metric-card:hover {
+    .dashboard-ecosystem .metric-box:hover {
         box-shadow: 0 4px 12px var(--shadow-color);
         background: rgba(51, 51, 51, 0.95); /* Un poco más claro al hacer hover */
     }
 
-    .dashboard-container .metric-value {
+    .dashboard-ecosystem .metric-value {
         color: var(--highlight-border); /* Color de resaltado en valores clave */
     }
+
+    .dashboard-ecosystem .dashboard-title h1 {
+        color: #0086fc; /* Cambia el color del texto */
+    }
 }
 
-/* Ajustes Responsivos Mejorados */
-.dashboard-container {
-    padding: 2rem;
-}
-
-/* Estilos base se mantienen igual */
-
-/* Ajustes Responsivos Mejorados */
+/* Estilos responsivos */
 @media (max-width: 768px) {
-    .dashboard-container {
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .dashboard-container.vertical-layout {
-        gap: 1.5rem;
-    }
-
-    .carousel {
-        height: auto !important;
-        min-height: 450px; /* Altura fija para mantener consistencia */
-        margin-bottom: 1.5rem;
-    }
-
-    .card {
-        position: absolute; /* Mantener el comportamiento del carrusel */
-        height: 100% !important;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-    }
-
-    .card.active {
-        opacity: 1;
-        z-index: 1;
-    }
-
-    .chart-container {
-        height: 250px !important;
-        margin-bottom: 1.5rem;
-    }
-
-    .metrics-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        width: 100%;
-        margin-top: 1rem;
-    }
-
-    .metric-card {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-        padding: 1.25rem;
-        background-color: #f0f4f8; /* Ajuste de fondo para mayor contraste en tema claro */
-        border-radius: 8px;
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Ajustes de tamaño de texto para mejor legibilidad en móvil */
-    .dashboard-title h1 {
-        font-size: 1.75rem;
-    }
-
-    .dashboard-title p {
-        font-size: 1rem;
-    }
-
-    .card-title {
-        font-size: 1.25rem;
-        margin-bottom: 1rem;
-    }
-
-    /* Ajustes para métricas en modo vertical */
-    .metric-value {
-        font-size: 1.75rem;
-    }
-
-    .metric-label {
-        font-size: 0.875rem;
-    }
-
-    .metric-change {
-        font-size: 0.875rem;
-    }
-
-    /* Asegurar que el contenido del carrusel tenga espacio suficiente */
-    .card-content {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
-}
-
-/* Mantener los estilos de modo oscuro */
-@media (prefers-color-scheme: dark) {
-    .dashboard-container {
-        background: #1a1a1a;
-    }
-
-    .card {
-        background: #2b2b2b;
-    }
-
-    .metric-card {
-        background: #333333;
-        color: #ffffff;
+    .dashboard-ecosystem {
+        display: none; /* Oculta el dashboard en pantallas pequeñas */
     }
 }
