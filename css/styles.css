@@ -1033,6 +1033,206 @@ h3 {
 
 
 
+
+/* Variables específicas para el dashboard */
+.dashboard-ecosystem {
+    --card-background: #f3f4f6;
+    --metric-background: #ffffff;
+    --text-primary: #111827;
+    --text-secondary: #4b5563;
+    --border-color: #e5e7eb;
+    --chart-grid: rgba(0, 0, 0, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.15); /* Sombra en modo claro */
+    --highlight-border: #ffc44d; /* Para el borde en hover */
+}
+
+/* Modo oscuro */
+@media (prefers-color-scheme: dark) {
+    .dashboard-ecosystem {
+        --background: #1a1a1a;
+        --card-background: #2b2b2b;
+        --metric-background: #333333;
+        --text-primary: #ffffff;
+        --text-secondary: #9ca3af;
+        --border-color: #404040;
+        --chart-grid: rgba(255, 255, 255, 0.1);
+        --shadow-color: rgba(0, 0, 0, 0.5); /* Sombra en modo oscuro */
+        --highlight-border: #4d9fff; /* Color de borde en hover en modo oscuro */
+    }
+}
+
+/* Estilos generales del dashboard */
+.dashboard-ecosystem {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--background);
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding: 2rem;
+    transition: background-color 0.3s ease;
+}
+
+.dashboard-ecosystem .main-area {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.dashboard-ecosystem .dashboard-title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.dashboard-ecosystem .dashboard-title h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: #0056a3; 
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-ecosystem .dashboard-title p {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+}
+
+/* Carrusel */
+.dashboard-ecosystem .carousel-container {
+    position: relative;
+    overflow: hidden;
+    height: 600px;
+    background: var(--card-background);
+    border-radius: 1rem;
+    box-shadow: 0 8px 16px var(--shadow-color); /* Sombra más profunda */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Paneles del carrusel */
+.dashboard-ecosystem .panel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95); /* Desplazamiento hacia abajo y ligera reducción de tamaño */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Transiciones para opacidad y transformación */
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estado activo del panel */
+.dashboard-ecosystem .panel.active {
+    opacity: 1; /* Panel visible */
+    transform: translateY(0) scale(1); /* Regresa a su posición original y tamaño completo */
+    z-index: 1; /* Asegura que el panel activo esté en el frente */
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15); /* Sombra más prominente al estar activo */
+}
+
+.dashboard-ecosystem .panel-title {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+}
+
+.dashboard-ecosystem .chart-space {
+    flex-grow: 1;
+    position: relative;
+    height: 300px !important;
+    margin-bottom: 2rem;
+}
+
+/* Grid de métricas */
+.dashboard-ecosystem .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: auto;
+}
+
+/* Tarjetas de métricas */
+.dashboard-ecosystem .metric-box {
+    background: var(--metric-background);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px var(--shadow-color); /* Sombra para cada tarjeta */
+}
+
+/* Efecto en hover */
+.dashboard-ecosystem .metric-box:hover {
+    transform: translateY(-5px); /* Eleva la tarjeta */
+    border-color: var(--highlight-border); /* Borde de color resaltado */
+}
+
+.dashboard-ecosystem .metric-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-ecosystem .metric-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-ecosystem .metric-change {
+    font-size: 0.875rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    display: inline-block;
+}
+
+.dashboard-ecosystem .change-positive {
+    background: rgba(52, 211, 153, 0.1);
+    color: #34d399;
+}
+
+.dashboard-ecosystem .change-negative {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+/* Brillo y realce de texto en modo nocturno */
+@media (prefers-color-scheme: dark) {
+    .dashboard-ecosystem .metric-box:hover {
+        box-shadow: 0 4px 12px var(--shadow-color);
+        background: rgba(51, 51, 51, 0.95); /* Un poco más claro al hacer hover */
+    }
+
+    .dashboard-ecosystem .metric-value {
+        color: var(--highlight-border); /* Color de resaltado en valores clave */
+    }
+
+    .dashboard-ecosystem .dashboard-title h1 {
+        color: #0086fc; /* Cambia el color del texto */
+    }
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .dashboard-ecosystem {
+        display: none; /* Oculta el dashboard en pantallas pequeñas */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* Anula animaciones en pantallas pequeñas */
 @media (max-width: 768px) {
     * {
