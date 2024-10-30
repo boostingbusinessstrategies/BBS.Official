@@ -426,6 +426,19 @@ input[type="submit"]:hover {
     text-decoration: underline;
 }
 
+/* Styles for list items */
+.note ul {
+    padding-left: 1.5rem; /* Indent the list */
+}
+
+.note li {
+    margin-bottom: 0.5rem; /* Space between list items */
+}
+
+.note li strong {
+    color: #333; /* Optional: Customize the color of strong text within li */
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     #content {
