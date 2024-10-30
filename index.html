@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/dashboards.css">
 </head>
 <body>
     <nav id="sidebar">
@@ -32,7 +31,7 @@
         </ul>
     </nav>    
     
-    <button id="menu-toggle" class="menu-toggle">
+    <button id="menu-toggle" class="menu-toggle" title="Toggle Menu">
         <i class="fas fa-bars"></i>
     </button>
     
@@ -59,9 +58,8 @@
     <div class="main-content">
     
         <section id="cta" class="section">
-            <h2>Transform Your Business with Personalized Data Solutions</h2>
-            <p>Empower your business with data-driven insights tailored to your unique challenges. Optimize your decision-making, streamline your workflows, and confidently scale with a custom database solution designed specifically for your needs.</p>
-            <a href="https://boostingbusinessstrategies.github.io/BBS.Official/order.html" class="cta-button">Get Your Tailored Database Solution Now</a>
+            <h2>Transform Your Business with Tailored Data Solutions</h2>
+            <p>Imagine having a system that understands and meets your business’s unique challenges. At BBS, we create data solutions that aren’t just functional—they’re designed to empower. With our personalized databases, your business can gain clarity, streamline workflows, and make informed decisions confidently, knowing each choice is supported by accurate, reliable data. Let us guide you toward growth and success with a solution tailored to help you reach your full potential.</p>
         </section>
         
 
@@ -76,7 +74,7 @@
 
         <div class="carousel-container">
             <!-- Panel 1: Revenue Overview -->
-            <div class="panel active" style="--i: 0;">
+            <div class="panel active" data-index="0">
                 <h3 class="panel-title">E-commerce Revenue Overview</h3>
                 <div class="chart-space">
                     <canvas id="revenueChart"></canvas>
@@ -101,7 +99,7 @@
             </div>
 
             <!-- Panel 2: Stock Overview -->
-            <div class="panel" style="--i: 1;">
+            <div class="panel" data-index="1">
                 <h3 class="panel-title">E-commerce Stock Overview</h3>
                 <div class="chart-space">
                     <canvas id="stockChart"></canvas>
@@ -126,7 +124,7 @@
             </div>
 
             <!-- Panel 3: Patient Satisfaction -->
-            <div class="panel" style="--i: 2;">
+            <div class="panel" data-index="2">
                 <h3 class="panel-title">Private Clinic Patient Satisfaction</h3>
                 <div class="chart-space">
                     <canvas id="satisfactionChart"></canvas>
@@ -151,7 +149,7 @@
             </div>
 
             <!-- Panel 4: Operational Efficiency -->
-            <div class="panel" style="--i: 3;">
+            <div class="panel" data-index="3">
                 <h3 class="panel-title">Private Clinic Operational Efficiency</h3>
                 <div class="chart-space">
                     <canvas id="efficiencyChart"></canvas>
@@ -219,14 +217,14 @@
         <section id="features" class="section">
             <h2>Why Partner with Boosting Business Strategies?</h2>
             <ul class="features-list">
-                <li><strong>Your Success is Our Priority: 100% Satisfaction Guarantee!</strong></li>
-                <li>We are committed to delivering results that exceed your expectations, or your money back.</li>
-                <li>Robust security measures to protect your sensitive business information from threats.</li>
-                <li>Full compliance with GDPR and CCPA, ensuring your data is handled with the utmost care.</li>
-                <li>Expertly designed and optimized databases using MySQL, tailored to enhance your operations.</li>
-                <li>Seamless integration with Oracle and AWS, providing scalability as your business grows.</li>
-                <li>Flexible solutions designed specifically for your unique business needs and growth trajectory.</li>
-                <li>Reliable support and maintenance available Monday to Saturday, ensuring peace of mind for you.</li>
+                <li><strong>Your Success, Guaranteed: 100% Satisfaction or Your Money Back!</strong></li>
+                <li>Results That Exceed Expectations—Our commitment is your business growth.</li>
+                <li>Top-Level Security to safeguard your business data from any threats.</li>
+                <li>GDPR & CCPA Compliant, for peace of mind in data handling and privacy.</li>
+                <li>Optimized MySQL Databases, custom-designed to boost your operations.</li>
+                <li>Seamless Integration with Oracle, AWS, Clouding, and PHP for scalable growth.</li>
+                <li>Flexible Solutions, tailored to fit your unique needs and growth goals.</li>
+                <li>Reliable Support, Monday to Saturday, giving you peace of mind at every step.</li>                
             </ul>
         </section>
 
@@ -247,14 +245,14 @@
         </section>
         
         <section id="contact" class="section">
-            <h2>Let's Connect and Transform Your Future</h2>
-            <p>Ready to elevate your data management and unlock new growth opportunities? At Boosting Business Strategies (BBS), we view every interaction as a chance to build a lasting partnership. Our dedicated team is here to listen to your unique challenges and provide tailored solutions aligned with your vision.</p>
-            <p>Whether you have questions about our services or you're ready to begin your transformative journey, we invite you to reach out. Together, we can turn your data into a powerful asset for success and innovation. Your future starts with a conversation—let’s take that first step together!</p>
+            <h2>Let’s Connect and Transform Your Future</h2>
+            <p>Are you ready to elevate your data management and unlock new growth opportunities? At Boosting Business Strategies (BBS), we see every interaction as a stepping stone toward a meaningful partnership. Our dedicated team is eager to understand your unique challenges and provide customized solutions that align with your vision.</p>
+            <p>Whether you have questions about our services or are eager to embark on your transformative journey, we encourage you to reach out. Together, we can turn your data into a powerful asset for success and innovation. Your future begins with a conversation—let’s take that first step together!</p>
             
             <form id="database-form" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST">
                 <!-- Protección Anti-Spam -->
                 <input type="hidden" name="_honey" style="display:none">
-                
+
                 <!-- Token de Seguridad -->
                 <input type="hidden" name="_token" value="your_token_here">
                 
