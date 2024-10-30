@@ -660,65 +660,6 @@ select {
 
 
 
-.promo-container {
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.promo-container[data-theme="light"] {
-    background-color: #f8f9fa;
-    color: #333;
-}
-
-.promo-container[data-theme="light"] h3 {
-    color: #333;
-}
-
-.promo-container[data-theme="light"] .price {
-    color: #d9534f;
-}
-
-.promo-container[data-theme="light"] .note {
-    color: #777;
-}
-
-.promo-container[data-theme="dark"] {
-    background-color: #333;
-    color: #f8f9fa;
-}
-
-.promo-container[data-theme="dark"] h3 {
-    color: #f8f9fa;
-}
-
-.promo-container[data-theme="dark"] .price {
-    color: #ff6666;
-}
-
-.promo-container[data-theme="dark"] .note {
-    color: #ccc;
-}
-
-.promo-container ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.promo-container p {
-    font-size: 1em; /* Reduced size for a more concise look */
-}
-
-.promo-container .note {
-    font-size: 0.85em; /* Adjusted for consistency */
-    margin-top: 10px; /* Added margin for spacing */
-}
-
-
-
-
-
 
 /* Footer */
 #footer-container {
