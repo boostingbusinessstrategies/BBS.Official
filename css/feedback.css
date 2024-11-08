@@ -541,7 +541,6 @@ body {
     padding: 2rem;
     background: #f8f9fa;
     border-radius: 15px;
-    max-width: 1200px;
     width: 90%;
     transition: background 0.3s ease, color 0.3s ease;
 }
@@ -677,7 +676,9 @@ body {
 /* Responsive design */
 @media (max-width: 600px) {
     .feedback-display-container {
+        width: 100%;  /* Asegura que ocupe todo el ancho disponible */
         padding: 1.2rem;
+        box-sizing: border-box;  /* Incluye padding en el cálculo del ancho total */
     }
 
     .show-more-btn {
@@ -692,6 +693,12 @@ body {
 }
 
 @media (max-width: 1024px) {
+    .feedback-display-container {
+        width: 100%;  /* Asegura que ocupe todo el ancho disponible */
+        padding: 1.5rem;
+        box-sizing: border-box;  /* Asegura que el padding no sobresalga del ancho */
+    }
+
     .show-more-btn {
         font-size: 1.1rem;
         padding: 14px 20px;
@@ -703,6 +710,12 @@ body {
 }
 
 @media (min-width: 1024px) {
+    .feedback-display-container {
+        width: 100%;  /* Asegura que ocupe todo el ancho disponible */
+        padding: 2rem;  /* Ajusta el padding si es necesario */
+        box-sizing: border-box;
+    }
+
     .show-more-btn {
         font-size: 1.2rem;
         padding: 18px 30px;
@@ -712,6 +725,26 @@ body {
         padding: 12px 18px;
         font-size: 18px;
     }
+}
+
+/* Asegura que el form y el contenedor de comentarios tengan el mismo ancho */
+@media (max-width: 768px) {
+  #modify-form,
+  .form-container,
+  .feedback-display-container {
+      margin: 1rem;
+      padding: 1rem;
+      width: calc(100% - 2rem); /* Ajusta el ancho para incluir márgenes */
+      box-sizing: border-box;
+  }
+
+  h2 {
+      font-size: 1.5rem;
+  }
+
+  input[type="submit"] {
+      padding: 14px 28px;
+  }
 }
 
 
