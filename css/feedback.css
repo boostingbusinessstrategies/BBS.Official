@@ -378,51 +378,56 @@ body {
     background: #ffffff;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Introduction Text */
-  .feedback-section > p {
+    transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Introduction Text */
+.feedback-section > p {
     color: #333;
     line-height: 1.8;
     text-align: justify;
     margin-bottom: 1.5rem;
-  }
-  
-  /* Headings */
-  .feedback-section h2 {
+    transition: color 0.3s ease;
+}
+
+/* Headings */
+.feedback-section h2 {
     color: #0056a3;
     font-size: 2rem;
     text-align: center;
     margin-bottom: 1.5rem;
-  }
-  
-  .feedback-section h3 {
+    transition: color 0.3s ease;
+}
+
+.feedback-section h3 {
     color: #2a333a;
     margin: 10px 0;
     text-align: left;
     font-size: 1.6rem;
-  }
-  
-  /* Form Container */
-  .feedback-form-container {
+    transition: color 0.3s ease;
+}
+
+/* Form Container */
+.feedback-form-container {
     max-width: 900px;
     margin: 0 auto;
     padding: 2rem;
     background: #ffffff;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  }
-  
-  /* Form Groups */
-  .form-group {
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Form Groups */
+.form-group {
     margin-bottom: 1.5rem;
-  }
-  
-  /* Form Elements */
-  .form-group input[type="text"],
-  .form-group input[type="email"],
-  .form-group select,
-  .form-group textarea {
+}
+
+/* Form Elements */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group select,
+.form-group textarea {
     width: 100%;
     padding: 12px 16px;
     margin: 8px 0;
@@ -431,37 +436,37 @@ body {
     background: #ffffff;
     transition: all 0.3s ease;
     font-size: 1rem;
-  }
-  
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
     border-color: #0056a3;
     outline: none;
     box-shadow: 0 0 0 3px rgba(0, 86, 163, 0.1);
-  }
-  
-  /* Labels */
-  .form-group label {
+}
+
+/* Labels */
+.form-group label {
     display: block;
     margin-bottom: 8px;
     color: #142135;
     font-weight: 500;
-  }
-  
-  /* Checkbox Styling */
-  .form-group input[type="checkbox"] {
+    transition: color 0.3s ease;
+}
+
+/* Checkbox Styling */
+.form-group input[type="checkbox"] {
     width: 18px;
     height: 18px;
     cursor: pointer;
     margin-right: 8px;
-  }
-  
-  .form-group input[type="checkbox"] + label {
+}
+
+.form-group input[type="checkbox"] + label {
     display: inline;
     vertical-align: middle;
-  }
-  
+}
 
 /* Checkbox Container */
 .checkbox-container {
@@ -469,22 +474,22 @@ body {
     align-items: center;
     margin: 1.5rem 0;
     gap: 0.5rem;
-  }
-  
-  .checkbox-container input[type="checkbox"] {
+}
+
+.checkbox-container input[type="checkbox"] {
     width: 18px;
     height: 18px;
     cursor: pointer;
     margin: 0;
-  }
-  
-  .checkbox-container label {
+}
+
+.checkbox-container label {
     margin: 0;
     line-height: 1;
-  }
+}
 
-  /* Submit Button */
-  .submit-button {
+/* Submit Button */
+.submit-button {
     background: linear-gradient(135deg, #ee4d4d 0%, #ff6b6b 100%);
     color: white;
     padding: 16px 32px;
@@ -496,24 +501,49 @@ body {
     width: 100%;
     transition: all 0.3s ease;
     margin-top: 1.5rem;
-  }
-  
-  .submit-button:hover {
+}
+
+.submit-button:hover {
     background: linear-gradient(135deg, #ff6b6b 0%, #ee4d4d 100%);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(238, 77, 77, 0.2);
-  }
-  
+}
 
+/* Admin Controls (Hidden by Default) */
+.admin-controls {
+    margin-bottom: 2rem;
+}
+
+.admin-button {
+    background: #2a333a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    margin-right: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.admin-button:hover {
+    background: #142135;
+}
+
+/* Error States */
+.form-group input:invalid,
+.form-group textarea:invalid {
+    border-color: #ee4d4d;
+}
 
 /* Feedback Display Section */
 .feedback-display-container {
-    margin: 10px auto; /* Agrega margen arriba y abajo */
+    margin: 10px auto;
     padding: 2rem;
     background: #f8f9fa;
     border-radius: 15px;
-    max-width: 1200px; /* Limita el tamaño máximo */
-    width: 90%; /* Toma el 90% del ancho disponible */
+    max-width: 1200px;
+    width: 90%;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* Lista de comentarios */
@@ -533,7 +563,7 @@ body {
     cursor: pointer;
     font-size: 1rem;
     margin-top: 1.5rem;
-    width: 100%; /* Ocupa todo el ancho en móviles */
+    width: 100%;
     transition: all 0.3s ease;
 }
 
@@ -542,7 +572,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* Estilo de los botones de paginación */
+/* Estilos de los botones de paginación */
 #pagination {
     margin-top: 20px;
     text-align: center;
@@ -557,11 +587,11 @@ body {
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 #pagination button:hover {
     background-color: #ee4d4d;
-    transition: background-color 0.3s;
 }
 
 #pagination button:focus {
@@ -574,33 +604,96 @@ body {
     cursor: not-allowed;
 }
 
-/* Responsive design */
+/* Modo nocturno */
+@media (prefers-color-scheme: dark) {
+    .feedback-section,
+    .feedback-form-container {
+        background: rgba(20, 33, 53, 0.9);
+        color: #ffffff;
+        box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+    }
 
-/* En pantallas pequeñas (menos de 600px) */
-@media (max-width: 600px) {
-    /* Ajustar el contenedor de los comentarios */
+    .feedback-section > p,
+    .feedback-section h2,
+    .feedback-section h3,
+    .form-group label {
+        color: #ffffff;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group select,
+    .form-group textarea {
+        background: #2b2f38;
+        border: 2px solid #444;
+        color: #e0e0e0;
+    }
+
+    .submit-button {
+        background: linear-gradient(135deg, #ee4d4d 0%, #ff6b6b 100%);
+    }
+
+    .submit-button:hover {
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee4d4d 100%);
+        box-shadow: 0 5px 15px rgba(238, 77, 77, 0.2);
+    }
+
     .feedback-display-container {
-        padding: 1rem; /* Menos padding */
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
     }
 
-    /* Ajustar el tamaño del botón "Show More" */
     .show-more-btn {
-        font-size: 1.2rem; /* Un poco más grande para móviles */
-        padding: 15px; /* Asegurar que el botón sea cómodo */
+        background: #0056a3;
     }
 
-    /* Ajustar la paginación */
+    .show-more-btn:hover {
+        background: #003d73;
+    }
+
+    .admin-button {
+        background: #2a333a;
+    }
+
+    .admin-button:hover {
+        background: #142135;
+    }
+
+    .form-group input:invalid,
+    .form-group textarea:invalid {
+        border-color: #ee4d4d;
+    }
+
+    #pagination button {
+        background-color: #0056a3;
+        color: white;
+    }
+
+    #pagination button:hover {
+        background-color: #ee4d4d;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .feedback-display-container {
+        padding: 1.2rem;
+    }
+
+    .show-more-btn {
+        font-size: 1.2rem;
+        padding: 15px;
+    }
+
     #pagination button {
         padding: 8px 12px;
         font-size: 14px;
     }
 }
 
-/* En pantallas medianas (menos de 1024px) */
 @media (max-width: 1024px) {
-    /* Ajustar el tamaño de los botones en pantallas medianas */
     .show-more-btn {
-        font-size: 1.1rem; /* Fuente más pequeña para pantallas medianas */
+        font-size: 1.1rem;
         padding: 14px 20px;
     }
 
@@ -609,9 +702,7 @@ body {
     }
 }
 
-/* En pantallas grandes (más de 1024px) */
 @media (min-width: 1024px) {
-    /* Aseguramos que los botones tengan un tamaño razonable en pantallas grandes */
     .show-more-btn {
         font-size: 1.2rem;
         padding: 18px 30px;
@@ -622,153 +713,6 @@ body {
         font-size: 18px;
     }
 }
-
-
-
-
-
-
-
-  /* Admin Controls (Hidden by Default) */
-  .admin-controls {
-    margin-bottom: 2rem;
-  }
-  
-  .admin-button {
-    background: #2a333a;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    margin-right: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .admin-button:hover {
-    background: #142135;
-  }
-  
-  /* Error States */
-  .form-group input:invalid,
-  .form-group textarea:invalid {
-    border-color: #ee4d4d;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .feedback-section {
-      margin: 1rem;
-      padding: 1rem;
-    }
-  
-    .feedback-form-container {
-      padding: 1rem;
-    }
-  
-    .feedback-section h2 {
-      font-size: 1.5rem;
-    }
-  
-    .submit-button {
-      padding: 14px 28px;
-    }
-  }
-  
-  /* Animations */
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  .feedback-section {
-    animation: fadeIn 0.8s ease-out;
-  }
-
-
-/* Modo nocturno para la sección de retroalimentación */
-@media (prefers-color-scheme: dark) {
-    .feedback-section,
-    .feedback-form-container {
-        background: rgba(20, 33, 53, 0.9); /* Fondo oscuro */
-        color: #ffffff; /* Color de texto por defecto */
-        box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1); /* Sombra más clara */
-    }
-
-    /* Introducción */
-    .feedback-section > p {
-        color: #ffffff; /* Color de texto claro */
-    }
-
-    /* Encabezados */
-    .feedback-section h2 {
-        color: #ffc44d; /* Color de encabezados en modo oscuro */
-    }
-
-    .feedback-section h3 {
-        color: #ffffff; /* Color de subtítulos en modo oscuro */
-    }
-
-    /* Elementos del formulario */
-    .form-group input[type="text"],
-    .form-group input[type="email"],
-    .form-group select,
-    .form-group textarea {
-        background: #2b2f38; /* Fondo oscuro para inputs */
-        border: 2px solid #444; /* Borde oscuro */
-        color: #e0e0e0; /* Texto claro */
-    }
-
-    /* Etiquetas */
-    .form-group label {
-        color: #ffffff; /* Color de etiquetas en modo oscuro */
-    }
-
-    /* Botón de envío */
-    .submit-button {
-        background: linear-gradient(135deg, #ee4d4d 0%, #ff6b6b 100%); /* Color del botón en modo oscuro */
-    }
-
-    .submit-button:hover {
-        background: linear-gradient(135deg, #ff6b6b 0%, #ee4d4d 100%); /* Color del botón en hover */
-        box-shadow: 0 5px 15px rgba(238, 77, 77, 0.2); /* Sombra en hover */
-    }
-
-    /* Sección de visualización de retroalimentación */
-    .feedback-display-container {
-        background: rgba(255, 255, 255, 0.1); /* Fondo claro con transparencia */
-        color: #ffffff; /* Color del texto de los campos */
-    }
-
-    /* Botón de mostrar más */
-    .show-more-btn {
-        background: #0056a3; /* Color del botón de mostrar más */
-    }
-
-    .show-more-btn:hover {
-        background: #003d73; /* Color de fondo en hover */
-    }
-
-    /* Controles de administrador */
-    .admin-button {
-        background: #2a333a; /* Color de botones de administrador */
-    }
-
-    .admin-button:hover {
-        background: #142135; /* Color en hover */
-    }
-
-    /* Estados de error */
-    .form-group input:invalid,
-    .form-group textarea:invalid {
-        border-color: #ee4d4d; /* Color de borde en error */
-    }
-}
-
-
-
-
-
 
 
 
