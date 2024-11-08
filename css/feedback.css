@@ -673,17 +673,17 @@ body {
     }
 }
 
-/* Responsive design */
+/* Responsive Design */
 @media (max-width: 600px) {
     .feedback-display-container {
         width: 100%;  /* Asegura que ocupe todo el ancho disponible */
-        padding: 1.2rem;
+        padding: 1rem;
         box-sizing: border-box;  /* Incluye padding en el cálculo del ancho total */
     }
 
     .show-more-btn {
-        font-size: 1.2rem;
-        padding: 15px;
+        font-size: 1.1rem;
+        padding: 12px 20px;
     }
 
     #pagination button {
@@ -700,7 +700,7 @@ body {
     }
 
     .show-more-btn {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         padding: 14px 20px;
     }
 
@@ -729,22 +729,22 @@ body {
 
 /* Asegura que el form y el contenedor de comentarios tengan el mismo ancho */
 @media (max-width: 768px) {
-  #modify-form,
-  .form-container,
-  .feedback-display-container {
-      margin: 1rem;
-      padding: 1rem;
-      width: calc(100% - 2rem); /* Ajusta el ancho para incluir márgenes */
-      box-sizing: border-box;
-  }
+    #modify-form,
+    .form-container,
+    .feedback-display-container {
+        margin: 1rem;
+        padding: 1rem;
+        width: calc(100% - 2rem); /* Ajusta el ancho para incluir márgenes */
+        box-sizing: border-box;
+    }
 
-  h2 {
-      font-size: 1.5rem;
-  }
+    h2 {
+        font-size: 1.5rem;
+    }
 
-  input[type="submit"] {
-      padding: 14px 28px;
-  }
+    input[type="submit"] {
+        padding: 14px 28px;
+    }
 }
 
 
