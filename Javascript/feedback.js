@@ -4,7 +4,7 @@ const reviewsToShow = 8;
 // Variables to control admin status and delete capability
 let isAdmin = false; // Cambiar a false para ocultar los controles de administrador inicialmente
 let canDelete = false; // Inicialmente no se puede eliminar
-const hashedAdminPassword = "hashedPassword123"; // La contraseña encriptada (simulada aquí)
+const hashedAdminPassword = "drowssap"; // La contraseña encriptada (simulada aquí)
 
 // Function to toggle admin controls visibility
 function toggleAdminControls() {
@@ -23,6 +23,7 @@ function hashPassword(password) {
     // Simple hash function for demonstration purposes
     return password.split('').reverse().join('');
 }
+
 
 // Function to update admin controls visibility
 function updateAdminControlsVisibility() {
