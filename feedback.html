@@ -146,14 +146,13 @@
                 </form>
             </div>
 
-            <!-- Feedback Display Container -->
-            <div id="feedback-display" class="feedback-display-container">
-                <h3>Recent Feedback:</h3>
-                <ul id="feedback-list" class="feedback-list"></ul>
-                <button id="show-more-reviews" class="show-more-btn" onclick="showMoreReviews()">
-                    <i class="fas fa-chevron-down"></i> Show More Reviews
-                </button>
-            </div>
+          <!-- Feedback Display Container -->
+          <div id="feedback-display" class="feedback-display-container">
+            <h3>Recent Feedback:</h3>
+            <ul id="feedback-list" class="feedback-list"></ul>
+            <div id="pagination" class="pagination-container"></div>
+            <button class="delete-feedback-button" style="display: ${(isAdmin && canDelete) ? 'inline-flex' : 'none'}" onclick="deleteFeedback('${feedback.id}')">Delete</button>
+        </div>
         </section>
 
         <footer id="footer-container">
