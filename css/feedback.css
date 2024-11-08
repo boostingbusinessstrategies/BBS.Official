@@ -504,38 +504,96 @@ body {
     box-shadow: 0 5px 15px rgba(238, 77, 77, 0.2);
   }
   
-  /* Feedback Display Section */
+/* Feedback Display Section */
+.feedback-display-container {
+  margin: 10px auto;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 900px; /* Limitamos el ancho máximo para una mejor visualización en dispositivos grandes */
+  width: 100%;
+}
+
+.feedback-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feedback-list li {
+  background: white;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.feedback-list li:hover {
+  transform: translateY(-5px);
+}
+
+.feedback-list div {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.feedback-list .rating {
+  font-size: 1.2rem;
+  color: #f39c12; /* Color dorado para las estrellas */
+}
+
+.feedback-list .delete-feedback-button {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: none; /* Se muestra solo cuando el admin está habilitado */
+  transition: background 0.3s ease;
+}
+
+.feedback-list .delete-feedback-button:hover {
+  background: #c0392b;
+}
+
+.show-more-btn {
+  background: #0056a3;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1.5rem;
+  width: 100%;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.show-more-btn:hover {
+  background: #003d73;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .feedback-display-container {
-    margin: 10px auto; /* Agrega margen arriba y abajo */
-    padding: 2rem;
-    background: #f8f9fa;
-    border-radius: 15px;
+    padding: 1rem;
   }
-  
-  .feedback-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+
+  .feedback-list li {
+    font-size: 0.9rem;
   }
-  
-  /* Show More Button */
+
   .show-more-btn {
-    background: #0056a3;
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
     font-size: 1rem;
-    margin-top: 1.5rem;
-    width: 100%;
-    transition: all 0.3s ease;
   }
-  
-  .show-more-btn:hover {
-    background: #003d73;
-    transform: translateY(-2px);
-  }
+}
+
   
   /* Admin Controls (Hidden by Default) */
   .admin-controls {
