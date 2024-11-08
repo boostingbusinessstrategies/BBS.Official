@@ -11,6 +11,7 @@ function toggleAdminControls() {
     const password = prompt("Please enter admin password:");
     if (hashPassword(password) === hashedAdminPassword) {
         isAdmin = true;
+        canDelete = true; // Activar la capacidad de eliminar cuando se ingrese la contraseña correcta
         updateAdminControlsVisibility();
         alert("Admin mode activated");
     } else {
@@ -18,13 +19,18 @@ function toggleAdminControls() {
     }
 }
 
+// Function to toggle admin mode
+function toggleAdminMode() {
+    isAdmin = !isAdmin;
+    canDelete = isAdmin; // Desactivar la capacidad de eliminar cuando se desactive el modo administrador
+    updateAdminControlsVisibility();
+}
+
 // Hash function to simulate password encryption (in a real implementation, you should use a proper hashing library)
 function hashPassword(password) {
     // Simple hash function for demonstration purposes
     return password.split('').reverse().join('');
 }
-
-
 
 // Function to update admin controls visibility
 function updateAdminControlsVisibility() {
@@ -210,7 +216,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
 document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.getElementById('sidebar');
     const menuToggle = document.getElementById('menu-toggle');
@@ -258,4 +263,5 @@ document.addEventListener('DOMContentLoaded', function() {
         document.documentElement.classList.add('low-performance');
     }
 });
+
 
