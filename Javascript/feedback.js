@@ -3,30 +3,35 @@ const reviewsToShow = 8;
 
 // Variables to control admin status and delete capability
 let isAdmin = false; // Cambiar a false para ocultar los controles de administrador inicialmente
-let canDelete = true;
-let adminPassword = "admin123"; // Cambia esto a tu contraseña deseada
+let canDelete = false; // Inicialmente no se puede eliminar
+const hashedAdminPassword = "hashedPassword123"; // La contraseña encriptada (simulada aquí)
 
 // Function to toggle admin controls visibility
 function toggleAdminControls() {
     const password = prompt("Please enter admin password:");
-    if (password === adminPassword) {
-        isAdmin = !isAdmin;
+    if (hashPassword(password) === hashedAdminPassword) {
+        isAdmin = true;
         updateAdminControlsVisibility();
-        alert(isAdmin ? "Admin mode activated" : "Admin mode deactivated");
+        alert("Admin mode activated");
     } else {
         alert("Incorrect password");
     }
 }
 
+// Hash function to simulate password encryption (in a real implementation, you should use a proper hashing library)
+function hashPassword(password) {
+    // Simple hash function for demonstration purposes
+    return password.split('').reverse().join('');
+}
+
 // Function to update admin controls visibility
 function updateAdminControlsVisibility() {
-    const adminControls = document.getElementById('admin-controls');
-    if (adminControls) {
-        adminControls.style.display = isAdmin ? 'flex' : 'none';
-    }
-    
-    // Update delete buttons visibility in existing feedback
-    updateButtonVisibility();
+    const deleteButtons = document.querySelectorAll('.delete-feedback-button');
+
+    // Mostrar los botones de eliminar solo si el admin ha iniciado sesión
+    deleteButtons.forEach(button => {
+        button.style.display = isAdmin ? 'inline-flex' : 'none';
+    });
 }
 
 // Function to toggle delete capability
@@ -39,11 +44,6 @@ function toggleDelete() {
 // Function to show/hide buttons based on state
 function updateButtonVisibility() {
     const deleteButtons = document.querySelectorAll('.delete-feedback-button');
-    const toggleDeleteButton = document.getElementById('toggle-delete-button');
-
-    if (toggleDeleteButton) {
-        toggleDeleteButton.textContent = canDelete ? 'Disable Delete Function' : 'Enable Delete Function';
-    }
 
     deleteButtons.forEach(button => {
         // Change visibility of delete buttons based on state
@@ -63,7 +63,7 @@ function deleteFeedback(id) {
             let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
             feedbackList = feedbackList.filter(feedback => feedback.id !== id);
             localStorage.setItem("feedbackList", JSON.stringify(feedbackList));
-            displayFeedback();
+            displayFeedback(); // Re-render feedback list
             alert("Feedback deleted successfully.");
         } catch (error) {
             console.error("Error deleting feedback:", error);
@@ -72,20 +72,72 @@ function deleteFeedback(id) {
     }
 }
 
-// Function to show more reviews
-function showMoreReviews() {
-    const feedbackListElement = document.getElementById("feedback-list");
-    const feedbackItems = feedbackListElement.querySelectorAll("li");
+// Function to update pagination buttons (added for pagination)
+function updatePaginationButtons(totalReviews) {
+    const totalPages = Math.ceil(totalReviews / reviewsToShow);
+    const paginationElement = document.getElementById("pagination");
+    paginationElement.innerHTML = "";
 
-    for (let i = reviewsToShow; i < feedbackItems.length; i++) {
-        feedbackItems[i].style.display = "list-item";
-    }
-
-    const showMoreButton = document.getElementById("show-more-reviews");
-    if (showMoreButton) {
-        showMoreButton.style.display = "none";
+    for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement("button");
+        button.textContent = i;
+        button.onclick = () => changePage(i);
+        paginationElement.appendChild(button);
     }
 }
+
+function changePage(page) {
+    const feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
+    const feedbackListElement = document.getElementById("feedback-list");
+    feedbackListElement.innerHTML = "";
+
+    const startIndex = (page - 1) * reviewsToShow;
+    const endIndex = page * reviewsToShow;
+    const reviewsToDisplay = feedbackList.slice(startIndex, endIndex);
+
+    reviewsToDisplay.forEach((feedback) => {
+        const feedbackItem = document.createElement("li");
+        feedbackItem.id = `feedback-item-${feedback.id}`;
+        feedbackItem.innerHTML = `
+            <div><strong>${feedback.firstName} ${feedback.lastName}</strong></div>
+            <div><em>Service Type: ${feedback.serviceType}</em></div>
+            <div class="rating">${'⭐'.repeat(feedback.rating)}${'☆'.repeat(5 - feedback.rating)}</div>
+            <div>${feedback.comment}</div>
+            <button class="delete-feedback-button" style="display: ${(isAdmin && canDelete) ? 'inline-flex' : 'none'}" onclick="deleteFeedback('${feedback.id}')">Delete</button>
+        `;
+        feedbackListElement.appendChild(feedbackItem);
+    });
+
+    updatePaginationButtons(feedbackList.length);
+}
+
+
+
+// Function to display feedback (with pagination)
+function displayFeedback() {
+    const feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
+    const feedbackListElement = document.getElementById("feedback-list");
+    feedbackListElement.innerHTML = "";
+
+    const reviewsToDisplay = feedbackList.slice(0, reviewsToShow);
+
+    reviewsToDisplay.forEach((feedback) => {
+        const feedbackItem = document.createElement("li");
+        feedbackItem.id = `feedback-item-${feedback.id}`;
+        feedbackItem.innerHTML = `
+            <div><strong>${feedback.firstName} ${feedback.lastName}</strong></div>
+            <div><em>Service Type: ${feedback.serviceType}</em></div>
+            <div class="rating">${'⭐'.repeat(feedback.rating)}${'☆'.repeat(5 - feedback.rating)}</div>
+            <div>${feedback.comment}</div>
+            <button class="delete-feedback-button" onclick="deleteFeedback('${feedback.id}')">Delete</button>
+        `;
+        feedbackListElement.appendChild(feedbackItem);
+    });
+
+    updatePaginationButtons(feedbackList.length);
+}
+
+
 
 // Function to submit feedback
 function submitFeedback(event) {
@@ -119,10 +171,6 @@ function submitFeedback(event) {
         clearFeedbackForm();
         displayFeedback();
         alert("Thank you for your feedback!");
-        
-        // Submit the form via FormSubmit
-        document.getElementById("feedback-form").submit();
-
     } catch (error) {
         console.error("Error saving feedback:", error);
         alert("There was an error saving your feedback. Please try again.");
@@ -136,42 +184,6 @@ function clearFeedbackForm() {
     document.getElementById("service-type").value = "";
     document.getElementById("feedback-rating").value = "";
     document.getElementById("feedback-comment").value = "";
-}
-
-// Function to display feedback
-function displayFeedback() {
-    const feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
-    const feedbackListElement = document.getElementById("feedback-list");
-
-    if (!feedbackListElement) {
-        console.error("Feedback list element not found");
-        return;
-    }
-
-    feedbackListElement.innerHTML = "";
-
-    feedbackList.forEach((feedback) => {
-        const feedbackItem = document.createElement("li");
-        feedbackItem.style.display = feedbackListElement.childElementCount < reviewsToShow ? "list-item" : "none";
-        feedbackItem.innerHTML = `
-            <div>${feedback.firstName} ${feedback.lastName}</div>
-            <div>Service Type: ${feedback.serviceType}</div>
-            <div class="rating">${'⭐'.repeat(feedback.rating)}${'☆'.repeat(5 - feedback.rating)}</div>
-            <div>${feedback.comment}</div>
-            <button class="delete-feedback-button" onclick="deleteFeedback('${feedback.id}')" style="display: none;">
-                <i class="fas fa-trash"></i> Delete
-            </button>
-        `;
-        feedbackListElement.appendChild(feedbackItem);
-    });
-
-    const showMoreButton = document.getElementById("show-more-reviews");
-    if (showMoreButton) {
-        showMoreButton.style.display = feedbackList.length > reviewsToShow ? "block" : "none";
-    }
-
-    // Update the visibility of admin controls
-    updateAdminControlsVisibility();
 }
 
 // Function to reset feedback list
@@ -195,6 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateAdminControlsVisibility(); // Los controles de administrador están ocultos por defecto
 });
 
+  
 
 
 
@@ -246,4 +259,3 @@ document.addEventListener('DOMContentLoaded', function() {
         document.documentElement.classList.add('low-performance');
     }
 });
-
