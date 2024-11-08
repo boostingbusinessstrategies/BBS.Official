@@ -1,12 +1,12 @@
-// Initial number of reviews to show
+// Número inicial de reseñas a mostrar
 const reviewsToShow = 8;
 
-// Variables to control admin status and delete capability
+// Variables para controlar el estado de administrador y la capacidad de eliminar
 let isAdmin = false; // Cambiar a false para ocultar los controles de administrador inicialmente
 let canDelete = false; // Inicialmente no se puede eliminar
 const hashedAdminPassword = "drowssap"; // La contraseña encriptada (simulada aquí)
 
-// Function to toggle admin controls visibility
+// Función para alternar la visibilidad de los controles de administrador
 function toggleAdminControls() {
     const password = prompt("Please enter admin password:");
     if (hashPassword(password) === hashedAdminPassword) {
@@ -19,20 +19,20 @@ function toggleAdminControls() {
     }
 }
 
-// Function to toggle admin mode
+// Función para alternar el modo administrador
 function toggleAdminMode() {
     isAdmin = !isAdmin;
     canDelete = isAdmin; // Desactivar la capacidad de eliminar cuando se desactive el modo administrador
     updateAdminControlsVisibility();
 }
 
-// Hash function to simulate password encryption (in a real implementation, you should use a proper hashing library)
+// Función para simular la encriptación de la contraseña (en una implementación real, se debe usar una librería de hash adecuada)
 function hashPassword(password) {
-    // Simple hash function for demonstration purposes
+    // Función de hash simple para propósitos demostrativos
     return password.split('').reverse().join('');
 }
 
-// Function to update admin controls visibility
+// Función para actualizar la visibilidad de los controles de administrador
 function updateAdminControlsVisibility() {
     const deleteButtons = document.querySelectorAll('.delete-feedback-button');
 
@@ -44,14 +44,14 @@ function updateAdminControlsVisibility() {
     updateButtonVisibility();
 }
 
-// Function to toggle delete capability
+// Función para alternar la capacidad de eliminar
 function toggleDelete() {
     if (!isAdmin) return;
-    canDelete = !canDelete; // Toggle delete capability
-    updateButtonVisibility(); // Update button visibility
+    canDelete = !canDelete; // Alternar la capacidad de eliminar
+    updateButtonVisibility(); // Actualizar visibilidad de botones
 }
 
-// Function to update button visibility
+// Función para actualizar la visibilidad de los botones
 function updateButtonVisibility() {
     const deleteButtons = document.querySelectorAll('.delete-feedback-button');
 
@@ -60,7 +60,7 @@ function updateButtonVisibility() {
     });
 }
 
-// Function to delete specific feedback
+// Función para eliminar una reseña específica
 function deleteFeedback(id) {
     if (!isAdmin || !canDelete) {
         alert("You must be an admin with delete privileges to remove feedback.");
@@ -72,7 +72,10 @@ function deleteFeedback(id) {
             let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
             feedbackList = feedbackList.filter(feedback => feedback.id !== id);
             localStorage.setItem("feedbackList", JSON.stringify(feedbackList));
-            displayFeedback(); // Re-render feedback list
+            
+            // Re-renderizar la lista de reseñas sin el ítem eliminado
+            displayFeedback(); 
+
             alert("Feedback deleted successfully.");
         } catch (error) {
             console.error("Error deleting feedback:", error);
@@ -81,7 +84,31 @@ function deleteFeedback(id) {
     }
 }
 
-// Function to update pagination buttons (added for pagination)
+// Función para actualizar la lista de reseñas después de una eliminación o cualquier cambio
+function displayFeedback() {
+    const feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
+    const feedbackListElement = document.getElementById("feedback-list");
+    feedbackListElement.innerHTML = "";
+
+    const reviewsToDisplay = feedbackList.slice(0, reviewsToShow);
+
+    reviewsToDisplay.forEach((feedback) => {
+        const feedbackItem = document.createElement("li");
+        feedbackItem.id = `feedback-item-${feedback.id}`;
+        feedbackItem.innerHTML = `
+            <div><strong>${feedback.firstName} ${feedback.lastName}</strong></div>
+            <div><em>Service Type: ${feedback.serviceType}</em></div>
+            <div class="rating">${'⭐'.repeat(feedback.rating)}${'☆'.repeat(5 - feedback.rating)}</div>
+            <div>${feedback.comment}</div>
+            <button class="delete-feedback-button" style="display: ${(isAdmin && canDelete) ? 'inline-flex' : 'none'}" onclick="deleteFeedback('${feedback.id}')">Delete</button>
+        `;
+        feedbackListElement.appendChild(feedbackItem);
+    });
+
+    updatePaginationButtons(feedbackList.length);
+}
+
+// Función para actualizar los botones de paginación (agregada para paginación)
 function updatePaginationButtons(totalReviews) {
     const totalPages = Math.ceil(totalReviews / reviewsToShow);
     const paginationElement = document.getElementById("pagination");
@@ -95,7 +122,7 @@ function updatePaginationButtons(totalReviews) {
     }
 }
 
-// Function to change page for pagination
+// Función para cambiar de página para la paginación
 function changePage(page) {
     const feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
     const feedbackListElement = document.getElementById("feedback-list");
@@ -121,31 +148,7 @@ function changePage(page) {
     updatePaginationButtons(feedbackList.length);
 }
 
-// Function to display feedback (with pagination)
-function displayFeedback() {
-    const feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
-    const feedbackListElement = document.getElementById("feedback-list");
-    feedbackListElement.innerHTML = "";
-
-    const reviewsToDisplay = feedbackList.slice(0, reviewsToShow);
-
-    reviewsToDisplay.forEach((feedback) => {
-        const feedbackItem = document.createElement("li");
-        feedbackItem.id = `feedback-item-${feedback.id}`;
-        feedbackItem.innerHTML = `
-            <div><strong>${feedback.firstName} ${feedback.lastName}</strong></div>
-            <div><em>Service Type: ${feedback.serviceType}</em></div>
-            <div class="rating">${'⭐'.repeat(feedback.rating)}${'☆'.repeat(5 - feedback.rating)}</div>
-            <div>${feedback.comment}</div>
-            <button class="delete-feedback-button" onclick="deleteFeedback('${feedback.id}')">Delete</button>
-        `;
-        feedbackListElement.appendChild(feedbackItem);
-    });
-
-    updatePaginationButtons(feedbackList.length);
-}
-
-// Function to submit feedback
+// Función para enviar feedback
 function submitFeedback(event) {
     event.preventDefault();
 
@@ -183,7 +186,7 @@ function submitFeedback(event) {
     }
 }
 
-// Function to clear the form
+// Función para limpiar el formulario
 function clearFeedbackForm() {
     document.getElementById("feedback-first-name").value = "";
     document.getElementById("feedback-last-name").value = "";
@@ -192,7 +195,7 @@ function clearFeedbackForm() {
     document.getElementById("feedback-comment").value = "";
 }
 
-// Function to reset feedback list
+// Función para restablecer la lista de feedback
 function resetFeedbackList() {
     if (!isAdmin) {
         alert("You must be an admin to reset the feedback list.");
@@ -206,12 +209,13 @@ function resetFeedbackList() {
     }
 }
 
-// Initialize when page loads
+// Inicializar cuando se carga la página
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Initial state - isAdmin:', isAdmin, 'canDelete:', canDelete);
     displayFeedback();
     updateAdminControlsVisibility(); // Los controles de administrador están ocultos por defecto
 });
+
 
 
 
@@ -263,5 +267,4 @@ document.addEventListener('DOMContentLoaded', function() {
         document.documentElement.classList.add('low-performance');
     }
 });
-
 
