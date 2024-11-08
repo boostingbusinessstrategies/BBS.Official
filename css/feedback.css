@@ -378,56 +378,51 @@ body {
     background: #ffffff;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Introduction Text */
-.feedback-section > p {
+  }
+  
+  /* Introduction Text */
+  .feedback-section > p {
     color: #333;
     line-height: 1.8;
     text-align: justify;
     margin-bottom: 1.5rem;
-    transition: color 0.3s ease;
-}
-
-/* Headings */
-.feedback-section h2 {
+  }
+  
+  /* Headings */
+  .feedback-section h2 {
     color: #0056a3;
     font-size: 2rem;
     text-align: center;
     margin-bottom: 1.5rem;
-    transition: color 0.3s ease;
-}
-
-.feedback-section h3 {
+  }
+  
+  .feedback-section h3 {
     color: #2a333a;
     margin: 10px 0;
     text-align: left;
     font-size: 1.6rem;
-    transition: color 0.3s ease;
-}
-
-/* Form Container */
-.feedback-form-container {
+  }
+  
+  /* Form Container */
+  .feedback-form-container {
     max-width: 900px;
     margin: 0 auto;
     padding: 2rem;
     background: #ffffff;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Form Groups */
-.form-group {
+  }
+  
+  /* Form Groups */
+  .form-group {
     margin-bottom: 1.5rem;
-}
-
-/* Form Elements */
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group select,
-.form-group textarea {
+  }
+  
+  /* Form Elements */
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group select,
+  .form-group textarea {
     width: 100%;
     padding: 12px 16px;
     margin: 8px 0;
@@ -436,37 +431,37 @@ body {
     background: #ffffff;
     transition: all 0.3s ease;
     font-size: 1rem;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
     border-color: #0056a3;
     outline: none;
     box-shadow: 0 0 0 3px rgba(0, 86, 163, 0.1);
-}
-
-/* Labels */
-.form-group label {
+  }
+  
+  /* Labels */
+  .form-group label {
     display: block;
     margin-bottom: 8px;
     color: #142135;
     font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-/* Checkbox Styling */
-.form-group input[type="checkbox"] {
+  }
+  
+  /* Checkbox Styling */
+  .form-group input[type="checkbox"] {
     width: 18px;
     height: 18px;
     cursor: pointer;
     margin-right: 8px;
-}
-
-.form-group input[type="checkbox"] + label {
+  }
+  
+  .form-group input[type="checkbox"] + label {
     display: inline;
     vertical-align: middle;
-}
+  }
+  
 
 /* Checkbox Container */
 .checkbox-container {
@@ -474,22 +469,22 @@ body {
     align-items: center;
     margin: 1.5rem 0;
     gap: 0.5rem;
-}
-
-.checkbox-container input[type="checkbox"] {
+  }
+  
+  .checkbox-container input[type="checkbox"] {
     width: 18px;
     height: 18px;
     cursor: pointer;
     margin: 0;
-}
-
-.checkbox-container label {
+  }
+  
+  .checkbox-container label {
     margin: 0;
     line-height: 1;
-}
+  }
 
-/* Submit Button */
-.submit-button {
+  /* Submit Button */
+  .submit-button {
     background: linear-gradient(135deg, #ee4d4d 0%, #ff6b6b 100%);
     color: white;
     padding: 16px 32px;
@@ -501,13 +496,13 @@ body {
     width: 100%;
     transition: all 0.3s ease;
     margin-top: 1.5rem;
-}
-
-.submit-button:hover {
+  }
+  
+  .submit-button:hover {
     background: linear-gradient(135deg, #ff6b6b 0%, #ee4d4d 100%);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(238, 77, 77, 0.2);
-}
+  }
 
 /* Admin Controls (Hidden by Default) */
 .admin-controls {
@@ -550,25 +545,6 @@ body {
     list-style: none;
     padding: 0;
     margin: 0;
-}
-
-/* Botón "Show More" */
-.show-more-btn {
-    background: #0056a3;
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-top: 1.5rem;
-    width: 100%;
-    transition: all 0.3s ease;
-}
-
-.show-more-btn:hover {
-    background: #003d73;
-    transform: translateY(-2px);
 }
 
 /* Estilos de los botones de paginación */
@@ -673,80 +649,25 @@ body {
     }
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
-    .feedback-display-container {
-        width: 100%;  /* Asegura que ocupe todo el ancho disponible */
-        padding: 1rem;
-        box-sizing: border-box;  /* Incluye padding en el cálculo del ancho total */
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .feedback-section {
+      margin: 1rem;
+      padding: 1rem;
     }
-
-    .show-more-btn {
-        font-size: 1.1rem;
-        padding: 12px 20px;
+  
+    .feedback-form-container {
+      padding: 1rem;
     }
-
-    #pagination button {
-        padding: 8px 12px;
-        font-size: 14px;
+  
+    .feedback-section h2 {
+      font-size: 1.5rem;
     }
-}
-
-@media (max-width: 1024px) {
-    .feedback-display-container {
-        width: 100%;  /* Asegura que ocupe todo el ancho disponible */
-        padding: 1.5rem;
-        box-sizing: border-box;  /* Asegura que el padding no sobresalga del ancho */
+  
+    .submit-button {
+      padding: 14px 28px;
     }
-
-    .show-more-btn {
-        font-size: 1.2rem;
-        padding: 14px 20px;
-    }
-
-    #pagination button {
-        padding: 9px 13px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .feedback-display-container {
-        width: 100%;  /* Asegura que ocupe todo el ancho disponible */
-        padding: 2rem;  /* Ajusta el padding si es necesario */
-        box-sizing: border-box;
-    }
-
-    .show-more-btn {
-        font-size: 1.2rem;
-        padding: 18px 30px;
-    }
-
-    #pagination button {
-        padding: 12px 18px;
-        font-size: 18px;
-    }
-}
-
-/* Asegura que el form y el contenedor de comentarios tengan el mismo ancho */
-@media (max-width: 768px) {
-    #modify-form,
-    .form-container,
-    .feedback-display-container {
-        margin: 1rem;
-        padding: 1rem;
-        width: calc(100% - 2rem); /* Ajusta el ancho para incluir márgenes */
-        box-sizing: border-box;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-    }
-
-    input[type="submit"] {
-        padding: 14px 28px;
-    }
-}
-
+  }
 
 
 
