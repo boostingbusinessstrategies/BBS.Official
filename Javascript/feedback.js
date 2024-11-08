@@ -25,6 +25,7 @@ function hashPassword(password) {
 }
 
 
+
 // Function to update admin controls visibility
 function updateAdminControlsVisibility() {
     const deleteButtons = document.querySelectorAll('.delete-feedback-button');
