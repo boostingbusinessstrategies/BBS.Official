@@ -727,25 +727,25 @@ body {
     }
 }
 
-/* Asegura que el form y el contenedor de comentarios tengan el mismo ancho */
-@media (max-width: 768px) {
-    #modify-form,
-    .form-container,
-    .feedback-display-container {
-        margin: 1rem;
-        padding: 1rem;
-        width: calc(100% - 2rem); /* Ajusta el ancho para incluir márgenes */
-        box-sizing: border-box;
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .feedback-section {
+      margin: 1rem;
+      padding: 1rem;
     }
-
-    h2 {
-        font-size: 1.5rem;
+  
+    .feedback-form-container {
+      padding: 1rem;
     }
-
-    input[type="submit"] {
-        padding: 14px 28px;
+  
+    .feedback-section h2 {
+      font-size: 1.5rem;
     }
-}
+  
+    .submit-button {
+      padding: 14px 28px;
+    }
+  }
 
 
 
