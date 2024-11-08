@@ -32,6 +32,8 @@ function updateAdminControlsVisibility() {
     deleteButtons.forEach(button => {
         button.style.display = isAdmin ? 'inline-flex' : 'none';
     });
+
+    updateButtonVisibility();
 }
 
 // Function to toggle delete capability
@@ -41,12 +43,11 @@ function toggleDelete() {
     updateButtonVisibility(); // Update button visibility
 }
 
-// Function to show/hide buttons based on state
+// Function to update button visibility
 function updateButtonVisibility() {
     const deleteButtons = document.querySelectorAll('.delete-feedback-button');
 
     deleteButtons.forEach(button => {
-        // Change visibility of delete buttons based on state
         button.style.display = (isAdmin && canDelete) ? 'inline-flex' : 'none';
     });
 }
@@ -86,6 +87,7 @@ function updatePaginationButtons(totalReviews) {
     }
 }
 
+// Function to change page for pagination
 function changePage(page) {
     const feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
     const feedbackListElement = document.getElementById("feedback-list");
@@ -111,8 +113,6 @@ function changePage(page) {
     updatePaginationButtons(feedbackList.length);
 }
 
-
-
 // Function to display feedback (with pagination)
 function displayFeedback() {
     const feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
@@ -136,8 +136,6 @@ function displayFeedback() {
 
     updatePaginationButtons(feedbackList.length);
 }
-
-
 
 // Function to submit feedback
 function submitFeedback(event) {
@@ -207,7 +205,6 @@ document.addEventListener('DOMContentLoaded', function() {
     updateAdminControlsVisibility(); // Los controles de administrador están ocultos por defecto
 });
 
-  
 
 
 
@@ -259,3 +256,4 @@ document.addEventListener('DOMContentLoaded', function() {
         document.documentElement.classList.add('low-performance');
     }
 });
+
