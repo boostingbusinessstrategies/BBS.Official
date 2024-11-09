@@ -134,7 +134,6 @@ function displayFeedback() {
 
 // Function to submit feedback
 function submitFeedback(event) {
-    
     const firstName = document.getElementById("feedback-first-name").value.trim();
     const lastName = document.getElementById("feedback-last-name").value.trim();
     const serviceType = document.getElementById("service-type").value;
@@ -192,13 +191,96 @@ function resetFeedbackList() {
     }
 }
 
-// Initialize when page loads
+// Función para inicializar las reseñas predeterminadas
+function initializeDefaultReviews() {
+    // Obtener las reseñas existentes del localStorage
+    let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
+    
+    // Solo agregar las reseñas predeterminadas si no hay reseñas existentes
+    if (feedbackList.length === 0) {
+        // Array de reseñas predeterminadas
+        const defaultReviews = [
+            {
+                id: "default-1",
+                firstName: "Johnathan",
+                lastName: "S. Mitchell",
+                serviceType: "bbs_database",
+                rating: 5, // 5 estrellas por el contenido positivo de la reseña
+                comment: `Before we found BBS, our e-commerce site was a mess. Inventory was all over the place, and our customers weren't happy. Our MySQL database just couldn't keep up. But then we switched to BBS's solution, integrated it with our PHP backend, and wow, what a difference!
+
+                The transition was super fast and incredibly easy. From day one, we saw amazing results. Our inventory is now perfectly managed, and our operational costs have dropped significantly. Plus, the system is so user-friendly that our team adapted in no time.
+                
+                Thanks to BBS, our revenue has shot up by 30% in just a few months. The personalized customer experience we can now offer has boosted retention and satisfaction. Every e-commerce business should have a database solution like this. It's been a game-changer for us!`
+            },
+            {
+                id: "default-2",
+                firstName: "Elizabeth",
+                lastName: "J. Roberts",
+                serviceType: "bbs_database",
+                rating: 5,
+                comment: `Before we implemented BBS's database solution, our clinic was really struggling. Long wait times and messy patient records were a daily headache. I wanted a MySQL database that could be transitioned to Oracle, and BBS helped us create a database tailored specifically to our clinic's needs. Their communication was excellent—they truly listened to our requirements and were incredibly supportive throughout the process.
+
+                With seamless help from our backend team, the transition was amazingly smooth. Delivery was even faster than expected, and the results were noticeable right from the start.
+                
+                Now, our medical teams have instant access to organized, real-time information, which has significantly boosted our efficiency. Wait times are down, patient satisfaction is up, and our ratings reflect this transformation!
+                
+                Data security is also a top priority for us, and BBS has been invaluable in ensuring everything is safeguarded. This investment has genuinely transformed our clinic, creating a better environment for both our patients and staff 😊`
+            }
+        ];
+
+        // Agregar las reseñas predeterminadas al localStorage
+        localStorage.setItem("feedbackList", JSON.stringify(defaultReviews));
+    }
+}
+
+// Event Listener for DOMContentLoaded
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Initial state - isAdmin:', isAdmin, 'canDelete:', canDelete);
+    // Primero inicializar las reseñas predeterminadas
+    initializeDefaultReviews();
+    
+    // Luego mostrar el feedback y actualizar controles
     displayFeedback();
-    updateAdminControlsVisibility(); // Los controles de administrador están ocultos por defecto
+    updateAdminControlsVisibility();
+    
+    console.log('Initial state - isAdmin:', isAdmin, 'canDelete:', canDelete);
 });
 
+
+
+
+
+
+/* 
+INSTRUCCIONES PARA AGREGAR MÁS RESEÑAS PREDETERMINADAS:
+
+1. Localiza el array 'defaultReviews' en la función initializeDefaultReviews
+2. Añade un nuevo objeto siguiendo esta estructura:
+{
+    id: "default-X", // Incrementa el número X para cada nueva reseña
+    firstName: "Nombre",
+    lastName: "Apellido",
+    serviceType: "tipo_de_servicio",
+    rating: 1-5, // Número del 1 al 5
+    comment: `Texto de la reseña`
+}
+
+3. Asegúrate de que cada nueva reseña tenga un id único
+4. El rating debe ser un número entre 1 y 5
+5. El comment puede contener texto largo con saltos de línea
+
+EJEMPLO DE NUEVA RESEÑA:
+
+{
+    id: "default-3",
+    firstName: "Roberto",
+    lastName: "García",
+    serviceType: "bbs_database",
+    rating: 4,
+    comment: `Tu reseña aquí...`
+}
+
+NOTA: Las reseñas predeterminadas solo se agregarán cuando el localStorage esté vacío
+*/
 
 
 
