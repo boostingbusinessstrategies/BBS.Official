@@ -1,25 +1,152 @@
-// Número inicial de reseñas a mostrar
-const reviewsToShow = 8;
+// Configuración de JSONBin
+const JSONBIN_API_KEY = "$2a$10$aQJJ/daSpPBhfxtYeZ6NXOReCvNjP.ht06bkRi.nhhb3rp.oJp9Ym";
+const BIN_ID = "$2a$10$5wjRE677Hum6aMy.OxvWweJkgqh9cl/hBAepHn/nOqpcZJEdO2dQK";
 
 // Estado del modo administrador y capacidad de eliminar
 let isAdmin = false;
 let canDelete = false;
 const hashedAdminPassword = "drowssap";
-let feedbackList = []; // Lista de reseñas cargadas en memoria
+let feedbackList = [];
 
-// Cargar reseñas desde feedback.json
+// Cargar reseñas - Mejorado con manejo de errores y caché
 async function loadFeedback() {
     try {
-        const response = await fetch("feedback.json");
-        feedbackList = await response.json();
-        console.log("Feedback loaded:", feedbackList); // Depuración
+        // Implementar sistema de caché para reducir llamadas al API
+        const cacheExpiry = 5 * 60 * 1000; // 5 minutos
+        const cachedData = sessionStorage.getItem('cachedFeedback');
+        const cacheTimestamp = sessionStorage.getItem('feedbackCacheTimestamp');
+        
+        if (cachedData && cacheTimestamp && (Date.now() - parseInt(cacheTimestamp)) < cacheExpiry) {
+            feedbackList = JSON.parse(cachedData);
+            console.log("Usando datos en caché");
+            displayFeedback();
+            return;
+        }
+
+        const response = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
+            method: 'GET',
+            headers: {
+                'X-Master-Key': JSONBIN_API_KEY
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        feedbackList = data.record || [];
+        
+        // Actualizar caché
+        sessionStorage.setItem('cachedFeedback', JSON.stringify(feedbackList));
+        sessionStorage.setItem('feedbackCacheTimestamp', Date.now().toString());
+        
         displayFeedback();
     } catch (error) {
         console.error("Error loading feedback:", error);
+        // Mostrar mensaje de error al usuario
+        const errorMessage = document.createElement('div');
+        errorMessage.className = 'error-message';
+        errorMessage.textContent = 'Unable to load reviews. Please try again later.';
+        document.getElementById("feedback-list").appendChild(errorMessage);
     }
 }
 
-// Función para alternar la visibilidad de los controles de administrador
+// Guardar reseñas - Mejorado con retry y validación
+async function saveFeedback(retryCount = 3) {
+    try {
+        // Validar datos antes de guardar
+        if (!Array.isArray(feedbackList)) {
+            throw new Error('Invalid feedback data structure');
+        }
+
+        const response = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Master-Key': JSONBIN_API_KEY
+            },
+            body: JSON.stringify(feedbackList)
+        });
+        
+        if (!response.ok) {
+            throw new Error('Failed to save feedback');
+        }
+
+        // Actualizar caché después de guardar exitosamente
+        sessionStorage.setItem('cachedFeedback', JSON.stringify(feedbackList));
+        sessionStorage.setItem('feedbackCacheTimestamp', Date.now().toString());
+        
+    } catch (error) {
+        console.error("Error saving feedback:", error);
+        
+        if (retryCount > 0) {
+            console.log(`Retrying save... (${retryCount} attempts remaining)`);
+            await new Promise(resolve => setTimeout(resolve, 1000)); // Esperar 1 segundo
+            return saveFeedback(retryCount - 1);
+        }
+        
+        throw new Error('Failed to save feedback after multiple attempts');
+    }
+}
+
+// Mejorada la función de envío de feedback
+async function submitFeedback(event) {
+    event.preventDefault();
+    
+    const submitButton = document.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+    
+    try {
+        const firstName = document.getElementById("feedback-first-name").value.trim();
+        const lastName = document.getElementById("feedback-last-name").value.trim();
+        const serviceType = document.getElementById("service-type").value;
+        const rating = document.getElementById("feedback-rating").value;
+        const comment = document.getElementById("feedback-comment").value.trim();
+
+        // Validación mejorada
+        if (!firstName || !lastName || !serviceType || !rating || !comment) {
+            throw new Error("Please complete all fields before submitting.");
+        }
+
+        if (comment.length < 10) {
+            throw new Error("Please provide a more detailed comment (minimum 10 characters).");
+        }
+
+        const feedback = {
+            id: crypto.randomUUID(), // Usar UUID para IDs únicos
+            firstName: firstName,
+            lastName: lastName,
+            serviceType: serviceType,
+            rating: parseInt(rating, 10),
+            comment: comment,
+            timestamp: new Date().toISOString()
+        };
+
+        feedbackList.push(feedback);
+        await saveFeedback();
+        
+        // Actualizar UI
+        clearFeedbackForm();
+        await loadFeedback(); // Recargar para asegurar sincronización
+        
+        // Mostrar mensaje de éxito
+        const successMessage = document.createElement('div');
+        successMessage.className = 'success-message';
+        successMessage.textContent = 'Thank you for your feedback!';
+        document.getElementById("feedback-form").appendChild(successMessage);
+        
+        setTimeout(() => successMessage.remove(), 3000);
+        
+    } catch (error) {
+        console.error("Error in submitFeedback:", error);
+        alert(error.message || "There was an error saving your feedback. Please try again.");
+    } finally {
+        submitButton.disabled = false;
+    }
+}
+
+// Rest of the original code remains unchanged
 function toggleAdminControls() {
     const password = prompt("Please enter admin password:");
     if (hashPassword(password) === hashedAdminPassword) {
@@ -32,35 +159,30 @@ function toggleAdminControls() {
     }
 }
 
-// Función para alternar el modo administrador
 function toggleAdminMode() {
     isAdmin = !isAdmin;
     canDelete = isAdmin;
     updateAdminControlsVisibility();
 }
 
-// Función para simular el hash de la contraseña
 function hashPassword(password) {
     return password.split('').reverse().join('');
 }
 
-// Función para actualizar la visibilidad de los botones de eliminar
 function updateAdminControlsVisibility() {
-    console.log("Updating admin controls visibility"); // Depuración
+    console.log("Updating admin controls visibility");
     const deleteButtons = document.querySelectorAll('.delete-feedback-button');
     deleteButtons.forEach(button => {
         button.style.display = (isAdmin && canDelete) ? 'inline-flex' : 'none';
     });
 }
 
-// Función para alternar la capacidad de eliminar
 function toggleDelete() {
     if (!isAdmin) return;
     canDelete = !canDelete;
     updateAdminControlsVisibility();
 }
 
-// Función para eliminar una reseña
 function deleteFeedback(id) {
     if (!isAdmin || !canDelete) {
         alert("You must be an admin with delete privileges to remove feedback.");
@@ -74,7 +196,6 @@ function deleteFeedback(id) {
     }
 }
 
-// Función para actualizar los botones de paginación
 function updatePaginationButtons(totalReviews) {
     const totalPages = Math.ceil(totalReviews / reviewsToShow);
     const paginationElement = document.getElementById("pagination");
@@ -88,7 +209,6 @@ function updatePaginationButtons(totalReviews) {
     }
 }
 
-// Función para cambiar de página
 function changePage(page) {
     const feedbackListElement = document.getElementById("feedback-list");
     feedbackListElement.innerHTML = "";
@@ -112,9 +232,8 @@ function changePage(page) {
     updatePaginationButtons(feedbackList.length);
 }
 
-// Función para mostrar las reseñas (con paginación)
 function displayFeedback() {
-    console.log("Displaying feedback:", feedbackList); // Depuración
+    console.log("Displaying feedback:", feedbackList);
 
     const feedbackListElement = document.getElementById("feedback-list");
     feedbackListElement.innerHTML = "";
@@ -136,42 +255,6 @@ function displayFeedback() {
     updatePaginationButtons(feedbackList.length);
 }
 
-// Función para enviar una reseña
-function submitFeedback(event) {
-    const firstName = document.getElementById("feedback-first-name").value.trim();
-    const lastName = document.getElementById("feedback-last-name").value.trim();
-    const serviceType = document.getElementById("service-type").value;
-    const rating = document.getElementById("feedback-rating").value;
-    const comment = document.getElementById("feedback-comment").value.trim();
-
-    if (!firstName || !lastName || !serviceType || !rating || !comment) {
-        alert("Please complete all fields before submitting.");
-        event.preventDefault();
-        return;
-    }
-
-    const feedback = {
-        id: Date.now().toString(),
-        firstName: firstName,
-        lastName: lastName,
-        serviceType: serviceType,
-        rating: parseInt(rating, 10),
-        comment: comment
-    };
-
-    try {
-        feedbackList.push(feedback);
-        localStorage.setItem("feedbackList", JSON.stringify(feedbackList));
-        clearFeedbackForm();
-        displayFeedback();
-        alert("Thank you for your feedback!");
-    } catch (error) {
-        console.error("Error saving feedback:", error);
-        alert("There was an error saving your feedback. Please try again.");
-    }
-}
-
-// Función para limpiar el formulario
 function clearFeedbackForm() {
     document.getElementById("feedback-first-name").value = "";
     document.getElementById("feedback-last-name").value = "";
@@ -180,7 +263,6 @@ function clearFeedbackForm() {
     document.getElementById("feedback-comment").value = "";
 }
 
-// Función para reiniciar la lista de reseñas
 function resetFeedbackList() {
     if (!isAdmin) {
         alert("You must be an admin to reset the feedback list.");
@@ -194,12 +276,40 @@ function resetFeedbackList() {
     }
 }
 
+// Inicializar sistema con comprobación de conectividad
+async function initializeFeedbackSystem() {
+    try {
+        // Comprobar conectividad con JSONBin
+        const response = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
+            method: 'HEAD',
+            headers: {
+                'X-Master-Key': JSONBIN_API_KEY
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Cannot connect to feedback system');
+        }
+
+        await loadFeedback();
+        
+        // Configurar auto-refresh cada 5 minutos
+        setInterval(loadFeedback, 5 * 60 * 1000);
+        
+    } catch (error) {
+        console.error("Error initializing feedback system:", error);
+        const errorMessage = document.createElement('div');
+        errorMessage.className = 'error-message';
+        errorMessage.textContent = 'Unable to initialize feedback system. Please refresh the page or try again later.';
+        document.getElementById("feedback-container").prepend(errorMessage);
+    }
+}
+
 // Inicializar cuando se carga la página
 document.addEventListener('DOMContentLoaded', function() {
-    loadFeedback(); // Cargar reseñas desde feedback.json
-    updateAdminControlsVisibility(); // Los controles de administrador están ocultos por defecto
+    initializeFeedbackSystem();
+    updateAdminControlsVisibility();
 });
-
 
 
 
