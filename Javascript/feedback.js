@@ -134,7 +134,6 @@ function displayFeedback() {
 
 // Function to submit feedback
 function submitFeedback(event) {
-    event.preventDefault();
 
     const firstName = document.getElementById("feedback-first-name").value.trim();
     const lastName = document.getElementById("feedback-last-name").value.trim();
