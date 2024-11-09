@@ -2,16 +2,16 @@
 const reviewsToShow = 8;
 
 // Variables to control admin status and delete capability
-let isAdmin = false;
-let canDelete = false;
-const hashedAdminPassword = "drowssap";
+let isAdmin = false; // Cambiar a false para ocultar los controles de administrador inicialmente
+let canDelete = false; // Inicialmente no se puede eliminar
+const hashedAdminPassword = "drowssap"; // La contraseña encriptada (simulada aquí)
 
 // Function to toggle admin controls visibility
 function toggleAdminControls() {
     const password = prompt("Please enter admin password:");
     if (hashPassword(password) === hashedAdminPassword) {
         isAdmin = true;
-        canDelete = true;
+        canDelete = true; // Activar la capacidad de eliminar cuando se ingrese la contraseña correcta
         updateAdminControlsVisibility();
         alert("Admin mode activated");
     } else {
@@ -22,18 +22,21 @@ function toggleAdminControls() {
 // Function to toggle admin mode
 function toggleAdminMode() {
     isAdmin = !isAdmin;
-    canDelete = isAdmin;
+    canDelete = isAdmin; // Desactivar la capacidad de eliminar cuando se desactive el modo administrador
     updateAdminControlsVisibility();
 }
 
-// Hash function to simulate password encryption
+// Hash function to simulate password encryption (in a real implementation, you should use a proper hashing library)
 function hashPassword(password) {
+    // Simple hash function for demonstration purposes
     return password.split('').reverse().join('');
 }
 
 // Function to update admin controls visibility
 function updateAdminControlsVisibility() {
     const deleteButtons = document.querySelectorAll('.delete-feedback-button');
+
+    // Mostrar los botones de eliminar solo si el admin ha iniciado sesión
     deleteButtons.forEach(button => {
         button.style.display = (isAdmin && canDelete) ? 'inline-flex' : 'none';
     });
@@ -42,8 +45,8 @@ function updateAdminControlsVisibility() {
 // Function to toggle delete capability
 function toggleDelete() {
     if (!isAdmin) return;
-    canDelete = !canDelete;
-    updateAdminControlsVisibility();
+    canDelete = !canDelete; // Toggle delete capability
+    updateAdminControlsVisibility(); // Update button visibility
 }
 
 // Function to delete specific feedback
@@ -58,7 +61,7 @@ function deleteFeedback(id) {
             let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
             feedbackList = feedbackList.filter(feedback => feedback.id !== id);
             localStorage.setItem("feedbackList", JSON.stringify(feedbackList));
-            displayFeedback();
+            displayFeedback(); // Re-render feedback list
             alert("Feedback deleted successfully.");
         } catch (error) {
             console.error("Error deleting feedback:", error);
@@ -67,7 +70,7 @@ function deleteFeedback(id) {
     }
 }
 
-// Function to update pagination buttons
+// Function to update pagination buttons (added for pagination)
 function updatePaginationButtons(totalReviews) {
     const totalPages = Math.ceil(totalReviews / reviewsToShow);
     const paginationElement = document.getElementById("pagination");
@@ -106,7 +109,7 @@ function changePage(page) {
     updatePaginationButtons(feedbackList.length);
 }
 
-// Function to display feedback
+// Function to display feedback (with pagination)
 function displayFeedback() {
     const feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
     const feedbackListElement = document.getElementById("feedback-list");
@@ -131,6 +134,7 @@ function displayFeedback() {
 
 // Function to submit feedback
 function submitFeedback(event) {
+    
     const firstName = document.getElementById("feedback-first-name").value.trim();
     const lastName = document.getElementById("feedback-last-name").value.trim();
     const serviceType = document.getElementById("service-type").value;
@@ -188,44 +192,15 @@ function resetFeedbackList() {
     }
 }
 
-// Initialize when page loads and add sample reviews if needed
+// Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Initial state - isAdmin:', isAdmin, 'canDelete:', canDelete);
-    
-    // Check if we already have feedback data
-    let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
-    
-    // Only add sample reviews if the feedback list is empty
-    if (feedbackList.length === 0) {
-        // Sample review 1
-        const johnathanReview = {
-            id: "sample-review-1",
-            firstName: "Johnathan",
-            lastName: "Mitchell",
-            serviceType: "BBS Database Solutions",
-            rating: 5,
-            comment: "Before we found BBS, our e-commerce site was a mess. Inventory was all over the place, and our customers weren't happy. Our MySQL database just couldn't keep up. But then we switched to BBS's solution, integrated it with our PHP backend, and wow, what a difference! The transition was super fast and incredibly easy. From day one, we saw amazing results. Our inventory is now perfectly managed, and our operational costs have dropped significantly. Plus, the system is so user-friendly that our team adapted in no time. Thanks to BBS, our revenue has shot up by 30% in just a few months. The personalized customer experience we can now offer has boosted retention and satisfaction. Every e-commerce business should have a database solution like this. It's been a game-changer for us!"
-        };
-
-        // Sample review 2
-        const elizabethReview = {
-            id: "sample-review-2",
-            firstName: "Elizabeth",
-            lastName: "Roberts",
-            serviceType: "BBS Database Solutions",
-            rating: 5,
-            comment: "Before we implemented BBS's database solution, our clinic was really struggling. Long wait times and messy patient records were a daily headache. I wanted a MySQL database that could be transitioned to Oracle, and BBS helped us create a database tailored specifically to our clinic's needs. Their communication was excellent—they truly listened to our requirements and were incredibly supportive throughout the process. With seamless help from our backend team, the transition was amazingly smooth. Delivery was even faster than expected, and the results were noticeable right from the start. Now, our medical teams have instant access to organized, real-time information, which has significantly boosted our efficiency. Wait times are down, patient satisfaction is up, and our ratings reflect this transformation! Data security is also a top priority for us, and BBS has been invaluable in ensuring everything is safeguarded. This investment has genuinely transformed our clinic, creating a better environment for both our patients and staff 😊"
-        };
-
-        // Add sample reviews to the feedback list
-        feedbackList.unshift(elizabethReview, johnathanReview);
-        localStorage.setItem("feedbackList", JSON.stringify(feedbackList));
-    }
-    
-    // Display all feedback and update admin controls
     displayFeedback();
-    updateAdminControlsVisibility();
+    updateAdminControlsVisibility(); // Los controles de administrador están ocultos por defecto
 });
+
+
+
 
 
 document.addEventListener('DOMContentLoaded', function() {
