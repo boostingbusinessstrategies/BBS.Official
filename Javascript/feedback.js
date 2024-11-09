@@ -191,45 +191,48 @@ function resetFeedbackList() {
     }
 }
 
-// Función para inicializar las reseñas predeterminadas
 function initializeDefaultReviews() {
     // Obtener las reseñas existentes del localStorage
     let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
     
-    // Solo agregar las reseñas predeterminadas si no hay reseñas existentes
-    if (feedbackList.length === 0) {
-        // Array de reseñas predeterminadas
-        const defaultReviews = [
-            {
-                id: "default-1",
-                firstName: "Johnathan",
-                lastName: "S. Mitchell",
-                serviceType: "bbs_database",
-                rating: 5, // 5 estrellas por el contenido positivo de la reseña
-                comment: `Before we found BBS, our e-commerce site was a mess. Inventory was all over the place, and our customers weren't happy. Our MySQL database just couldn't keep up. But then we switched to BBS's solution, integrated it with our PHP backend, and wow, what a difference!
+    // Array de reseñas predeterminadas
+    const defaultReviews = [
+        {
+            id: "default-1",
+            firstName: "Johnathan",
+            lastName: "S. Mitchell",
+            serviceType: "bbs_database",
+            rating: 5,
+            comment: `Before we found BBS, our e-commerce site was a mess. Inventory was all over the place, and our customers weren't happy. Our MySQL database just couldn't keep up. But then we switched to BBS's solution, integrated it with our PHP backend, and wow, what a difference!
 
-                The transition was super fast and incredibly easy. From day one, we saw amazing results. Our inventory is now perfectly managed, and our operational costs have dropped significantly. Plus, the system is so user-friendly that our team adapted in no time.
-                
-                Thanks to BBS, our revenue has shot up by 30% in just a few months. The personalized customer experience we can now offer has boosted retention and satisfaction. Every e-commerce business should have a database solution like this. It's been a game-changer for us!`
-            },
-            {
-                id: "default-2",
-                firstName: "Elizabeth",
-                lastName: "J. Roberts",
-                serviceType: "bbs_database",
-                rating: 5,
-                comment: `Before we implemented BBS's database solution, our clinic was really struggling. Long wait times and messy patient records were a daily headache. I wanted a MySQL database that could be transitioned to Oracle, and BBS helped us create a database tailored specifically to our clinic's needs. Their communication was excellent—they truly listened to our requirements and were incredibly supportive throughout the process.
+            The transition was super fast and incredibly easy. From day one, we saw amazing results. Our inventory is now perfectly managed, and our operational costs have dropped significantly. Plus, the system is so user-friendly that our team adapted in no time.
+            
+            Thanks to BBS, our revenue has shot up by 30% in just a few months. The personalized customer experience we can now offer has boosted retention and satisfaction. Every e-commerce business should have a database solution like this. It's been a game-changer for us!`
+        },
+        {
+            id: "default-2",
+            firstName: "Elizabeth",
+            lastName: "J. Roberts",
+            serviceType: "bbs_database",
+            rating: 5,
+            comment: `Before we implemented BBS's database solution, our clinic was really struggling. Long wait times and messy patient records were a daily headache. I wanted a MySQL database that could be transitioned to Oracle, and BBS helped us create a database tailored specifically to our clinic's needs. Their communication was excellent—they truly listened to our requirements and were incredibly supportive throughout the process.
 
-                With seamless help from our backend team, the transition was amazingly smooth. Delivery was even faster than expected, and the results were noticeable right from the start.
-                
-                Now, our medical teams have instant access to organized, real-time information, which has significantly boosted our efficiency. Wait times are down, patient satisfaction is up, and our ratings reflect this transformation!
-                
-                Data security is also a top priority for us, and BBS has been invaluable in ensuring everything is safeguarded. This investment has genuinely transformed our clinic, creating a better environment for both our patients and staff 😊`
-            }
-        ];
+            With seamless help from our backend team, the transition was amazingly smooth. Delivery was even faster than expected, and the results were noticeable right from the start.
+            
+            Now, our medical teams have instant access to organized, real-time information, which has significantly boosted our efficiency. Wait times are down, patient satisfaction is up, and our ratings reflect this transformation!
+            
+            Data security is also a top priority for us, and BBS has been invaluable in ensuring everything is safeguarded. This investment has genuinely transformed our clinic, creating a better environment for both our patients and staff 😊`
+        }
+    ];
 
-        // Agregar las reseñas predeterminadas al localStorage
-        localStorage.setItem("feedbackList", JSON.stringify(defaultReviews));
+    // Verificar si las reseñas default ya existen en la lista
+    const existingDefaultIds = new Set(feedbackList.map(review => review.id));
+    const missingDefaultReviews = defaultReviews.filter(review => !existingDefaultIds.has(review.id));
+    
+    // Solo agregar las reseñas default que no existen
+    if (missingDefaultReviews.length > 0) {
+        feedbackList = [...missingDefaultReviews, ...feedbackList];
+        localStorage.setItem("feedbackList", JSON.stringify(feedbackList));
     }
 }
 
