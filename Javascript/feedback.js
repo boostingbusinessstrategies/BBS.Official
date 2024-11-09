@@ -7,12 +7,12 @@ let isAdmin = false;
 let canDelete = false;
 const hashedAdminPassword = "drowssap";
 let feedbackList = [];
+const reviewsToShow = 5; // Añadido la constante que faltaba
 
 // Cargar reseñas - Mejorado con manejo de errores y caché
 async function loadFeedback() {
     try {
-        // Implementar sistema de caché para reducir llamadas al API
-        const cacheExpiry = 5 * 60 * 1000; // 5 minutos
+        const cacheExpiry = 5 * 60 * 1000;
         const cachedData = sessionStorage.getItem('cachedFeedback');
         const cacheTimestamp = sessionStorage.getItem('feedbackCacheTimestamp');
         
@@ -37,14 +37,12 @@ async function loadFeedback() {
         const data = await response.json();
         feedbackList = data.record || [];
         
-        // Actualizar caché
         sessionStorage.setItem('cachedFeedback', JSON.stringify(feedbackList));
         sessionStorage.setItem('feedbackCacheTimestamp', Date.now().toString());
         
         displayFeedback();
     } catch (error) {
         console.error("Error loading feedback:", error);
-        // Mostrar mensaje de error al usuario
         const errorMessage = document.createElement('div');
         errorMessage.className = 'error-message';
         errorMessage.textContent = 'Unable to load reviews. Please try again later.';
@@ -55,7 +53,6 @@ async function loadFeedback() {
 // Guardar reseñas - Mejorado con retry y validación
 async function saveFeedback(retryCount = 3) {
     try {
-        // Validar datos antes de guardar
         if (!Array.isArray(feedbackList)) {
             throw new Error('Invalid feedback data structure');
         }
@@ -64,39 +61,45 @@ async function saveFeedback(retryCount = 3) {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'X-Master-Key': JSONBIN_API_KEY
+                'X-Master-Key': JSONBIN_API_KEY,
+                'X-Bin-Versioning': 'false' // Añadido para prevenir problemas de concurrencia
             },
             body: JSON.stringify(feedbackList)
         });
         
         if (!response.ok) {
-            throw new Error('Failed to save feedback');
+            throw new Error(`Failed to save feedback: ${response.status}`);
         }
 
-        // Actualizar caché después de guardar exitosamente
-        sessionStorage.setItem('cachedFeedback', JSON.stringify(feedbackList));
-        sessionStorage.setItem('feedbackCacheTimestamp', Date.now().toString());
+        // Limpiar y actualizar caché después de guardar exitosamente
+        sessionStorage.removeItem('cachedFeedback');
+        sessionStorage.removeItem('feedbackCacheTimestamp');
+        
+        return true; // Indicar éxito
         
     } catch (error) {
         console.error("Error saving feedback:", error);
         
         if (retryCount > 0) {
             console.log(`Retrying save... (${retryCount} attempts remaining)`);
-            await new Promise(resolve => setTimeout(resolve, 1000)); // Esperar 1 segundo
+            await new Promise(resolve => setTimeout(resolve, 1000));
             return saveFeedback(retryCount - 1);
         }
         
-        throw new Error('Failed to save feedback after multiple attempts');
+        throw error; // Propagar el error si se agotan los intentos
     }
 }
 
 // Mejorada la función de envío de feedback
 async function submitFeedback(event) {
+    event.preventDefault(); // Prevenir el envío del formulario por defecto
     
     const submitButton = document.querySelector('button[type="submit"]');
-    submitButton.disabled = true;
+    const form = document.getElementById("feedback-form");
     
     try {
+        submitButton.disabled = true;
+        
         const firstName = document.getElementById("feedback-first-name").value.trim();
         const lastName = document.getElementById("feedback-last-name").value.trim();
         const serviceType = document.getElementById("service-type").value;
@@ -113,7 +116,7 @@ async function submitFeedback(event) {
         }
 
         const feedback = {
-            id: crypto.randomUUID(), // Usar UUID para IDs únicos
+            id: crypto.randomUUID(),
             firstName: firstName,
             lastName: lastName,
             serviceType: serviceType,
@@ -122,30 +125,43 @@ async function submitFeedback(event) {
             timestamp: new Date().toISOString()
         };
 
-        feedbackList.push(feedback);
-        await saveFeedback();
+        // Hacer una copia local de feedbackList antes de modificar
+        const updatedFeedbackList = [...feedbackList, feedback];
         
-        // Actualizar UI
+        // Intentar guardar
+        feedbackList = updatedFeedbackList;
+        const saveSuccess = await saveFeedback();
+        
+        if (!saveSuccess) {
+            throw new Error("Failed to save feedback");
+        }
+
+        // Limpiar y actualizar UI
         clearFeedbackForm();
-        await loadFeedback(); // Recargar para asegurar sincronización
+        await loadFeedback();
         
         // Mostrar mensaje de éxito
         const successMessage = document.createElement('div');
         successMessage.className = 'success-message';
         successMessage.textContent = 'Thank you for your feedback!';
-        document.getElementById("feedback-form").appendChild(successMessage);
+        form.appendChild(successMessage);
         
         setTimeout(() => successMessage.remove(), 3000);
         
     } catch (error) {
         console.error("Error in submitFeedback:", error);
-        alert(error.message || "There was an error saving your feedback. Please try again.");
+        const errorMessage = document.createElement('div');
+        errorMessage.className = 'error-message';
+        errorMessage.textContent = error.message || "There was an error saving your feedback. Please try again.";
+        form.appendChild(errorMessage);
+        
+        setTimeout(() => errorMessage.remove(), 5000);
     } finally {
         submitButton.disabled = false;
     }
 }
 
-// Rest of the original code remains unchanged
+// El resto del código permanece igual
 function toggleAdminControls() {
     const password = prompt("Please enter admin password:");
     if (hashPassword(password) === hashedAdminPassword) {
@@ -182,7 +198,7 @@ function toggleDelete() {
     updateAdminControlsVisibility();
 }
 
-function deleteFeedback(id) {
+async function deleteFeedback(id) {
     if (!isAdmin || !canDelete) {
         alert("You must be an admin with delete privileges to remove feedback.");
         return;
@@ -190,8 +206,8 @@ function deleteFeedback(id) {
 
     if (confirm("Are you sure you want to delete this feedback?")) {
         feedbackList = feedbackList.filter(feedback => feedback.id !== id);
+        await saveFeedback();
         displayFeedback();
-        alert("Feedback deleted successfully.");
     }
 }
 
@@ -204,11 +220,15 @@ function updatePaginationButtons(totalReviews) {
         const button = document.createElement("button");
         button.textContent = i;
         button.onclick = () => changePage(i);
+        if (i === currentPage) {
+            button.classList.add('active-page');
+        }
         paginationElement.appendChild(button);
     }
 }
 
 function changePage(page) {
+    currentPage = page;
     const feedbackListElement = document.getElementById("feedback-list");
     feedbackListElement.innerHTML = "";
 
@@ -233,43 +253,25 @@ function changePage(page) {
 
 function displayFeedback() {
     console.log("Displaying feedback:", feedbackList);
-
-    const feedbackListElement = document.getElementById("feedback-list");
-    feedbackListElement.innerHTML = "";
-
-    const reviewsToDisplay = feedbackList.slice(0, reviewsToShow);
-
-    reviewsToDisplay.forEach((feedback) => {
-        const feedbackItem = document.createElement("li");
-        feedbackItem.id = `feedback-item-${feedback.id}`;
-        feedbackItem.innerHTML = 
-            `<div><strong>${feedback.firstName} ${feedback.lastName}</strong></div>
-            <div><em>Service Type: ${feedback.serviceType}</em></div>
-            <div class="rating">${'⭐'.repeat(feedback.rating)}${'☆'.repeat(5 - feedback.rating)}</div>
-            <div>${feedback.comment}</div>
-            <button class="delete-feedback-button" style="display: ${(isAdmin && canDelete) ? 'inline-flex' : 'none'}" onclick="deleteFeedback('${feedback.id}')">Delete</button>`;
-        feedbackListElement.appendChild(feedbackItem);
-    });
-
-    updatePaginationButtons(feedbackList.length);
+    changePage(1); // Siempre comenzar en la primera página al actualizar
 }
 
 function clearFeedbackForm() {
-    document.getElementById("feedback-first-name").value = "";
-    document.getElementById("feedback-last-name").value = "";
-    document.getElementById("service-type").value = "";
-    document.getElementById("feedback-rating").value = "";
-    document.getElementById("feedback-comment").value = "";
+    const form = document.getElementById("feedback-form");
+    form.reset();
 }
 
-function resetFeedbackList() {
+async function resetFeedbackList() {
     if (!isAdmin) {
         alert("You must be an admin to reset the feedback list.");
         return;
     }
 
     if (confirm("Are you sure you want to reset the feedback list? This action cannot be undone.")) {
-        localStorage.removeItem("feedbackList");
+        feedbackList = [];
+        await saveFeedback();
+        sessionStorage.removeItem('cachedFeedback');
+        sessionStorage.removeItem('feedbackCacheTimestamp');
         displayFeedback();
         alert("Feedback list has been reset successfully.");
     }
@@ -278,7 +280,6 @@ function resetFeedbackList() {
 // Inicializar sistema con comprobación de conectividad
 async function initializeFeedbackSystem() {
     try {
-        // Comprobar conectividad con JSONBin
         const response = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
             method: 'HEAD',
             headers: {
@@ -304,10 +305,19 @@ async function initializeFeedbackSystem() {
     }
 }
 
+// Variables globales adicionales necesarias
+let currentPage = 1;
+
 // Inicializar cuando se carga la página
 document.addEventListener('DOMContentLoaded', function() {
     initializeFeedbackSystem();
     updateAdminControlsVisibility();
+    
+    // Agregar event listener para el formulario
+    const form = document.getElementById("feedback-form");
+    if (form) {
+        form.addEventListener('submit', submitFeedback);
+    }
 });
 
 
