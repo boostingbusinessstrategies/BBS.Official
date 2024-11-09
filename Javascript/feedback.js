@@ -92,7 +92,6 @@ async function saveFeedback(retryCount = 3) {
 
 // Mejorada la función de envío de feedback
 async function submitFeedback(event) {
-    event.preventDefault();
     
     const submitButton = document.querySelector('button[type="submit"]');
     submitButton.disabled = true;
