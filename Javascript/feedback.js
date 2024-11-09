@@ -1,17 +1,29 @@
-// Initial number of reviews to show
+// Número inicial de reseñas a mostrar
 const reviewsToShow = 8;
 
-// Variables to control admin status and delete capability
-let isAdmin = false; // Cambiar a false para ocultar los controles de administrador inicialmente
-let canDelete = false; // Inicialmente no se puede eliminar
-const hashedAdminPassword = "drowssap"; // La contraseña encriptada (simulada aquí)
+// Estado del modo administrador y capacidad de eliminar
+let isAdmin = false;
+let canDelete = false;
+const hashedAdminPassword = "drowssap";
+let feedbackList = []; // Lista de reseñas cargadas en memoria
 
-// Function to toggle admin controls visibility
+// Cargar reseñas desde feedback.json
+async function loadFeedback() {
+    try {
+        const response = await fetch("feedback.json");
+        feedbackList = await response.json();
+        displayFeedback();
+    } catch (error) {
+        console.error("Error loading feedback:", error);
+    }
+}
+
+// Función para alternar la visibilidad de los controles de administrador
 function toggleAdminControls() {
     const password = prompt("Please enter admin password:");
     if (hashPassword(password) === hashedAdminPassword) {
         isAdmin = true;
-        canDelete = true; // Activar la capacidad de eliminar cuando se ingrese la contraseña correcta
+        canDelete = true;
         updateAdminControlsVisibility();
         alert("Admin mode activated");
     } else {
@@ -19,37 +31,34 @@ function toggleAdminControls() {
     }
 }
 
-// Function to toggle admin mode
+// Función para alternar el modo administrador
 function toggleAdminMode() {
     isAdmin = !isAdmin;
-    canDelete = isAdmin; // Desactivar la capacidad de eliminar cuando se desactive el modo administrador
+    canDelete = isAdmin;
     updateAdminControlsVisibility();
 }
 
-// Hash function to simulate password encryption (in a real implementation, you should use a proper hashing library)
+// Función para simular el hash de la contraseña
 function hashPassword(password) {
-    // Simple hash function for demonstration purposes
     return password.split('').reverse().join('');
 }
 
-// Function to update admin controls visibility
+// Función para actualizar la visibilidad de los botones de eliminar
 function updateAdminControlsVisibility() {
     const deleteButtons = document.querySelectorAll('.delete-feedback-button');
-
-    // Mostrar los botones de eliminar solo si el admin ha iniciado sesión
     deleteButtons.forEach(button => {
         button.style.display = (isAdmin && canDelete) ? 'inline-flex' : 'none';
     });
 }
 
-// Function to toggle delete capability
+// Función para alternar la capacidad de eliminar
 function toggleDelete() {
     if (!isAdmin) return;
-    canDelete = !canDelete; // Toggle delete capability
-    updateAdminControlsVisibility(); // Update button visibility
+    canDelete = !canDelete;
+    updateAdminControlsVisibility();
 }
 
-// Function to delete specific feedback
+// Función para eliminar una reseña
 function deleteFeedback(id) {
     if (!isAdmin || !canDelete) {
         alert("You must be an admin with delete privileges to remove feedback.");
@@ -57,20 +66,13 @@ function deleteFeedback(id) {
     }
 
     if (confirm("Are you sure you want to delete this feedback?")) {
-        try {
-            let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
-            feedbackList = feedbackList.filter(feedback => feedback.id !== id);
-            localStorage.setItem("feedbackList", JSON.stringify(feedbackList));
-            displayFeedback(); // Re-render feedback list
-            alert("Feedback deleted successfully.");
-        } catch (error) {
-            console.error("Error deleting feedback:", error);
-            alert("There was an error deleting the feedback. Please try again.");
-        }
+        feedbackList = feedbackList.filter(feedback => feedback.id !== id);
+        displayFeedback();
+        alert("Feedback deleted successfully.");
     }
 }
 
-// Function to update pagination buttons (added for pagination)
+// Función para actualizar los botones de paginación
 function updatePaginationButtons(totalReviews) {
     const totalPages = Math.ceil(totalReviews / reviewsToShow);
     const paginationElement = document.getElementById("pagination");
@@ -84,9 +86,8 @@ function updatePaginationButtons(totalReviews) {
     }
 }
 
-// Function to change page for pagination
+// Función para cambiar de página
 function changePage(page) {
-    const feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
     const feedbackListElement = document.getElementById("feedback-list");
     feedbackListElement.innerHTML = "";
 
@@ -109,9 +110,8 @@ function changePage(page) {
     updatePaginationButtons(feedbackList.length);
 }
 
-// Function to display feedback (with pagination)
+// Función para mostrar las reseñas (con paginación)
 function displayFeedback() {
-    const feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
     const feedbackListElement = document.getElementById("feedback-list");
     feedbackListElement.innerHTML = "";
 
@@ -132,10 +132,8 @@ function displayFeedback() {
     updatePaginationButtons(feedbackList.length);
 }
 
-// Function to submit feedback
+// Función para enviar una reseña
 function submitFeedback(event) {
-    event.preventDefault();
-
     const firstName = document.getElementById("feedback-first-name").value.trim();
     const lastName = document.getElementById("feedback-last-name").value.trim();
     const serviceType = document.getElementById("service-type").value;
@@ -144,6 +142,7 @@ function submitFeedback(event) {
 
     if (!firstName || !lastName || !serviceType || !rating || !comment) {
         alert("Please complete all fields before submitting.");
+        event.preventDefault();
         return;
     }
 
@@ -157,10 +156,8 @@ function submitFeedback(event) {
     };
 
     try {
-        let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
         feedbackList.push(feedback);
         localStorage.setItem("feedbackList", JSON.stringify(feedbackList));
-
         clearFeedbackForm();
         displayFeedback();
         alert("Thank you for your feedback!");
@@ -170,7 +167,7 @@ function submitFeedback(event) {
     }
 }
 
-// Function to clear the form
+// Función para limpiar el formulario
 function clearFeedbackForm() {
     document.getElementById("feedback-first-name").value = "";
     document.getElementById("feedback-last-name").value = "";
@@ -179,7 +176,7 @@ function clearFeedbackForm() {
     document.getElementById("feedback-comment").value = "";
 }
 
-// Function to reset feedback list
+// Función para reiniciar la lista de reseñas
 function resetFeedbackList() {
     if (!isAdmin) {
         alert("You must be an admin to reset the feedback list.");
@@ -193,10 +190,9 @@ function resetFeedbackList() {
     }
 }
 
-// Initialize when page loads
+// Inicializar cuando se carga la página
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Initial state - isAdmin:', isAdmin, 'canDelete:', canDelete);
-    displayFeedback();
+    loadFeedback(); // Cargar reseñas desde feedback.json
     updateAdminControlsVisibility(); // Los controles de administrador están ocultos por defecto
 });
 
@@ -251,4 +247,3 @@ document.addEventListener('DOMContentLoaded', function() {
         document.documentElement.classList.add('low-performance');
     }
 });
-
