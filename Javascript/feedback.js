@@ -12,6 +12,7 @@ async function loadFeedback() {
     try {
         const response = await fetch("feedback.json");
         feedbackList = await response.json();
+        console.log("Feedback loaded:", feedbackList); // Depuración
         displayFeedback();
     } catch (error) {
         console.error("Error loading feedback:", error);
@@ -45,6 +46,7 @@ function hashPassword(password) {
 
 // Función para actualizar la visibilidad de los botones de eliminar
 function updateAdminControlsVisibility() {
+    console.log("Updating admin controls visibility"); // Depuración
     const deleteButtons = document.querySelectorAll('.delete-feedback-button');
     deleteButtons.forEach(button => {
         button.style.display = (isAdmin && canDelete) ? 'inline-flex' : 'none';
@@ -112,6 +114,8 @@ function changePage(page) {
 
 // Función para mostrar las reseñas (con paginación)
 function displayFeedback() {
+    console.log("Displaying feedback:", feedbackList); // Depuración
+
     const feedbackListElement = document.getElementById("feedback-list");
     feedbackListElement.innerHTML = "";
 
@@ -195,6 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadFeedback(); // Cargar reseñas desde feedback.json
     updateAdminControlsVisibility(); // Los controles de administrador están ocultos por defecto
 });
+
 
 
 
