@@ -1,241 +1,203 @@
-// Configuración inicial
-const JSONBIN_ACCESS_KEY = "672ee319ad19ca34f8c6e2ef"; // Replace with your actual access key
-const BIN_ID = "$2a$10$Yb3Q0kA9yDrB0ztvVFxpvuaxdWTKOfFbGsCOhcucL28FtNzfyKCrq"; // Replace with your actual bin ID
+// Initial number of reviews to show
 const reviewsToShow = 8;
 
-// Estado del modo administrador y capacidad de eliminar
-let isAdmin = false;
-let canDelete = false;
-const hashedAdminPassword = "drowssap";
-let feedbackList = [];
+// Variables to control admin status and delete capability
+let isAdmin = false; // Cambiar a false para ocultar los controles de administrador inicialmente
+let canDelete = false; // Inicialmente no se puede eliminar
+const hashedAdminPassword = "drowssap"; // La contraseña encriptada (simulada aquí)
 
-// Función de validación
-function validateFeedbackForm(formData) {
-    const errors = [];
-    
-    if (!formData.firstName.trim()) {
-        errors.push("First name is required");
-    } else if (formData.firstName.length < 2) {
-        errors.push("First name must be at least 2 characters long");
+// Function to toggle admin controls visibility
+function toggleAdminControls() {
+    const password = prompt("Please enter admin password:");
+    if (hashPassword(password) === hashedAdminPassword) {
+        isAdmin = true;
+        canDelete = true; // Activar la capacidad de eliminar cuando se ingrese la contraseña correcta
+        updateAdminControlsVisibility();
+        alert("Admin mode activated");
+    } else {
+        alert("Incorrect password");
     }
-    
-    if (!formData.lastName.trim()) {
-        errors.push("Last name is required");
-    } else if (formData.lastName.length < 2) {
-        errors.push("Last name must be at least 2 characters long");
-    }
-    
-    if (!formData.serviceType || formData.serviceType === "select") {
-        errors.push("Please select a service type");
-    }
-    
-    const rating = parseInt(formData.rating, 10);
-    if (isNaN(rating) || rating < 1 || rating > 5) {
-        errors.push("Please provide a valid rating between 1 and 5");
-    }
-    
-    if (!formData.comment.trim()) {
-        errors.push("Comment is required");
-    } else if (formData.comment.length < 10) {
-        errors.push("Comment must be at least 10 characters long");
-    }
-    
-    return errors;
 }
 
-// Función para mostrar mensajes
-function showMessage(type, message, formElement, duration = 5000) {
-    const existingMessages = formElement.querySelectorAll('.message');
-    existingMessages.forEach(msg => msg.remove());
-    
-    const messageElement = document.createElement('div');
-    messageElement.className = `message ${type}-message`;
-    messageElement.textContent = message;
-    
-    formElement.insertBefore(messageElement, formElement.querySelector('button[type="submit"]'));
-    
-    setTimeout(() => {
-        if (messageElement.parentNode === formElement) {
-            messageElement.remove();
+// Function to toggle admin mode
+function toggleAdminMode() {
+    isAdmin = !isAdmin;
+    canDelete = isAdmin; // Desactivar la capacidad de eliminar cuando se desactive el modo administrador
+    updateAdminControlsVisibility();
+}
+
+// Hash function to simulate password encryption (in a real implementation, you should use a proper hashing library)
+function hashPassword(password) {
+    // Simple hash function for demonstration purposes
+    return password.split('').reverse().join('');
+}
+
+// Function to update admin controls visibility
+function updateAdminControlsVisibility() {
+    const deleteButtons = document.querySelectorAll('.delete-feedback-button');
+
+    // Mostrar los botones de eliminar solo si el admin ha iniciado sesión
+    deleteButtons.forEach(button => {
+        button.style.display = (isAdmin && canDelete) ? 'inline-flex' : 'none';
+    });
+}
+
+// Function to toggle delete capability
+function toggleDelete() {
+    if (!isAdmin) return;
+    canDelete = !canDelete; // Toggle delete capability
+    updateAdminControlsVisibility(); // Update button visibility
+}
+
+// Function to delete specific feedback
+function deleteFeedback(id) {
+    if (!isAdmin || !canDelete) {
+        alert("You must be an admin with delete privileges to remove feedback.");
+        return;
+    }
+
+    if (confirm("Are you sure you want to delete this feedback?")) {
+        try {
+            let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
+            feedbackList = feedbackList.filter(feedback => feedback.id !== id);
+            localStorage.setItem("feedbackList", JSON.stringify(feedbackList));
+            displayFeedback(); // Re-render feedback list
+            alert("Feedback deleted successfully.");
+        } catch (error) {
+            console.error("Error deleting feedback:", error);
+            alert("There was an error deleting the feedback. Please try again.");
         }
-    }, duration);
+    }
 }
 
-// Función para cargar feedback
-async function loadFeedback() {
+// Function to update pagination buttons (added for pagination)
+function updatePaginationButtons(totalReviews) {
+    const totalPages = Math.ceil(totalReviews / reviewsToShow);
+    const paginationElement = document.getElementById("pagination");
+    paginationElement.innerHTML = "";
+
+    for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement("button");
+        button.textContent = i;
+        button.onclick = () => changePage(i);
+        paginationElement.appendChild(button);
+    }
+}
+
+// Function to change page for pagination
+function changePage(page) {
+    const feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
+    const feedbackListElement = document.getElementById("feedback-list");
+    feedbackListElement.innerHTML = "";
+
+    const startIndex = (page - 1) * reviewsToShow;
+    const endIndex = page * reviewsToShow;
+    const reviewsToDisplay = feedbackList.slice(startIndex, endIndex);
+
+    reviewsToDisplay.forEach((feedback) => {
+        const feedbackItem = document.createElement("li");
+        feedbackItem.id = `feedback-item-${feedback.id}`;
+        feedbackItem.innerHTML = 
+            `<div><strong>${feedback.firstName} ${feedback.lastName}</strong></div>
+            <div><em>Service Type: ${feedback.serviceType}</em></div>
+            <div class="rating">${'⭐'.repeat(feedback.rating)}${'☆'.repeat(5 - feedback.rating)}</div>
+            <div>${feedback.comment}</div>
+            <button class="delete-feedback-button" style="display: ${(isAdmin && canDelete) ? 'inline-flex' : 'none'}" onclick="deleteFeedback('${feedback.id}')">Delete</button>`;
+        feedbackListElement.appendChild(feedbackItem);
+    });
+
+    updatePaginationButtons(feedbackList.length);
+}
+
+// Function to display feedback (with pagination)
+function displayFeedback() {
+    const feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
+    const feedbackListElement = document.getElementById("feedback-list");
+    feedbackListElement.innerHTML = "";
+
+    const reviewsToDisplay = feedbackList.slice(0, reviewsToShow);
+
+    reviewsToDisplay.forEach((feedback) => {
+        const feedbackItem = document.createElement("li");
+        feedbackItem.id = `feedback-item-${feedback.id}`;
+        feedbackItem.innerHTML = 
+            `<div><strong>${feedback.firstName} ${feedback.lastName}</strong></div>
+            <div><em>Service Type: ${feedback.serviceType}</em></div>
+            <div class="rating">${'⭐'.repeat(feedback.rating)}${'☆'.repeat(5 - feedback.rating)}</div>
+            <div>${feedback.comment}</div>
+            <button class="delete-feedback-button" style="display: ${(isAdmin && canDelete) ? 'inline-flex' : 'none'}" onclick="deleteFeedback('${feedback.id}')">Delete</button>`;
+        feedbackListElement.appendChild(feedbackItem);
+    });
+
+    updatePaginationButtons(feedbackList.length);
+}
+
+// Function to submit feedback
+function submitFeedback(event) {
+    event.preventDefault();
+
+    const firstName = document.getElementById("feedback-first-name").value.trim();
+    const lastName = document.getElementById("feedback-last-name").value.trim();
+    const serviceType = document.getElementById("service-type").value;
+    const rating = document.getElementById("feedback-rating").value;
+    const comment = document.getElementById("feedback-comment").value.trim();
+
+    if (!firstName || !lastName || !serviceType || !rating || !comment) {
+        alert("Please complete all fields before submitting.");
+        return;
+    }
+
+    const feedback = {
+        id: Date.now().toString(),
+        firstName: firstName,
+        lastName: lastName,
+        serviceType: serviceType,
+        rating: parseInt(rating, 10),
+        comment: comment
+    };
+
     try {
-        const response = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
-            headers: {
-                'X-Access-Key': JSONBIN_ACCESS_KEY,
-                'Content-Type': 'application/json'
-            }
-        });
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        // Ensure feedbackList is always an array
-        feedbackList = Array.isArray(data.record) ? data.record : [];
+        let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
+        feedbackList.push(feedback);
+        localStorage.setItem("feedbackList", JSON.stringify(feedbackList));
+
+        clearFeedbackForm();
         displayFeedback();
-    } catch (error) {
-        console.error("Error loading feedback:", error);
-        const feedbackList = document.getElementById("feedback-list");
-        if (feedbackList) {
-            feedbackList.innerHTML = `
-                <div class="error-message">
-                    Unable to load reviews. Please try again later.
-                    <button onclick="loadFeedback()" class="retry-button">Retry</button>
-                </div>`;
-        }
-    }
-}
-
-// Función para guardar feedback
-async function saveFeedback() {
-    try {
-        const response = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Access-Key': JSONBIN_ACCESS_KEY
-            },
-            body: JSON.stringify(feedbackList)
-        });
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        return true;
+        alert("Thank you for your feedback!");
     } catch (error) {
         console.error("Error saving feedback:", error);
-        return false;
+        alert("There was an error saving your feedback. Please try again.");
     }
 }
 
-// Función para enviar feedback
-async function submitFeedback(event) {
-    event.preventDefault();
-    
-    const form = document.getElementById("feedback-form");
-    const submitButton = form.querySelector('button[type="submit"]');
-    
-    if (!form || !submitButton) return;
-    
-    try {
-        submitButton.disabled = true;
-        submitButton.textContent = 'Submitting...';
-        
-        const formData = {
-            firstName: document.getElementById("feedback-first-name").value.trim(),
-            lastName: document.getElementById("feedback-last-name").value.trim(),
-            serviceType: document.getElementById("service-type").value,
-            rating: document.getElementById("feedback-rating").value,
-            comment: document.getElementById("feedback-comment").value.trim(),
-            date: new Date().toISOString()
-        };
-        
-        const validationErrors = validateFeedbackForm(formData);
-        
-        if (validationErrors.length > 0) {
-            throw new Error(validationErrors.join('\n'));
-        }
-        
-        const feedback = {
-            id: Date.now().toString(),
-            ...formData,
-            rating: parseInt(formData.rating, 10)
-        };
-        
-        // Ensure feedbackList is initialized as an array
-        if (!Array.isArray(feedbackList)) {
-            feedbackList = [];
-        }
-        
-        feedbackList.push(feedback);
-        const saveSuccess = await saveFeedback();
-        
-        if (!saveSuccess) {
-            throw new Error("Failed to save feedback. Please try again.");
-        }
-        
-        form.reset();
+// Function to clear the form
+function clearFeedbackForm() {
+    document.getElementById("feedback-first-name").value = "";
+    document.getElementById("feedback-last-name").value = "";
+    document.getElementById("service-type").value = "";
+    document.getElementById("feedback-rating").value = "";
+    document.getElementById("feedback-comment").value = "";
+}
+
+// Function to reset feedback list
+function resetFeedbackList() {
+    if (!isAdmin) {
+        alert("You must be an admin to reset the feedback list.");
+        return;
+    }
+
+    if (confirm("Are you sure you want to reset the feedback list? This action cannot be undone.")) {
+        localStorage.removeItem("feedbackList");
         displayFeedback();
-        showMessage('success', 'Thank you for your feedback!', form);
-        
-    } catch (error) {
-        console.error("Error in submitFeedback:", error);
-        showMessage('error', error.message, form);
-    } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = 'Submit Feedback';
+        alert("Feedback list has been reset successfully.");
     }
 }
 
-// Rest of the code remains the same...
-// (Admin functions, pagination functions, display functions, and event listeners)
-
-// Initialize JSONBin with empty array if needed
-async function initializeJSONBin() {
-    try {
-        const response = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
-            headers: {
-                'X-Access-Key': JSONBIN_ACCESS_KEY,
-                'Content-Type': 'application/json'
-            }
-        });
-        
-        if (!response.ok) {
-            // If bin doesn't exist or is empty, initialize it with an empty array
-            const initResponse = await fetch(`https://api.jsonbin.io/v3/b`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-Access-Key': JSONBIN_ACCESS_KEY
-                },
-                body: JSON.stringify([])
-            });
-            
-            if (!initResponse.ok) {
-                throw new Error('Failed to initialize JSONBin');
-            }
-        }
-    } catch (error) {
-        console.error('Error initializing JSONBin:', error);
-    }
-}
-
-// Modified initialization
-document.addEventListener('DOMContentLoaded', async function() {
-    await initializeJSONBin();
-    
-    const form = document.getElementById("feedback-form");
-    if (form) {
-        form.addEventListener('submit', submitFeedback);
-        
-        // Real-time validation
-        const inputs = form.querySelectorAll('input, textarea, select');
-        inputs.forEach(input => {
-            input.addEventListener('input', function() {
-                const formData = {
-                    firstName: document.getElementById("feedback-first-name").value.trim(),
-                    lastName: document.getElementById("feedback-last-name").value.trim(),
-                    serviceType: document.getElementById("service-type").value,
-                    rating: document.getElementById("feedback-rating").value,
-                    comment: document.getElementById("feedback-comment").value.trim()
-                };
-                
-                const errors = validateFeedbackForm(formData);
-                const submitButton = form.querySelector('button[type="submit"]');
-                submitButton.disabled = errors.length > 0;
-            });
-        });
-    }
-    
-    loadFeedback();
-    updateAdminControlsVisibility();
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Initial state - isAdmin:', isAdmin, 'canDelete:', canDelete);
+    displayFeedback();
+    updateAdminControlsVisibility(); // Los controles de administrador están ocultos por defecto
 });
 
 
@@ -289,3 +251,4 @@ document.addEventListener('DOMContentLoaded', function() {
         document.documentElement.classList.add('low-performance');
     }
 });
+
