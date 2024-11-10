@@ -28,6 +28,49 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1300694337746729&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const data = [{
+            "action_source": "website",
+            "event_name": "Purchase",
+            "event_time": Math.floor(Date.now() / 1000), // Usar la marca de tiempo actual
+            "custom_data": {
+                "currency": "USD",
+                "content_category": "Database",
+                "value": 555
+            },
+            "event_source_url": "https://boostingbusinessstrategies.github.io/BBS.Official/order.html",
+            "user_data": {
+                "em": [
+                    "7b17fb0bd173f625b58636fb796407c22b3d16fc78302d79f0fd30c2fc2fc068",
+                    "9e7ebd9457d36e752a19a9309e9853d37e0531b14d7162e412e1526e30720949"
+                ],
+                "ph": [
+                    "a95a8df360de6e641497a75e87057f2bb6f085658ab0b1c07c8186bb1c07ce4a"
+                ]
+            },
+            "original_event_data": {
+                "event_name": "Purchase",
+                "event_time": Math.floor(Date.now() / 1000)
+            }
+        }];
+
+        fetch(`https://graph.facebook.com/<v21.0>/<1300694337746729>/events?access_token=<EAAHiHkElyQEBO8VAcJKMWZBPYR5Ad55drdACZCoeGfH92nlgLNDB6FKd33qhZBAS8mloLJ8vLysybzHzRjigVGeTrzBnNTDu0OeeglJNsOzQNpXWTJgnpPtykTGBgp7P0CK25DGaiPxz4ZApCSZCWJUVnDfPBO96m8FjWRwBvyAgh7Trjr8hZCEPyibcDczCqTkAZDZD>`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ data: data })
+        })
+        .then(response => response.json())
+        .then(result => console.log('Event sent successfully:', result))
+        .catch(error => console.error('Error sending event:', error));
+    });
+</script>
+
+
 </head>
 <body>
     <nav id="sidebar">
