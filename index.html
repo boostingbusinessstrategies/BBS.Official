@@ -275,12 +275,19 @@ src="https://www.facebook.com/tr?id=1300694337746729&ev=PageView&noscript=1"
             <p>Whether you have questions about our services or are eager to embark on your transformative journey, we encourage you to reach out. Together, we can turn your data into a powerful asset for success and innovation. Your future begins with a conversation—let’s take that first step together!</p>
             
             <form id="database-form" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST">
-                <input type="hidden" name="_next" value="index.html">
+                <!-- Campo oculto para redirección -->
+                <input type="hidden" name="_next" value="https://boostingbusinessstrategies.github.io/BBS.Official/index.html">
+                <!-- Campo para evitar spam (honeypot) -->
+                <input type="hidden" name="_honey" style="display:none">
+                
+                <!-- Datos del formulario -->
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
                 <textarea name="message" placeholder="Your Message" required></textarea>
+                
                 <button type="submit" class="cta-button">Send Message</button>
-            </form>   
+            </form>
+            
         </section>
     </div>
     </div>
