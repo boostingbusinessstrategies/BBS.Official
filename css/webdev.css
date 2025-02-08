@@ -1,0 +1,1093 @@
+/* Variables globales */
+:root {
+    --primary-color: #ee4d4d; /* Rojo vibrante */
+    --secondary-color: #ffc44d; /* Amarillo energético */
+    --background-color: #f0f4f8; /* Gris claro para el fondo */
+    --text-color: #333333; /* Gris oscuro para el texto */
+    --border-radius: 8px; /* Bordes redondeados */
+    --transition-speed: 0.3s; /* Velocidad de transición */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Color de sombra */
+    --accent-color: #0056a3; /* Azul profundo para acentos */
+    --content-background: #ffffff; /* Fondo blanco para el contenido */
+    --border-color: #d1d5db;
+    --focus-ring: rgba(20, 33, 53, 0.8);
+    --input-background: #f9fafb;
+
+
+    /* Sidebar */
+    --sidebar-width: 280px; /* Ancho de la barra lateral */
+    --sidebar-bg: rgba(20, 33, 53, 0.8); /* Fondo oscuro y transparente para la barra lateral */
+    --sidebar-text: #ffffff; /* Texto blanco en la barra lateral */
+    --sidebar-hover: #ee4d4d; /* Color de hover en la barra lateral */
+    --sidebar-border: rgba(255, 196, 77, 0.3); /* Borde amarillo para resaltar secciones importantes */
+  
+    /* Toggle Menu */
+    --toggle-bg: rgba(31, 41, 55, 0.9); /* Fondo oscuro semitransparente en menú toggle */
+    --toggle-color: #ffc44d; /* Color de los íconos en el toggle */
+    
+    /* Container */
+    --container-padding: 20px; /* Espaciado interno para mantener claridad y orden */
+    
+    /* Footer */
+    --footer-bg: rgb(20, 33, 53); /* Fondo azul oscuro en el footer */
+    --footer-text: #ffffff; /* Texto blanco en el footer */
+    --footer-link-hover: #ffc44d; /* Color de hover en los enlaces del footer */
+    --footer-gradient: linear-gradient(135deg, #ee4d4d, #ffc44d);
+    
+    /* Transición suave */
+    --transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+
+
+
+
+
+/* Base styles and reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 100%; /* Tamaño base */
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Media Queries optimizadas */
+@media (max-width: 1200px) {
+    html, body {
+        font-size: 100%; /* Mantener tamaño estándar */
+    }
+}
+
+@media (max-width: 992px) {
+    html, body {
+        font-size: 98%; /* Mantener tamaño legible en pantallas medianas */
+    }
+    
+    p {
+        font-size: 1.05rem; /* Aumenta el tamaño de texto */
+        margin-bottom: 1.4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    html, body {
+        font-size: 96%; /* Ajuste ligero para tablets */
+    }
+    
+    p {
+        font-size: 1.02rem; /* Mantener texto legible */
+        margin-bottom: 1.3rem;
+    }
+}
+
+@media (max-width: 576px) {
+    html, body {
+        font-size: 94%; /* Ajuste moderado */
+    }
+    
+    p {
+        font-size: 1rem; /* Tamaño base para móviles */
+        margin-bottom: 1.2rem;
+    }
+}
+
+@media (max-width: 400px) {
+    html, body {
+        font-size: 92%; /* Ajuste mínimo */
+    }
+    
+    p {
+        font-size: 0.98rem; /* Texto más grande en móviles pequeños */
+        margin-bottom: 1.1rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* Base gradient suave - Pestaña de Órdenes */
+body {
+    background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
+
+    /* Patrón de ondas y efectos usando múltiples gradientes */
+    background-image: 
+        radial-gradient(circle at 90% 10%, 
+            rgba(33, 150, 243, 0.1) 0%,  
+            transparent 70%),
+        radial-gradient(circle at 10% 50%, 
+            rgba(238, 77, 77, 0.1) 0%,  
+            transparent 60%),
+        radial-gradient(circle at 50% 90%, 
+            rgba(255, 152, 0, 0.1) 0%,  
+            transparent 65%),
+        linear-gradient(135deg, 
+            rgba(20, 33, 53, 0.05) 25%,  
+            transparent 25%,
+            transparent 50%, 
+            rgba(20, 33, 53, 0.05) 50%, 
+            rgba(20, 33, 53, 0.05) 75%,
+            transparent 75%,
+            transparent),
+        radial-gradient(circle at 50% 0%, 
+            rgba(255, 255, 255, 0.6) 0%,  
+            transparent 60%),
+        linear-gradient(135deg, 
+            #bbdefb 0%, 
+            #ffffff 50%,
+            #bbdefb 100%);
+    
+    background-size: 
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        40px 40px, 
+        100% 100%,
+        100% 100%;
+    
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    animation: backgroundShift 30s ease-in-out infinite alternate; 
+}
+
+@keyframes backgroundShift {
+    0% {
+        background-position: 
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%;
+    }
+    100% {
+        background-position: 
+            100% 100%,
+            -20% 100%,
+            100% -20%,
+            40px 40px,
+            0% 0%,
+            0% 0%;
+    }
+}
+
+/* Base gradient suave - Modo nocturno para la pestaña de Órdenes */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #1c1f26 0%, #2b2f38 100%);
+        
+        /* Patrón de ondas y efectos adaptado para modo nocturno */
+        background-image: 
+            radial-gradient(circle at 90% 10%, 
+                rgba(33, 150, 243, 0.2) 0%,  
+                transparent 70%),
+            radial-gradient(circle at 10% 50%, 
+                rgba(238, 77, 77, 0.15) 0%,  
+                transparent 60%),
+            radial-gradient(circle at 50% 90%, 
+                rgba(255, 152, 0, 0.1) 0%,  
+                transparent 65%),
+            linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.03) 25%,  
+                transparent 25%,
+                transparent 50%, 
+                rgba(255, 255, 255, 0.03) 50%, 
+                rgba(255, 255, 255, 0.03) 75%,
+                transparent 75%,
+                transparent),
+            radial-gradient(circle at 50% 0%, 
+                rgba(255, 255, 255, 0.1) 0%,  
+                transparent 60%),
+            linear-gradient(135deg, 
+                #37474f 0%, 
+                #263238 50%,
+                #37474f 100%);
+        
+        background-size: 
+            100% 100%,
+            100% 100%,
+            100% 100%,
+            40px 40px, 
+            100% 100%,
+            100% 100%;
+        
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        animation: backgroundShift 30s ease-in-out infinite alternate; 
+    }
+}
+
+
+    
+
+/* Modern Container Styling */
+#content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Logo Container */
+.logo-container {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+}
+
+.bbs-logo {
+    max-width: 200px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.bbs-logo:hover {
+    transform: scale(1.05);
+}
+
+/* Headings */
+h1, h2 {
+    color: #142135;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #1b2b47, #003b73, #2c4f77); /* Gradiente en azul oscuro premium con tres tonos */
+    background-clip: text; /* Para navegadores que soporten esta propiedad */
+    -webkit-background-clip: text; /* Para navegadores basados en WebKit */
+    -webkit-text-fill-color: transparent; /* Para Safari y Chrome */
+    margin-bottom: 2rem;
+}
+
+
+
+h2 {
+    font-size: 1.8rem;
+    color: #0056a3;
+}
+
+/* Form Styling */
+#website-form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px 16px;
+    margin: 8px 0 20px;
+    border: 2px solid #f0f4f8;
+    border-radius: 8px;
+    background: #ffffff;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #0056a3;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 86, 163, 0.1);
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #142135;
+    font-weight: 500;
+    margin-top: 0; /* Asegúrate de que no haya margen superior aquí */
+}
+
+/* Select Styling */
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230056a3' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Flecha personalizada en SVG */
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 36px; 
+}
+
+
+/* Para los radio buttons */
+.radio-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 2px 0;
+}
+
+.radio-item input[type="radio"] {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.radio-item label {
+    margin: 0; /* Elimina cualquier margen del label */
+    line-height: 1; /* Ajusta la altura de línea */
+}
+
+/* Para el checkbox */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0;
+    gap: 0.5rem;
+}
+
+.checkbox-container input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    margin: 0; /* Asegura que no haya márgenes adicionales */
+}
+
+.checkbox-container label {
+    margin: 0; /* Elimina cualquier margen del label */
+    line-height: 1; /* Ajusta la altura de línea */
+}
+
+
+
+/* Submit Button */
+input[type="submit"] {
+    background: linear-gradient(135deg, #ee4d4d 0%, #ff6b6b 100%);
+    color: white;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    width: 100%;
+    transition: all 0.3s ease;
+    margin-top: 1.5rem;
+}
+
+input[type="submit"]:hover {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee4d4d 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(238, 77, 77, 0.2);
+}
+
+/* Note Section */
+.note {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+    font-size: 0.95rem;
+    border-left: 4px solid #ffc44d;
+}
+
+.note a {
+    color: #ee4d4d;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.note a:hover {
+    color: #ff6b6b;
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #content {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    #website-form {
+        padding: 1rem;
+    }
+
+    input[type="submit"] {
+        padding: 14px 28px;
+    }
+}
+
+/* Loading State */
+input[type="submit"].loading {
+    background: #cccccc;
+    cursor: not-allowed;
+    position: relative;
+}
+
+input[type="submit"].loading::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #ffffff;
+    border-top: 3px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#content {
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Error States */
+input:invalid,
+select:invalid,
+textarea:invalid {
+    border-color: #ee4d4d;
+}
+
+.error-message {
+    color: #ee4d4d;
+    font-size: 0.9rem;
+    margin-top: -15px;
+    margin-bottom: 15px;
+}
+
+
+/* Modo nocturno para el contenedor moderno */
+@media (prefers-color-scheme: dark) {
+    #content {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 2rem;
+        color: #ffffff;
+        background: linear-gradient(135deg, rgba(40, 55, 75, 0.65), rgba(20, 33, 53, 0.75));
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra más clara */
+    }
+
+    /* Logo Container */
+    .logo-container {
+        text-align: center;
+        margin-bottom: 2rem;
+        padding: 1rem;
+    }
+
+    .bbs-logo {
+        max-width: 200px;
+        height: auto;
+        transition: transform 0.3s ease;
+    }
+
+    .bbs-logo:hover {
+        transform: scale(1.05);
+    }
+
+    /* Headings */
+    h1, h2 {
+        color: #ffffff;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: linear-gradient(90deg, #3a5d8a, #76a1cf, #b3d1f3); /* Gradiente en azul premium con tres tonos */
+        background-clip: text; /* Para navegadores que soporten esta propiedad */
+        -webkit-background-clip: text; /* Para navegadores basados en WebKit */
+        -webkit-text-fill-color: transparent; /* Para Safari y Chrome */
+        margin-bottom: 2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        color: #0086fc;;
+    }
+
+    /* Form Styling */
+    #website-form {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: #ffffff; /* Mantiene el fondo blanco en el formulario */
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+   /* Input Fields */
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 12px 16px;
+    margin: 8px 0 20px;
+    border: 2px solid #444; /* Borde oscuro */
+    border-radius: 8px;
+    background: #2b2f38; /* Fondo oscuro para inputs */
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    color: #e0e0e0; /* Texto claro */
+}
+
+/* Select Styling for Night Mode */
+select {
+    appearance: none;
+    background: #2b2f38; /* Fondo oscuro para inputs */
+    border: 2px solid #444; /* Borde oscuro */
+    color: #e0e0e0; /* Texto claro */
+    padding: 12px 16px; /* Padding para el contenido */
+    border-radius: 8px; /* Bordes redondeados */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23e0e0e0' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Flecha personalizada en SVG */
+    background-repeat: no-repeat;
+    background-position: right 16px center; /* Posición de la flecha */
+    padding-right: 36px; /* Espacio para la flecha */
+    transition: all 0.3s ease; /* Transición suave */
+}
+
+    /* Labels */
+    label {
+        display: block;
+        margin-bottom: 8px;
+        color: #ffffff; /* Texto claro */
+        font-weight: 500;
+        margin-top: 0; /* Asegúrate de que no haya margen superior aquí */
+    }
+
+    /* Submit Button */
+    input[type="submit"] {
+        background: linear-gradient(135deg, #ee4d4d 0%, #ff6b6b 100%);
+        color: white;
+        padding: 16px 32px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1.1rem;
+        font-weight: 600;
+        width: 100%;
+        transition: all 0.3s ease;
+        margin-top: 1.5rem;
+    }
+
+    input[type="submit"]:hover {
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee4d4d 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(238, 77, 77, 0.2);
+    }
+
+    /* Error States */
+    input:invalid,
+    select:invalid,
+    textarea:invalid {
+        border-color: #ee4d4d;
+    }
+
+    .error-message {
+        color: #ee4d4d;
+        font-size: 0.9rem;
+        margin-top: -15px;
+        margin-bottom: 15px;
+    }
+
+      /* Note Sections */
+  .note {
+        background: rgba(255, 255, 255, 0.1); /* Fondo claro con transparencia */
+        border-left: 4px solid #ffc44d; /* Borde claro */
+        color: #ffffff; /* Color de enlaces en notas */
+  }
+  
+  .note small {
+    display: block;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  
+  .note ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+  
+  .note li {
+    margin-bottom: 0.5rem;
+  }
+}
+
+
+
+
+
+.promo-container {
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.promo-container[data-theme="light"] {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.promo-container[data-theme="light"] h3 {
+    color: #333;
+}
+
+.promo-container[data-theme="light"] .price {
+    color: #d9534f;
+}
+
+.promo-container[data-theme="light"] .note {
+    color: #777;
+}
+
+.promo-container[data-theme="dark"] {
+    background-color: #333;
+    color: #f8f9fa;
+}
+
+.promo-container[data-theme="dark"] h3 {
+    color: #f8f9fa;
+}
+
+.promo-container[data-theme="dark"] .price {
+    color: #ff6666;
+}
+
+.promo-container[data-theme="dark"] .note {
+    color: #ccc;
+}
+
+.promo-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.promo-container p {
+    font-size: 1em; /* Reduced size for a more concise look */
+}
+
+.promo-container .note {
+    font-size: 0.85em; /* Adjusted for consistency */
+    margin-top: 10px; /* Added margin for spacing */
+}
+
+
+
+
+
+
+/* Footer */
+#footer-container {
+    background: rgb(20, 33, 53); /* Color de fondo específico */
+    color: var(--footer-text);
+    padding: 4rem 0 2rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.2); /* Añadir sombra sutil en la parte superior */
+    z-index: 1; /* Asegúrate de que esté por encima de otros elementos */
+}
+
+#footer-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--footer-gradient); /* Color de fondo temporal (cambiar a var(--header-gradient) una vez que verifiques) */
+    z-index: 2; /* Asegurarse de que la barra esté por encima del contenedor del footer */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+}
+
+.footer-section h4 {
+    font-size: 1.5rem; /* Aumentar el tamaño del título para mejor legibilidad */
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+    position: relative;
+    padding-bottom: 0.5rem;
+    text-align: left; /* Alineación a la izquierda */
+}
+
+.footer-section h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background: var(--primary-color);
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-section a {
+    color: var(--footer-text);
+    text-decoration: none; /* Eliminar subrayado */
+    transition: all 0.3s ease;
+    display: inline-block;
+    word-wrap: break-word; /* Para emails largos */
+    overflow-wrap: break-word; /* Ajusta el texto largo */
+    text-align: left; /* Alineación a la izquierda */
+    padding: 0.25rem 0; /* Espaciado vertical adicional para enlaces */
+}
+
+.footer-section a:hover {
+    color: var(--secondary-color);
+    transform: translateX(5px);
+}
+
+.social-media {
+    display: flex;
+    justify-content: center; /* Centrado de iconos */
+    margin-top: 1.5rem;
+}
+
+.social-media a {
+    color: var(--footer-text);
+    font-size: 1.5rem; /* Aumentado para mejor visibilidad */
+    margin: 0 0.8rem; /* Espaciado horizontal */
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; /* Aumentado para un mejor tamaño */
+    height: 50px; /* Aumentado para un mejor tamaño */
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Añadido un pequeño efecto de sombra */
+    text-decoration: none; /* Eliminar subrayado */
+}
+
+.social-media a:hover {
+    color: var(--footer-text);
+    background: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* Ajustes para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        padding: 0 2rem; /* Mantener padding adecuado sin tocar el borde */
+    }
+    
+    .footer-section {
+        margin-bottom: 2.5rem;
+        text-align: left; /* Alinear a la izquierda en móviles */
+    }
+
+    .footer-section h4::after {
+        left: 0; /* Asegurarse de que la línea roja esté alineada con el texto */
+    }
+
+    /* Ajustes específicos para texto largo como el email */
+    .footer-section a {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        font-size: 1rem; /* Mantener tamaño adecuado para móviles */
+        text-align: left; /* Alinear texto a la izquierda en móviles */
+    }
+
+    .footer-bottom {
+        padding-top: 1rem;
+        font-size: 0.9rem; /* Mantener legibilidad */
+    }
+}
+
+
+
+
+
+
+
+
+#sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    background-color: var(--sidebar-bg);
+    backdrop-filter: blur(20px);
+    color: var(--sidebar-text);
+    position: fixed;
+    left: calc(-1 * var(--sidebar-width));
+    top: 0;
+    padding: 2rem;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    overflow-y: auto;
+    border-right: 1px solid var(--sidebar-border);
+    transition: left 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+    /* Asegúrate de que la opacidad inicial sea 0 */
+}
+
+
+#sidebar.active {
+    left: 0;
+    opacity: 1;
+    animation: slideIn 0.5s forwards, fadeIn 0.5s forwards, glow 3s infinite; /* Agregar animación */
+}
+
+#menu-toggle {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    background: var(--toggle-bg);
+    border: none;
+    color: var(--toggle-color);
+    padding: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, left 0.5s ease;
+}
+
+#menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+#menu-toggle.active {
+    left: calc(var(--sidebar-width) - 1.75rem);
+    background: var(--sidebar-hover);
+}
+
+#menu-toggle i {
+    font-size: 1.5rem;
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+#menu-toggle.active i {
+    transform: rotate(360deg);
+}
+
+#sidebar .sidebar-header {
+    text-align: center;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--sidebar-border); /* Borde más sutil */
+    margin-bottom: 2rem;
+}
+
+#sidebar .sidebar-header h4 {
+    color: #fff;
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#sidebar ul.components {
+    padding: 0;
+}
+
+#sidebar ul li {
+    margin-bottom: 0.5rem;
+}
+
+#sidebar ul li a {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    color: var(--sidebar-text);
+    text-decoration: none;
+    transition: var(--transition);
+    border-radius: 0.375rem;
+    position: relative;
+    overflow: hidden;
+}
+
+#sidebar ul li a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background-color: var(--sidebar-hover);
+    opacity: 0.2;
+    transition: width 0.3s ease;
+}
+
+#sidebar ul li a:hover::before {
+    width: 100%;
+}
+
+#sidebar ul li a:hover {
+    color: #fff;
+    transform: translateX(5px);
+}
+
+#sidebar ul li a i {
+    margin-right: 0.75rem;
+    font-size: 1.25rem;
+    transition: var(--transition);
+}
+
+#sidebar ul li a:hover i {
+    color: var(--sidebar-hover);
+    transform: scale(1.1);
+}
+
+/* Scrollbar styling */
+#sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+#sidebar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+}
+
+#sidebar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Add a subtle gradient overlay */
+#sidebar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(30, 64, 175, 0.1) 100%);
+    pointer-events: none;
+}
+
+/* Add a subtle pulsating glow effect to the sidebar */
+@keyframes glow {
+    0% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.3); }
+    50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+    100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.3); }
+}
+
+/* Animate the glow effect */
+#sidebar.active {
+    animation: slideIn 0.5s forwards, fadeIn 0.5s forwards, glow 3s infinite;
+}
+
+
+
+
+
+
+
+
+
+/* Anula animaciones en pantallas pequeñas */
+@media (max-width: 768px) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Anula animaciones si el usuario prefiere reducir movimiento */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+
+/* Desactiva las animaciones para todos los elementos */
+.low-performance * {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* Mantiene las animaciones de los textos intactas */
+.low-performance p,
+.low-performance h1, h2, h3, h4,
+.low-performance a {
+    animation: initial !important;
+    transition: initial !important;
+}
