@@ -59,180 +59,281 @@ src="https://www.facebook.com/tr?id=1300694337746729&ev=PageView&noscript=1"
         </div>
         
        <h1>Get Your Custom Solution Today!</h1>
-
-    <section id="order">
-        <p>At BBS, we don’t just create databases or websites; we create custom solutions tailored specifically to solve your unique business challenges. Whether you need a database to streamline your operations or a website to boost your online presence, we’ve got you covered. This isn’t just a purchase; it’s an investment in your success.</p>
-
-        <!-- Selección de tipo de servicio -->
-        <label for="service-type">What type of service do you need?</label>
-        <select id="service-type" name="service-type" required aria-label="Service Type" onchange="toggleServiceOptions()">
-            <option value="" disabled selected>Select your option</option>
-            <option value="database">Custom Database</option>
-            <option value="web-development">Web Development</option>
-        </select>
-
-        <!-- Formulario para Bases de Datos -->
-        <form id="database-form" class="form-section" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST">
-            <input type="hidden" name="_honey" style="display:none">
-            <input type="hidden" name="_token" value="your_token_here">
-            <input type="hidden" name="_next" value="https://www.paypal.me/AaronObando505">
-
-            <label for="first-name">First Name</label>
-            <input type="text" id="first-name" name="first-name" required aria-label="First Name" placeholder="Enter your first name">
-
-            <label for="last-name">Last Name</label>
-            <input type="text" id="last-name" name="last-name" required aria-label="Last Name" placeholder="Enter your last name">
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required aria-label="Email" placeholder="Enter your email address">
-
-            <label for="database-type">Which type of database do you need?</label>
-            <select id="database-type" name="database-type" required aria-label="Database Type">
-                <option value="" disabled selected>Select your option</option>
-                <option value="ecommerce">E-commerce Database</option>
-                <option value="healthcare">Healthcare Database</option>
-                <option value="custom">Custom Database for My Business</option>
-            </select>
-
-            <label for="plan">Which plan best suits your needs?</label>
-            <select id="plan" name="plan" required aria-label="Plan Selection">
-                <option value="" disabled selected>Select your option</option>
-                <option value="basic">Basic Plan - $199 (5 to 8 tables)</option>
-                <option value="standard">Standard Plan - $599 (8 to 13 tables)</option>
-                <option value="business">Business Plan - $999 (10+ tables)</option>
-            </select>
-
-            <label for="problems">Tell us about your current problems related to data:</label>
-            <textarea id="problems" name="problems" rows="4" placeholder="Describe your data issues here..." aria-label="Current Data Problems"></textarea>
-
-            <label for="custom-details">Let us know if you need any specific details in your database (e.g., tables, columns, etc.)</label>
-            <textarea id="custom-details" name="custom-details" rows="4" placeholder="Optional" aria-label="Custom Database Details"></textarea>
-
-            <label><strong>Does your database require sensitive data?</strong></label>
-            <div class="radio-options">
-                <div class="radio-item">
-                    <input type="radio" id="sensitive-yes" name="sensitive-data" value="yes" required onclick="toggleEncryptionOptions(true)">
-                    <label for="sensitive-yes">Yes, I have the required legal permissions</label>
+       <!DOCTYPE html>
+       <html lang="en">
+       <head>
+           <meta charset="UTF-8">
+           <meta name="viewport" content="width=device-width, initial-scale=1.0">
+           <title>Custom Solutions Order Form</title>
+           <style>
+               .hidden {
+                   display: none;
+               }
+               
+               .form-section {
+                   margin: 20px 0;
+               }
+               
+               .radio-options {
+                   margin: 10px 0;
+               }
+               
+               .radio-item {
+                   margin: 5px 0;
+               }
+               
+               label {
+                   display: block;
+                   margin-top: 15px;
+               }
+               
+               input[type="text"],
+               input[type="email"],
+               input[type="number"],
+               select,
+               textarea {
+                   width: 100%;
+                   padding: 8px;
+                   margin: 5px 0;
+                   border: 1px solid #ddd;
+                   border-radius: 4px;
+               }
+               
+               button {
+                   background-color: #ee4d4d;
+                   color: white;
+                   padding: 10px 20px;
+                   border: none;
+                   border-radius: 4px;
+                   cursor: pointer;
+                   margin-top: 20px;
+               }
+               
+               .note {
+                   background-color: #f9f9f9;
+                   padding: 15px;
+                   border-radius: 4px;
+                   margin: 20px 0;
+               }
+           </style>
+       </head>
+       <body>
+           <h1>Get Your Custom Solution Today!</h1>
+       
+           <section id="order">
+               <p>At BBS, we create custom solutions tailored specifically to solve your unique business challenges. Whether you need a database to streamline your operations or a website to boost your online presence, we've got you covered.</p>
+       
+               <div class="form-section">
+                   <label for="service-type">What type of service do you need?</label>
+                   <select id="service-type" name="service-type" required>
+                       <option value="">Select your option</option>
+                       <option value="database">Custom Database</option>
+                       <option value="web-development">Web Development</option>
+                   </select>
+               </div>
+       
+               <!-- Database Form -->
+               <form id="database-form" class="form-section hidden" onsubmit="return validateDatabaseForm(event)">
+                   <input type="hidden" name="_next" value="https://www.paypal.me/AaronObando505">
+       
+                   <div class="personal-info">
+                       <label for="db-first-name">First Name</label>
+                       <input type="text" id="db-first-name" name="first-name" required>
+       
+                       <label for="db-last-name">Last Name</label>
+                       <input type="text" id="db-last-name" name="last-name" required>
+       
+                       <label for="db-email">Email</label>
+                       <input type="email" id="db-email" name="email" required>
+                   </div>
+       
+                   <div class="service-details">
+                       <label for="database-type">Database Type</label>
+                       <select id="database-type" name="database-type" required>
+                           <option value="">Select your option</option>
+                           <option value="ecommerce">E-commerce Database</option>
+                           <option value="healthcare">Healthcare Database</option>
+                           <option value="custom">Custom Database</option>
+                       </select>
+       
+                       <label for="db-plan">Plan Selection</label>
+                       <select id="db-plan" name="plan" required>
+                           <option value="">Select your option</option>
+                           <option value="basic">Basic Plan - $199 (5-8 tables)</option>
+                           <option value="standard">Standard Plan - $599 (8-13 tables)</option>
+                           <option value="business">Business Plan - $999 (10+ tables)</option>
+                       </select>
+       
+                       <label for="problems">Current Data Problems</label>
+                       <textarea id="problems" name="problems" rows="4" required></textarea>
+                   </div>
+       
+                   <div class="security-options">
+                       <label>Sensitive Data Requirements</label>
+                       <div class="radio-options">
+                           <div class="radio-item">
+                               <input type="radio" id="sensitive-yes" name="sensitive-data" value="yes" required>
+                               <label for="sensitive-yes">Yes, with legal permissions</label>
+                           </div>
+                           <div class="radio-item">
+                               <input type="radio" id="sensitive-no" name="sensitive-data" value="no">
+                               <label for="sensitive-no">No sensitive data needed</label>
+                           </div>
+                       </div>
+       
+                       <div id="encryption-options" class="hidden">
+                           <label>Encryption Preferences</label>
+                           <div class="radio-options">
+                               <div class="radio-item">
+                                   <input type="radio" id="encrypt-yes" name="encryption" value="yes">
+                                   <label for="encrypt-yes">Yes, encrypt sensitive data</label>
+                               </div>
+                               <div class="radio-item">
+                                   <input type="radio" id="encrypt-no" name="encryption" value="no">
+                                   <label for="encrypt-no">No encryption needed</label>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+       
+                   <button type="submit">Submit & Proceed to Payment</button>
+               </form>
+       
+               <!-- Web Development Form -->
+               <form id="web-development-form" class="form-section hidden" onsubmit="return validateWebForm(event)">
+                   <input type="hidden" name="_next" value="https://www.paypal.me/AaronObando505">
+       
+                   <div class="personal-info">
+                       <label for="web-first-name">First Name</label>
+                       <input type="text" id="web-first-name" name="first-name" required>
+       
+                       <label for="web-last-name">Last Name</label>
+                       <input type="text" id="web-last-name" name="last-name" required>
+       
+                       <label for="web-email">Email</label>
+                       <input type="email" id="web-email" name="email" required>
+                   </div>
+       
+                   <div class="service-details">
+                       <label for="website-type">Website Type</label>
+                       <select id="website-type" name="website-type" required>
+                           <option value="">Select your option</option>
+                           <option value="ecommerce">E-commerce Website</option>
+                           <option value="portfolio">Portfolio Website</option>
+                           <option value="blog">Blog Website</option>
+                           <option value="custom">Custom Website</option>
+                       </select>
+       
+                       <label for="pages">Number of Pages</label>
+                       <input type="number" id="pages" name="pages" min="1" required>
+       
+                       <label for="web-plan">Plan Selection</label>
+                       <select id="web-plan" name="web-plan" required>
+                           <option value="">Select your option</option>
+                           <option value="basic">Basic Plan - $250 (Up to 5 pages)</option>
+                           <option value="standard">Standard Plan - $699 (Up to 10 pages)</option>
+                           <option value="premium">Premium Plan - $1499 (Unlimited pages)</option>
+                       </select>
+       
+                       <label for="web-details">Website Requirements</label>
+                       <textarea id="web-details" name="web-details" rows="4" required></textarea>
+                   </div>
+       
+                   <!-- Checkboxes -->
+                   <div class="checkbox-container">
+                    <input type="checkbox" id="terms-checkbox" name="terms-checkbox" required>
+                    <label for="terms-checkbox">I have read and accept the <a href="terms.html" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a>.</label>
                 </div>
-                <div class="radio-item">
-                    <input type="radio" id="sensitive-no" name="sensitive-data" value="no" required onclick="toggleEncryptionOptions(false)">
-                    <label for="sensitive-no">No, I don't need them at the moment</label>
-                </div>
-            </div>
-
-            <label><strong>Do you want sensitive data columns to be encrypted?</strong></label>
-            <div class="radio-options">
-                <div class="radio-item">
-                    <input type="radio" id="encrypt-yes" name="encrypt-sensitive-data" value="yes" required>
-                    <label for="encrypt-yes">Yes, I want them encrypted</label>
-                </div>
-                <div class="radio-item">
-                    <input type="radio" id="encrypt-no-own" name="encrypt-sensitive-data" value="no-own" required>
-                    <label for="encrypt-no-own">No, I want to do it myself</label>
-                </div>
-                <div class="radio-item">
-                    <input type="radio" id="encrypt-no" name="encrypt-sensitive-data" value="no" required>
-                    <label for="encrypt-no">No, I don't want to add sensitive data</label>
-                </div>
-            </div>
-
-            <button type="submit">Submit Database Request</button>
-        </form>
-
-        <!-- Formulario para Desarrollo Web -->
-        <form id="web-development-form" class="form-section hidden" action="https://formsubmit.co/contact.aaronobando@gmail.com" method="POST">
-            <input type="hidden" name="_honey" style="display:none">
-            <input type="hidden" name="_token" value="your_token_here">
-            <input type="hidden" name="_next" value="https://www.paypal.me/AaronObando505">
-
-            <label for="first-name">First Name</label>
-            <input type="text" id="first-name-web" name="first-name" required aria-label="First Name" placeholder="Enter your first name">
-
-            <label for="last-name">Last Name</label>
-            <input type="text" id="last-name-web" name="last-name" required aria-label="Last Name" placeholder="Enter your last name">
-
-            <label for="email">Email</label>
-            <input type="email" id="email-web" name="email" required aria-label="Email" placeholder="Enter your email address">
-
-            <label for="website-type">What type of website do you need?</label>
-            <select id="website-type" name="website-type" required aria-label="Website Type">
-                <option value="" disabled selected>Select your option</option>
-                <option value="ecommerce">E-commerce Website</option>
-                <option value="portfolio">Portfolio Website</option>
-                <option value="blog">Blog Website</option>
-                <option value="custom">Custom Website</option>
-            </select>
-
-            <label for="pages">How many pages does your website need?</label>
-            <input type="number" id="pages" name="pages" min="1" required aria-label="Number of Pages" placeholder="Enter the number of pages">
-
-            <label for="web-plan">Which plan best suits your needs?</label>
-            <select id="web-plan" name="web-plan" required aria-label="Web Plan Selection">
-                <option value="" disabled selected>Select your option</option>
-                <option value="basic">Basic Plan - $250 (Up to 5 pages)</option>
-                <option value="standard">Standard Plan - $699 (Up to 10 pages)</option>
-                <option value="premium">Premium Plan - $1499 (Unlimited pages + advanced features)</option>
-            </select>
-
-            <label for="web-details">Tell us about your website requirements:</label>
-            <textarea id="web-details" name="web-details" rows="4" placeholder="Describe your website needs here..." aria-label="Website Requirements"></textarea>
-
-            <button type="submit">Submit Web Development Request</button>
-        </form>
-    </section>
-
-    <script>
-        function toggleServiceOptions() {
-            const serviceType = document.getElementById("service-type").value;
-            const databaseForm = document.getElementById("database-form");
-            const webForm = document.getElementById("web-development-form");
-
-            if (serviceType === "database") {
-                databaseForm.classList.remove("hidden");
-                webForm.classList.add("hidden");
-            } else if (serviceType === "web-development") {
-                databaseForm.classList.add("hidden");
-                webForm.classList.remove("hidden");
-            } else {
-                databaseForm.classList.add("hidden");
-                webForm.classList.add("hidden");
-            }
-        }
-
-        function toggleEncryptionOptions(show) {
-            const encryptionOptions = document.querySelectorAll('input[name="encrypt-sensitive-data"]');
-            encryptionOptions.forEach(option => {
-                option.disabled = !show;
-                if (!show) option.checked = false;
-            });
-        }
-    </script>
-                
-                        <p class="note" style="text-align: left;">
-                            To proceed with your order, please complete your payment via PayPal:
-                            <a href="https://www.paypal.me/AaronObando505" target="_blank" style="color: #ee4d4d; font-weight: bold;">PayPal Me</a><br><br>
-                        
-                            Payments will be securely processed through the PayPal account of our founder, Aaron Obando. PayPal is a trusted platform that ensures the safety of your transaction, offering an easy and reliable way to manage payments and request refunds if necessary. This is a one-time payment for our service, with no recurring charges. If you are not completely satisfied or decide you no longer need the database, we will issue a full refund, guaranteeing a risk-free investment.<br><br>
-                        
-                            <strong>Delivery Information:</strong> Upon purchasing, our team will ensure the timely delivery of your custom database within a maximum period of 7 business days. The database will be sent in a ZIP file via a unique shared link through Google Drive or OneDrive, according to your preference. Along with your database, you will receive a practical guide for encrypting databases in PDF format. If you request the database to be encrypted, an additional format containing the required passwords for the encrypted columns will also be provided.<br><br>
-                        
-                            <strong>Modification Guarantee:</strong> We offer a 7-day guarantee period during which you can request up to 3 modifications at no extra cost. Modifications requested outside this period will incur additional charges.<br><br>
-                        
-                            Your satisfaction is our top priority, and we strive to exceed your expectations in every possible way. For more details, refer to our <a href="https://boostingbusinessstrategies.github.io/BBS.Official/terms.html" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a>.<br><br>
-                        
-                            <strong>Coming Soon:</strong> In the coming months, we will be adding more payment methods to offer you even more flexibility in managing your purchases.
-                        </p>
-                        
-                
-                        <!-- Checkboxes -->
-                        <div class="checkbox-container">
-                            <input type="checkbox" id="terms-checkbox" name="terms-checkbox" required>
-                            <label for="terms-checkbox">I have read and accept the <a href="terms.html" target="_blank" style="color: #ee4d4d; font-weight: bold;">Terms and Conditions</a>.</label>
-                        </div>
-                
-                        <input type="submit" value="Submit & Proceed to PayPal">
-                </form>
-            </section>
+        
+                <input type="submit" value="Submit & Proceed to PayPal">
+            </form>
+           </section>
+       
+           <script>
+               // Form visibility toggle
+               document.getElementById('service-type').addEventListener('change', function() {
+                   const dbForm = document.getElementById('database-form');
+                   const webForm = document.getElementById('web-development-form');
+                   
+                   if (this.value === 'database') {
+                       dbForm.classList.remove('hidden');
+                       webForm.classList.add('hidden');
+                   } else if (this.value === 'web-development') {
+                       webForm.classList.remove('hidden');
+                       dbForm.classList.add('hidden');
+                   } else {
+                       dbForm.classList.add('hidden');
+                       webForm.classList.add('hidden');
+                   }
+               });
+       
+               // Sensitive data handling
+               document.querySelector('input[name="sensitive-data"]').addEventListener('change', function() {
+                   const encryptionOptions = document.getElementById('encryption-options');
+                   if (this.value === 'yes') {
+                       encryptionOptions.classList.remove('hidden');
+                   } else {
+                       encryptionOptions.classList.add('hidden');
+                   }
+               });
+       
+               // Form validation
+               function validateDatabaseForm(event) {
+                   event.preventDefault();
+                   const form = event.target;
+                   
+                   if (!form.checkValidity()) {
+                       alert('Please fill in all required fields');
+                       return false;
+                   }
+       
+                   // Validate sensitive data requirements
+                   if (form.querySelector('input[name="sensitive-data"]:checked').value === 'yes' &&
+                       !form.querySelector('input[name="encryption"]:checked')) {
+                       alert('Please select an encryption preference for sensitive data');
+                       return false;
+                   }
+       
+                   redirectToPayment(form);
+                   return false;
+               }
+       
+               function validateWebForm(event) {
+                   event.preventDefault();
+                   const form = event.target;
+                   
+                   if (!form.checkValidity()) {
+                       alert('Please fill in all required fields');
+                       return false;
+                   }
+       
+                   // Validate pages against selected plan
+                   const pages = parseInt(form.querySelector('#pages').value);
+                   const plan = form.querySelector('#web-plan').value;
+                   
+                   if (plan === 'basic' && pages > 5) {
+                       alert('Basic plan only supports up to 5 pages. Please upgrade your plan or reduce the number of pages.');
+                       return false;
+                   } else if (plan === 'standard' && pages > 10) {
+                       alert('Standard plan only supports up to 10 pages. Please upgrade to Premium for unlimited pages.');
+                       return false;
+                   }
+       
+                   redirectToPayment(form);
+                   return false;
+               }
+       
+               function redirectToPayment(form) {
+                   // Store form data in session storage before redirect
+                   const formData = new FormData(form);
+                   const data = {};
+                   formData.forEach((value, key) => data[key] = value);
+                   sessionStorage.setItem('orderData', JSON.stringify(data));
+                   
+                   // Redirect to PayPal
+                   window.location.href = form.querySelector('input[name="_next"]').value;
+               }
+           </script>
         </div>
     </div>
 
