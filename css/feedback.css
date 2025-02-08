@@ -614,8 +614,16 @@ body {
     }
 
     .feedback-display-container {
-        background: rgba(255, 255, 255, 0.1);
-        color: #ffffff;
+        background: rgba(20, 33, 53, 0.9); /* Fondo oscuro para el contenedor */
+        color: #ffffff; /* Texto blanco */
+    }
+
+    .feedback-list li {
+        background: rgba(0, 0, 0, 0.2); /* Fondo oscuro para los comentarios */
+        color: #ffffff; /* Texto blanco en los comentarios */
+        padding: 10px;
+        border-radius: 8px;
+        margin-bottom: 10px;
     }
 
     .show-more-btn {
