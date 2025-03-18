@@ -191,140 +191,48 @@ function resetFeedbackList() {
     }
 }
 
-function initializeDefaultReviews() {
-    // Obtener las reseñas existentes del localStorage
-    let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
-    
-    // Array de reseñas predeterminadas
-    const defaultReviews = [
-        {
-            id: "default-1",
-            firstName: "Johnathan",
-            lastName: "S. Mitchell",
-            serviceType: "bbs_database",
-            rating: 5,
-            comment: `Before we found BBS, our e-commerce site was a mess. Inventory was all over the place, and our customers weren't happy. Our MySQL database just couldn't keep up. But then we switched to BBS's solution, integrated it with our PHP backend, and wow, what a difference!
-
-            The transition was super fast and incredibly easy. From day one, we saw amazing results. Our inventory is now perfectly managed, and our operational costs have dropped significantly. Plus, the system is so user-friendly that our team adapted in no time.
-            
-            Thanks to BBS, our revenue has shot up by 30% in just a few months. The personalized customer experience we can now offer has boosted retention and satisfaction. Every e-commerce business should have a database solution like this. It's been a game-changer for us!`
-        },
-        {
-            id: "default-2",
-            firstName: "Elizabeth",
-            lastName: "J. Roberts",
-            serviceType: "bbs_database",
-            rating: 5,
-            comment: `Before we implemented BBS's database solution, our clinic was really struggling. Long wait times and messy patient records were a daily headache. I wanted a MySQL database that could be transitioned to Oracle, and BBS helped us create a database tailored specifically to our clinic's needs. Their communication was excellent—they truly listened to our requirements and were incredibly supportive throughout the process.
-
-            With seamless help from our backend team, the transition was amazingly smooth. Delivery was even faster than expected, and the results were noticeable right from the start.
-            
-            Now, our medical teams have instant access to organized, real-time information, which has significantly boosted our efficiency. Wait times are down, patient satisfaction is up, and our ratings reflect this transformation!
-            
-            Data security is also a top priority for us, and BBS has been invaluable in ensuring everything is safeguarded. This investment has genuinely transformed our clinic, creating a better environment for both our patients and staff 😊`
-        }
-    ];
-
-    // Verificar si las reseñas default ya existen en la lista
-    const existingDefaultIds = new Set(feedbackList.map(review => review.id));
-    const missingDefaultReviews = defaultReviews.filter(review => !existingDefaultIds.has(review.id));
-    
-    // Solo agregar las reseñas default que no existen
-    if (missingDefaultReviews.length > 0) {
-        feedbackList = [...missingDefaultReviews, ...feedbackList];
-        localStorage.setItem("feedbackList", JSON.stringify(feedbackList));
-    }
-}
-
 // Event Listener for DOMContentLoaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Primero inicializar las reseñas predeterminadas
-    initializeDefaultReviews();
-    
-    // Luego mostrar el feedback y actualizar controles
+    // Mostrar el feedback y actualizar controles
     displayFeedback();
     updateAdminControlsVisibility();
     
     console.log('Initial state - isAdmin:', isAdmin, 'canDelete:', canDelete);
 });
 
-
-
-
-
-
-/* 
-INSTRUCCIONES PARA AGREGAR MÁS RESEÑAS PREDETERMINADAS:
-
-1. Localiza el array 'defaultReviews' en la función initializeDefaultReviews
-2. Añade un nuevo objeto siguiendo esta estructura:
-{
-    id: "default-X", // Incrementa el número X para cada nueva reseña
-    firstName: "Nombre",
-    lastName: "Apellido",
-    serviceType: "tipo_de_servicio",
-    rating: 1-5, // Número del 1 al 5
-    comment: `Texto de la reseña`
-}
-
-3. Asegúrate de que cada nueva reseña tenga un id único
-4. El rating debe ser un número entre 1 y 5
-5. El comment puede contener texto largo con saltos de línea
-
-EJEMPLO DE NUEVA RESEÑA:
-
-{
-    id: "default-3",
-    firstName: "Roberto",
-    lastName: "García",
-    serviceType: "bbs_database",
-    rating: 4,
-    comment: `Tu reseña aquí...`
-}
-
-NOTA: Las reseñas predeterminadas solo se agregarán cuando el localStorage esté vacío
-*/
-
-
-
-
 document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.getElementById('sidebar');
     const menuToggle = document.getElementById('menu-toggle');
-  
+
     if (!sidebar || !menuToggle) {
         console.error('Sidebar or menu toggle not found');
         return;
     }
-  
+
     function toggleSidebar() {
         sidebar.classList.toggle('active');
         menuToggle.classList.toggle('active');
     }
-  
+
     menuToggle.addEventListener('click', function(event) {
         event.stopPropagation();
         toggleSidebar();
     });
-  
+
     document.addEventListener('click', function(event) {
         if (sidebar.classList.contains('active') && !sidebar.contains(event.target) && event.target !== menuToggle) {
             toggleSidebar();
         }
     });
-  
+
     sidebar.addEventListener('click', function(event) {
         event.stopPropagation();
     });
-  
+
     console.log('Sidebar script loaded');
-  });
+});
 
-
-
-
-
-  if (navigator.hardwareConcurrency <= 2 || navigator.deviceMemory <= 2) {
+if (navigator.hardwareConcurrency <= 2 || navigator.deviceMemory <= 2) {
     document.documentElement.classList.add('low-performance');
 }
 
@@ -335,4 +243,3 @@ document.addEventListener('DOMContentLoaded', function() {
         document.documentElement.classList.add('low-performance');
     }
 });
-
